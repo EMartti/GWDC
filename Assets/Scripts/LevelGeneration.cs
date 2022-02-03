@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour
 {
     [SerializeField] private GameObject[] rooms;
-    [SerializeField] private int moveAmount = 1;
+    [SerializeField] private int centerDistance = 1;
     [SerializeField] private int roomAmount = 1;
     [Range(5,8)][SerializeField] private int levelSize = 1;
 
@@ -25,19 +25,24 @@ public class LevelGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        array2D = new int[levelSize * 3, levelSize * 3];
+        array2D = new int[levelSize, levelSize];       
 
-        xPos = Random.Range(Mathf.RoundToInt(levelSize * 3 / 2), Mathf.RoundToInt(levelSize * 3 / 2) + 3);
-        zPos = Random.Range(Mathf.RoundToInt(levelSize * 3 / 2), Mathf.RoundToInt(levelSize * 3 / 2) + 3);
-        
+        xPos = 2;
+        zPos = 2;       
+
+        array2D[xPos, zPos] = 1;
+        //CheckSurround(xPos, zPos);
+
+        //DebugArray();
+
         for (int i = 0; i < roomAmount; i++)
         {
             if(!deadend) SpawnRoom();
         }
 
-        DebugArray();
+        //DebugArray();
 
-        GenerateParts();
+        //GenerateParts();
     }
 
     private void DebugArray()
@@ -63,7 +68,7 @@ public class LevelGeneration : MonoBehaviour
         {
             for (int z = 0; z < levelSize * 3; z++)
             {
-                transform.position = new Vector3(x, 0, z);
+                transform.position = new Vector3(x * centerDistance/3, 0, z * centerDistance/3);
                 switch (array2D[x, z])
                 {
                     case 1:
@@ -83,7 +88,7 @@ public class LevelGeneration : MonoBehaviour
     private void SpawnRoom()
     {
         int rand = Random.Range(0, rooms.Length);
-
+        Instantiate(rooms[rand], transform.position, Quaternion.identity);
         array2D[xPos, zPos] = 1;
         triesToDeadend = 0;
         Move();
@@ -93,60 +98,56 @@ public class LevelGeneration : MonoBehaviour
     {
         //This decides the walk direction of the level generation
         triesToDeadend++;
-        if (triesToDeadend >= 20) return;
+        if (triesToDeadend >= 20) { deadend = true; return; }
         //0 is forward 1 is right etc clockwise
         int rand = Random.Range(0, 4);
         switch (rand)
         {
             case 0:
-                if(array2D[xPos, zPos + 3] < 1)
+                if(zPos >= levelSize - 1 || array2D[xPos, zPos + 1] == 1)
                 {
                     Move();
                 }
                 else
-                {
-                    array2D[xPos, zPos] = 1;
-                    CheckSurround(xPos, zPos);
-                    zPos += 3;
+                {                   
+                    zPos += 1;                    
+                    transform.position += Vector3.forward * centerDistance;
                 }                
                 break;
 
             case 1:
-                if (array2D[xPos + 3, zPos] < 1)
+                if (xPos >= levelSize - 1 || array2D[xPos + 1, zPos] == 1)
                 {
                     Move();
                 }
                 else
                 {
-                    array2D[xPos, zPos] = 1;
-                    CheckSurround(xPos, zPos);
-                    xPos += 3;
+                    xPos += 1;
+                    transform.position += Vector3.right * centerDistance;
                 }                
                 break;
 
             case 2:
-                if (array2D[xPos, zPos - 3] < 1)
+                if (zPos <= 0 || array2D[xPos, zPos - 1] == 1)
                 {
                     Move();
-                }
+                }                    
                 else
                 {
-                    array2D[xPos, zPos] = 1;
-                    CheckSurround(xPos, zPos);
-                    zPos -= 3;
+                    zPos -= 1;
+                    transform.position += Vector3.back * centerDistance;
                 }
                 break;
 
             case 3:
-                if (array2D[xPos - 3, zPos] < 1)
+                if (xPos <= 0 || array2D[xPos - 1, zPos] == 1)
                 {
                     Move();
                 }
                 else
                 {
-                    array2D[xPos, zPos] = 1;
-                    CheckSurround(xPos, zPos);
-                    xPos -= 3;
+                    xPos -= 1;
+                    transform.position += Vector3.left * centerDistance;
                 }
                 break;
         }
@@ -154,21 +155,21 @@ public class LevelGeneration : MonoBehaviour
 
     private void SpawnCorners()
     {
-        transform.position += Vector3.forward * moveAmount / 3;
-        transform.position += Vector3.right * moveAmount / 3;
+        transform.position += Vector3.forward * centerDistance / 3;
+        transform.position += Vector3.right * centerDistance / 3;
         Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.right, Vector3.up));
 
-        transform.position += Vector3.back * 2 * moveAmount / 3;
+        transform.position += Vector3.back * 2 * centerDistance / 3;
         Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.back, Vector3.up));
 
-        transform.position += Vector3.left * 2 * moveAmount / 3;
+        transform.position += Vector3.left * 2 * centerDistance / 3;
         Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.left, Vector3.up));
 
-        transform.position += Vector3.forward * 2 * moveAmount / 3;
+        transform.position += Vector3.forward * 2 * centerDistance / 3;
         Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.forward, Vector3.up));
 
-        transform.position += Vector3.right * moveAmount / 3;
-        transform.position += Vector3.back * moveAmount / 3;
+        transform.position += Vector3.right * centerDistance / 3;
+        transform.position += Vector3.back * centerDistance / 3;
     }
 
     private void SpawnWall(Vector3 moveDir)
@@ -181,62 +182,63 @@ public class LevelGeneration : MonoBehaviour
 
         //check grids left side from direction   
 
-        transform.position += crossDir * (moveAmount / 3);
+        transform.position += crossDir * (centerDistance / 3);
 
         if (array2D[xPos + (int)crossDir.x, zPos + (int)crossDir.z] == 0) 
             Instantiate(roomEdge, transform.position, Quaternion.LookRotation(moveDir, Vector3.up));
         else
         {
-            transform.position -= crossDir * (moveAmount / 3);
-            transform.position -= moveDir * (moveAmount / 3);
+            transform.position -= crossDir * (centerDistance / 3);
+            transform.position -= moveDir * (centerDistance / 3);
 
             Instantiate(roomEdge, transform.position, Quaternion.LookRotation(crossDir, Vector3.up));
 
-            transform.position += crossDir * (moveAmount / 3);
-            transform.position += moveDir * (moveAmount / 3);
+            transform.position += crossDir * (centerDistance / 3);
+            transform.position += moveDir * (centerDistance / 3);
         }
 
-        transform.position -= crossDir * (2 * moveAmount / 3);
+        transform.position -= crossDir * (2 * centerDistance / 3);
 
         if (array2D[xPos - (int)crossDir.x, zPos - (int)crossDir.z] == 0) 
             Instantiate(roomEdge, transform.position, Quaternion.LookRotation(-moveDir, Vector3.up));
         else
         {
-            transform.position += crossDir * (moveAmount / 3);
-            transform.position += moveDir * (moveAmount / 3);
+            transform.position += crossDir * (centerDistance / 3);
+            transform.position += moveDir * (centerDistance / 3);
 
             Instantiate(roomEdge, transform.position, Quaternion.LookRotation(-crossDir, Vector3.up));
 
-            transform.position -= crossDir * (moveAmount / 3);
-            transform.position -= moveDir * (moveAmount / 3);
+            transform.position -= crossDir * (centerDistance / 3);
+            transform.position -= moveDir * (centerDistance / 3);
         }
 
-        transform.position += crossDir * (moveAmount / 3);
+        transform.position += crossDir * (centerDistance / 3);
 
     }
 
     private void SpawnDoor(Vector3 moveDir)
     {
-        transform.position += moveDir * (moveAmount / 3);
+        transform.position += moveDir * (centerDistance / 3);
         Instantiate(roomDoor, transform.position, Quaternion.LookRotation(moveDir, Vector3.up));
-        transform.position += moveDir * (moveAmount / 3);
+        transform.position += moveDir * (centerDistance / 3);
         Instantiate(roomDoor, transform.position, Quaternion.LookRotation(-moveDir, Vector3.up));
-        transform.position -= moveDir * (2 * moveAmount / 3);
+        transform.position -= moveDir * (2 * centerDistance / 3);
     }
 
 
     private void CheckSurround(int PosX, int PosZ)
     {
-        int[,] surroundingPos = new int[5, 5];
-        int tempX = PosX - 2;
-        int tempZ = PosZ - 2;
+        int tempX = PosX - 1;
+        int tempZ = PosZ - 1;
 
-        for (int x = 0; x < 5; x++)
+        //Debug.Log(PosX + " " + PosZ);
+
+        for (int x = 0; x < 3; x++)
         {
-            for (int z = 0; z < 5; z++)
+            for (int z = 0; z < 3; z++)
             {
-                if (surroundingPos[tempX + x,tempZ + z] == 0) surroundingPos[tempX + x, tempZ + z] = 2;
-                if (surroundingPos[tempX + x, tempZ + z] % 2 != 0 && surroundingPos[tempX + x, tempZ + z] != 1) surroundingPos[tempX + x, tempZ + z] = 3;
+                if (array2D[tempX + x,tempZ + z] == 0) array2D[tempX + x, tempZ + z] = 2;
+                //if (array2D[tempX + x, tempZ + z] % 2 != 0 && array2D[tempX + x, tempZ + z] != 1) array2D[tempX + x, tempZ + z] = 3;
             }
         }
     }
