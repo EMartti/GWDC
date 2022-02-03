@@ -25,10 +25,10 @@ public class LevelGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        array2D = new int[levelSize, levelSize];
+        array2D = new int[levelSize * 3, levelSize * 3];
 
-        xPos = Random.Range(Mathf.RoundToInt(levelSize / 2), Mathf.RoundToInt(levelSize / 2) + 1);
-        zPos = Random.Range(Mathf.RoundToInt(levelSize / 2), Mathf.RoundToInt(levelSize / 2) + 1);
+        xPos = Random.Range(Mathf.RoundToInt(levelSize / 6), Mathf.RoundToInt(levelSize / 6) + 3);
+        zPos = Random.Range(Mathf.RoundToInt(levelSize / 6), Mathf.RoundToInt(levelSize / 6) + 3);
         
         for (int i = 0; i < roomAmount; i++)
         {
@@ -58,14 +58,13 @@ public class LevelGeneration : MonoBehaviour
         switch (rand)
         {
             case 0:
-                if(zPos >= levelSize - 1 || array2D[xPos, zPos + 1] == 1)
+                if(zPos >= levelSize - 1 || array2D[xPos, zPos + 3] < 1)
                 {
                     Move();
                 }
                 else
                 {
-                    SpawnDoor(Vector3.forward);
-                    SpawnWall(Vector3.forward);
+                    array2D[xPos, zPos] = 1;
                     transform.position += Vector3.forward * moveAmount;
                     zPos++;
                     movedTo();
@@ -73,7 +72,7 @@ public class LevelGeneration : MonoBehaviour
                 break;
 
             case 1:
-                if (xPos >= levelSize - 1 || array2D[xPos + 1, zPos] == 1)
+                if (xPos >= levelSize - 1 || array2D[xPos + 1, zPos] < 1)
                 {
                     Move();
                 }
@@ -81,6 +80,7 @@ public class LevelGeneration : MonoBehaviour
                 {
                     SpawnDoor(Vector3.right);
                     SpawnWall(Vector3.right);
+                    SpawnCorners();
                     transform.position += Vector3.right * moveAmount;
                     xPos++;
                     movedTo();
@@ -88,7 +88,7 @@ public class LevelGeneration : MonoBehaviour
                 break;
 
             case 2:
-                if (zPos <= 0 || array2D[xPos, zPos - 1] == 1)
+                if (zPos <= 0 || array2D[xPos, zPos - 1] < 1)
                 {
                     Move();
                 }
@@ -96,6 +96,7 @@ public class LevelGeneration : MonoBehaviour
                 {
                     SpawnDoor(Vector3.back);
                     SpawnWall(Vector3.back);
+                    SpawnCorners();
                     transform.position += Vector3.back * moveAmount;
                     zPos--;
                     movedTo();
@@ -103,7 +104,7 @@ public class LevelGeneration : MonoBehaviour
                 break;
 
             case 3:
-                if (xPos <= 0 || array2D[xPos - 1, zPos] == 1)
+                if (xPos <= 0 || array2D[xPos - 1, zPos] < 1)
                 {
                     Move();
                 }
@@ -111,6 +112,7 @@ public class LevelGeneration : MonoBehaviour
                 {
                     SpawnDoor(Vector3.left);
                     SpawnWall(Vector3.left);
+                    SpawnCorners();
                     transform.position += Vector3.left * moveAmount;
                     xPos--;
                     movedTo();
@@ -119,18 +121,65 @@ public class LevelGeneration : MonoBehaviour
         }
     }
 
+    private void SpawnCorners()
+    {
+        transform.position += Vector3.forward * moveAmount / 3;
+        transform.position += Vector3.right * moveAmount / 3;
+        Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.right, Vector3.up));
+
+        transform.position += Vector3.back * 2 * moveAmount / 3;
+        Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.back, Vector3.up));
+
+        transform.position += Vector3.left * 2 * moveAmount / 3;
+        Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.left, Vector3.up));
+
+        transform.position += Vector3.forward * 2 * moveAmount / 3;
+        Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.forward, Vector3.up));
+
+        transform.position += Vector3.right * moveAmount / 3;
+        transform.position += Vector3.back * moveAmount / 3;
+    }
+
     private void SpawnWall(Vector3 moveDir)
     {
         //flip forwards and right axis
-        float tempX = moveDir.z;
-        float tempZ = moveDir.x;
+        int tempX = (int) -moveDir.z;
+        int tempZ = (int) moveDir.x;
 
         Vector3 crossDir = new Vector3(tempX, 0, tempZ);
 
+        //check grids left side from direction   
+
         transform.position += crossDir * (moveAmount / 3);
-        Instantiate(roomEdge, transform.position, Quaternion.LookRotation(moveDir, Vector3.up));
+
+        if (array2D[xPos + (int)crossDir.x, zPos + (int)crossDir.z] == 0) 
+            Instantiate(roomEdge, transform.position, Quaternion.LookRotation(moveDir, Vector3.up));
+        else
+        {
+            transform.position -= crossDir * (moveAmount / 3);
+            transform.position -= moveDir * (moveAmount / 3);
+
+            Instantiate(roomEdge, transform.position, Quaternion.LookRotation(crossDir, Vector3.up));
+
+            transform.position += crossDir * (moveAmount / 3);
+            transform.position += moveDir * (moveAmount / 3);
+        }
+
         transform.position -= crossDir * (2 * moveAmount / 3);
-        Instantiate(roomEdge, transform.position, Quaternion.LookRotation(-moveDir, Vector3.up));
+
+        if (array2D[xPos - (int)crossDir.x, zPos - (int)crossDir.z] == 0) 
+            Instantiate(roomEdge, transform.position, Quaternion.LookRotation(-moveDir, Vector3.up));
+        else
+        {
+            transform.position += crossDir * (moveAmount / 3);
+            transform.position += moveDir * (moveAmount / 3);
+
+            Instantiate(roomEdge, transform.position, Quaternion.LookRotation(-crossDir, Vector3.up));
+
+            transform.position -= crossDir * (moveAmount / 3);
+            transform.position -= moveDir * (moveAmount / 3);
+        }
+
         transform.position += crossDir * (moveAmount / 3);
 
     }
