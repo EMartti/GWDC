@@ -27,30 +27,71 @@ public class LevelGeneration : MonoBehaviour
     {
         array2D = new int[levelSize * 3, levelSize * 3];
 
-        xPos = Random.Range(Mathf.RoundToInt(levelSize / 6), Mathf.RoundToInt(levelSize / 6) + 3);
-        zPos = Random.Range(Mathf.RoundToInt(levelSize / 6), Mathf.RoundToInt(levelSize / 6) + 3);
+        xPos = Random.Range(Mathf.RoundToInt(levelSize * 3 / 2), Mathf.RoundToInt(levelSize * 3 / 2) + 3);
+        zPos = Random.Range(Mathf.RoundToInt(levelSize * 3 / 2), Mathf.RoundToInt(levelSize * 3 / 2) + 3);
         
         for (int i = 0; i < roomAmount; i++)
         {
             if(!deadend) SpawnRoom();
         }
-        
+
+        DebugArray();
+
+        GenerateParts();
+    }
+
+    private void DebugArray()
+    {
+        string gridString = "";
+
+        for (int x = 0; x < levelSize * 3; x++)
+        {
+            for (int z = 0; z < levelSize * 3; z++)
+            {
+                gridString += array2D[x, z];
+                gridString += " ";
+            }
+            gridString += "\n";
+        }
+
+        Debug.Log(gridString);
+    }
+
+    private void GenerateParts()
+    {
+        for (int x = 0; x < levelSize * 3; x++)
+        {
+            for (int z = 0; z < levelSize * 3; z++)
+            {
+                transform.position = new Vector3(x, 0, z);
+                switch (array2D[x, z])
+                {
+                    case 1:
+                        Instantiate(roomMid, transform.position, Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(roomEdge, transform.position, Quaternion.identity);
+                        break;
+                    case 3:
+                        Instantiate(roomCorner, transform.position, Quaternion.identity);
+                        break;
+                }
+            }
+        }
     }
 
     private void SpawnRoom()
     {
         int rand = Random.Range(0, rooms.Length);
-        Instantiate(rooms[rand], transform.position, Quaternion.identity);
 
         array2D[xPos, zPos] = 1;
-        Debug.Log("spawned at: " + xPos + ", " + zPos + "value: " + array2D[xPos, zPos]);
-
         triesToDeadend = 0;
         Move();
     }
 
     private void Move()
     {
+        //This decides the walk direction of the level generation
         triesToDeadend++;
         if (triesToDeadend >= 20) return;
         //0 is forward 1 is right etc clockwise
@@ -58,64 +99,54 @@ public class LevelGeneration : MonoBehaviour
         switch (rand)
         {
             case 0:
-                if(zPos >= levelSize - 1 || array2D[xPos, zPos + 3] < 1)
+                if(array2D[xPos, zPos + 3] < 1)
                 {
                     Move();
                 }
                 else
                 {
                     array2D[xPos, zPos] = 1;
-                    transform.position += Vector3.forward * moveAmount;
-                    zPos++;
-                    movedTo();
+                    CheckSurround(xPos, zPos);
+                    zPos += 3;
                 }                
                 break;
 
             case 1:
-                if (xPos >= levelSize - 1 || array2D[xPos + 1, zPos] < 1)
+                if (array2D[xPos + 3, zPos] < 1)
                 {
                     Move();
                 }
                 else
                 {
-                    SpawnDoor(Vector3.right);
-                    SpawnWall(Vector3.right);
-                    SpawnCorners();
-                    transform.position += Vector3.right * moveAmount;
-                    xPos++;
-                    movedTo();
+                    array2D[xPos, zPos] = 1;
+                    CheckSurround(xPos, zPos);
+                    xPos += 3;
                 }                
                 break;
 
             case 2:
-                if (zPos <= 0 || array2D[xPos, zPos - 1] < 1)
+                if (array2D[xPos, zPos - 3] < 1)
                 {
                     Move();
                 }
                 else
                 {
-                    SpawnDoor(Vector3.back);
-                    SpawnWall(Vector3.back);
-                    SpawnCorners();
-                    transform.position += Vector3.back * moveAmount;
-                    zPos--;
-                    movedTo();
+                    array2D[xPos, zPos] = 1;
+                    CheckSurround(xPos, zPos);
+                    zPos -= 3;
                 }
                 break;
 
             case 3:
-                if (xPos <= 0 || array2D[xPos - 1, zPos] < 1)
+                if (array2D[xPos - 3, zPos] < 1)
                 {
                     Move();
                 }
                 else
                 {
-                    SpawnDoor(Vector3.left);
-                    SpawnWall(Vector3.left);
-                    SpawnCorners();
-                    transform.position += Vector3.left * moveAmount;
-                    xPos--;
-                    movedTo();
+                    array2D[xPos, zPos] = 1;
+                    CheckSurround(xPos, zPos);
+                    xPos -= 3;
                 }
                 break;
         }
@@ -193,16 +224,20 @@ public class LevelGeneration : MonoBehaviour
         transform.position -= moveDir * (2 * moveAmount / 3);
     }
 
-    private void movedTo()
-    {
-        Debug.Log("moved to: " + xPos + ", " + zPos + "value: " + array2D[xPos, zPos]);
-    }
 
-    private void CheckSurround()
+    private void CheckSurround(int PosX, int PosZ)
     {
-        for (int i = 0; i < 8; i++)
+        int[,] surroundingPos = new int[5, 5];
+        int tempX = PosX - 2;
+        int tempZ = PosZ - 2;
+
+        for (int x = 0; x < 5; x++)
         {
-            //plaah
+            for (int z = 0; z < 5; z++)
+            {
+                if (surroundingPos[tempX + x,tempZ + z] == 0) surroundingPos[tempX + x, tempZ + z] = 2;
+                if (surroundingPos[tempX + x, tempZ + z] % 2 != 0 && surroundingPos[tempX + x, tempZ + z] != 1) surroundingPos[tempX + x, tempZ + z] = 3;
+            }
         }
     }
 }
