@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5898339908860898656}
   - component: {fileID: 1197803654130310699}
   - component: {fileID: 386803120170099159}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Grenade
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -118,13 +118,13 @@ MonoBehaviour:
   explosion: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
   whatIsEnemies:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 64
   explodeSound: {fileID: 8300000, guid: c401d00c96b512e488d2e3bf5d111509, type: 3}
   bounciness: 0.754
   useGravity: 1
-  explosionDamage: 32
-  explosionRange: 2.42
-  explosionForce: 1199.19
+  explosionDamage: 50
+  explosionRange: 1.72
+  explosionForce: 10000
   maxCollisions: 10
   maxLifeTime: 1.44
   explodeOnTouch: 1
