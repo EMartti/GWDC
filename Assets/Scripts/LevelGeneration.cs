@@ -7,7 +7,7 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private GameObject[] rooms;
     [SerializeField] private int centerDistance = 1;
     [SerializeField] private int roomAmount = 1;
-    [Range(5,8)][SerializeField] private int levelSize = 1;
+    [Range(5,16)][SerializeField] private int levelSize = 1;
 
     [SerializeField] private GameObject roomMid;
     [SerializeField] private GameObject roomEdge;
