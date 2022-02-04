@@ -3,8 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Missile : MonoBehaviour {
-    public float speed;
+    [SerializeField] private float speed;
     void Update() {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
+        Destroy(gameObject, 10);
+    }
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.tag == "Wall") {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+        if (collision.gameObject.tag == "Player") {
+            //TakeDamage
+            Destroy(gameObject);
+        }
     }
 }

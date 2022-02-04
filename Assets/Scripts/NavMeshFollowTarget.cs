@@ -24,12 +24,12 @@ public class NavMeshFollowTarget : MonoBehaviour {
         Ray visionRay = new Ray(transform.position, goal.transform.position - transform.position);
         Debug.DrawRay(transform.position, goal.transform.position - transform.position, Color.red);
 
-        if (Physics.Raycast(visionRay, out hit, Mathf.Infinity)) {
+        if (Physics.Raycast(visionRay, out hit)) {
             if (hit.collider.tag == "Wall") {
-                canSeeGoal = false;print("where he go?");
+                canSeeGoal = false;
             }
             if (hit.collider.tag == "Player") {
-                canSeeGoal = true;print("ICU!");
+                canSeeGoal = true;
             }
         }
         if (distanceToTarget <= attackDist) {
