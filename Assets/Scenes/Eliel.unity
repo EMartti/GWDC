@@ -244,80 +244,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
---- !u!4 &185073597 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5894208753083853551, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-  m_PrefabInstance: {fileID: 8328542306123542600}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &620569209 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6523392649255186517, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-  m_PrefabInstance: {fileID: 8328542306123542600}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &620569216
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620569209}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.3386798, z: 1.1373419}
-  m_Center: {x: 0, y: 1.0570207, z: 0.8357181}
---- !u!1 &696291051 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8328542306786279075, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-  m_PrefabInstance: {fileID: 8328542306123542600}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &696291052 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8328542306786279076, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-  m_PrefabInstance: {fileID: 8328542306123542600}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &696291053
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696291051}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.3386798, z: 1.1373419}
-  m_Center: {x: 0, y: 1.0570207, z: 0.8357181}
---- !u!114 &696291054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696291051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ddd13a4d7627c459b50d3f809b0c62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 64
-  hitSound: {fileID: 0}
-  weapon: {fileID: 0}
-  attackSound: {fileID: 0}
-  automatic: 0
-  timeBetweenAttack: 0.23
-  attackPosition: {fileID: 696291052}
-  player: {fileID: 185073597}
-  weaponCollider: {fileID: 696291053}
-  hitDamage: 25
-  attackRange: 1
-  hitForce: 2000
-  maxLifeTime: 0
 --- !u!1 &780807072
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,46 +605,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 69268597198410097, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_Size.y
-      value: 1.3386798
-      objectReference: {fileID: 0}
-    - target: {fileID: 69268597198410097, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_Size.z
-      value: 1.1373419
-      objectReference: {fileID: 0}
-    - target: {fileID: 69268597198410097, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_Center.y
-      value: 1.0570207
-      objectReference: {fileID: 0}
-    - target: {fileID: 69268597198410097, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_Center.z
-      value: 0.8357181
-      objectReference: {fileID: 0}
-    - target: {fileID: 230587532351836610, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: hitDamage
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 230587532351836610, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: maxLifeTime
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 230587532351836610, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: attackPosition
-      value: 
-      objectReference: {fileID: 696291052}
-    - target: {fileID: 230587532351836610, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: weaponCollider
-      value: 
-      objectReference: {fileID: 696291053}
-    - target: {fileID: 2011709489905731922, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8.189
-      objectReference: {fileID: 0}
-    - target: {fileID: 2011709489905731922, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.098978
-      objectReference: {fileID: 0}
     - target: {fileID: 3364539778405160111, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -763,39 +649,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6949013674435586387, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8117697895730267643, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8328542306786279075, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_Name
-      value: MeleeWeapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 8328542306786279075, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8328542306786279075, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8328542306786279075, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_TagString
-      value: Bullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 8328542306786279076, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8328542306786279076, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 69268597198410097, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
-    - {fileID: 230587532351836610, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f97576920d2190540993c5f0ba8f9b67, type: 3}
