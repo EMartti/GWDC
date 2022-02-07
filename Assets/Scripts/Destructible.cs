@@ -11,10 +11,10 @@ public class Destructible : MonoBehaviour
     void Start()
     {
         Health health = GetComponent<Health>();
-        health.Die += Health_Die;
+        health.OnDeath += Health_OnDeath;
     }
 
-    private void Health_Die(object sender, EventArgs e)
+    private void Health_OnDeath(object sender, EventArgs e)
     {
         if (deathExplosion != null)
             Instantiate(deathExplosion, transform.position, Quaternion.identity);
