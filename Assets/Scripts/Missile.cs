@@ -9,9 +9,7 @@ public class Missile : MonoBehaviour {
         Destroy(gameObject, 10);
     }
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Wall") {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        }
         if (collision.gameObject.tag == "Player") {
             //TakeDamage
             Destroy(gameObject);
