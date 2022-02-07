@@ -5,13 +5,13 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class FollowTarget : MonoBehaviour
 {
-    [SerializeField] private GameObject target;
+    private GameObject target;
     [SerializeField] private Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
