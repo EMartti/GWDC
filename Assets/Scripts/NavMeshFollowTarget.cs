@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class NavMeshFollowTarget : MonoBehaviour {
     // Start is called before the first frame update
     public Transform goal;
+    [SerializeField] private float heightOffset = 0.5f;
     public NavMeshAgent agent;
 
     public float distanceToTarget;
@@ -18,11 +19,13 @@ public class NavMeshFollowTarget : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
+        Vector3 offset = new Vector3(0, heightOffset, 0);
+
         distanceToTarget = Vector3.Distance(transform.position, goal.position);
 
         RaycastHit hit;
-        Ray visionRay = new Ray(transform.position, goal.transform.position - transform.position);
-        Debug.DrawRay(transform.position, goal.transform.position - transform.position, Color.red);
+        Ray visionRay = new Ray(transform.position + offset, goal.transform.position - transform.position + offset);
+        Debug.DrawRay(transform.position + offset, goal.transform.position - transform.position + offset, Color.red);
 
         if (Physics.Raycast(visionRay, out hit)) {
             if (hit.collider.tag == "Wall") {
