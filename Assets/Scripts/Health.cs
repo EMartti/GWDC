@@ -7,7 +7,7 @@ public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private int maxHealth = 100;
     public int currentHealth;
-    public event EventHandler Die;
+    public event EventHandler OnDeath;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class Health : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth <= 0) { currentHealth = 0; Die?.Invoke(this, EventArgs.Empty); }
+        if (currentHealth <= 0) { currentHealth = 0; OnDeath?.Invoke(this, EventArgs.Empty); }
         
     }    
 }
