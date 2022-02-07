@@ -115,7 +115,6 @@ public class Melee : MonoBehaviour
     {
         if (hitEffect != null) Instantiate(hitEffect, transform.position, Quaternion.identity);
 
-        Debug.Log("add force");
         if (enemy.GetComponent<Rigidbody>())
             enemy.GetComponent<Rigidbody>().AddExplosionForce(hitForce, player.position, attackRange);
 

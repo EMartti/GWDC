@@ -161,9 +161,4 @@ public class Weapon : MonoBehaviour
         bulletsLeft = magazineSize;
         reloading = false;
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(firingPoint.transform.position, firingPoint.transform.forward * 100);
-    }
 }
