@@ -6,7 +6,8 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class FollowTarget : MonoBehaviour
 {
-    private GameObject target;
+    // Muutin kamera-targetin väliaikasesti että sain pelaajan toimimaan, voi reverttaa ja kysyy multa -Joona 
+    public GameObject target;
     [SerializeField] private float pivotHeight;
     [SerializeField] private float offset;
     [SerializeField] private float yaw;
@@ -18,7 +19,7 @@ public class FollowTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindWithTag("Player");
+        // target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame

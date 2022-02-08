@@ -8,6 +8,7 @@ public class NavMeshFollowTarget : MonoBehaviour {
     public Transform goal;
     [SerializeField] private float heightOffset = 0.5f;
     public NavMeshAgent agent;
+    public GameObject playerObject;
 
     public float distanceToTarget;
     public float attackDist;
