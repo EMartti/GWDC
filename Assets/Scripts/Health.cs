@@ -5,6 +5,7 @@ using System;
 
 public class Health : MonoBehaviour, IDamageable
 {
+
     [SerializeField] private int maxHealth = 100;
     public int currentHealth;
     public event EventHandler OnDeath;
