@@ -90,7 +90,7 @@ public class Melee : MonoBehaviour
 
         foreach(Collider collider in GetColliders())
         {
-            if(collider.CompareTag("Enemy"))
+            if (collider != null && collider.CompareTag("Enemy"))
             {
                 IDamageable damageable = collider.GetComponent<IDamageable>();
                 if (damageable != null)
@@ -98,7 +98,7 @@ public class Melee : MonoBehaviour
                     damageable.TakeDamage(hitDamage);
                     Hit(collider);
                 }
-            }            
+            }
         }        
 
         if (allowInvoke)
