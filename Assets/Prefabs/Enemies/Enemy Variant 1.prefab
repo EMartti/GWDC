@@ -257,7 +257,6 @@ MonoBehaviour:
   goal: {fileID: 0}
   heightOffset: 0.5
   agent: {fileID: 3575980258126457934}
-  playerObject: {fileID: 593874014911957248, guid: 0928fb7f5a2ab034194bb6094b763117, type: 3}
   distanceToTarget: 0
   attackDist: 3
   canSeeGoal: 0
@@ -276,6 +275,7 @@ MonoBehaviour:
   projectile: {fileID: 1644675235641529876, guid: aac0f4343f64e7e468a99fc4ed8afc55, type: 3}
   attackInterval: 1
   moveScript: {fileID: 0}
+  projectileStartOffset: {x: 0, y: 1, z: 0}
   hasAttacked: 0
 --- !u!114 &3575980258126457970
 MonoBehaviour:
