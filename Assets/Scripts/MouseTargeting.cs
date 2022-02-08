@@ -35,10 +35,5 @@ public class MouseTargeting : MonoBehaviour
         float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         transform.rotation=Quaternion.Euler(0, rotation, 0);
         }     
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.forward * 100);
-    }
+    }    
 }
