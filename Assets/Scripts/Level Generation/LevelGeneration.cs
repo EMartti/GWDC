@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using Unity.AI.Navigation;
+using Random = UnityEngine.Random;
 
 public class LevelGeneration : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private Transform worldGeometry;
     [SerializeField] private GameObject player;
 
+    private List<RoomAndCoord> roomList;
+
     private NavMeshSurface surface;
 
 
@@ -32,7 +36,8 @@ public class LevelGeneration : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        array2D = new int[levelSize, levelSize];       
+        array2D = new int[levelSize, levelSize];
+        roomList = new List<RoomAndCoord>();
 
         xPos = 2;
         zPos = 2;       
@@ -49,7 +54,7 @@ public class LevelGeneration : MonoBehaviour
 
         //DebugArray();
 
-        //GenerateParts();
+        GenerateParts();
 
         GenerateNavMesh();
     }
@@ -87,32 +92,45 @@ public class LevelGeneration : MonoBehaviour
 
     private void GenerateParts()
     {
-        for (int x = 0; x < levelSize * 3; x++)
+        foreach(RoomAndCoord room in roomList)
         {
-            for (int z = 0; z < levelSize * 3; z++)
-            {
-                transform.position = new Vector3(x * centerDistance/3, 0, z * centerDistance/3);
-                switch (array2D[x, z])
+            //check if up isn't connected
+            if(room.z + 1 <= levelSize)
+                if(array2D[room.x, room.z + 1] == 0)
                 {
-                    case 1:
-                        Instantiate(roomMid, transform.position, Quaternion.identity);
-                        break;
-                    case 2:
-                        Instantiate(roomEdge, transform.position, Quaternion.identity);
-                        break;
-                    case 3:
-                        Instantiate(roomCorner, transform.position, Quaternion.identity);
-                        break;
+                    GameObject door = room.gameObj.transform.Find("DoorN").gameObject;
+                    door.SetActive(true);
                 }
-            }
+            //check if right isn't connected
+            if (room.x + 1 <= levelSize)
+                if (array2D[room.x + 1, room.z] == 0)
+                {
+                    GameObject door = room.gameObj.transform.Find("DoorE").gameObject;
+                    door.SetActive(true);
+                }
+            //check if down isn't connected
+            if (room.z != 0)
+                if (array2D[room.x, room.z - 1] == 0)
+                {
+                    GameObject door = room.gameObj.transform.Find("DoorS").gameObject;
+                    door.SetActive(true);
+                }
+            //check if left isn't connected
+            if (room.x != 0)
+                if (array2D[room.x - 1, room.z] == 0)
+                {
+                    GameObject door = room.gameObj.transform.Find("DoorW").gameObject;
+                    door.SetActive(true);
+                }
         }
     }
 
     private void SpawnRoom()
     {
-        int rand = Random.Range(0, rooms.Length);
-        Instantiate(rooms[rand], transform.position, Quaternion.identity);
+        int rand = Random.Range(0, rooms.Length);  
         array2D[xPos, zPos] = 1;
+        RoomAndCoord newRoom = new RoomAndCoord(Instantiate(rooms[rand], transform.position, Quaternion.identity), xPos, zPos);
+        roomList.Add(newRoom);
         triesToDeadend = 0;
         Move();
     }
@@ -195,47 +213,9 @@ public class LevelGeneration : MonoBehaviour
         transform.position += Vector3.back * centerDistance / 3;
     }
 
-    private void SpawnWall(Vector3 moveDir)
+    private void SpawnWall()
     {
-        //flip forwards and right axis
-        int tempX = (int) -moveDir.z;
-        int tempZ = (int) moveDir.x;
-
-        Vector3 crossDir = new Vector3(tempX, 0, tempZ);
-
-        //check grids left side from direction   
-
-        transform.position += crossDir * (centerDistance / 3);
-
-        if (array2D[xPos + (int)crossDir.x, zPos + (int)crossDir.z] == 0) 
-            Instantiate(roomEdge, transform.position, Quaternion.LookRotation(moveDir, Vector3.up));
-        else
-        {
-            transform.position -= crossDir * (centerDistance / 3);
-            transform.position -= moveDir * (centerDistance / 3);
-
-            Instantiate(roomEdge, transform.position, Quaternion.LookRotation(crossDir, Vector3.up));
-
-            transform.position += crossDir * (centerDistance / 3);
-            transform.position += moveDir * (centerDistance / 3);
-        }
-
-        transform.position -= crossDir * (2 * centerDistance / 3);
-
-        if (array2D[xPos - (int)crossDir.x, zPos - (int)crossDir.z] == 0) 
-            Instantiate(roomEdge, transform.position, Quaternion.LookRotation(-moveDir, Vector3.up));
-        else
-        {
-            transform.position += crossDir * (centerDistance / 3);
-            transform.position += moveDir * (centerDistance / 3);
-
-            Instantiate(roomEdge, transform.position, Quaternion.LookRotation(-crossDir, Vector3.up));
-
-            transform.position -= crossDir * (centerDistance / 3);
-            transform.position -= moveDir * (centerDistance / 3);
-        }
-
-        transform.position += crossDir * (centerDistance / 3);
+        
 
     }
 
@@ -265,4 +245,33 @@ public class LevelGeneration : MonoBehaviour
             }
         }
     }
+}
+
+public class RoomAndCoord
+{
+    public GameObject gameObj;
+    public int x;
+    public int z;
+
+    
+    public RoomAndCoord(GameObject newGameObj, int newX, int newZ)
+    {        
+        gameObj = newGameObj;
+        x = newX;
+        z = newZ;
+    }
+    /*
+    //This method is required by the IComparable
+    //interface. 
+    public int CompareTo(RoomAndCoord other)
+    {
+        if (other == null)
+        {
+            return 1;
+        }
+
+        //Return the difference in power.
+        return x - other.x;
+    }
+    */
 }
