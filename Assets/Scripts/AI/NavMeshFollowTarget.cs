@@ -15,13 +15,9 @@ public class NavMeshFollowTarget : MonoBehaviour {
 
     void Start() {
         agent = GetComponent<NavMeshAgent>();
-<<<<<<< Updated upstream:Assets/Scripts/AI/NavMeshFollowTarget.cs
-        goal = GameObject.FindWithTag("Player").transform;
-=======
 
         // Ettii pelaajan automaattisesti skenestä - Joona
         goal = GameObject.Find("PlayerArmature").transform;
->>>>>>> Stashed changes:Assets/Scripts/NavMeshFollowTarget.cs
     }
 
     // Update is called once per frame
