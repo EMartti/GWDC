@@ -5,10 +5,9 @@ using UnityEngine.AI;
 
 public class NavMeshFollowTarget : MonoBehaviour {
     // Start is called before the first frame update
-    public Transform goal;
+    [SerializeField] private Transform goal;
     [SerializeField] private float heightOffset = 0.5f;
     public NavMeshAgent agent;
-    public GameObject playerObject;
 
     public float distanceToTarget;
     public float attackDist;
@@ -16,7 +15,13 @@ public class NavMeshFollowTarget : MonoBehaviour {
 
     void Start() {
         agent = GetComponent<NavMeshAgent>();
+<<<<<<< Updated upstream:Assets/Scripts/AI/NavMeshFollowTarget.cs
         goal = GameObject.FindWithTag("Player").transform;
+=======
+
+        // Ettii pelaajan automaattisesti skenestä - Joona
+        goal = GameObject.Find("PlayerArmature").transform;
+>>>>>>> Stashed changes:Assets/Scripts/NavMeshFollowTarget.cs
     }
 
     // Update is called once per frame
@@ -33,7 +38,10 @@ public class NavMeshFollowTarget : MonoBehaviour {
             if (hit.collider.tag == "Wall") {
                 canSeeGoal = false;
             }
-            if (hit.collider.tag == "Player") {
+            // - Joona - Muutin collider checkiä että viholliset löytää pelaajan oikein
+            // Seinät pitää nyt tagata "Wall"-tagilla että skripti toimii oikein
+            // Voi parannella myöhemmin
+            else {
                 canSeeGoal = true;
             }
         }
