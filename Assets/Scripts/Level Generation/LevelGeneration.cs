@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.AI.Navigation;
 
 public class LevelGeneration : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private GameObject roomCorner;
     [SerializeField] private GameObject roomDoor;
 
+    [SerializeField] private Transform worldGeometry;
+    [SerializeField] private GameObject player;
+
+    private NavMeshSurface surface;
+
+
     private int xLimit, zLimit;
     private int xPos, zPos;
 
@@ -23,7 +30,7 @@ public class LevelGeneration : MonoBehaviour
     public static int[,] array2D;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         array2D = new int[levelSize, levelSize];       
 
@@ -43,6 +50,22 @@ public class LevelGeneration : MonoBehaviour
         //DebugArray();
 
         //GenerateParts();
+
+        GenerateNavMesh();
+    }
+
+    private void GenerateNavMesh()
+    {
+        if (worldGeometry == null || worldGeometry.GetComponent<NavMeshSurface>() == null)
+        {
+            Debug.Log("World geometry of Floor Manager must be assigned and must have at least one NavMeshSurface");
+            gameObject.SetActive(false);
+            return;
+        }
+
+        surface = worldGeometry.GetComponentInChildren<NavMeshSurface>();
+
+        surface.BuildNavMesh();
     }
 
     private void DebugArray()

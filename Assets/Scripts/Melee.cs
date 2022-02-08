@@ -31,8 +31,6 @@ public class Melee : MonoBehaviour
 
     public float maxLifeTime;
 
-    int collisions;
-    bool alreadyHitOnce = false;
     PhysicMaterial physics_mat;
 
     bool attacking, readyToAttack;
