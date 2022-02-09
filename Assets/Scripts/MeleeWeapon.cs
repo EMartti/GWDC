@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatchHitEvent : MonoBehaviour
-{
-    public Melee melee;
-
-
+public class MeleeWeapon : MonoBehaviour
+{    
     private List<Collider> colliders = new List<Collider>();
     public List<Collider> GetColliders() { return colliders; }
 
-    public void HitEvent()
+    public List<Collider> HitColliders()
     {
-        //melee.HitEvent();
+        List<Collider> newList = new List<Collider>();
 
         Debug.Log("hitevent");
 
@@ -20,14 +17,11 @@ public class CatchHitEvent : MonoBehaviour
         {
             if (collider != null && collider.CompareTag("Enemy"))
             {
-                IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
-                if (damageable != null)
-                {
-                    damageable.TakeDamage(melee.hitDamage);
-                    //melee.Hit(collider);
-                }
+                newList.Add(collider);
             }
         }
+
+        return newList;
     }
 
 

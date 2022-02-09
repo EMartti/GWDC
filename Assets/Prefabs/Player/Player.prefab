@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2679677963652336975}
   - component: {fileID: 6243341417788144902}
-  - component: {fileID: 6243341417788144901}
+  - component: {fileID: 946368531}
   m_Layer: 8
   m_Name: MeleeWeapon
   m_TagString: Bullet
@@ -92,7 +92,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.3386798, z: 1.1373419}
   m_Center: {x: 0, y: 1.0570207, z: 0.8357181}
---- !u!114 &6243341417788144901
+--- !u!114 &946368531
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,26 +101,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2679677963652336968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ddd13a4d7627c459b50d3f809b0c62, type: 3}
+  m_Script: {fileID: 11500000, guid: 79e4c78ae539a194b93ada1315000aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 64
-  hitSound: {fileID: 0}
-  weapon: {fileID: 0}
-  attackSound: {fileID: 0}
-  automatic: 0
-  timeBetweenAttack: 0.23
-  attackPosition: {fileID: 2679677963652336975}
-  player: {fileID: 533855025637742852}
-  animator: {fileID: 3017182954901424945}
-  weaponCollider: {fileID: 6243341417788144902}
-  hitDamage: 25
-  attackRange: 1
-  hitForce: 2000
-  maxLifeTime: 0
 --- !u!1 &2739058059502302736
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +120,7 @@ GameObject:
   - component: {fileID: 5067099358328827044}
   - component: {fileID: 3017182954901424945}
   - component: {fileID: 6243341418018923226}
+  - component: {fileID: 5652613128129848240}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -312,6 +296,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+--- !u!114 &5652613128129848240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739058059502302736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ddd13a4d7627c459b50d3f809b0c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 64
+  hitSound: {fileID: 0}
+  weapon: {fileID: 0}
+  attackSound: {fileID: 0}
+  automatic: 0
+  timeBetweenAttack: 0.89
+  attackPosition: {fileID: 2679677963652336975}
+  player: {fileID: 533855025637742852}
+  animator: {fileID: 3017182954901424945}
+  meleeWeapon: {fileID: 946368531}
+  hitDamage: 100
+  attackRange: 1
+  hitForce: 20000
+  maxLifeTime: 0
 --- !u!1 &4325627410011103524
 GameObject:
   m_ObjectHideFlags: 0

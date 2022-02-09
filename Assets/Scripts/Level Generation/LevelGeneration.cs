@@ -39,8 +39,8 @@ public class LevelGeneration : MonoBehaviour
         array2D = new int[levelSize, levelSize];
         roomList = new List<RoomAndCoord>();
 
-        xPos = 2;
-        zPos = 2;       
+        xPos = Mathf.RoundToInt(levelSize / 2);
+        zPos = Mathf.RoundToInt(levelSize / 2);
 
         array2D[xPos, zPos] = 1;
         //CheckSurround(xPos, zPos);

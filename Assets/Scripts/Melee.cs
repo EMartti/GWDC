@@ -28,7 +28,7 @@ public class Melee : MonoBehaviour
 
     public Animator animator;
 
-    public Collider weaponCollider;
+    public MeleeWeapon meleeWeapon;
 
     public int hitDamage;
     public float attackRange;
@@ -59,13 +59,25 @@ public class Melee : MonoBehaviour
     private void Start()
     {
         playerInputActions.Player.Fire.Enable();
-        playerInputActions.Player.Fire.started += OnFire;
+        playerInputActions.Player.Fire.started += OnMelee;
 
         animIDisAttacking = Animator.StringToHash("isAttacking");
+
+
+        foreach (var item in animator.runtimeAnimatorController.animationClips)
+        {
+            if(item.name == "1H-RH@Attack01")
+            {
+                timeBetweenAttack = item.length;
+                break;
+            }
+        }
+        
+
     }
 
     #region InputSystem
-    private void OnFire(InputAction.CallbackContext obj)
+    private void OnMelee(InputAction.CallbackContext obj)
     {
         attacking = true;
 
@@ -103,18 +115,6 @@ public class Melee : MonoBehaviour
 
         animator.SetBool(animIDisAttacking, attacking);
 
-        foreach (Collider collider in GetColliders())
-        {
-            if (collider != null && collider.CompareTag("Enemy"))
-            {
-                IDamageable damageable = collider.GetComponent<IDamageable>();
-                if (damageable != null)
-                {
-                    damageable.TakeDamage(hitDamage);
-                    Hit(collider);
-                }
-            }
-        }
 
         if (allowInvoke)
         {
@@ -127,8 +127,17 @@ public class Melee : MonoBehaviour
     }
 
     private void HitEvent()
-    {        
-        
+    {
+        foreach (Collider collider in meleeWeapon.HitColliders())
+        {
+            Debug.Log("HitEvent " + collider.gameObject.name);
+            IDamageable damageable = collider.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(hitDamage);
+                Hit(collider);
+            }
+        }
     }
 
     private void Hit(Collider enemy)

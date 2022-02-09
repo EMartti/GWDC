@@ -271,8 +271,8 @@ MonoBehaviour:
   rooms:
   - {fileID: 5384782066855338365, guid: bff6a06f69ff7e64988d4dfd9cad9200, type: 3}
   centerDistance: 20
-  roomAmount: 11
-  levelSize: 14
+  roomAmount: 60
+  levelSize: 16
   roomMid: {fileID: 8922640979570097695, guid: d8aa3a9b812464e41a3d05cd04d6a37c, type: 3}
   roomEdge: {fileID: 2184846369829786080, guid: 61b0cd3ac39edaa448d526688d420ce1, type: 3}
   roomCorner: {fileID: 1739531883232404774, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
@@ -403,10 +403,6 @@ PrefabInstance:
     - target: {fileID: 2739058059502302736, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6243341417788144901, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
-      propertyPath: hitDamage
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8653089349249574724, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
       propertyPath: m_RootOrder
