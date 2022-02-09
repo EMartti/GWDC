@@ -23,6 +23,10 @@ public class Melee : MonoBehaviour
     [SerializeField] private Transform attackPosition;
     [SerializeField] private Transform player;
 
+    private int animIDisAttacking;
+
+    public Animator animator;
+
     public Collider weaponCollider;
 
     public int hitDamage;
@@ -49,6 +53,8 @@ public class Melee : MonoBehaviour
     {
         playerInputActions.Player.Fire.Enable();
         playerInputActions.Player.Fire.started += OnFire;
+
+        animIDisAttacking = Animator.StringToHash("isAttacking");
     }
 
     #region InputSystem
@@ -58,6 +64,7 @@ public class Melee : MonoBehaviour
 
         if (readyToAttack && attacking)
         {
+            animator.SetBool(animIDisAttacking, attacking);
             Attack();
         }
         attacking = false;
@@ -71,9 +78,11 @@ public class Melee : MonoBehaviour
 
     void Update()
     {
-        attacking = false;
+        //attacking = false;
         if (automatic && playerInputActions.Player.Fire.ReadValue<float>() > 0)
             attacking = true;
+
+        
 
         //Automatic Attacking
         if (readyToAttack && attacking && automatic)
@@ -134,5 +143,7 @@ public class Melee : MonoBehaviour
     {
         readyToAttack = true;
         allowInvoke = true;
+        attacking = false;
+        animator.SetBool(animIDisAttacking, attacking);
     }
 }
