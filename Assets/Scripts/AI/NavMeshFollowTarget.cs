@@ -54,12 +54,21 @@ public class NavMeshFollowTarget : MonoBehaviour {
         }
         if (distanceToTarget <= attackDist) 
         {
-            agent.isStopped = true; //stop the agent
+            if (agent.isStopped == false)
+            {
+                agent.isStopped = true; //stop the agent
+            }
+            
         } 
         else 
         {
             if (canSeeGoal == true) 
             {
+                if (agent.isStopped == true)
+                {
+                    agent.isStopped = false;
+                }
+                
                 agent.destination = goal.position;
             }
         }
