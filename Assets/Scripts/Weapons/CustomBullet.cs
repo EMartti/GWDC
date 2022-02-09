@@ -80,9 +80,17 @@ public class CustomBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(explosionDamage);
+            Explode();
+        }
+        /*
         collisions++;
 
         if (collision.collider.CompareTag("Enemy") && explodeOnTouch) Explode(); 
+        */
     }
 
     private void Setup()

@@ -10,7 +10,6 @@ public class Weapon : MonoBehaviour
     public Transform firingPoint;
     [SerializeField] private GameObject bullet;    
 
-    [SerializeField] private int roundsPerMinute = 100;
     [SerializeField] private int magazineSize, bulletsPerTap;
     [SerializeField] private bool automatic;
 
@@ -18,7 +17,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float timeBetweenShots, spread, reloadTime, timeBetweenShooting;
 
     AudioSource audioSource;
-    [SerializeField] private AudioClip gunshot;
+    [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip reload;
     [SerializeField] private GameObject muzzleFlash;
     public TextMeshProUGUI ammunnitionDisplay;
@@ -134,7 +133,9 @@ public class Weapon : MonoBehaviour
         if (bulletsShot < bulletsPerTap && bulletsLeft > 0)
             Invoke("Shoot", timeBetweenShots);
 
-        audioSource.PlayOneShot(gunshot, 0.7F);
+
+        if(shootSound != null) 
+            audioSource.PlayOneShot(shootSound, 0.7F);
     }
 
     private void ResetShot()
@@ -152,7 +153,8 @@ public class Weapon : MonoBehaviour
     private void Reload()
     {
         reloading = true;
-        audioSource.PlayOneShot(reload, 0.7F);
+        if(reload != null)
+            audioSource.PlayOneShot(reload, 0.7F);
         Invoke("ReloadFinished", reloadTime);
     }
 

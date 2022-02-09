@@ -7,6 +7,7 @@ using UnityEngine;
 public class Destructible : MonoBehaviour
 {
     [SerializeField] private GameObject deathExplosion;
+    [SerializeField] private float deathDelay = 0f;
 
     void Start()
     {
@@ -15,6 +16,12 @@ public class Destructible : MonoBehaviour
     }
 
     private void Health_OnDeath(object sender, EventArgs e)
+    {
+        Invoke("Death", deathDelay);
+        
+    }
+
+    private void Death()
     {
         if (deathExplosion != null)
             Instantiate(deathExplosion, transform.position, Quaternion.identity);

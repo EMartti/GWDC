@@ -23,6 +23,10 @@ public class Melee : MonoBehaviour
     [SerializeField] private Transform attackPosition;
     [SerializeField] private Transform player;
 
+    private int animIDisAttacking;
+
+    public Animator animator;
+
     public Collider weaponCollider;
 
     public int hitDamage;
@@ -31,8 +35,6 @@ public class Melee : MonoBehaviour
 
     public float maxLifeTime;
 
-    int collisions;
-    bool alreadyHitOnce = false;
     PhysicMaterial physics_mat;
 
     bool attacking, readyToAttack;
@@ -51,6 +53,8 @@ public class Melee : MonoBehaviour
     {
         playerInputActions.Player.Fire.Enable();
         playerInputActions.Player.Fire.started += OnFire;
+
+        animIDisAttacking = Animator.StringToHash("isAttacking");
     }
 
     #region InputSystem
@@ -60,6 +64,7 @@ public class Melee : MonoBehaviour
 
         if (readyToAttack && attacking)
         {
+            animator.SetBool(animIDisAttacking, attacking);
             Attack();
         }
         attacking = false;
@@ -73,9 +78,11 @@ public class Melee : MonoBehaviour
 
     void Update()
     {
-        attacking = false;
+        //attacking = false;
         if (automatic && playerInputActions.Player.Fire.ReadValue<float>() > 0)
             attacking = true;
+
+        
 
         //Automatic Attacking
         if (readyToAttack && attacking && automatic)
@@ -90,7 +97,7 @@ public class Melee : MonoBehaviour
 
         foreach(Collider collider in GetColliders())
         {
-            if(collider.CompareTag("Enemy"))
+            if (collider != null && collider.CompareTag("Enemy"))
             {
                 IDamageable damageable = collider.GetComponent<IDamageable>();
                 if (damageable != null)
@@ -98,7 +105,7 @@ public class Melee : MonoBehaviour
                     damageable.TakeDamage(hitDamage);
                     Hit(collider);
                 }
-            }            
+            }
         }        
 
         if (allowInvoke)
@@ -136,5 +143,7 @@ public class Melee : MonoBehaviour
     {
         readyToAttack = true;
         allowInvoke = true;
+        attacking = false;
+        animator.SetBool(animIDisAttacking, attacking);
     }
 }
