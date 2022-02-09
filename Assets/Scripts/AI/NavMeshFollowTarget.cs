@@ -20,6 +20,20 @@ public class NavMeshFollowTarget : MonoBehaviour {
         goal = GameObject.Find("PlayerArmature").transform;
     }
 
+    private void Update()
+    {
+        if (canSeeGoal == true)
+        {
+            lookAt();
+        }
+    }
+
+
+    void lookAt()
+    {
+        transform.LookAt(goal);
+    }
+
     // Update is called once per frame
     void FixedUpdate() {
         Vector3 offset = new Vector3(0, heightOffset, 0);
@@ -34,17 +48,18 @@ public class NavMeshFollowTarget : MonoBehaviour {
             if (hit.collider.tag == "Wall") {
                 canSeeGoal = false;
             }
-            // - Joona - Muutin collider checkiä että viholliset löytää pelaajan oikein
-            // Seinät pitää nyt tagata "Wall"-tagilla että skripti toimii oikein
-            // Voi parannella myöhemmin
             else {
                 canSeeGoal = true;
             }
         }
-        if (distanceToTarget <= attackDist) {
-            agent.destination = transform.position; //stop the agent
-        } else {
-            if (canSeeGoal == true) {
+        if (distanceToTarget <= attackDist) 
+        {
+            agent.isStopped = true; //stop the agent
+        } 
+        else 
+        {
+            if (canSeeGoal == true) 
+            {
                 agent.destination = goal.position;
             }
         }
