@@ -339,7 +339,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064564404
 GameObject:
@@ -688,7 +688,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6435190810977459080, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 5415240156137121264, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 8734515375688907829, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 50097787472048473, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 2343488650617744123, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 1612970998235739765, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 6154082930009280096, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 908546922897558549, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 8793054767243174845, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 7509753888433614181, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 7843457278824501738, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 763700823147622611, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 3607771293598880814, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
+    - {fileID: 8407270539401794915, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
 --- !u!1 &1343152486
 GameObject:
@@ -936,6 +950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathExplosion: {fileID: 0}
+  deathDelay: 0
 --- !u!114 &1518744436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,7 +973,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518744434}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.0342455, y: 2.8455758, z: 3.0233634}
@@ -1037,6 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathExplosion: {fileID: 0}
+  deathDelay: 0
 --- !u!65 &2050850835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1045,7 +1061,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050850831}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.0342455, y: 2.8455758, z: 3.0233634}
@@ -1258,7 +1274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7969285611971969489, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7969285611971969489, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
       propertyPath: m_LocalPosition.x

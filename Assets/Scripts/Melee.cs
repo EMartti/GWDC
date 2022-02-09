@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using System;
 
 public class Melee : MonoBehaviour
 {
@@ -47,6 +48,12 @@ public class Melee : MonoBehaviour
 
         readyToAttack = true;
         playerInputActions = new PlayerInputActions();
+
+    }
+
+    public void PrintEvent(string s)
+    {
+        Debug.Log("PrintEvent: " + s + " called at: " + Time.time);
     }
 
     private void Start()
@@ -63,8 +70,7 @@ public class Melee : MonoBehaviour
         attacking = true;
 
         if (readyToAttack && attacking)
-        {
-            animator.SetBool(animIDisAttacking, attacking);
+        {  
             Attack();
         }
         attacking = false;
@@ -95,7 +101,9 @@ public class Melee : MonoBehaviour
     {        
         readyToAttack = false;
 
-        foreach(Collider collider in GetColliders())
+        animator.SetBool(animIDisAttacking, attacking);
+
+        foreach (Collider collider in GetColliders())
         {
             if (collider != null && collider.CompareTag("Enemy"))
             {
@@ -106,7 +114,7 @@ public class Melee : MonoBehaviour
                     Hit(collider);
                 }
             }
-        }        
+        }
 
         if (allowInvoke)
         {
@@ -116,6 +124,11 @@ public class Melee : MonoBehaviour
 
         if(attackSound != null)
             audioSource.PlayOneShot(attackSound, 0.7F);
+    }
+
+    private void HitEvent()
+    {        
+        
     }
 
     private void Hit(Collider enemy)
@@ -144,6 +157,6 @@ public class Melee : MonoBehaviour
         readyToAttack = true;
         allowInvoke = true;
         attacking = false;
-        animator.SetBool(animIDisAttacking, attacking);
+        animator.SetBool(animIDisAttacking, false);
     }
 }
