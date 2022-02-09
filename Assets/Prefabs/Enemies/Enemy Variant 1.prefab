@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 3575980258126457969}
   - component: {fileID: 3575980258126457970}
   - component: {fileID: 3575980258126457971}
+  - component: {fileID: -3108578460544295055}
   m_Layer: 6
   m_Name: Enemy Variant 1
   m_TagString: Enemy
@@ -304,6 +305,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathExplosion: {fileID: 1470759979578371256, guid: 891cf9358cb99e842a184c02e5350775, type: 3}
+--- !u!54 &-3108578460544295055
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3575980258126457972}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3575980258242717863
 GameObject:
   m_ObjectHideFlags: 0
