@@ -27,7 +27,7 @@ public class Missile : MonoBehaviour {
         if (collision.gameObject.tag == "Wall") 
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            audioSource.PlayOneShot(arrowStick);
+            audioSource.PlayOneShot(arrowStick, 0.5f);
         }
 
         if (collision.gameObject.tag == "Player")
