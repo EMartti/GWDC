@@ -13,11 +13,15 @@ public class NavMeshFollowTarget : MonoBehaviour {
     public float attackDist;
     public bool canSeeGoal = false;
 
+    private bool goalDead = false;
+
     void Start() {
         agent = GetComponent<NavMeshAgent>();
 
         // Ettii pelaajan automaattisesti skenestä - Joona
-        goal = GameObject.Find("PlayerArmature").transform;
+        goal = GameObject.Find("Player").transform;
+
+        Health.OnDeath += Health_OnDeath;
     }
 
     private void Update()
@@ -34,6 +38,11 @@ public class NavMeshFollowTarget : MonoBehaviour {
         transform.LookAt(goal);
     }
 
+    private void Health_OnDeath(Health sender)
+    {
+        if (sender.gameObject == goal.gameObject) goalDead = true;
+    }
+
     // Update is called once per frame
     void FixedUpdate() {
         Vector3 offset = new Vector3(0, heightOffset, 0);
@@ -44,33 +53,41 @@ public class NavMeshFollowTarget : MonoBehaviour {
         Ray visionRay = new Ray(transform.position + offset, goal.transform.position - transform.position + offset);
         Debug.DrawRay(transform.position + offset, goal.transform.position - transform.position + offset, Color.red);
 
-        if (Physics.Raycast(visionRay, out hit)) {
-            if (hit.collider.tag == "Wall") {
-                canSeeGoal = false;
-            }
-            else {
-                canSeeGoal = true;
-            }
-        }
-        if (distanceToTarget <= attackDist) 
+        if (!goalDead)
         {
-            if (agent.isStopped == false)
+            if (Physics.Raycast(visionRay, out hit))
             {
-                agent.isStopped = true; //stop the agent
-            }
-            
-        } 
-        else 
-        {
-            if (canSeeGoal == true) 
-            {
-                if (agent.isStopped == true)
+                if (hit.collider.tag == "Wall")
                 {
-                    agent.isStopped = false;
+                    canSeeGoal = false;
                 }
-                
-                agent.destination = goal.position;
+                else
+                {
+                    canSeeGoal = true;
+                }
+            }
+            if (distanceToTarget <= attackDist)
+            {
+                if (agent.isStopped == false)
+                {
+                    agent.isStopped = true; //stop the agent
+                }
+
+            }
+            else
+            {
+                if (canSeeGoal == true)
+                {
+                    if (agent.isStopped == true)
+                    {
+                        agent.isStopped = false;
+                    }
+
+                    agent.destination = goal.position;
+                }
             }
         }
+        else { canSeeGoal = false; agent.isStopped = true; }
+
     }
 }

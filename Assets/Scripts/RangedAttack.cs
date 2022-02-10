@@ -18,14 +18,15 @@ public class RangedAttack : MonoBehaviour {
     void Update() {
         if (moveScript.canSeeGoal) {
             if (hasAttacked == false) {
-                StartCoroutine("Attack");
+                hasAttacked = true;
+                Instantiate(projectile, transform.position + projectileStartOffset, transform.rotation);
+                Invoke("Delay", attackInterval);
             }
         }
     }
-    IEnumerator Attack() {
-        hasAttacked = true;
-        Instantiate(projectile, transform.position + projectileStartOffset, transform.rotation);
-        yield return new WaitForSeconds(attackInterval);
+
+    private void Delay()
+    {
         hasAttacked = false;
     }
 }
