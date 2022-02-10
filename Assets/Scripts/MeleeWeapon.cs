@@ -17,7 +17,7 @@ public class MeleeWeapon : MonoBehaviour
         {
             if (collider != null && collider.CompareTag("Enemy"))
             {
-                newList.Add(collider);
+              newList.Add(collider);
             }
         }
 

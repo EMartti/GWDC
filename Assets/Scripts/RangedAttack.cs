@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour {
+public class RangedAttack : MonoBehaviour {
     public GameObject projectile;
     public float attackInterval;
     public NavMeshFollowTarget moveScript;
 
-    // - Joona - 
-    // Lisäsin offsetin projektiilin lähtöpisteeseen, ettei nuoli kulje maan pintaa pitkin
+
     public Vector3 projectileStartOffset;
 
     public bool hasAttacked;
