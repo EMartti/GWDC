@@ -1,3 +1,4 @@
+using StarterAssets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,5 +25,6 @@ public class GameOver : MonoBehaviour
     {
         Debug.Log("GAME OVER!");
         OnGameOver?.Invoke(this, EventArgs.Empty);
+        player.GetComponent<ThirdPersonController>().enabled = false;
     }
 }
