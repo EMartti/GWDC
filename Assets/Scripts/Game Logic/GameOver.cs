@@ -7,10 +7,13 @@ using UnityEngine;
 public class GameOver : MonoBehaviour
 {
     public event EventHandler OnGameOver;
+    [SerializeField] private GameObject gameOverCanvas;
 
     private GameObject player;
     void Start()
     {
+        gameOverCanvas.SetActive(false);
+
         player = GameObject.FindWithTag("Player");
 
         Health.OnDeath += Health_OnDeath;
@@ -23,7 +26,9 @@ public class GameOver : MonoBehaviour
 
     private void EndGame()
     {
+        gameOverCanvas.SetActive(true);
         Debug.Log("GAME OVER!");
-        OnGameOver?.Invoke(this, EventArgs.Empty);
+        OnGameOver?.Invoke(this, EventArgs.Empty);       
+
     }
 }
