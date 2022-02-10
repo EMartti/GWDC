@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 3017182954901424945}
   - component: {fileID: 6243341418018923226}
   - component: {fileID: 5652613128129848240}
+  - component: {fileID: 904172666}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -294,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtSound: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &5652613128129848240
@@ -325,6 +327,18 @@ MonoBehaviour:
   attackRange: 1
   hitForce: 20000
   maxLifeTime: 0
+--- !u!114 &904172666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739058059502302736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc06d476a982ca545a0d5bdef1e25024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4325627410011103524
 GameObject:
   m_ObjectHideFlags: 0
