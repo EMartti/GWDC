@@ -35,18 +35,22 @@ public class DeathBehaviour : MonoBehaviour
 
     public void Health_OnDeath(Health sender)
     {
-        if(animIDIsDead != 0)
+        if(sender.gameObject == gameObject)
         {
-            animator.SetBool(animIDIsDead, true);
-            Invoke("SetIDfalse", 0.2f);
-        }       
+            if(animIDIsDead != 0)
+            {
+                animator.SetBool(animIDIsDead, true);
+                Invoke("SetIDfalse", 0.2f);
+            }       
         
 
-        if (deathSound != null)
-            audioSource.PlayOneShot(deathSound, 0.7F);
+            if (deathSound != null)
+                audioSource.PlayOneShot(deathSound, 0.7F);
 
+            if (playerInputActions != null)
+                playerInputActions.enabled = false;
 
-        playerInputActions.enabled = false;
+        }
         
 
     }
