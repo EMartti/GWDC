@@ -8,22 +8,34 @@ public class DeathBehaviour : MonoBehaviour
 {
     private int animIDIsDead;
     private Animator animator;
+    private AudioSource audioSource;
+
+    private Health health;
+
+    [SerializeField] private AudioClip deathSound;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
 
-        Health health = GetComponent<Health>();
-        health.OnDeath += Health_OnDeath;
+        audioSource = GetComponent<AudioSource>();
+
 
         animIDIsDead = Animator.StringToHash("isDead");
     }
 
-    private void Health_OnDeath(object sender, EventArgs e)
+    public void Health_OnDeath(Health sender)
     {
-        animator.SetBool(animIDIsDead, true);
-        Invoke("SetIDfalse", 0.2f);
+        if(animIDIsDead != 0)
+        {
+            animator.SetBool(animIDIsDead, true);
+            Invoke("SetIDfalse", 0.2f);
+        }       
+        
+
+        if (deathSound != null)
+            audioSource.PlayOneShot(deathSound, 0.7F);
     }
 
     private void SetIDfalse()

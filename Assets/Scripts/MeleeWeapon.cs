@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MeleeWeapon : MonoBehaviour
-{    
+{
+    private void Start()
+    {
+        //Health.OnDeath += Health_OnDeath;
+    }
+
     private List<Collider> colliders = new List<Collider>();
     public List<Collider> GetColliders() { return colliders; }
 
     public List<Collider> HitColliders()
     {
         List<Collider> newList = new List<Collider>();
-
-        Debug.Log("hitevent");
 
         foreach (Collider collider in GetColliders())
         {
@@ -24,10 +28,15 @@ public class MeleeWeapon : MonoBehaviour
         return newList;
     }
 
+    private void Health_OnDeath(Health sender)
+    {
+        colliders.Remove(sender.gameObject.GetComponent<Collider>());
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!colliders.Contains(other)) { colliders.Add(other.GetComponent<Collider>()); Debug.Log("added: " + other.gameObject.name); }
+        if (!colliders.Contains(other)) { colliders.Add(other.GetComponent<Collider>()); }
     }
 
     private void OnTriggerExit(Collider other)

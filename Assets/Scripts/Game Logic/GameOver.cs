@@ -12,13 +12,11 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        Health health = player.GetComponent<Health>();
-        health.OnDeath += Health_OnDeath;
     }
 
-    private void Health_OnDeath(object sender, EventArgs e)
+    private void Health_OnDeath(Health sender)
     {
-        EndGame();
+        if(sender.gameObject == player) EndGame();
     }
 
     private void EndGame()

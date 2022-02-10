@@ -9,7 +9,10 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip hurtSound;    
     [SerializeField] private int maxHealth = 100;
     public int currentHealth;
-    public event EventHandler OnDeath;
+    public delegate void CharacterEventHandler(Health e);
+    public static event CharacterEventHandler OnDeath;
+
+    private bool isDead = false;
 
     void Start()
     {
@@ -19,12 +22,17 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        audioSource.PlayOneShot(hurtSound);
-
-        currentHealth -= damage;
-        if (currentHealth <= 0) { currentHealth = 0; OnDeath?.Invoke(this, EventArgs.Empty); }
-
-
-        
+        if (!isDead)
+        {
+            if(hurtSound != null)
+                audioSource.PlayOneShot(hurtSound);
+            currentHealth -= damage;
+            if (currentHealth <= 0 && !isDead)
+            {
+                currentHealth = 0;
+                isDead = true;
+                OnDeath(this);
+            }            
+        }
     }    
 }

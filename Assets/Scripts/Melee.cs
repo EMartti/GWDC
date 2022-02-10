@@ -127,7 +127,7 @@ public class Melee : MonoBehaviour
         //AudioFW.PlayRandomPitch("sfx_player_melee_atk");
     }
 
-    private void HitEvent()
+    public void HitEvent()
     {
         foreach (Collider collider in meleeWeapon.HitColliders())
         {

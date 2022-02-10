@@ -14,14 +14,13 @@ public class SimpleObjective : MonoBehaviour
         
         if(objectiveType == ObjectiveType.Destroy)
         {
-            Health health = GetComponent<Health>();
-            health.OnDeath += Health_OnDeath;
+
         }
     }
 
-    private void Health_OnDeath(object sender, EventArgs e)
+    private void Health_OnDeath(Health sender)
     {
-        OnObjectiveComplete?.Invoke(this, EventArgs.Empty);
+        //OnObjectiveComplete?.Invoke(this, EventArgs.Empty);
     }
 }
 

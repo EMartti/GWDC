@@ -8,24 +8,32 @@ public class Destructible : MonoBehaviour
 {
     [SerializeField] private GameObject deathExplosion;
     [SerializeField] private float deathDelay = 0f;
+    private Health health;
+
 
     void Start()
     {
-        Health health = GetComponent<Health>();
-        health.OnDeath += Health_OnDeath;
+        Health.OnDeath += Health_OnDeath;
     }
 
-    private void Health_OnDeath(object sender, EventArgs e)
+    public void Health_OnDeath(Health sender)
     {
-        Invoke("Death", deathDelay);
-        
+        if(sender != null)
+        {
+            if (sender.gameObject == gameObject)
+            {
+                health = sender;
+                Invoke("Death", deathDelay);
+            }       
+        }
     }
 
     private void Death()
     {
         if (deathExplosion != null)
             Instantiate(deathExplosion, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        Health.OnDeath -= Health_OnDeath;
+        Destroy(gameObject);
     }
     
 }
