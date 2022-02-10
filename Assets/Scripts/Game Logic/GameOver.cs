@@ -12,6 +12,8 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+
+        Health.OnDeath += Health_OnDeath;
     }
 
     private void Health_OnDeath(Health sender)
@@ -23,6 +25,5 @@ public class GameOver : MonoBehaviour
     {
         Debug.Log("GAME OVER!");
         OnGameOver?.Invoke(this, EventArgs.Empty);
-        player.GetComponent<ThirdPersonController>().enabled = false;
     }
 }
