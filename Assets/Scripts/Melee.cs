@@ -123,7 +123,8 @@ public class Melee : MonoBehaviour
         }
 
         if(attackSound != null)
-            audioSource.PlayOneShot(attackSound, 0.7F);
+        audioSource.PlayOneShot(attackSound, 0.7F);
+        //AudioFW.PlayRandomPitch("sfx_player_melee_atk");
     }
 
     private void HitEvent()

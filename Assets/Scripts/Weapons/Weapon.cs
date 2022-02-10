@@ -135,7 +135,8 @@ public class Weapon : MonoBehaviour
 
 
         if(shootSound != null) 
-            audioSource.PlayOneShot(shootSound, 0.7F);
+        audioSource.PlayOneShot(shootSound, 0.7F);
+        //AudioFW.PlayRandomPitch("sfx_player_fireball_shoot");
     }
 
     private void ResetShot()
