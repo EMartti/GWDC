@@ -684,7 +684,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291348680
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2544,6 +2544,14 @@ PrefabInstance:
     - target: {fileID: 3575980258126457933, guid: 62cd5e8d4574c2d42a8503c72b181b89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575980258126457969, guid: 62cd5e8d4574c2d42a8503c72b181b89, type: 3}
+      propertyPath: attackInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575980258126457970, guid: 62cd5e8d4574c2d42a8503c72b181b89, type: 3}
+      propertyPath: hurtSound
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3575980258126457972, guid: 62cd5e8d4574c2d42a8503c72b181b89, type: 3}
       propertyPath: m_Name

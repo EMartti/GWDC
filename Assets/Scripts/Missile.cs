@@ -8,11 +8,14 @@ public class Missile : MonoBehaviour {
     [SerializeField] private GameObject playerHealthObject;
     [SerializeField] private Health playerHealthScript;
 
-
+    [SerializeField] private AudioClip arrowStick;
+    private AudioSource audioSource;
     private void Start()
     {
         playerHealthObject = GameObject.Find("Player");
         playerHealthScript = playerHealthObject.GetComponent<Health>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -24,6 +27,7 @@ public class Missile : MonoBehaviour {
         if (collision.gameObject.tag == "Wall") 
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            audioSource.PlayOneShot(arrowStick);
         }
 
         if (collision.gameObject.tag == "Player")
