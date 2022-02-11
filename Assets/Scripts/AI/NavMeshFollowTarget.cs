@@ -43,7 +43,6 @@ public class NavMeshFollowTarget : MonoBehaviour {
         if (sender.gameObject == goal.gameObject) goalDead = true;
     }
 
-    // Update is called once per frame
     void FixedUpdate() {
         Vector3 offset = new Vector3(0, heightOffset, 0);
 
@@ -80,7 +79,7 @@ public class NavMeshFollowTarget : MonoBehaviour {
                 {
                     if (agent.isStopped == true)
                     {
-                        agent.isStopped = false;
+                        agent.isStopped = false; //start moving again
                     }
 
                     agent.destination = goal.position;
