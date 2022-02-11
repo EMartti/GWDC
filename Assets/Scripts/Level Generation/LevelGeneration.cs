@@ -12,8 +12,8 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private int roomAmount = 1;
     [Range(5,16)][SerializeField] private int levelSize = 1;
 
-    [SerializeField] private GameObject roomMid;
-    [SerializeField] private GameObject roomEdge;
+    [SerializeField] private GameObject roomStart;
+    [SerializeField] private GameObject roomEnd;
     [SerializeField] private GameObject roomCorner;
     [SerializeField] private GameObject roomDoor;
 
@@ -49,7 +49,7 @@ public class LevelGeneration : MonoBehaviour
 
         for (int i = 0; i < roomAmount; i++)
         {
-            if(!deadend) SpawnRoom();
+            if(!deadend) SpawnRoom(i);
         }
 
         //DebugArray();
@@ -125,11 +125,20 @@ public class LevelGeneration : MonoBehaviour
         }
     }
 
-    private void SpawnRoom()
+    private void SpawnRoom(int index)
     {
         int rand = Random.Range(0, rooms.Length);  
         array2D[xPos, zPos] = 1;
-        RoomAndCoord newRoom = new RoomAndCoord(Instantiate(rooms[rand], transform.position, Quaternion.identity), xPos, zPos);
+        RoomAndCoord newRoom;
+        if (index == 0)
+
+        {
+            newRoom = new RoomAndCoord(Instantiate(roomStart, transform.position, Quaternion.identity), xPos, zPos);
+        }
+        else
+        {
+            newRoom = new RoomAndCoord(Instantiate(rooms[rand], transform.position, Quaternion.identity), xPos, zPos);
+        }
         roomList.Add(newRoom);
         triesToDeadend = 0;
         Move();
