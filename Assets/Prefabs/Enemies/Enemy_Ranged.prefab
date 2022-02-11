@@ -198,7 +198,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3575980258126457972}
-  m_LocalRotation: {x: -0, y: -0.008111069, z: -0, w: 0.9999671}
+  m_LocalRotation: {x: 0, y: -0.008107052, z: 0, w: 0.99996716}
   m_LocalPosition: {x: 8.701135, y: 0, z: 4.0299664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   heightOffset: 0.5
   agent: {fileID: 3575980258126457934}
   distanceToTarget: 0
-  attackDist: 3
+  attackDist: 5
   canSeeGoal: 0
 --- !u!114 &3575980258126457969
 MonoBehaviour:
@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtSound: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &3575980258126457971

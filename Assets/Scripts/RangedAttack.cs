@@ -17,16 +17,17 @@ public class RangedAttack : MonoBehaviour {
 
     void Update() {
         if (moveScript.canSeeGoal) {
-            if (hasAttacked == false) {
-                hasAttacked = true;
-                Instantiate(projectile, transform.position + projectileStartOffset, transform.rotation);
-                Invoke("Delay", attackInterval);
+            if (moveScript.distanceToTarget <= (moveScript.attackDist + 1)) {
+                if (hasAttacked == false) {
+                    hasAttacked = true;
+                    Instantiate(projectile, transform.position + projectileStartOffset, transform.rotation); //shoot arrow
+                    Invoke("Delay", attackInterval);
+                }
             }
         }
     }
 
-    private void Delay()
-    {
+    private void Delay() {
         hasAttacked = false;
     }
 }
