@@ -36,7 +36,7 @@ public class Health : MonoBehaviour, IDamageable
             {
                 currentHealth = 0;
                 isDead = true;
-                OnDeath(this);
+                if(OnDeath != null) OnDeath(this);
             }            
         }
     }   

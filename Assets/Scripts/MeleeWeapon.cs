@@ -43,4 +43,9 @@ public class MeleeWeapon : MonoBehaviour
     {
         colliders.Remove(other);
     }
+
+    private void OnDestroy()
+    {
+        Health.OnDeath -= Health_OnDeath;
+    }
 }
