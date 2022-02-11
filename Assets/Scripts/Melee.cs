@@ -47,7 +47,7 @@ public class Melee : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         readyToAttack = true;
-        playerInputActions = new PlayerInputActions();
+        
 
     }
 
@@ -58,6 +58,8 @@ public class Melee : MonoBehaviour
 
     private void Start()
     {
+        playerInputActions = PlayerInputs.Instance.playerInputActions;
+
         playerInputActions.Player.Fire.Enable();
         playerInputActions.Player.Fire.started += OnMelee;
 

@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,18 +12,20 @@ public class DeathBehaviour : MonoBehaviour
     private AudioSource audioSource;
 
 
-    private PlayerInput playerInputActions;
+    private PlayerInput starterInputActions;
+    private PlayerInputActions playerInputActions;
 
     [SerializeField] private AudioClip deathSound;
 
     private void Awake()
-    {
-        playerInputActions = GetComponent<PlayerInput>();
+    {        
+        starterInputActions = GetComponent<PlayerInput>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        playerInputActions = PlayerInputs.Instance.playerInputActions;
         animator = GetComponent<Animator>();
         
         audioSource = GetComponent<AudioSource>();
@@ -41,14 +44,16 @@ public class DeathBehaviour : MonoBehaviour
             {
                 animator.SetBool(animIDIsDead, true);
                 Invoke("SetIDfalse", 0.2f);
-            }       
-        
+            }               
 
             if (deathSound != null)
                 audioSource.PlayOneShot(deathSound, 0.7F);
 
             if (playerInputActions != null)
-                playerInputActions.enabled = false;
+                playerInputActions.Player.Disable();
+
+            if (starterInputActions != null)
+                starterInputActions.enabled = false;
 
         }
         

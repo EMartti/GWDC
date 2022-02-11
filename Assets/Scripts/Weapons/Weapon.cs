@@ -27,8 +27,9 @@ public class Weapon : MonoBehaviour
     bool shooting, readyToShoot, reloading;
     private bool allowInvoke = true;
 
-    //public EquipmentSlots equipmentSlot;
     private PlayerInputActions playerInputActions;
+
+    //public EquipmentSlots equipmentSlot;
 
     private void Awake()
     {        
@@ -37,11 +38,12 @@ public class Weapon : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         fpsCam = Camera.main;
-        playerInputActions = new PlayerInputActions();
     }
 
     private void Start()
     {
+        playerInputActions = PlayerInputs.Instance.playerInputActions;
+
         playerInputActions.Player.Reload.Enable();
         playerInputActions.Player.Reload.started += OnReload;
 
