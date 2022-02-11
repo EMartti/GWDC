@@ -14,13 +14,21 @@ public class SimpleObjective : MonoBehaviour
         
         if(objectiveType == ObjectiveType.Destroy)
         {
-
+            Health.OnDeath += Health_OnDeath;
         }
     }
 
     private void Health_OnDeath(Health sender)
     {
-        //OnObjectiveComplete?.Invoke(this, EventArgs.Empty);
+        if (sender.gameObject == gameObject) 
+        {
+            if(OnObjectiveComplete != null) OnObjectiveComplete.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Health.OnDeath -= Health_OnDeath;
     }
 }
 

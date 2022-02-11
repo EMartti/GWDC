@@ -89,4 +89,9 @@ public class NavMeshFollowTarget : MonoBehaviour {
         else { canSeeGoal = false; agent.isStopped = true; }
 
     }
+
+    private void OnDestroy()
+    {
+        Health.OnDeath -= Health_OnDeath;
+    }
 }

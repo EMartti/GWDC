@@ -36,8 +36,14 @@ public class Missile : MonoBehaviour {
         if (other.gameObject.tag == "Player") {
             if (stuckInWall == false) {
                 Destroy(gameObject);
-                playerHealthScript.TakeDamage(25);
+                IDamageable damageable = other.GetComponent<IDamageable>();
+                if (damageable != null)
+                {
+                    damageable.TakeDamage(25);
+                }
             }
+
+
         }
 
         // else

@@ -55,6 +55,7 @@ public class DeathBehaviour : MonoBehaviour
             if (starterInputActions != null)
                 starterInputActions.enabled = false;
 
+            Health.OnDeath -= Health_OnDeath;
         }
         
 
@@ -63,6 +64,11 @@ public class DeathBehaviour : MonoBehaviour
     private void SetIDfalse()
     {
         animator.SetBool(animIDIsDead, false);
+    }
+
+    private void OnDestroy()
+    {
+        Health.OnDeath -= Health_OnDeath;
     }
 
 }

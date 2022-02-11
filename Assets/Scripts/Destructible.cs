@@ -35,5 +35,10 @@ public class Destructible : MonoBehaviour
         Health.OnDeath -= Health_OnDeath;
         Destroy(gameObject);
     }
-    
+
+    private void OnDestroy()
+    {
+        Health.OnDeath -= Health_OnDeath;
+    }
+
 }

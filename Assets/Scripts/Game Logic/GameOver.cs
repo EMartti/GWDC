@@ -28,7 +28,12 @@ public class GameOver : MonoBehaviour
     {
         gameOverCanvas.SetActive(true);
         Debug.Log("GAME OVER!");
-        OnGameOver?.Invoke(this, EventArgs.Empty);       
+        if(OnGameOver != null) OnGameOver.Invoke(this, EventArgs.Empty);       
 
+    }
+
+    private void OnDestroy()
+    {
+        Health.OnDeath -= Health_OnDeath;
     }
 }
