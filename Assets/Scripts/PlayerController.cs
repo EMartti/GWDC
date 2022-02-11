@@ -6,7 +6,7 @@ namespace StarterAssets
 {
 	[RequireComponent(typeof(CharacterController))]
 	[RequireComponent(typeof(PlayerInput))]
-	public class ThirdPersonController : MonoBehaviour
+	public class PlayerController : MonoBehaviour
 	{
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
