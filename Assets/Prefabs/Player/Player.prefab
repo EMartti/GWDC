@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   canPush: 1
   strength: 1
 --- !u!114 &5067099358328827044
@@ -297,6 +297,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtSound: {fileID: 8300000, guid: c08b0fb3d0cc3b142a23f6734aef0a89, type: 3}
+  healSound: {fileID: 8300000, guid: 5ed873e90b572d6478f2bb1698bba27c, type: 3}
+  healEffect: {fileID: 1969967651396293653, guid: 3df31be828c063b46bce3dcf343b1604, type: 3}
+  hurtEffect: {fileID: 779801061157678525, guid: 6123eeb4011cb2c488d257db01bbddce, type: 3}
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &5652613128129848240
@@ -692,7 +695,7 @@ PrefabInstance:
     - target: {fileID: 7837504210791503711, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 5543000905329711412, guid: bd290a04ab3ec004a8e74d3ecc6f7659, type: 3}
+      objectReference: {fileID: 5543000905329711412, guid: c4d43050489f99240b1e0e04e94d04ee, type: 3}
     - target: {fileID: 7837504210791503711, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
       propertyPath: shootSound
       value: 

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c1f7ca28444b344aecb77ec928d28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 10
   playerHealthObject: {fileID: 0}
   playerHealthScript: {fileID: 0}
   arrowStick: {fileID: 8300000, guid: c81fee266487b984184170c3495b6406, type: 3}
@@ -76,7 +76,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644675235641529876}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.03783613
   m_Height: 1.0065544

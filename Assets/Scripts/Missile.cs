@@ -4,42 +4,46 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour {
     [SerializeField] private float speed;
-    
+
     [SerializeField] private GameObject playerHealthObject;
     [SerializeField] private Health playerHealthScript;
 
     [SerializeField] private AudioClip arrowStick;
+
     private AudioSource audioSource;
-    private void Start()
-    {
+    private bool stuckInWall = false;
+    private void Start() {
         playerHealthObject = GameObject.Find("Player");
         playerHealthScript = playerHealthObject.GetComponent<Health>();
 
         audioSource = GetComponent<AudioSource>();
-    }
 
-    void Update() {
         GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
         Destroy(gameObject, 10);
     }
-    private void OnCollisionEnter(Collision collision) 
-    {
-        if (collision.gameObject.tag == "Wall") 
-        {
+
+    /*void Update() {
+        GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
+       Destroy(gameObject, 10);
+    }*/
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag == "Wall") {
+            stuckInWall = true;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             audioSource.PlayOneShot(arrowStick, 0.5f);
         }
 
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-            playerHealthScript.TakeDamage(25);
+        if (other.gameObject.tag == "Player") {
+            if (stuckInWall == false) {
+                Destroy(gameObject);
+                playerHealthScript.TakeDamage(25);
+            }
         }
 
         // else
         // {
         //     Destroy(gameObject);
         // }
-        
+
     }
 }
