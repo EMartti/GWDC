@@ -115,7 +115,6 @@ GameObject:
   - component: {fileID: 8653089349249574724}
   - component: {fileID: 4060215170647618586}
   - component: {fileID: 7187585654333343702}
-  - component: {fileID: 2088841675901316417}
   - component: {fileID: 3017182954864125500}
   - component: {fileID: 5067099358328827044}
   - component: {fileID: 3017182954901424945}
@@ -196,37 +195,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2088841675901316417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2739058059502302736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 4
-  SprintSpeed: 6
-  RotationSmoothTime: 0.12
-  SpeedChangeRate: 10
-  JumpHeight: 1.2
-  Gravity: -15
-  JumpTimeout: 0.3
-  FallTimeout: 0.15
-  Grounded: 1
-  GroundedOffset: -0.14
-  GroundedRadius: 0.28
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 513
-  CinemachineCameraTarget: {fileID: 4815871686223362789}
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
-  LockCameraPosition: 1
 --- !u!114 &3017182954864125500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,11 +974,6 @@ PrefabInstance:
 --- !u!4 &533855025637742852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
-  m_PrefabInstance: {fileID: 3562171534686669167}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4815871686223362789 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8338988566280778634, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_PrefabInstance: {fileID: 3562171534686669167}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3562171535851370616
