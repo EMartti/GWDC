@@ -7,32 +7,21 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
-    public float jumpSpeed = 10f;
-    public float gravity = 20.0f;
-
     private CharacterController controller;
-    private Vector3 moveDirection = Vector3.zero;
-    private Vector3 turnDirection = Vector3.zero;
-    private Vector3 lookDirection = Vector3.zero;
     public float baseSpeed = 5f;
+    [SerializeField] private float speedMult = 2f;
+    private float speed;
 
     private InputAction movement;
+    private InputAction sprint;
     private Animator animator;
+
     private AudioSource audioSource;
     [SerializeField] private AudioClip footstepSound;
-    [SerializeField] private AudioClip WindupSound;
-
-
-    private AnimationEvent animEvent;
 
     private PlayerInputActions playerInputActions;
 
-    private GameObject camera;
-
-    private void Awake()
-    {
-        //playerInputActions = PlayerInputs.Instance.playerInputActions;
-    }
+    private FollowTarget camera;
 
     void Start()
     {
@@ -44,20 +33,19 @@ public class PlayerController : MonoBehaviour
         movement = playerInputActions.Player.Move;
         movement.Enable();
 
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        sprint = playerInputActions.Player.Sprint;
+        sprint.Enable();
+        
+
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FollowTarget>();
 
         animator = GetComponent<Animator>();
     }
 
-    //private void OnEnable()
-    //{
-    //    movement = playerInputActions.Player.Move;
-    //    movement.Enable();
-    //}
-
     private void OnDisable()
     {
         movement.Disable();
+        sprint.Disable();
     }
 
     public void PlayFootstep()
@@ -68,13 +56,42 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveDirection = new Vector3(movement.ReadValue<Vector2>().x, 0f, movement.ReadValue<Vector2>().y);
-        //moveDirection = transform.TransformDirection(moveDirection);
-        //turnDirection = new Vector3(0f, turning.ReadValue<Vector2>().x, 0f);
+        Vector3 moveDirection;
 
+        float moveX = movement.ReadValue<Vector2>().x;
+        float moveZ = movement.ReadValue<Vector2>().y;
 
-        controller.Move(moveDirection * baseSpeed * Time.deltaTime);
-        float overallSpeed = controller.velocity.magnitude;
+        moveDirection = new Vector3(moveX, 0, moveZ);
+
+        moveDirection = Quaternion.Euler(0, camera.yaw, 0) * moveDirection;
+
+        //Vector3 targetDirection = Vector3.Lerp(moveDirection , moveDirection + transform.position, 0.01f);
+
+        Vector3 targetDirection = moveDirection + transform.position;
+
+        //if angle is 180 snap turn
+        float angle = Vector3.Angle(transform.forward, moveDirection);
+        Debug.Log(angle);
+        if (angle == 180)
+        {
+            transform.LookAt(targetDirection);
+        }
+        else
+        {
+            transform.LookAt(Vector3.Lerp(transform.forward + transform.position, targetDirection, 0.2f));
+        }
+
+        if (playerInputActions.Player.Sprint.IsPressed())
+        {
+            speed = baseSpeed * speedMult;
+        }
+        else
+        {
+            speed = baseSpeed;
+        }
+
+        moveDirection += Physics.gravity;
+        controller.Move(moveDirection * speed * Time.deltaTime);
 
         animator.SetFloat("Speed", controller.velocity.magnitude);
     }

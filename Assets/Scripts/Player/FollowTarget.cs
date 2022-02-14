@@ -10,7 +10,7 @@ public class FollowTarget : MonoBehaviour
     public GameObject target;
     [SerializeField] private float pivotHeight;
     [SerializeField] private float offset;
-    [SerializeField] private float yaw;
+    [SerializeField] public float yaw;
     [Range(0f, 90f)][SerializeField] private float pitch;
 
     private float height; 
