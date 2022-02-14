@@ -20,7 +20,7 @@ public class AI_Spellcast : MonoBehaviour
     {
         if (navMeshScript.canSeeGoal == true)
         {
-            weaponScript.Shoot();
+            weaponScript.AiFire();
         }
     }
 }
