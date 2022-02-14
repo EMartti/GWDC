@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip footstepSound;
     [SerializeField] private AudioClip WindupSound;
 
+
     private AnimationEvent animEvent;
 
     private PlayerInputActions playerInputActions;
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(moveDirection * baseSpeed * Time.deltaTime);
         float overallSpeed = controller.velocity.magnitude;
 
-        animator.SetFloat("speed", controller.velocity.magnitude);
+        animator.SetFloat("Speed", controller.velocity.magnitude);
     }
     private void OnApplicationFocus(bool hasFocus)
     {
