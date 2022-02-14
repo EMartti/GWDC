@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2188613056640115610}
   m_Layer: 6
   m_Name: Melee_Collision
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e4c78ae539a194b93ada1315000aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyTag: Player
 --- !u!1 &2188613056752069811
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +415,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSound: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
+  healSound: {fileID: 0}
+  healEffect: {fileID: 0}
+  hurtEffect: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &2188613057120147258
@@ -463,17 +467,17 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: c81fee266487b984184170c3495b6406, type: 3}
   weapon: {fileID: 0}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 17a45389aced9254380a98a9827ad452, type: 3}
   automatic: 0
   timeBetweenAttack: 0
   attackPosition: {fileID: 2188613056640115608}
   player: {fileID: 2188613057120147255}
   animator: {fileID: 0}
   meleeWeapon: {fileID: 2188613056640115610}
-  hitDamage: 0
-  attackRange: 0
+  hitDamage: 30
+  attackRange: 2
   hitForce: 0
   maxLifeTime: 0
 --- !u!114 &2188613057120147249

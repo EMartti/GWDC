@@ -9,7 +9,7 @@ public class AI_melee : MonoBehaviour
 
     [SerializeField] private float attackInterval;
 
-    private float distanceToPlayer;
+  
     private float timerPassed;
 
     void Start()

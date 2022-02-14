@@ -9,6 +9,8 @@ public class MeleeWeapon : MonoBehaviour
     {
         //Health.OnDeath += Health_OnDeath;
     }
+   
+    public string enemyTag = "Enemy";
 
     private List<Collider> colliders = new List<Collider>();
     public List<Collider> GetColliders() { return colliders; }
@@ -19,7 +21,7 @@ public class MeleeWeapon : MonoBehaviour
 
         foreach (Collider collider in GetColliders())
         {
-            if (collider != null && collider.CompareTag("Enemy"))
+            if (collider != null && collider.CompareTag(enemyTag))
             {
               newList.Add(collider);
             }
