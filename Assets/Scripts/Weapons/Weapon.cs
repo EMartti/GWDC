@@ -166,4 +166,16 @@ public class Weapon : MonoBehaviour
         bulletsLeft = magazineSize;
         reloading = false;
     }
+
+    // AI Shoot
+    public void AiFire()
+    {
+        shooting = true;
+        if (readyToShoot && shooting && !reloading && !automatic)
+        {
+            bulletsShot = 0;
+            Shoot();
+        }
+        shooting = false;
+    }
 }
