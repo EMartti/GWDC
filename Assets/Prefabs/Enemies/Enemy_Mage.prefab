@@ -32,7 +32,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321206067821454293}
-  m_LocalRotation: {x: -0, y: -0.008111069, z: -0, w: 0.9999671}
+  m_LocalRotation: {x: 0, y: -0.008107052, z: 0, w: 0.99996716}
   m_LocalPosition: {x: 9.254595, y: 0, z: 4.9071417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -109,6 +109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtSound: {fileID: 0}
+  healSound: {fileID: 0}
+  healEffect: {fileID: 0}
+  hurtEffect: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &321206067821454290
@@ -264,14 +267,14 @@ MonoBehaviour:
   firingPoint: {fileID: 3879086019358674246}
   bullet: {fileID: 5543000905329711412, guid: 68cc4c27333afc14682a931733b356b6, type: 3}
   magazineSize: 3
-  bulletsPerTap: 1
+  bulletsPerTap: 3
   automatic: 0
   shootForce: 10
   upwardForce: 2
-  timeBetweenShots: 0.7
+  timeBetweenShots: 1
   spread: 0
-  reloadTime: 0.4
-  timeBetweenShooting: 0
+  reloadTime: 2
+  timeBetweenShooting: 1
   shootSound: {fileID: 0}
   reload: {fileID: 0}
   muzzleFlash: {fileID: 0}
