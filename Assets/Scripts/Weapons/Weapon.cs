@@ -21,7 +21,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private AudioClip reload;
     [SerializeField] private GameObject muzzleFlash;
     public TextMeshProUGUI ammunnitionDisplay;
-    private Camera fpsCam;
 
     int bulletsShot, bulletsLeft;
     bool shooting, readyToShoot, reloading;
@@ -37,33 +36,24 @@ public class Weapon : MonoBehaviour
         readyToShoot = true;
 
         audioSource = GetComponent<AudioSource>();
-        fpsCam = Camera.main;
     }
 
     private void Start()
     {
-        playerInputActions = PlayerInputs.Instance.playerInputActions;
+        if(gameObject.tag == "Player")
+        {
+            playerInputActions = PlayerInputs.Instance.playerInputActions;
 
-        playerInputActions.Player.Reload.Enable();
-        playerInputActions.Player.Reload.started += OnReload;
+            playerInputActions.Player.Reload.Enable();
+            playerInputActions.Player.Reload.started += OnReload;
 
-        //if (equipmentSlot == EquipmentSlots.RightArm) useRight();
-        useLeft();
+            playerInputActions.Player.Fire2.Enable();
+            playerInputActions.Player.Fire2.started += OnFire;
+        }        
     }
 
     #region InputSystem
-    private void useLeft()
-    {
-        playerInputActions.Player.Fire2.Enable();
-        playerInputActions.Player.Fire2.started += OnFire;
-    }
-
-    private void useRight()
-    {
-        playerInputActions.Player.Fire.Enable();
-        playerInputActions.Player.Fire.started += OnFire;
-    }    
-
+    
     private void OnFire(InputAction.CallbackContext obj)
     {
         shooting = true;
@@ -77,9 +67,17 @@ public class Weapon : MonoBehaviour
 
     private void OnDisable()
     {
-        playerInputActions.Player.Fire2.Disable();
-        playerInputActions.Player.Fire.Disable();
-        playerInputActions.Player.Reload.Disable();
+        if (gameObject.tag == "Player")
+        {
+            playerInputActions.Player.Fire2.Disable();
+            playerInputActions.Player.Reload.Disable();
+        }
+    }
+
+    //Reloading
+    private void OnReload(InputAction.CallbackContext obj)
+    {
+        if (bulletsLeft < magazineSize && !reloading) Reload();
     }
     #endregion
 
@@ -135,23 +133,15 @@ public class Weapon : MonoBehaviour
         if (bulletsShot < bulletsPerTap && bulletsLeft > 0)
             Invoke("Shoot", timeBetweenShots);
 
-
         if(shootSound != null) 
         audioSource.PlayOneShot(shootSound, 0.45F);
-        //AudioFW.PlayRandomPitch("sfx_player_fireball_shoot");
     }
 
     private void ResetShot()
     {
         readyToShoot = true;
         allowInvoke = true;
-    }
-
-    //Reloading
-    private void OnReload(InputAction.CallbackContext obj)
-    {
-        if (bulletsLeft < magazineSize && !reloading) Reload();
-    }
+    }    
 
     private void Reload()
     {
