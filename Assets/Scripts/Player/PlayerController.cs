@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
 
         //if angle is 180 snap turn
         float angle = Vector3.Angle(transform.forward, moveDirection);
-        Debug.Log(angle);
         if (angle == 180)
         {
             transform.LookAt(targetDirection);
