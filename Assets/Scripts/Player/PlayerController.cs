@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 turnDirection = Vector3.zero;
     private Vector3 lookDirection = Vector3.zero;
-    public float baseSpeed = 10f;
+    public float baseSpeed = 5f;
 
     private InputAction movement;
     private Animator animator;
