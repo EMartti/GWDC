@@ -19,7 +19,7 @@ public class NavMeshFollowTarget : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
 
         // Ettii pelaajan automaattisesti skenestä - Joona
-        goal = GameObject.Find("Player").transform;
+        goal = GameObject.FindWithTag("Player").transform;
 
         Health.OnDeath += Health_OnDeath;
     }

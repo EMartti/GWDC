@@ -12,6 +12,7 @@ public class Missile : MonoBehaviour {
 
     private AudioSource audioSource;
     private bool stuckInWall = false;
+
     private void Start() {
         playerHealthObject = GameObject.Find("Player");
         playerHealthScript = playerHealthObject.GetComponent<Health>();
