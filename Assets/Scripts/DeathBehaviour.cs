@@ -27,8 +27,8 @@ public class DeathBehaviour : MonoBehaviour
     void Start()
     {
         aM = AudioManager.Instance;
-        if (CompareTag("Player")) {
-            deathSound = aM.sfxPlayerDie;
+        if (deathSound == null) {
+            deathSound = aM.sfxDie;
         }
 
         playerInputActions = PlayerInputs.Instance.playerInputActions;
