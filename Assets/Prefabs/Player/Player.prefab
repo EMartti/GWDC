@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 5652613128129848240}
   - component: {fileID: 904172666}
   - component: {fileID: 3017182954864125500}
+  - component: {fileID: 7727841614992522179}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -404,6 +405,22 @@ MonoBehaviour:
     m_Bits: 64
   canPush: 1
   strength: 1
+--- !u!114 &7727841614992522179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739058059502302736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b84ed7ace29044d8cda6731c6ab2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLevel: 0
+  levelProgress: 0
+  expRequiredToLvlUp: 1000
+  playerStartLevel: 1
 --- !u!1 &4325627410011103524
 GameObject:
   m_ObjectHideFlags: 0
