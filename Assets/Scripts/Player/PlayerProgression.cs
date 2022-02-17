@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerProgression : MonoBehaviour
 {
-    [SerializeField] private int playerLevel;
     [SerializeField] private float levelProgress = 0f;
     [SerializeField] private float xpRequiredToLvlUp = 1000f;
     [SerializeField] private int playerStartLevel;
+
+    private PlayerStats playerStats;
 
     // Kerroin, jolla Level-uppiin tarvittava xp-m‰‰r‰ nousee jokaisen level-upin j‰lkeens
     [SerializeField] private float xpRequiredMultiplier = 1.5f;
@@ -15,20 +16,20 @@ public class PlayerProgression : MonoBehaviour
 
     private void Start()
     {
-        playerLevel = playerStartLevel;
+        playerStats = PlayerStats.Instance;
     }
 
 
     void LevelUp()
     {
         //Increase player-level
-        playerLevel += 1;
+        playerStats.playerLevel += 1;
         // Reset level-progress
         levelProgress = 0f;
         // Multiply seuraavaan level-uppiin tarvittava xp
         xpRequiredToLvlUp = xpRequiredToLvlUp * xpRequiredMultiplier;
         //Debug
-        Debug.Log("Player achieved Level " + playerLevel);
+        Debug.Log("Player achieved Level " + playerStats.playerLevel);
     }
 
     // Funktio antaa pelaajalle XP:t‰
