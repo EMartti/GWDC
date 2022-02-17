@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class NavMeshFollowTarget : MonoBehaviour {
     // Start is called before the first frame update
     [SerializeField] private Transform goal;

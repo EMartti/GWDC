@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Melee))]
 public class AI_melee : MonoBehaviour
 {
 
