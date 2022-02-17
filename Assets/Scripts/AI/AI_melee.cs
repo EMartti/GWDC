@@ -8,7 +8,7 @@ public class AI_melee : MonoBehaviour
 
     private Melee melee;
 
-    [SerializeField] private float attackInterval;
+    [SerializeField] private float attackInterval = 1f;
 
   
     private float timerPassed;
