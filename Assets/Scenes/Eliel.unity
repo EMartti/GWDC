@@ -1337,15 +1337,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   hitSound: {fileID: 0}
-  weapon: {fileID: 0}
   attackSound: {fileID: 0}
+  weapon: {fileID: 0}
+  animator: {fileID: 0}
   automatic: 0
   timeBetweenAttack: 0
   attackPosition: {fileID: 943609393547047253}
   player: {fileID: 2188339920409286354}
-  animator: {fileID: 0}
-  meleeWeapon: {fileID: 943609393547047255}
-  hitDamage: 0
+  meleeWeaponCollider: {fileID: 943609393547047255}
+  hitDamage: 25
   attackRange: 0
   hitForce: 0
   maxLifeTime: 0
@@ -1918,6 +1918,61 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
+--- !u!4 &5479638532089484016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5479638532089484022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.922126, y: 0.6516812, z: 1.4933746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5479638532089484017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5479638532089484022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feadecf5c5c696e41adfd02dd406d94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxHurt: {fileID: 0}
+  sfxHeal: {fileID: 0}
+  sfxPlayerHurt: {fileID: 0}
+  sfxPlayerHeal: {fileID: 0}
+  sfxPlayerDie: {fileID: 0}
+  sfxMeleeHit: {fileID: 0}
+  sfxMeleeAttack: {fileID: 0}
+  sfxArrowStart: {fileID: 0}
+  sfxArrowStick: {fileID: 0}
+  sfxFireballStart: {fileID: 0}
+  sfxFireballExplode: {fileID: 0}
+--- !u!1 &5479638532089484022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5479638532089484016}
+  - component: {fileID: 5479638532089484017}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &7969285610822300352
 PrefabInstance:
   m_ObjectHideFlags: 0
