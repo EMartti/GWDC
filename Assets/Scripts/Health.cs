@@ -16,7 +16,7 @@ public class Health : MonoBehaviour, IDamageable
     public delegate void CharacterEventHandler(Health e);
     public static event CharacterEventHandler OnDeath;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     void Start()
     {

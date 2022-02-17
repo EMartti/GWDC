@@ -2,21 +2,25 @@ using UnityEngine;
 
 public class IdlingState : CharacterBaseState
 {
-    Transform playerPos;
+    Transform target;
     float aggroRange = 4;
+    private bool targetDead;
 
     public override void EnterState(CharacterStateManager character)
     {
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        targetDead = target.gameObject.GetComponent<Health>().isDead;
     }
 
     public override void UpdateState(CharacterStateManager character)
     {
-        float dist = Vector3.Distance(character.transform.position, playerPos.position);
-        if (dist < aggroRange)
+        if (!targetDead)
         {
-            character.SwitchState(character.MoveState);
-        }
-            
+            float dist = Vector3.Distance(character.transform.position, target.position);
+            if (dist < aggroRange)
+            {
+                character.SwitchState(character.MoveState);
+            }
+        }                   
     }
 }
