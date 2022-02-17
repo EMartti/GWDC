@@ -64,12 +64,11 @@ public class Melee : MonoBehaviour {
     private void Start() {
         aM = AudioManager.Instance;
 
-        if (CompareTag("Player")) {
-            hitSound = aM.sfxPlayerMeleeHit;
-            attackSound = aM.sfxPlayerMeleeAttack;
+        if (hitSound == null) {
+            hitSound = aM.sfxMeleeHit;
         }
-        if (CompareTag("Enemy")) {
-            hitSound = aM.sfxEnemyMeleeHit;
+        if (attackSound == null) {
+            attackSound = aM.sfxMeleeAttack;
         }
 
         playerInputActions = PlayerInputs.Instance.playerInputActions;
