@@ -19,14 +19,4 @@ public class IdlingState : CharacterBaseState
         }
             
     }
-
-    public override void AttackState(CharacterStateManager character)
-    {
-
-    }
-
-    public override void MoveState(CharacterStateManager character) 
-    {
-        
-    }
 }

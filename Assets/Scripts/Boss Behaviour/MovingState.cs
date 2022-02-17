@@ -7,6 +7,7 @@ public class MovingState : CharacterBaseState
 {
     public NavMeshAgent agent;
     private Transform target;
+    private float meleeRange = 1;
 
     public override void EnterState(CharacterStateManager character)
     {
@@ -14,6 +15,7 @@ public class MovingState : CharacterBaseState
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
         agent = character.GetComponent<NavMeshAgent>();
+        agent.isStopped = false;
     }
 
 
@@ -21,15 +23,11 @@ public class MovingState : CharacterBaseState
     {
         character.transform.LookAt(target.position);
         agent.destination = target.position;
-    }
-
-    public override void AttackState(CharacterStateManager character)
-    {
-
-    }
-
-    public override void MoveState(CharacterStateManager character)
-    {
-
+        float dist = Vector3.Distance(character.transform.position, target.position);
+        if (dist < meleeRange)
+        {
+            agent.isStopped = true;
+            character.SwitchState(character.attackState);
+        }
     }
 }

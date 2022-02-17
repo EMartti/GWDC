@@ -1225,7 +1225,7 @@ Rigidbody:
   m_GameObject: {fileID: 943609391962818037}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 0.3
+  m_Drag: 1
   m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1245,6 +1245,9 @@ GameObject:
   - component: {fileID: 943609391962818040}
   - component: {fileID: 943609391962818036}
   - component: {fileID: 943609391962818046}
+  - component: {fileID: 943609391962818047}
+  - component: {fileID: 943609391962818049}
+  - component: {fileID: 943609391962818048}
   m_Layer: 6
   m_Name: Enemy_Boss
   m_TagString: Enemy
@@ -1317,6 +1320,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9d9995e139afd48b66bcf8d78c4cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &943609391962818047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943609391962818037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ddd13a4d7627c459b50d3f809b0c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 256
+  hitSound: {fileID: 0}
+  weapon: {fileID: 0}
+  attackSound: {fileID: 0}
+  automatic: 0
+  timeBetweenAttack: 0
+  attackPosition: {fileID: 943609393547047253}
+  player: {fileID: 2188339920409286354}
+  animator: {fileID: 0}
+  meleeWeapon: {fileID: 943609393547047255}
+  hitDamage: 0
+  attackRange: 0
+  hitForce: 0
+  maxLifeTime: 0
+--- !u!114 &943609391962818048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943609391962818037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667568a1ac76b1b4b9e01ff7dba585ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathExplosion: {fileID: 0}
+  deathDelay: 0
+--- !u!114 &943609391962818049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943609391962818037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtSound: {fileID: 0}
+  healSound: {fileID: 0}
+  healEffect: {fileID: 0}
+  hurtEffect: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
 --- !u!4 &943609392121876648
 Transform:
   m_ObjectHideFlags: 0
@@ -1770,6 +1834,11 @@ PrefabInstance:
 --- !u!1 &2188339920409286343 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2739058059502302736, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
+  m_PrefabInstance: {fileID: 4943380720686464302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2188339920409286354 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8653089349249574724, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
   m_PrefabInstance: {fileID: 4943380720686464302}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4943380720686464302

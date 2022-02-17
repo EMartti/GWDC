@@ -17,9 +17,20 @@ public class Melee : MonoBehaviour {
     private List<Collider> colliders = new List<Collider>();
     public List<Collider> GetColliders() { return colliders; }
 
+
+    [Header("Audio")]
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private AudioClip attackSound;
+<<<<<<< Updated upstream
     [SerializeField] private GameObject weapon;
+=======
+
+    [Header("Visuals")]
+    [SerializeField] private GameObject weapon;
+    public Animator animator;
+
+    [Header("Parameters")]
+>>>>>>> Stashed changes
     [SerializeField] private bool automatic;
     [SerializeField] private float timeBetweenAttack;
     [SerializeField] private Transform attackPosition;
@@ -27,9 +38,8 @@ public class Melee : MonoBehaviour {
 
     private int animIDisAttacking;
 
-    public Animator animator;
 
-    public MeleeWeapon meleeWeapon;
+    public MeleeWeapon meleeWeaponCollider;
 
     public int hitDamage;
     public float attackRange;
@@ -128,8 +138,15 @@ public class Melee : MonoBehaviour {
         //AudioFW.PlayRandomPitch("sfx_player_melee_atk");
     }
 
+<<<<<<< Updated upstream
     public void HitEvent() {
         foreach (Collider collider in meleeWeapon.HitColliders()) {
+=======
+    public void HitEvent()
+    {
+        foreach (Collider collider in meleeWeaponCollider.HitColliders())
+        {
+>>>>>>> Stashed changes
             Debug.Log("HitEvent " + collider.gameObject.name);
             IDamageable damageable = collider.GetComponent<IDamageable>();
             if (damageable != null) {
