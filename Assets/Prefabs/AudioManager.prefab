@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3448519440446431883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3448519440446431885}
+  - component: {fileID: 3448519440446431884}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3448519440446431885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3448519440446431883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.922126, y: 0.6516812, z: 1.4933746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3448519440446431884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3448519440446431883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feadecf5c5c696e41adfd02dd406d94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxEnemyHurt: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
+  sfxEnemyHeal: {fileID: 0}
+  sfxEnemyMeleeHit: {fileID: 0}
+  sfxPlayerHurt: {fileID: 8300000, guid: c08b0fb3d0cc3b142a23f6734aef0a89, type: 3}
+  sfxPlayerHeal: {fileID: 8300000, guid: 5ed873e90b572d6478f2bb1698bba27c, type: 3}
+  sfxPlayerDie: {fileID: 8300000, guid: 23949d4f65e90c04ba0be60df22988d4, type: 3}
+  sfxPlayerMeleeHit: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
+  sfxPlayerMeleeAttack: {fileID: 8300000, guid: 17a45389aced9254380a98a9827ad452, type: 3}
+  sfxArrowStart: {fileID: 8300000, guid: 96408a9c718b39b49a261b4874aef0b2, type: 3}
+  sfxArrowStick: {fileID: 8300000, guid: c81fee266487b984184170c3495b6406, type: 3}
+  sfxFireballStart: {fileID: 8300000, guid: bb108e7aed0d1b14289356a65b802414, type: 3}
+  sfxFireballExplode: {fileID: 8300000, guid: 74b624ce74f41fe4884c69f0662bd56a, type: 3}

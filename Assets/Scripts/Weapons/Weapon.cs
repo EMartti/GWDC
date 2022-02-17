@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float timeBetweenShots, spread, reloadTime, timeBetweenShooting;
 
     AudioSource audioSource;
+    AudioManager aM;
     [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip reload;
     [SerializeField] private GameObject muzzleFlash;
@@ -40,6 +41,9 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        aM = AudioManager.Instance;
+        shootSound = aM.sfxFireballStart;
+
         if(gameObject.tag == "Player")
         {
             playerInputActions = PlayerInputs.Instance.playerInputActions;

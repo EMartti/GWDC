@@ -51,7 +51,8 @@ MonoBehaviour:
   speed: 8
   playerHealthObject: {fileID: 0}
   playerHealthScript: {fileID: 0}
-  arrowStick: {fileID: 8300000, guid: c81fee266487b984184170c3495b6406, type: 3}
+  arrowStick: {fileID: 0}
+  arrowStart: {fileID: 0}
 --- !u!54 &6072404983646349230
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92,9 +93,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 96408a9c718b39b49a261b4874aef0b2, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.5
   m_Pitch: 2
   Loop: 0
   Mute: 0

@@ -6,7 +6,8 @@ public class CustomBullet : MonoBehaviour
     public Rigidbody rb;
     public GameObject explosion;
     public LayerMask whatIsEnemies;
-    AudioSource audioSource;
+    private AudioSource audioSource;
+    private AudioManager aM;
     [SerializeField] private AudioClip explodeSound;
 
     [Range(0f, 1f)]
@@ -27,6 +28,9 @@ public class CustomBullet : MonoBehaviour
 
     private void Start()
     {
+        aM = AudioManager.Instance;
+        explodeSound = aM.sfxFireballExplode;
+
         Setup();
         audioSource = GetComponent<AudioSource>();
     }
@@ -54,8 +58,8 @@ public class CustomBullet : MonoBehaviour
                     enemies[i].GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRange);
                 alreadyHitOnce = true;
             }
-            if(explodeSound != null)
-                AudioSource.PlayClipAtPoint(explodeSound, transform.position);
+            if (explodeSound != null)
+                AudioSource.PlayClipAtPoint(explodeSound, transform.position, 1.5f);
             Invoke("Delay", 0f);
         }
     }

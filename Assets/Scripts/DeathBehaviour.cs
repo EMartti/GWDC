@@ -10,6 +10,7 @@ public class DeathBehaviour : MonoBehaviour
     private int animIDIsDead;
     private Animator animator;
     private AudioSource audioSource;
+    private AudioManager aM;
 
 
     private PlayerInput starterInputActions;
@@ -25,6 +26,11 @@ public class DeathBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        aM = AudioManager.Instance;
+        if (CompareTag("Player")) {
+            deathSound = aM.sfxPlayerDie;
+        }
+
         playerInputActions = PlayerInputs.Instance.playerInputActions;
         animator = GetComponent<Animator>();
         

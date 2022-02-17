@@ -5,6 +5,7 @@ using System;
 
 public class Health : MonoBehaviour, IDamageable
 {
+    private AudioManager aM;
     private AudioSource audioSource;
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip healSound;
@@ -20,7 +21,19 @@ public class Health : MonoBehaviour, IDamageable
     void Start()
     {
         currentHealth = maxHealth;
+        
         audioSource = GetComponent<AudioSource>();
+
+        aM = AudioManager.Instance;
+
+        if (CompareTag("Player")) {
+            hurtSound = aM.sfxPlayerHurt;
+            healSound = aM.sfxPlayerHeal;
+        }
+        if (CompareTag("Enemy")) {
+            hurtSound = aM.sfxEnemyHurt;
+            healSound = aM.sfxEnemyHeal;
+        }
     }
 
     public void TakeDamage(int damage)
