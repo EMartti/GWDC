@@ -7,7 +7,6 @@ using System;
 
 public class Melee : MonoBehaviour {
     //public Rigidbody rb;
-    public GameObject hitEffect;
     public LayerMask whatIsEnemies;
     private PlayerInputActions playerInputActions;
 
@@ -17,14 +16,15 @@ public class Melee : MonoBehaviour {
     private List<Collider> colliders = new List<Collider>();
     public List<Collider> GetColliders() { return colliders; }
 
-
     [Header("Audio")]
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private AudioClip attackSound;
+    
 
     [Header("Visuals")]
     [SerializeField] private GameObject weapon;
     public Animator animator;
+    public GameObject hitEffect;
 
     [Header("Parameters")]
     [SerializeField] private bool automatic;
