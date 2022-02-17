@@ -21,16 +21,12 @@ public class Melee : MonoBehaviour {
     [Header("Audio")]
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private AudioClip attackSound;
-<<<<<<< Updated upstream
-    [SerializeField] private GameObject weapon;
-=======
 
     [Header("Visuals")]
     [SerializeField] private GameObject weapon;
     public Animator animator;
 
     [Header("Parameters")]
->>>>>>> Stashed changes
     [SerializeField] private bool automatic;
     [SerializeField] private float timeBetweenAttack;
     [SerializeField] private Transform attackPosition;
@@ -137,16 +133,10 @@ public class Melee : MonoBehaviour {
             audioSource.PlayOneShot(attackSound, 0.7F);
         //AudioFW.PlayRandomPitch("sfx_player_melee_atk");
     }
-
-<<<<<<< Updated upstream
-    public void HitEvent() {
-        foreach (Collider collider in meleeWeapon.HitColliders()) {
-=======
     public void HitEvent()
     {
         foreach (Collider collider in meleeWeaponCollider.HitColliders())
         {
->>>>>>> Stashed changes
             Debug.Log("HitEvent " + collider.gameObject.name);
             IDamageable damageable = collider.GetComponent<IDamageable>();
             if (damageable != null) {
