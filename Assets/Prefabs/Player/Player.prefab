@@ -358,19 +358,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ddd13a4d7627c459b50d3f809b0c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 64
   hitSound: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
-  weapon: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 17a45389aced9254380a98a9827ad452, type: 3}
+  weapon: {fileID: 0}
+  animator: {fileID: 3017182954901424945}
+  hitEffect: {fileID: 0}
   automatic: 0
   timeBetweenAttack: 0.89
   attackPosition: {fileID: 2679677963652336975}
   player: {fileID: 533855025637742852}
-  animator: {fileID: 3017182954901424945}
-  meleeWeapon: {fileID: 946368531}
+  meleeWeaponCollider: {fileID: 946368531}
   hitDamage: 100
   attackRange: 1
   hitForce: 20000
@@ -419,8 +419,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLevel: 0
   levelProgress: 0
-  expRequiredToLvlUp: 1000
+  xpRequiredToLvlUp: 1000
   playerStartLevel: 1
+  xpRequiredMultiplier: 1.5
 --- !u!1 &4325627410011103524
 GameObject:
   m_ObjectHideFlags: 0

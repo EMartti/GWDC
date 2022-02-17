@@ -23,17 +23,13 @@ public class PlayerProgression : MonoBehaviour
     {
         //Increase player-level
         playerLevel += 1;
-
         // Reset level-progress
         levelProgress = 0f;
-
         // Multiply seuraavaan level-uppiin tarvittava xp
         xpRequiredToLvlUp = xpRequiredToLvlUp * xpRequiredMultiplier;
+        //Debug
+        Debug.Log("Player achieved Level " + playerLevel);
     }
-
-
-
-
 
     // Funktio antaa pelaajalle XP:tä
     // Callaa kaikista XP:n antajista (esim. XP-orbit, loot-chestit, etc.)
