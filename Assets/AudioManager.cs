@@ -22,16 +22,15 @@ public class AudioManager : MonoBehaviour {
     private static AudioManager instance;
     #endregion
 
-    [Header("Enemy")]
-    public AudioClip sfxEnemyHurt;
-    public AudioClip sfxEnemyHeal;
-    public AudioClip sfxEnemyMeleeHit;
+    [Header("Status")]
+    public AudioClip sfxHurt;
+    public AudioClip sfxHeal;
     [Header("Player")]
     public AudioClip sfxPlayerHurt;
     public AudioClip sfxPlayerHeal;
     public AudioClip sfxPlayerDie;
-    public AudioClip sfxPlayerMeleeHit;
-    public AudioClip sfxPlayerMeleeAttack;
+    public AudioClip sfxMeleeHit;
+    public AudioClip sfxMeleeAttack;
     [Header("Projectile")]
     public AudioClip sfxArrowStart;
     public AudioClip sfxArrowStick;

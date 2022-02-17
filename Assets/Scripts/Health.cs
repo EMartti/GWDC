@@ -26,13 +26,11 @@ public class Health : MonoBehaviour, IDamageable
 
         aM = AudioManager.Instance;
 
-        if (CompareTag("Player")) {
-            hurtSound = aM.sfxPlayerHurt;
-            healSound = aM.sfxPlayerHeal;
+        if (hurtSound == null) {
+            hurtSound = aM.sfxHurt;
         }
-        if (CompareTag("Enemy")) {
-            hurtSound = aM.sfxEnemyHurt;
-            healSound = aM.sfxEnemyHeal;
+        if (healSound == null) {
+            healSound = aM.sfxHeal;
         }
     }
 
