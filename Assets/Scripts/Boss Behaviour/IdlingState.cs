@@ -9,7 +9,6 @@ public class IdlingState : CharacterBaseState
     public override void EnterState(CharacterStateManager character)
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        targetDead = target.gameObject.GetComponent<Health>().isDead;
     }
 
     public override void UpdateState(CharacterStateManager character)

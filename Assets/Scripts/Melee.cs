@@ -16,10 +16,17 @@ public class Melee : MonoBehaviour {
     private List<Collider> colliders = new List<Collider>();
     public List<Collider> GetColliders() { return colliders; }
 
-    [Header("Audio")]
-    [SerializeField] private AudioClip hitSound;
-    [SerializeField] private AudioClip attackSound;
-    
+    #region Variables
+
+    [Serializable]
+    public class AudioInspector
+    {
+        [Header("Audio")]
+        public AudioClip hitSound;
+        public AudioClip attackSound;
+    }
+
+    [SerializeField] private AudioInspector audioInspector;
 
     [Header("Visuals")]
     [SerializeField] private GameObject weapon;
@@ -31,6 +38,8 @@ public class Melee : MonoBehaviour {
     [SerializeField] private float timeBetweenAttack;
     [SerializeField] private Transform attackPosition;
     [SerializeField] private Transform player;
+
+    #endregion
 
     private int animIDisAttacking;
 
@@ -64,11 +73,11 @@ public class Melee : MonoBehaviour {
     private void Start() {
         aM = AudioManager.Instance;
 
-        if (hitSound == null) {
-            hitSound = aM.sfxMeleeHit;
+        if (audioInspector.hitSound == null) {
+            audioInspector.hitSound = aM.sfxMeleeHit;
         }
-        if (attackSound == null) {
-            attackSound = aM.sfxMeleeAttack;
+        if (audioInspector.attackSound == null) {
+            audioInspector.attackSound = aM.sfxMeleeAttack;
         }
 
         playerInputActions = PlayerInputs.Instance.playerInputActions;
@@ -78,15 +87,17 @@ public class Melee : MonoBehaviour {
 
         animIDisAttacking = Animator.StringToHash("isAttacking");
 
-
-        foreach (var item in animator.runtimeAnimatorController.animationClips) {
-            if (item.name == "1H-RH@Attack01") {
-                timeBetweenAttack = item.length;
-                break;
+        if(animator != null)
+        {
+            foreach (var item in animator.runtimeAnimatorController.animationClips)
+            {
+                if (item.name == "1H-RH@Attack01")
+                {
+                    timeBetweenAttack = item.length;
+                    break;
+                }
             }
-        }
-
-
+        }  
     }
 
     #region InputSystem
@@ -120,7 +131,8 @@ public class Melee : MonoBehaviour {
     public void Attack() {
         readyToAttack = false;
 
-        animator.SetBool(animIDisAttacking, attacking);
+        if(animator != null)
+            animator.SetBool(animIDisAttacking, attacking);
 
 
         if (allowInvoke) {
@@ -128,8 +140,8 @@ public class Melee : MonoBehaviour {
             allowInvoke = false;
         }
 
-        if (attackSound != null)
-            audioSource.PlayOneShot(attackSound, 0.7F);
+        if (audioInspector.attackSound != null)
+            audioSource.PlayOneShot(audioInspector.attackSound, 0.7F);
         //AudioFW.PlayRandomPitch("sfx_player_melee_atk");
     }
     public void HitEvent()
@@ -150,7 +162,7 @@ public class Melee : MonoBehaviour {
         if (enemy.GetComponent<Rigidbody>())
             enemy.GetComponent<Rigidbody>().AddExplosionForce(hitForce, player.position, attackRange);
 
-        if (hitSound != null) AudioSource.PlayClipAtPoint(hitSound, transform.position);
+        if (audioInspector.hitSound != null) AudioSource.PlayClipAtPoint(audioInspector.hitSound, transform.position);
     }
 
     private void OnTriggerEnter(Collider other) {

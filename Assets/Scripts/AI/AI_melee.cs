@@ -15,7 +15,7 @@ public class AI_melee : MonoBehaviour
 
     void Start()
     {
-        melee = GetComponent<Melee>();
+        melee = gameObject.GetComponent<Melee>();
         timerPassed = 0f;
     }
 

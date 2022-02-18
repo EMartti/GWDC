@@ -16,7 +16,7 @@ public class Health : MonoBehaviour, IDamageable
     public delegate void CharacterEventHandler(Health e);
     public static event CharacterEventHandler OnDeath;
 
-    public bool isDead = false;
+    [HideInInspector] public bool isDead = false;
 
     void Start()
     {
@@ -36,7 +36,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (!isDead)
+        if (!isDead && damage > 0)
         {
             if(hurtSound != null)
                 audioSource.PlayOneShot(hurtSound);

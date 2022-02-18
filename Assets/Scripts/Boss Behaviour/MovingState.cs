@@ -14,7 +14,6 @@ public class MovingState : CharacterBaseState
     {
         //play roar sound or something like that, player is seen here
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        targetDead = target.gameObject.GetComponent<Health>().isDead;
 
         agent = character.GetComponent<NavMeshAgent>();
         agent.isStopped = false;
