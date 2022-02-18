@@ -3,8 +3,6 @@ using UnityEngine;
 public class AttackingState : CharacterBaseState
 {
     private Transform target;
-    private float meleeRange = 1;
-    private bool attacking = false;
     private float attackInterval = 1;
     private float timer;
     private Melee characterMelee;
@@ -12,9 +10,9 @@ public class AttackingState : CharacterBaseState
     public override void EnterState(CharacterStateManager character)
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        characterMelee = character.GetComponent<Melee>();
-        characterMelee.HitEvent();
-        attacking = true;
+        //animator = character.gameObject.GetComponent<Animator>();
+        characterMelee = character.gameObject.GetComponent<Melee>();
+        characterMelee.Attack();
         timer = 0;
     }
 

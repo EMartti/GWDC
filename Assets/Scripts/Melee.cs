@@ -5,51 +5,47 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using System;
 
-public class Melee : MonoBehaviour {
-    
-    private AudioManager aM;
-    private PlayerInputActions playerInputActions;
-    public Animator animator;
-
-    public LayerMask whatIsEnemies;
-    AudioSource audioSource;
-
-    private List<Collider> colliders = new List<Collider>();
-    public List<Collider> GetColliders() { return colliders; }
-
+public class Melee : MonoBehaviour { 
     #region VariablesClasses
 
     [Serializable]
     public class AudioInspector
     {
-        [Header("Audio")]
         public AudioClip hitSound;
         public AudioClip attackSound;
     }
 
-    [SerializeField] private AudioInspector audio;
+    [Serializable]
+    public class VisualsInspector
+    {
+        public GameObject weapon;
+        public GameObject hitEffect;
+    }
 
-    [Header("Visuals")]
-    [SerializeField] private GameObject weapon;
-    public GameObject hitEffect;
-
-    [Header("Parameters")]
-    [SerializeField] private bool automatic;
-    [SerializeField] private float timeBetweenAttack;
-    [SerializeField] private Transform attackPosition;
-    [SerializeField] private Transform player;
-
+    [Serializable]
+    public class ParametersInspector
+    {
+        public float timeBetweenAttack;
+        public int hitDamage;
+        public float hitForce;
+    }
     #endregion
+    private AudioManager aM;
+    private PlayerInputActions playerInputActions;
+
+    private List<Collider> colliders = new List<Collider>();
+    public List<Collider> GetColliders() { return colliders; }
+
+    public LayerMask whatIsEnemies;
+    public Animator animator;
+    public MeleeWeapon meleeWeaponCollider;
+    AudioSource audioSource;   
+
+    [SerializeField] private AudioInspector audio;
+    [SerializeField] private VisualsInspector visuals;
+    [SerializeField] private ParametersInspector parameters;
 
     private int animIDisAttacking;
-
-
-    public MeleeWeapon meleeWeaponCollider;
-
-    public int hitDamage;
-    public float attackRange;
-    public float hitForce;
-
     bool attacking, readyToAttack;
     private bool allowInvoke = true;
     private bool isPlayer = false;
@@ -61,6 +57,8 @@ public class Melee : MonoBehaviour {
         readyToAttack = true;
 
         if (gameObject.tag == "Player") isPlayer = true;
+
+        animator = GetComponent<Animator>();
     }
 
     private void Start() {
@@ -78,18 +76,17 @@ public class Melee : MonoBehaviour {
             playerInputActions = PlayerInputs.Instance.playerInputActions;
 
             playerInputActions.Player.Fire.Enable();
-            playerInputActions.Player.Fire.started += OnMelee;
+            playerInputActions.Player.Fire.started += OnMelee;            
+        }
+        animIDisAttacking = Animator.StringToHash("isAttacking");
 
-            animIDisAttacking = Animator.StringToHash("isAttacking");
-        }        
-
-        if(animator != null)
+        if (animator != null)
         {
             foreach (var item in animator.runtimeAnimatorController.animationClips)
             {
                 if (item.name == "1H-RH@Attack01")
                 {
-                    timeBetweenAttack = item.length;
+                    parameters.timeBetweenAttack = item.length;
                     break;
                 }
             }
@@ -100,10 +97,8 @@ public class Melee : MonoBehaviour {
     private void OnMelee(InputAction.CallbackContext obj) 
     {
         if (isPlayer)
-        {
-            attacking = true;
-
-            if (readyToAttack && attacking)
+        {            
+            if (readyToAttack)
             {
                 Attack();
             }
@@ -119,14 +114,16 @@ public class Melee : MonoBehaviour {
     #endregion
 
     public void Attack() {
+        Debug.Log("Attack!");
         readyToAttack = false;
+        attacking = true;
 
-        if(animator != null)
+        if (animator != null)
         animator.SetBool(animIDisAttacking, attacking);
 
 
         if (allowInvoke) {
-            Invoke("ResetAttack", timeBetweenAttack);
+            Invoke("ResetAttack", parameters.timeBetweenAttack);
             allowInvoke = false;
         }
 
@@ -140,17 +137,17 @@ public class Melee : MonoBehaviour {
         {
             IDamageable damageable = collider.GetComponent<IDamageable>();
             if (damageable != null) {
-                damageable.TakeDamage(hitDamage);
+                damageable.TakeDamage(parameters.hitDamage);
                 Hit(collider);
             }
         }
     }
 
     private void Hit(Collider enemy) {
-        if (hitEffect != null) Instantiate(hitEffect, transform.position, Quaternion.identity);
+        if (visuals.hitEffect != null) Instantiate(visuals.hitEffect, transform.position, Quaternion.identity);
 
         if (enemy.GetComponent<Rigidbody>())
-            enemy.GetComponent<Rigidbody>().AddForce(hitForce * player.position - transform.position);
+            enemy.GetComponent<Rigidbody>().AddForce(parameters.hitForce * enemy.transform.position - transform.position);
 
         if (audio.hitSound != null) AudioSource.PlayClipAtPoint(audio.hitSound, transform.position);
     }

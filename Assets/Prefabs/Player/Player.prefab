@@ -340,12 +340,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSound: {fileID: 8300000, guid: c08b0fb3d0cc3b142a23f6734aef0a89, type: 3}
-  healSound: {fileID: 8300000, guid: 5ed873e90b572d6478f2bb1698bba27c, type: 3}
-  healEffect: {fileID: 1969967651396293653, guid: 3df31be828c063b46bce3dcf343b1604, type: 3}
-  hurtEffect: {fileID: 779801061157678525, guid: 6123eeb4011cb2c488d257db01bbddce, type: 3}
   maxHealth: 100
   currentHealth: 0
+  audio:
+    hurtSound: {fileID: 0}
+    healSound: {fileID: 0}
+  effect:
+    healEffect: {fileID: 0}
+    hurtEffect: {fileID: 0}
+  isDead: 0
 --- !u!114 &5652613128129848240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,20 +364,18 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 64
-  hitSound: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
-  attackSound: {fileID: 8300000, guid: 17a45389aced9254380a98a9827ad452, type: 3}
-  weapon: {fileID: 0}
   animator: {fileID: 3017182954901424945}
-  hitEffect: {fileID: 0}
-  automatic: 0
-  timeBetweenAttack: 0.89
-  attackPosition: {fileID: 2679677963652336975}
-  player: {fileID: 533855025637742852}
   meleeWeaponCollider: {fileID: 946368531}
-  hitDamage: 100
-  attackRange: 1
-  hitForce: 20000
-  maxLifeTime: 0
+  audio:
+    hitSound: {fileID: 0}
+    attackSound: {fileID: 0}
+  visuals:
+    weapon: {fileID: 0}
+    hitEffect: {fileID: 0}
+  parameters:
+    timeBetweenAttack: 1
+    hitDamage: 50
+    hitForce: 100
 --- !u!114 &904172666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b84ed7ace29044d8cda6731c6ab2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLevel: 0
   levelProgress: 0
   xpRequiredToLvlUp: 1000
   playerStartLevel: 1
@@ -448,7 +448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4325627410011103524}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0, y: 6.03, z: 0}
+  m_LocalPosition: {x: 0, y: 3.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -464,10 +464,10 @@ Light:
   m_GameObject: {fileID: 4325627410011103524}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.8962264, g: 0.81765217, b: 0.70514417, a: 1}
-  m_Intensity: 50
+  m_Intensity: 13.57
   m_Range: 11.3
   m_SpotAngle: 139.59187
   m_InnerSpotAngle: 53.11403
@@ -555,6 +555,10 @@ PrefabInstance:
     - target: {fileID: 1439803910276779360, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439803910276779360, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1543296374653969834, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
       propertyPath: m_LocalPosition.x

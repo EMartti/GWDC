@@ -5,14 +5,32 @@ using System;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    private AudioManager aM;
-    private AudioSource audioSource;
-    [SerializeField] private AudioClip hurtSound;
-    [SerializeField] private AudioClip healSound;
-    [SerializeField] private GameObject healEffect;
-    [SerializeField] private GameObject hurtEffect;
+    #region VariableClasses
+    [Serializable]
+    public class AudioInspector
+    {
+        public AudioClip hurtSound;
+        public AudioClip healSound;
+    }
+
+    [Serializable]
+    public class EffectsInspector
+    {
+        public GameObject healEffect;
+        public GameObject hurtEffect;
+    }
+    #endregion
+
+    [Header("Parameters")]
     [SerializeField] private int maxHealth = 100;
     public int currentHealth;
+
+    [SerializeField] private AudioInspector audio;
+    [SerializeField] private EffectsInspector effect;
+
+
+    private AudioManager aM;
+    private AudioSource audioSource;
     public delegate void CharacterEventHandler(Health e);
     public static event CharacterEventHandler OnDeath;
 
@@ -26,11 +44,11 @@ public class Health : MonoBehaviour, IDamageable
 
         aM = AudioManager.Instance;
 
-        if (hurtSound == null) {
-            hurtSound = aM.sfxHurt;
+        if (audio.hurtSound == null) {
+            audio.hurtSound = aM.sfxHurt;
         }
-        if (healSound == null) {
-            healSound = aM.sfxHeal;
+        if (audio.healSound == null) {
+            audio.healSound = aM.sfxHeal;
         }
     }
 
@@ -38,10 +56,10 @@ public class Health : MonoBehaviour, IDamageable
     {
         if (!isDead && damage > 0)
         {
-            if(hurtSound != null)
-                audioSource.PlayOneShot(hurtSound);
-            if(hurtEffect != null)
-                Instantiate(hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), hurtEffect.transform.rotation, gameObject.transform);
+            if(audio.hurtSound != null)
+                audioSource.PlayOneShot(audio.hurtSound);
+            if(effect.hurtEffect != null)
+                Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
             currentHealth -= damage;
             if (currentHealth <= 0 && !isDead)
             {
@@ -53,10 +71,10 @@ public class Health : MonoBehaviour, IDamageable
     }   
     
     public void AddHealth(int healValue) {
-        if (healSound != null)
-            audioSource.PlayOneShot(healSound);
-        if (healEffect != null)
-            Instantiate(healEffect, new Vector3 (transform.position.x, 1, transform.position.z), healEffect.transform.rotation, gameObject.transform); //spawn healing particles as child
+        if (audio.healSound != null)
+            audioSource.PlayOneShot(audio.healSound);
+        if (effect.healEffect != null)
+            Instantiate(effect.healEffect, new Vector3 (transform.position.x, 1, transform.position.z), effect.healEffect.transform.rotation, gameObject.transform); //spawn healing particles as child
         currentHealth += healValue;
         if (currentHealth > maxHealth) {
             currentHealth = maxHealth;

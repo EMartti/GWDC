@@ -9,6 +9,7 @@ public class MovingState : CharacterBaseState
     private Transform target;
     private float meleeRange = 1.5f;
     private bool targetDead;
+    private Animator animator;
 
     public override void EnterState(CharacterStateManager character)
     {
@@ -17,6 +18,8 @@ public class MovingState : CharacterBaseState
 
         agent = character.GetComponent<NavMeshAgent>();
         agent.isStopped = false;
+
+        animator = character.gameObject.GetComponent<Animator>();
     }
 
 
@@ -24,7 +27,10 @@ public class MovingState : CharacterBaseState
     {
         if (!targetDead)
         {
-            character.transform.LookAt(target.position);
+            Vector3 relativePos = target.position - character.transform.position;     
+            Quaternion rotation = Quaternion.Lerp(Quaternion.LookRotation(character.transform.forward), Quaternion.LookRotation(relativePos, Vector3.up), 0.1f);
+            character.transform.rotation = rotation;
+
             agent.destination = target.position;
             float dist = Vector3.Distance(character.transform.position, target.position);
             if (dist < meleeRange)
@@ -38,5 +44,7 @@ public class MovingState : CharacterBaseState
             agent.isStopped = true;
             character.SwitchState(character.IdleState);
         }
+
+        animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 }
