@@ -16,7 +16,7 @@ public class Melee : MonoBehaviour {
     private List<Collider> colliders = new List<Collider>();
     public List<Collider> GetColliders() { return colliders; }
 
-    #region Variables
+    #region VariablesClasses
 
     [Serializable]
     public class AudioInspector
@@ -26,7 +26,7 @@ public class Melee : MonoBehaviour {
         public AudioClip attackSound;
     }
 
-    [SerializeField] private AudioInspector audioInspector;
+    [SerializeField] private AudioInspector audio;
 
     [Header("Visuals")]
     [SerializeField] private GameObject weapon;
@@ -73,11 +73,11 @@ public class Melee : MonoBehaviour {
     private void Start() {
         aM = AudioManager.Instance;
 
-        if (audioInspector.hitSound == null) {
-            audioInspector.hitSound = aM.sfxMeleeHit;
+        if (audio.hitSound == null) {
+            audio.hitSound = aM.sfxMeleeHit;
         }
-        if (audioInspector.attackSound == null) {
-            audioInspector.attackSound = aM.sfxMeleeAttack;
+        if (audio.attackSound == null) {
+            audio.attackSound = aM.sfxMeleeAttack;
         }
 
         playerInputActions = PlayerInputs.Instance.playerInputActions;
@@ -132,7 +132,7 @@ public class Melee : MonoBehaviour {
         readyToAttack = false;
 
         if(animator != null)
-            animator.SetBool(animIDisAttacking, attacking);
+        animator.SetBool(animIDisAttacking, attacking);
 
 
         if (allowInvoke) {
@@ -140,8 +140,8 @@ public class Melee : MonoBehaviour {
             allowInvoke = false;
         }
 
-        if (audioInspector.attackSound != null)
-            audioSource.PlayOneShot(audioInspector.attackSound, 0.7F);
+        if (audio.attackSound != null)
+            audioSource.PlayOneShot(audio.attackSound, 0.7F);
         //AudioFW.PlayRandomPitch("sfx_player_melee_atk");
     }
     public void HitEvent()
@@ -162,7 +162,7 @@ public class Melee : MonoBehaviour {
         if (enemy.GetComponent<Rigidbody>())
             enemy.GetComponent<Rigidbody>().AddExplosionForce(hitForce, player.position, attackRange);
 
-        if (audioInspector.hitSound != null) AudioSource.PlayClipAtPoint(audioInspector.hitSound, transform.position);
+        if (audio.hitSound != null) AudioSource.PlayClipAtPoint(audio.hitSound, transform.position);
     }
 
     private void OnTriggerEnter(Collider other) {
