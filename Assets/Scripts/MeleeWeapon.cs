@@ -7,7 +7,7 @@ public class MeleeWeapon : MonoBehaviour
 {
     private void Start()
     {
-        //Health.OnDeath += Health_OnDeath;
+        Health.OnDeath += Health_OnDeath;
     }
    
     public string enemyTag = "Enemy";

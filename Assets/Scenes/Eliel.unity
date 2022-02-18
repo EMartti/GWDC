@@ -1248,6 +1248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2188613057120147248, guid: 966d1f19ffc43214f870aa1436d7f279, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2188613057120147255, guid: 966d1f19ffc43214f870aa1436d7f279, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1295,6 +1299,10 @@ PrefabInstance:
     - target: {fileID: 2188613057120147256, guid: 966d1f19ffc43214f870aa1436d7f279, type: 3}
       propertyPath: m_Name
       value: Enemy_Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188613057120147258, guid: 966d1f19ffc43214f870aa1436d7f279, type: 3}
+      propertyPath: deathDelay
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 966d1f19ffc43214f870aa1436d7f279, type: 3}
@@ -1437,6 +1445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 3161273089753200083, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3161273089753200089, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
       propertyPath: player
       value: 
@@ -1517,6 +1529,10 @@ PrefabInstance:
     - target: {fileID: 3948274711509523128, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652613128129848240, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
+      propertyPath: hitForce
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5652613128129848240, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
       propertyPath: meleeWeaponCollider

@@ -114,6 +114,7 @@ MonoBehaviour:
   hurtEffect: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
+  isDead: 0
 --- !u!114 &321206067821454290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathExplosion: {fileID: 1470759979578371256, guid: 891cf9358cb99e842a184c02e5350775, type: 3}
-  deathDelay: 0.63
+  deathDelay: 0.5
 --- !u!54 &6992212747682238672
 Rigidbody:
   m_ObjectHideFlags: 0

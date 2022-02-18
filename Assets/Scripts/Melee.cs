@@ -6,11 +6,12 @@ using UnityEngine;
 using System;
 
 public class Melee : MonoBehaviour {
-    //public Rigidbody rb;
-    public LayerMask whatIsEnemies;
-    private PlayerInputActions playerInputActions;
-
+    
     private AudioManager aM;
+    private PlayerInputActions playerInputActions;
+    public Animator animator;
+
+    public LayerMask whatIsEnemies;
     AudioSource audioSource;
 
     private List<Collider> colliders = new List<Collider>();
@@ -30,7 +31,6 @@ public class Melee : MonoBehaviour {
 
     [Header("Visuals")]
     [SerializeField] private GameObject weapon;
-    public Animator animator;
     public GameObject hitEffect;
 
     [Header("Parameters")]
@@ -50,24 +50,17 @@ public class Melee : MonoBehaviour {
     public float attackRange;
     public float hitForce;
 
-    public float maxLifeTime;
-
-    PhysicMaterial physics_mat;
-
     bool attacking, readyToAttack;
-
     private bool allowInvoke = true;
+    private bool isPlayer = false;
 
-    private void Awake() {
+    private void Awake() 
+    {
         audioSource = GetComponent<AudioSource>();
 
         readyToAttack = true;
 
-
-    }
-
-    public void PrintEvent(string s) {
-        Debug.Log("PrintEvent: " + s + " called at: " + Time.time);
+        if (gameObject.tag == "Player") isPlayer = true;
     }
 
     private void Start() {
@@ -80,12 +73,15 @@ public class Melee : MonoBehaviour {
             audio.attackSound = aM.sfxMeleeAttack;
         }
 
-        playerInputActions = PlayerInputs.Instance.playerInputActions;
+        if (isPlayer)
+        {
+            playerInputActions = PlayerInputs.Instance.playerInputActions;
 
-        playerInputActions.Player.Fire.Enable();
-        playerInputActions.Player.Fire.started += OnMelee;
+            playerInputActions.Player.Fire.Enable();
+            playerInputActions.Player.Fire.started += OnMelee;
 
-        animIDisAttacking = Animator.StringToHash("isAttacking");
+            animIDisAttacking = Animator.StringToHash("isAttacking");
+        }        
 
         if(animator != null)
         {
@@ -101,32 +97,26 @@ public class Melee : MonoBehaviour {
     }
 
     #region InputSystem
-    private void OnMelee(InputAction.CallbackContext obj) {
-        attacking = true;
-
-        if (readyToAttack && attacking) {
-            Attack();
-        }
-        attacking = false;
-    }
-
-    private void OnDisable() {
-        playerInputActions.Player.Fire.Disable();
-    }
-    #endregion
-
-    void Update() {
-        //attacking = false;
-        if (automatic && playerInputActions.Player.Fire.ReadValue<float>() > 0)
+    private void OnMelee(InputAction.CallbackContext obj) 
+    {
+        if (isPlayer)
+        {
             attacking = true;
 
-
-
-        //Automatic Attacking
-        if (readyToAttack && attacking && automatic) {
-            Attack();
-        }
+            if (readyToAttack && attacking)
+            {
+                Attack();
+            }
+            attacking = false;
+        }        
     }
+
+    private void OnDisable() 
+    {
+        if(isPlayer)
+            playerInputActions.Player.Fire.Disable();
+    }
+    #endregion
 
     public void Attack() {
         readyToAttack = false;
@@ -160,7 +150,7 @@ public class Melee : MonoBehaviour {
         if (hitEffect != null) Instantiate(hitEffect, transform.position, Quaternion.identity);
 
         if (enemy.GetComponent<Rigidbody>())
-            enemy.GetComponent<Rigidbody>().AddExplosionForce(hitForce, player.position, attackRange);
+            enemy.GetComponent<Rigidbody>().AddForce(hitForce * player.position - transform.position);
 
         if (audio.hitSound != null) AudioSource.PlayClipAtPoint(audio.hitSound, transform.position);
     }
