@@ -458,7 +458,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   audio:
-    hurtSound: {fileID: 0}
+    hurtSound: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathExplosion: {fileID: 1470759979578371256, guid: 891cf9358cb99e842a184c02e5350775, type: 3}
-  deathDelay: 0.5
+  deathDelay: 2
 --- !u!82 &-6903909757402017645
 AudioSource:
   m_ObjectHideFlags: 0

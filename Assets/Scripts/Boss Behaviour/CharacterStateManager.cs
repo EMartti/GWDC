@@ -8,12 +8,16 @@ public class CharacterStateManager : MonoBehaviour
     public IdlingState IdleState = new IdlingState();
     public MovingState MoveState = new MovingState();
     public AttackingState attackState = new AttackingState();
+    public DyingState deadState = new DyingState();
+
 
     private void Start()
     {
         currentState = IdleState;
 
         currentState.EnterState(this);
+
+        Health.OnDeath += Health_OnDeath;
 
     }
 
@@ -26,5 +30,21 @@ public class CharacterStateManager : MonoBehaviour
     {
         currentState = state;
         state.EnterState(this);
+    }
+
+    public void Health_OnDeath(Health sender)
+    {
+        if (sender != null)
+        {
+            if (sender.gameObject == gameObject)
+            {
+                currentState = deadState;
+                currentState.EnterState(this);
+            }
+        }
+    }
+    private void OnDestroy()
+    {
+        Health.OnDeath -= Health_OnDeath;
     }
 }

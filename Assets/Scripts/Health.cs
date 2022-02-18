@@ -33,6 +33,7 @@ public class Health : MonoBehaviour, IDamageable
     private AudioSource audioSource;
     public delegate void CharacterEventHandler(Health e);
     public static event CharacterEventHandler OnDeath;
+    
 
     [HideInInspector] public bool isDead = false;
 

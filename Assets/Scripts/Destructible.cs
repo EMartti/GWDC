@@ -10,7 +10,6 @@ public class Destructible : MonoBehaviour
     [SerializeField] private float deathDelay = 0f;
     private Health health;
 
-
     void Start()
     {
         Health.OnDeath += Health_OnDeath;
@@ -21,8 +20,7 @@ public class Destructible : MonoBehaviour
         if(sender != null)
         {
             if (sender.gameObject == gameObject)
-            {
-                health = sender;
+            {                
                 Invoke("Death", deathDelay);
             }       
         }
