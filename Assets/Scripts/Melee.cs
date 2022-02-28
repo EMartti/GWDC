@@ -22,7 +22,7 @@ public class Melee : MonoBehaviour {
         public GameObject hitEffect;
     }
 
-    [Serializable]
+    [Serializable] 
     public class ParametersInspector
     {
         public float timeBetweenAttack;
@@ -43,7 +43,7 @@ public class Melee : MonoBehaviour {
 
     [SerializeField] private AudioInspector audio;
     [SerializeField] private VisualsInspector visuals;
-    [SerializeField] private ParametersInspector parameters;
+    [SerializeField] public ParametersInspector parameters;
 
     private int animIDisAttacking;
     bool attacking, readyToAttack;

@@ -418,10 +418,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b84ed7ace29044d8cda6731c6ab2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelProgress: 0
-  xpRequiredToLvlUp: 1000
-  playerStartLevel: 1
+  playerStats: {fileID: 0}
+  playerHealthScript: {fileID: 6243341418018923226}
+  meleeScript: {fileID: 5652613128129848240}
   xpRequiredMultiplier: 1.5
+  playerStartLevel: 1
+  xpRequiredToLvlUp: 1000
+  maxHealthAddedPerLevel: 0
+  damageAddedPerLevel: 10
 --- !u!1 &4325627410011103524
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,11 +22,10 @@ public class PlayerStats : MonoBehaviour
     private static PlayerStats instance;
     #endregion
 
-    // Playerprogression tallentaa ja noutaa t‰‰lt‰ pelaajan statseihin liittyv‰t tiedot
+    // Pelaajaan liittyv‰t statsit - S‰ilyy skenejen v‰lill‰
 
     [SerializeField] 
     public int playerLevel;
-
-
+    public float levelProgress = 0f;
 
 }

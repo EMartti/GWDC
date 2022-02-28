@@ -22,7 +22,7 @@ public class Health : MonoBehaviour, IDamageable
     #endregion
 
     [Header("Parameters")]
-    [SerializeField] private int maxHealth = 100;
+    public int maxHealth = 100;
     public int currentHealth;
 
     [SerializeField] private AudioInspector audio;

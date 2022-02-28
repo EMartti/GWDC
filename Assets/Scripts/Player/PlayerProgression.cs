@@ -4,45 +4,67 @@ using UnityEngine;
 
 public class PlayerProgression : MonoBehaviour
 {
-    [SerializeField] private float levelProgress = 0f;
-    [SerializeField] private float xpRequiredToLvlUp = 1000f;
-    [SerializeField] private int playerStartLevel;
+    
 
-    private PlayerStats playerStats;
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private Health playerHealthScript;
+    [SerializeField] private Melee meleeScript;
 
-    // Kerroin, jolla Level-uppiin tarvittava xp-m‰‰r‰ nousee jokaisen level-upin j‰lkeens
+    [Header("Level & XP")]
     [SerializeField] private float xpRequiredMultiplier = 1.5f;
+    [SerializeField] private int playerStartLevel;
+    [SerializeField] private float xpRequiredToLvlUp = 1000f;
 
+    [Header("Health Settings")]
+    [SerializeField] private int maxHealthAddedPerLevel;
+
+    [Header("Damage")]
+    [SerializeField] private int damageAddedPerLevel = 10;
+
+   
 
     private void Start()
     {
         playerStats = PlayerStats.Instance;
+
+        playerHealthScript = GameObject.FindWithTag("Player").GetComponent<Health>();
+
+        meleeScript = GameObject.FindWithTag("Player").GetComponent<Melee>();
     }
 
 
     void LevelUp()
     {
-        //Increase player-level
+        // Increase player-level
         playerStats.playerLevel += 1;
         // Reset level-progress
-        levelProgress = 0f;
+        playerStats.levelProgress = 0f;
         // Multiply seuraavaan level-uppiin tarvittava xp
         xpRequiredToLvlUp = xpRequiredToLvlUp * xpRequiredMultiplier;
-        //Debug
+
+        // Nostaa pelaajan max healthia
+        playerHealthScript.maxHealth = playerHealthScript.maxHealth + maxHealthAddedPerLevel;
+        // Health refillaa level-upissa
+        playerHealthScript.currentHealth = playerHealthScript.maxHealth;
+
+        // Increase player damage
+        meleeScript.parameters.hitDamage += damageAddedPerLevel;
+
+        // Debug
         Debug.Log("Player achieved Level " + playerStats.playerLevel);
     }
 
-    // Funktio antaa pelaajalle XP:t‰
+    // Antaa pelaajalle XP:t‰
     // Callaa kaikista XP:n antajista (esim. XP-orbit, loot-chestit, etc.)
     // Toistaiseksi vain coin-dropit antaa xp
     public void GiveXp(float earnedXp)
     {
-        levelProgress += earnedXp;
+        playerStats.levelProgress += earnedXp;
 
         // DEBUG
         Debug.Log("Player earned " + earnedXp.ToString() + "XP");
 
-        if ( levelProgress >= xpRequiredToLvlUp)
+        if (playerStats.levelProgress >= xpRequiredToLvlUp)
         {
             LevelUp();
         }
