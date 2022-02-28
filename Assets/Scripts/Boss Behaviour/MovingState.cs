@@ -8,7 +8,7 @@ public class MovingState : CharacterBaseState
     public NavMeshAgent agent;
     private Transform target;
     public float meleeRange = 1.5f;
-    private bool targetDead;
+    private Health targetHealth;
     private Animator animator;
 
     public override void EnterState(CharacterStateManager character)
@@ -20,12 +20,14 @@ public class MovingState : CharacterBaseState
         agent.isStopped = false;
 
         animator = character.gameObject.GetComponent<Animator>();
+
+        targetHealth = target.gameObject.GetComponent<Health>();
     }
 
 
     public override void UpdateState(CharacterStateManager character)
     {
-        if (!targetDead)
+        if (!targetHealth.isDead)
         {
             Vector3 relativePos = target.position - character.transform.position;     
             Quaternion rotation = Quaternion.Lerp(Quaternion.LookRotation(character.transform.forward), Quaternion.LookRotation(relativePos, Vector3.up), 0.1f);
