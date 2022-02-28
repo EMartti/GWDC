@@ -7,7 +7,7 @@ public class MovingState : CharacterBaseState
 {
     public NavMeshAgent agent;
     private Transform target;
-    private float meleeRange = 1.5f;
+    public float meleeRange = 1.5f;
     private bool targetDead;
     private Animator animator;
 

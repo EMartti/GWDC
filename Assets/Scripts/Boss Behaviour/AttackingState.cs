@@ -3,7 +3,7 @@ using UnityEngine;
 public class AttackingState : CharacterBaseState
 {
     private Transform target;
-    private float attackInterval = 1;
+    public float attackInterval = 1;
     private float timer;
     private Melee characterMelee;
 

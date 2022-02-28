@@ -3,7 +3,7 @@ using UnityEngine;
 public class IdlingState : CharacterBaseState
 {
     Transform target;
-    float aggroRange = 4;
+    public float aggroRange = 4;
     private bool targetDead;
 
     public override void EnterState(CharacterStateManager character)
@@ -22,6 +22,4 @@ public class IdlingState : CharacterBaseState
             }
         }                   
     }
-
-
 }

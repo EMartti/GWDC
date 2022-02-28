@@ -10,9 +10,18 @@ public class CharacterStateManager : MonoBehaviour
     public AttackingState attackState = new AttackingState();
     public DyingState deadState = new DyingState();
 
+    public float aggroRange = 10f;
+    public float attackInterval = 1f;
+    public float meleeRange = 1f;
 
     private void Start()
     {
+        IdleState.aggroRange = aggroRange;
+
+        attackState.attackInterval = attackInterval;
+
+
+
         currentState = IdleState;
 
         currentState.EnterState(this);
