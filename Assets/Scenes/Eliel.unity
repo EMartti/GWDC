@@ -3272,6 +3272,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2448470220614654715, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448470220614654715, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
+      propertyPath: m_Mass
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3161273089753200083, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
       propertyPath: m_Name
       value: Enemy_Boss
@@ -3324,6 +3332,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3161273089753200167, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
+      propertyPath: maxHealth
+      value: 203
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186113127100062834, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
+      propertyPath: force
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186113127100062834, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
+      propertyPath: damageMult
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
 --- !u!1001 &4943380720686464302
@@ -3336,6 +3356,18 @@ PrefabInstance:
     - target: {fileID: 2739058059502302736, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3017182954864125500, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
+      propertyPath: canPush
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3017182954864125500, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
+      propertyPath: pushLayers.m_Bits
+      value: 823
+      objectReference: {fileID: 0}
+    - target: {fileID: 6243341418018923226, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
+      propertyPath: maxHealth
+      value: 1364
       objectReference: {fileID: 0}
     - target: {fileID: 8653089349249574724, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
       propertyPath: m_RootOrder

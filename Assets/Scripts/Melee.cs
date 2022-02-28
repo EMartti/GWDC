@@ -137,7 +137,7 @@ public class Melee : MonoBehaviour {
         {
             IDamageable damageable = collider.GetComponent<IDamageable>();
             if (damageable != null) {
-                damageable.TakeDamage(parameters.hitDamage);
+                damageable.TakeDamage(parameters.hitDamage, transform.position);
                 Hit(collider);
             }
         }
@@ -145,9 +145,6 @@ public class Melee : MonoBehaviour {
 
     private void Hit(Collider enemy) {
         if (visuals.hitEffect != null) Instantiate(visuals.hitEffect, transform.position, Quaternion.identity);
-
-        if (enemy.GetComponent<Rigidbody>())
-            enemy.GetComponent<Rigidbody>().AddForce(parameters.hitForce * enemy.transform.position - transform.position);
 
         if (audio.hitSound != null) AudioSource.PlayClipAtPoint(audio.hitSound, transform.position);
     }

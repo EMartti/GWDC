@@ -33,7 +33,8 @@ public class Health : MonoBehaviour, IDamageable
     private AudioSource audioSource;
     public delegate void CharacterEventHandler(Health e);
     public static event CharacterEventHandler OnDeath;
-    
+
+    private Knockback kb;
 
     [HideInInspector] public bool isDead = false;
 
@@ -42,6 +43,8 @@ public class Health : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
         
         audioSource = GetComponent<AudioSource>();
+        kb = GetComponent<Knockback>();
+
 
         aM = AudioManager.Instance;
 
@@ -53,7 +56,7 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector3 origin)
     {
         if (!isDead && damage > 0)
         {
@@ -61,6 +64,8 @@ public class Health : MonoBehaviour, IDamageable
                 audioSource.PlayOneShot(audio.hurtSound);
             if(effect.hurtEffect != null)
                 Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
+            if(kb != null)
+                kb.AddForce(damage, origin);
             currentHealth -= damage;
             if (currentHealth <= 0 && !isDead)
             {
