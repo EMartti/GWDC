@@ -319,13 +319,13 @@ GameObject:
   - component: {fileID: 2188613057120147255}
   - component: {fileID: 2188613057120147254}
   - component: {fileID: 2188613057120147253}
-  - component: {fileID: 2188613057120147252}
   - component: {fileID: 2188613057120147259}
   - component: {fileID: 2188613057120147258}
   - component: {fileID: 2188613057120147257}
   - component: {fileID: 2188613057120147248}
   - component: {fileID: 2188613057120147249}
   - component: {fileID: -698230677110483673}
+  - component: {fileID: 1632743475}
   m_Layer: 6
   m_Name: Enemy_Melee
   m_TagString: Enemy
@@ -340,7 +340,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2188613057120147256}
-  m_LocalRotation: {x: -0, y: -0.008111069, z: -0, w: 0.9999671}
+  m_LocalRotation: {x: 0, y: -0.008107052, z: 0, w: 0.99996716}
   m_LocalPosition: {x: 8.73, y: 0, z: -4.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -386,24 +386,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6086793, y: 1.5459797, z: 0.5811124}
   m_Center: {x: 0.01450467, y: 0.7529899, z: 0.0014011859}
---- !u!114 &2188613057120147252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2188613057120147256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599df19513ee21c4f99bf7ab44166cee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goal: {fileID: 0}
-  heightOffset: 0.5
-  agent: {fileID: 2188613057120147254}
-  distanceToTarget: 0
-  attackDist: 3
-  canSeeGoal: 0
 --- !u!114 &2188613057120147259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,12 +398,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSound: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
-  healSound: {fileID: 0}
-  healEffect: {fileID: 0}
-  hurtEffect: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
+  audio:
+    hurtSound: {fileID: 0}
+    healSound: {fileID: 0}
+  effect:
+    healEffect: {fileID: 0}
+    hurtEffect: {fileID: 0}
   isDead: 0
 --- !u!114 &2188613057120147258
 MonoBehaviour:
@@ -436,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathExplosion: {fileID: 1470759979578371256, guid: 891cf9358cb99e842a184c02e5350775, type: 3}
-  deathDelay: 0.63
+  deathDelay: 0.2
 --- !u!54 &2188613057120147257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -468,21 +452,18 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
-  audioInspector:
+  animator: {fileID: 0}
+  meleeWeaponCollider: {fileID: 2188613056640115610}
+  audio:
     hitSound: {fileID: 0}
     attackSound: {fileID: 0}
-  weapon: {fileID: 0}
-  animator: {fileID: 0}
-  hitEffect: {fileID: 0}
-  automatic: 0
-  timeBetweenAttack: 0
-  attackPosition: {fileID: 2188613056640115608}
-  player: {fileID: 2188613057120147255}
-  meleeWeaponCollider: {fileID: 2188613056640115610}
-  hitDamage: 30
-  attackRange: 2
-  hitForce: 0
-  maxLifeTime: 0
+  visuals:
+    weapon: {fileID: 0}
+    hitEffect: {fileID: 0}
+  parameters:
+    timeBetweenAttack: 1
+    hitDamage: 25
+    hitForce: 0
 --- !u!114 &2188613057120147249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,6 +573,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1632743475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188613057120147256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9d9995e139afd48b66bcf8d78c4cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggroRange: 10
+  attackInterval: 1
+  meleeRange: 1
 --- !u!1 &2188613057899561572
 GameObject:
   m_ObjectHideFlags: 0
