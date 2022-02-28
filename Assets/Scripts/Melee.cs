@@ -114,7 +114,6 @@ public class Melee : MonoBehaviour {
     #endregion
 
     public void Attack() {
-        Debug.Log("Attack!");
         readyToAttack = false;
         attacking = true;
 

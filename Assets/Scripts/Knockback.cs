@@ -18,7 +18,6 @@ public class Knockback : MonoBehaviour
     public void AddForce(int damage, Vector3 origin)
     {
         Vector3 dir = (transform.position - origin).normalized;
-        Debug.Log("KnockBack" + dir);
         rb.AddForce(dir * force + dir * damage * damageMult, ForceMode.Impulse);
     }
 }
