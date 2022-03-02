@@ -34,18 +34,25 @@ public class Health : MonoBehaviour, IDamageable
     public delegate void CharacterEventHandler(Health e);
     public static event CharacterEventHandler OnDeath;
 
+    private bool hasClass = false;
+
     private Knockback kb;
 
-    [SerializeField] private Class characterClass;
+    [SerializeField] private CharacterClass characterClass;
+    [SerializeField] private Class thisClass;
 
     [HideInInspector] public bool isDead = false;
 
     void Start()
     {
         currentHealth = maxHealth;
+        
+        characterClass = GetComponent<CharacterClass>();
 
-        if (GetComponent<CharacterClass>() != null)
-            characterClass = GetComponent<CharacterClass>().characterClass;
+        if (characterClass != null)
+        {
+            hasClass = true;
+        }
 
         audioSource = GetComponent<AudioSource>();
         kb = GetComponent<Knockback>();
@@ -65,7 +72,7 @@ public class Health : MonoBehaviour, IDamageable
     {
         if (!isDead && damage > 0)
         {
-            if (GetComponent<CharacterClass>() != null)
+            if (hasClass)
                 damage = Mathf.RoundToInt(damage * ClassDmg(attacker));
 
             if (audio.hurtSound != null)
@@ -86,14 +93,17 @@ public class Health : MonoBehaviour, IDamageable
 
     private float ClassDmg(GameObject attacker)
     {
-        Class attackerClass = attacker.GetComponent<CharacterClass>().characterClass;
         float damageMult = 1f;
 
-        if (attackerClass == Class.Mage && characterClass == Class.Melee) { damageMult = 1.3f; return damageMult; }
+        CharacterClass attackerClass = attacker.GetComponent<CharacterClass>();
 
-        if (attackerClass == Class.Melee && characterClass == Class.Range) { damageMult = 1.3f; return damageMult; }
+        if (attackerClass == null) return damageMult;        
 
-        if (attackerClass == Class.Range && characterClass == Class.Mage) { damageMult = 1.3f; return damageMult; }
+        if (attackerClass.characterClass == Class.Mage && thisClass == Class.Melee) { damageMult = 1.3f; return damageMult; }
+
+        if (attackerClass.characterClass == Class.Melee && thisClass == Class.Range) { damageMult = 1.3f; return damageMult; }
+
+        if (attackerClass.characterClass == Class.Range && thisClass == Class.Mage) { damageMult = 1.3f; return damageMult; }
 
         return damageMult;
     }
