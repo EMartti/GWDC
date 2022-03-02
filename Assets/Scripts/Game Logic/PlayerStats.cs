@@ -27,5 +27,6 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] 
     public int playerLevel;
     public float levelProgress = 0f;
+    public int damageBonus;
 
 }

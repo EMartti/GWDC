@@ -28,6 +28,7 @@ public class Melee : MonoBehaviour {
         public float timeBetweenAttack;
         public int hitDamage;
         public float hitForce;
+        public int baseDamage = 50;
     }
     #endregion
     private AudioManager aM;

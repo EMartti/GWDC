@@ -37,18 +37,16 @@ public class PlayerProgression : MonoBehaviour
     {
         // Increase player-level
         playerStats.playerLevel += 1;
-        // Reset level-progress
         playerStats.levelProgress = 0f;
-        // Multiply seuraavaan level-uppiin tarvittava xp
-        xpRequiredToLvlUp = xpRequiredToLvlUp * xpRequiredMultiplier;
+        xpRequiredToLvlUp *= xpRequiredMultiplier;
 
-        // Nostaa pelaajan max healthia
+        // Nostaa pelaajan max healthia & Health refill
         playerHealthScript.maxHealth = playerHealthScript.maxHealth + maxHealthAddedPerLevel;
-        // Health refillaa level-upissa
         playerHealthScript.currentHealth = playerHealthScript.maxHealth;
 
         // Increase player damage
-        meleeScript.parameters.hitDamage += damageAddedPerLevel;
+        PlayerStats.Instance.damageBonus += damageAddedPerLevel;
+        meleeScript.parameters.hitDamage = meleeScript.parameters.baseDamage + PlayerStats.Instance.damageBonus;
 
         // Debug
         Debug.Log("Player achieved Level " + playerStats.playerLevel);
