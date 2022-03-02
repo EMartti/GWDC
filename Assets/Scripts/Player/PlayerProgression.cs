@@ -63,7 +63,7 @@ public class PlayerProgression : MonoBehaviour
             meleeScript.parameters.hitDamage = meleeScript.parameters.baseDamage + PlayerStats.Instance.damageBonus;
 
             // Debug
-            Debug.Log("Player achieved Level " + playerStats.playerLevel);
+            Debug.Log("Player achieved Level " + playerStats.playerLevel + "!");
 
 
             // Jos edellisest‰ level-upista j‰i ylim‰‰r‰st‰ xp:t‰, joka riitt‰‰ toiseen leveliin - Level uppaa uudestaan
