@@ -32,39 +32,44 @@ public class PlayerProgression : MonoBehaviour
         meleeScript = GameObject.FindWithTag("Player").GetComponent<Melee>();
     }
 
-
-    void LevelUp()
-    {
-        // Increase player-level
-        playerStats.playerLevel += 1;
-        playerStats.levelProgress = 0f;
-        xpRequiredToLvlUp *= xpRequiredMultiplier;
-
-        // Nostaa pelaajan max healthia & Health refill
-        playerHealthScript.maxHealth = playerHealthScript.maxHealth + maxHealthAddedPerLevel;
-        playerHealthScript.currentHealth = playerHealthScript.maxHealth;
-
-        // Increase player damage
-        PlayerStats.Instance.damageBonus += damageAddedPerLevel;
-        meleeScript.parameters.hitDamage = meleeScript.parameters.baseDamage + PlayerStats.Instance.damageBonus;
-
-        // Debug
-        Debug.Log("Player achieved Level " + playerStats.playerLevel);
-    }
-
-    // Antaa pelaajalle XP:tä
-    // Callaa kaikista XP:n antajista (esim. XP-orbit, loot-chestit, etc.)
-    // Toistaiseksi vain coin-dropit antaa xp
     public void GiveXp(float earnedXp)
     {
-        playerStats.levelProgress += earnedXp;
+        playerStats.currentXp += earnedXp;
 
-        // DEBUG
+        // Debug
         Debug.Log("Player earned " + earnedXp.ToString() + "XP");
 
-        if (playerStats.levelProgress >= xpRequiredToLvlUp)
-        {
+        if (playerStats.currentXp >= xpRequiredToLvlUp)
+        { 
             LevelUp();
         }
+    }
+
+    public void LevelUp()
+    {
+            // Remove level xp from currentXp
+            playerStats.currentXp -= xpRequiredToLvlUp;
+
+            // Level / stat increase
+            playerStats.playerLevel += 1;
+            xpRequiredToLvlUp *= xpRequiredMultiplier;
+                
+            // Health increase
+            playerHealthScript.maxHealth = playerHealthScript.maxHealth + maxHealthAddedPerLevel;
+            playerHealthScript.currentHealth = playerHealthScript.maxHealth;
+            
+            // Damage increase
+            PlayerStats.Instance.damageBonus += damageAddedPerLevel;
+            meleeScript.parameters.hitDamage = meleeScript.parameters.baseDamage + PlayerStats.Instance.damageBonus;
+
+            // Debug
+            Debug.Log("Player achieved Level " + playerStats.playerLevel);
+
+
+            // Jos edellisestä level-upista jäi ylimäärästä xp:tä, joka riittää toiseen leveliin - Level uppaa uudestaan
+            if (playerStats.currentXp >= xpRequiredToLvlUp)
+            {
+                LevelUp();
+            }
     }
 }

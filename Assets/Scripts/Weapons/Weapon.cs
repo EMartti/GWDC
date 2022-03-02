@@ -121,6 +121,9 @@ public class Weapon : MonoBehaviour
 
         currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce, ForceMode.Impulse);
         currentBullet.GetComponent<Rigidbody>().AddForce(transform.up * upwardForce, ForceMode.Impulse);
+        
+        if (gameObject.tag == "Player")
+            currentBullet.GetComponent<CustomBullet>().explosionDamage += PlayerStats.Instance.damageBonus;
 
         if (muzzleFlash != null)
             Instantiate(muzzleFlash, firingPoint.position, Quaternion.identity);

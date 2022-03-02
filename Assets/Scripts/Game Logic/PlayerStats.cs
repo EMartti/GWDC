@@ -24,9 +24,8 @@ public class PlayerStats : MonoBehaviour
 
     // Pelaajaan liittyvät statsit - Säilyy skenejen välillä
 
-    [SerializeField] 
-    public int playerLevel;
-    public float levelProgress = 0f;
-    public int damageBonus;
+    [SerializeField] public int playerLevel;
+    [SerializeField] public int damageBonus;
+    [SerializeField] public float currentXp = 0f;
 
 }
