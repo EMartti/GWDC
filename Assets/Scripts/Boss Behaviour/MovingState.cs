@@ -47,6 +47,7 @@ public class MovingState : CharacterBaseState
             character.SwitchState(character.IdleState);
         }
 
-        animator.SetFloat("Speed", agent.velocity.magnitude);
+        if (animator != null)
+            animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 }

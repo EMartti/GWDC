@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 904172666}
   - component: {fileID: 3017182954864125500}
   - component: {fileID: 7727841614992522179}
+  - component: {fileID: 4624447638391565931}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -348,6 +349,7 @@ MonoBehaviour:
   effect:
     healEffect: {fileID: 1969967651396293653, guid: 3df31be828c063b46bce3dcf343b1604, type: 3}
     hurtEffect: {fileID: 779801061157678525, guid: 6123eeb4011cb2c488d257db01bbddce, type: 3}
+  characterClass: 0
   isDead: 0
 --- !u!114 &5652613128129848240
 MonoBehaviour:
@@ -426,6 +428,19 @@ MonoBehaviour:
   xpRequiredToLvlUp: 1000
   maxHealthAddedPerLevel: 0
   damageAddedPerLevel: 10
+--- !u!114 &4624447638391565931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739058059502302736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb27a7faefc8ec4da143d3b4840a940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterClass: 0
 --- !u!1 &4325627410011103524
 GameObject:
   m_ObjectHideFlags: 0

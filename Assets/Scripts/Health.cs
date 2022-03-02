@@ -36,12 +36,17 @@ public class Health : MonoBehaviour, IDamageable
 
     private Knockback kb;
 
+    [SerializeField] private Class characterClass;
+
     [HideInInspector] public bool isDead = false;
 
     void Start()
     {
         currentHealth = maxHealth;
-        
+
+        if (GetComponent<CharacterClass>() != null)
+            characterClass = GetComponent<CharacterClass>().characterClass;
+
         audioSource = GetComponent<AudioSource>();
         kb = GetComponent<Knockback>();
 
@@ -60,7 +65,10 @@ public class Health : MonoBehaviour, IDamageable
     {
         if (!isDead && damage > 0)
         {
-            if(audio.hurtSound != null)
+            if (GetComponent<CharacterClass>() != null)
+                damage = Mathf.RoundToInt(damage * ClassDmg(attacker));
+
+            if (audio.hurtSound != null)
                 audioSource.PlayOneShot(audio.hurtSound);
             if(effect.hurtEffect != null)
                 Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
@@ -74,8 +82,22 @@ public class Health : MonoBehaviour, IDamageable
                 if(OnDeath != null) OnDeath(this);
             }            
         }
-    }   
-    
+    }
+
+    private float ClassDmg(GameObject attacker)
+    {
+        Class attackerClass = attacker.GetComponent<CharacterClass>().characterClass;
+        float damageMult = 1f;
+
+        if (attackerClass == Class.Mage && characterClass == Class.Melee) { damageMult = 1.3f; return damageMult; }
+
+        if (attackerClass == Class.Melee && characterClass == Class.Range) { damageMult = 1.3f; return damageMult; }
+
+        if (attackerClass == Class.Range && characterClass == Class.Mage) { damageMult = 1.3f; return damageMult; }
+
+        return damageMult;
+    }
+
     public void AddHealth(int healValue) {
         if (audio.healSound != null)
             audioSource.PlayOneShot(audio.healSound);
