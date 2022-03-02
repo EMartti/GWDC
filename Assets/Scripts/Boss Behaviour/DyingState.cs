@@ -13,7 +13,8 @@ public class DyingState : CharacterBaseState
     {
         animator = character.gameObject.GetComponent<Animator>();
         animIDisDead = Animator.StringToHash("isDead");
-        animator.SetBool(animIDisDead, true);
+        if (animator != null)
+            animator.SetBool(animIDisDead, true);
 
         agent = character.GetComponent<NavMeshAgent>();
         agent.isStopped = true;

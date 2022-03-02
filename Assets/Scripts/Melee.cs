@@ -162,6 +162,7 @@ public class Melee : MonoBehaviour {
         readyToAttack = true;
         allowInvoke = true;
         attacking = false;
-        animator.SetBool(animIDisAttacking, false);
+        if (animator != null)
+            animator.SetBool(animIDisAttacking, false);
     }
 }
