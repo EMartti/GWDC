@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class Health : MonoBehaviour, IDamageable
 {
     #region VariableClasses
@@ -38,8 +40,8 @@ public class Health : MonoBehaviour, IDamageable
 
     private Knockback kb;
 
-    [SerializeField] private CharacterClass characterClass;
-    [SerializeField] private Class thisClass;
+    private CharacterClass characterClass;
+    private Class thisClass;
 
     [HideInInspector] public bool isDead = false;
 
