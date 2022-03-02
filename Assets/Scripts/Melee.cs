@@ -136,7 +136,7 @@ public class Melee : MonoBehaviour {
         {
             IDamageable damageable = collider.GetComponent<IDamageable>();
             if (damageable != null) {
-                damageable.TakeDamage(parameters.hitDamage, transform.position);
+                damageable.TakeDamage(parameters.hitDamage, gameObject);
                 Hit(collider);
             }
         }

@@ -47,7 +47,7 @@ public class Missile : MonoBehaviour {
                 IDamageable damageable = other.GetComponent<IDamageable>();
                 if (damageable != null)
                 {
-                    damageable.TakeDamage(25, transform.position);
+                    damageable.TakeDamage(25, gameObject);
                 }
             }
 

@@ -69,7 +69,7 @@ public class CustomBullet : MonoBehaviour
         IDamageable damageable = collider.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(explosionDamage, Vector3.zero);
+            damageable.TakeDamage(explosionDamage, gameObject);
             Explode();
         }
             
@@ -87,7 +87,7 @@ public class CustomBullet : MonoBehaviour
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(explosionDamage, Vector3.zero);
+            damageable.TakeDamage(explosionDamage, gameObject);
             Explode();
         }
         /*

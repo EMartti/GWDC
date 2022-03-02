@@ -56,7 +56,7 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int damage, Vector3 origin)
+    public void TakeDamage(int damage, GameObject attacker)
     {
         if (!isDead && damage > 0)
         {
@@ -64,8 +64,8 @@ public class Health : MonoBehaviour, IDamageable
                 audioSource.PlayOneShot(audio.hurtSound);
             if(effect.hurtEffect != null)
                 Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
-            if(kb != null)
-                kb.AddForce(damage, origin);
+            if (kb != null)
+                kb.AddForce(damage, attacker.transform.position); ;
             currentHealth -= damage;
             if (currentHealth <= 0 && !isDead)
             {
