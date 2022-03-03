@@ -7,16 +7,23 @@ public class LootSpawn : MonoBehaviour {
     private GameObject healthPack;
 
     [SerializeField] private GameObject goldPiece;
+    [SerializeField] private GameObject expOrb;
     [SerializeField] private bool willDropHP = false;
 
     [Range(0.0f, 1.0f)] //inspector slider for the float below
     [SerializeField] private float healthPackDropChance = 0.5f;
     [Range(0, 20)] //inspector slider for the float below
     [SerializeField] private int goldAmtToDrop = 10;
+    [Range(0, 10)] //inspector slider for the float below
+    [SerializeField] private int expAmtToDrop = 5;
 
     void Start() {
         for (int i = 0; i < goldAmtToDrop; i++) {
             Instantiate(goldPiece, transform.position, Random.rotation, gameObject.transform);
+        }
+
+        for (int i = 0; i < expAmtToDrop; i++) {
+            Instantiate(expOrb, transform.position, Random.rotation, gameObject.transform);
         }
 
         healthPack = GetComponentInChildren<HealthPack>().gameObject;
