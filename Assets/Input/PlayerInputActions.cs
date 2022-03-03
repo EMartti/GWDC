@@ -107,6 +107,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""OpenPerks"",
+                    ""type"": ""Button"",
+                    ""id"": ""b9e86bb1-76aa-48ab-a3d2-b729ddadcc7e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -481,6 +490,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9e6b9f5-cf44-41c2-9c70-68fb191191ea"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenPerks"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1077,6 +1097,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
+        m_Player_OpenPerks = m_Player.FindAction("OpenPerks", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1157,6 +1178,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_OpenInventory;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_MousePosition;
+    private readonly InputAction m_Player_OpenPerks;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1170,6 +1192,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
+        public InputAction @OpenPerks => m_Wrapper.m_Player_OpenPerks;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1206,6 +1229,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MousePosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
+                @OpenPerks.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenPerks;
+                @OpenPerks.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenPerks;
+                @OpenPerks.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenPerks;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1237,6 +1263,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @OpenPerks.started += instance.OnOpenPerks;
+                @OpenPerks.performed += instance.OnOpenPerks;
+                @OpenPerks.canceled += instance.OnOpenPerks;
             }
         }
     }
@@ -1402,6 +1431,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnOpenPerks(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
