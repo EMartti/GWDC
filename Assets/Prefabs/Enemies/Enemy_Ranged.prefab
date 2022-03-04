@@ -291,12 +291,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSound: {fileID: 0}
-  healSound: {fileID: 0}
-  healEffect: {fileID: 0}
-  hurtEffect: {fileID: 779801061157678525, guid: 6123eeb4011cb2c488d257db01bbddce, type: 3}
   maxHealth: 100
   currentHealth: 0
+  audio:
+    hurtSound: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
+    healSound: {fileID: 0}
+  effect:
+    healEffect: {fileID: 0}
+    hurtEffect: {fileID: 779801061157678525, guid: 6123eeb4011cb2c488d257db01bbddce, type: 3}
   isDead: 0
 --- !u!114 &3575980258126457971
 MonoBehaviour:
