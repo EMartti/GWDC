@@ -35,6 +35,16 @@ public class Player : MonoBehaviour
                 health.maxHealth += 100;
                 health.currentHealth = health.maxHealth;
                 break;
+
+            case PlayerPerks.PerkType.MaxHP2:
+                health.maxHealth += 100;
+                health.currentHealth = health.maxHealth;
+                break;
+
+            case PlayerPerks.PerkType.MaxHP3:
+                health.maxHealth += 100;
+                health.currentHealth = health.maxHealth;
+                break;
         }
 
     }

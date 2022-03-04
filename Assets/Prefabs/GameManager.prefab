@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7969285611971969488}
   - component: {fileID: 2974594128823826003}
   - component: {fileID: -9180279946260015449}
+  - component: {fileID: 2126608759}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -75,6 +76,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLevel: 0
+  damageBonus: 0
+  currentXp: 0
+--- !u!114 &2126608759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7969285611971969487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033caca0b37f08e4b8837e1c73043635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perkCanvas: {fileID: 0}
 --- !u!1001 &7969285610760674442
 PrefabInstance:
   m_ObjectHideFlags: 0
