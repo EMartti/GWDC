@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-
-
         playerPerks = new PlayerPerks();
         playerPerks.OnPerkUnlocked += playerPerks_OnPerkUnlocked;
 
