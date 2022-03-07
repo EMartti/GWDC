@@ -17,6 +17,11 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private GameObject roomCorner;
     [SerializeField] private GameObject roomDoor;
 
+    [SerializeField] private GameObject roomI;
+    [SerializeField] private GameObject roomL;
+    [SerializeField] private GameObject roomT;
+    [SerializeField] private GameObject roomX;
+
     [SerializeField] private Transform worldGeometry;
     [SerializeField] private GameObject player;
 
@@ -27,11 +32,20 @@ public class LevelGeneration : MonoBehaviour
 
     private int xLimit, zLimit;
     private int xPos, zPos;
+    private int xOffset, zOffset;
 
     private int triesToDeadend = 0;
     private bool deadend = false;
 
     public static int[,] array2D;
+
+    private enum MoveDir { Up, Down, Left, Right }
+    private MoveDir prevMove;
+    private MoveDir nextMove;
+
+    private RoomType roomType;
+    private GameObject newRoom;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -42,17 +56,15 @@ public class LevelGeneration : MonoBehaviour
         xPos = Mathf.RoundToInt(levelSize / 2);
         zPos = Mathf.RoundToInt(levelSize / 2);
 
-        array2D[xPos, zPos] = 1;
-        //CheckSurround(xPos, zPos);
+        xOffset = xPos * centerDistance;
+        zOffset = zPos * centerDistance;
 
-        //DebugArray();
+        array2D[xPos, zPos] = 1;
 
         for (int i = 0; i < roomAmount; i++)
         {
-            if(!deadend) SpawnRoom(i);
+            if(!deadend) SpawnPath(i);
         }
-
-        //DebugArray();
 
         GenerateParts();
 
@@ -94,54 +106,88 @@ public class LevelGeneration : MonoBehaviour
     {
         foreach(RoomAndCoord room in roomList)
         {
-            //check if up isn't connected
-            if(room.z + 1 <= levelSize)
-                if(array2D[room.x, room.z + 1] == 0)
-                {
-                    GameObject door = room.gameObj.transform.Find("DoorN").gameObject;
-                    door.SetActive(true);
-                }
-            //check if right isn't connected
-            if (room.x + 1 <= levelSize)
-                if (array2D[room.x + 1, room.z] == 0)
-                {
-                    GameObject door = room.gameObj.transform.Find("DoorE").gameObject;
-                    door.SetActive(true);
-                }
-            //check if down isn't connected
-            if (room.z != 0)
-                if (array2D[room.x, room.z - 1] == 0)
-                {
-                    GameObject door = room.gameObj.transform.Find("DoorS").gameObject;
-                    door.SetActive(true);
-                }
-            //check if left isn't connected
-            if (room.x != 0)
-                if (array2D[room.x - 1, room.z] == 0)
-                {
-                    GameObject door = room.gameObj.transform.Find("DoorW").gameObject;
-                    door.SetActive(true);
-                }
+            if (room.roomType == RoomType.Start) newRoom = roomStart;
+            if (room.roomType == RoomType.End) newRoom = roomEnd;
+            if (room.roomType == RoomType.I) newRoom = roomI;
+            if (room.roomType == RoomType.L) newRoom = roomL;
+            Instantiate(newRoom, new Vector3(room.x * centerDistance -xOffset , 0, room.z * centerDistance - zOffset), room.rotation);
         }
     }
 
-    private void SpawnRoom(int index)
+    private void SpawnPath(int index)
     {
-        int rand = Random.Range(0, rooms.Length);  
+        Quaternion startRot = Quaternion.identity;
         array2D[xPos, zPos] = 1;
         RoomAndCoord newRoom;
+        prevMove = nextMove;        
+
         if (index == 0)
 
         {
-            newRoom = new RoomAndCoord(Instantiate(roomStart, transform.position, Quaternion.identity), xPos, zPos);
+            Move();
+            if (nextMove == MoveDir.Up) startRot = Quaternion.Euler(0f, 180f, 0f);
+            if (nextMove == MoveDir.Down) startRot = Quaternion.Euler(0f, 180f, 0f);
+            if (nextMove == MoveDir.Right) startRot = Quaternion.Euler(0f, 270f, 0f);
+            if (nextMove == MoveDir.Left) startRot = Quaternion.Euler(0f, 90f, 0f);
+            newRoom = new RoomAndCoord(xPos, zPos, RoomType.Start, startRot);
+            if (nextMove == MoveDir.Up) zPos += 1;
+            if (nextMove == MoveDir.Down) zPos -= 1;
+            if (nextMove == MoveDir.Right) xPos += 1;
+            if (nextMove == MoveDir.Left) xPos -= 1;
+
         }
         else
         {
-            newRoom = new RoomAndCoord(Instantiate(rooms[rand], transform.position, Quaternion.identity), xPos, zPos);
+            prevMove = nextMove;
+            Move();
+            newRoom = GetRoomType(prevMove, nextMove);
+            if (nextMove == MoveDir.Up) zPos += 1;
+            if (nextMove == MoveDir.Down) zPos -= 1;
+            if (nextMove == MoveDir.Right) xPos += 1;
+            if (nextMove == MoveDir.Left) xPos -= 1;
         }
         roomList.Add(newRoom);
         triesToDeadend = 0;
-        Move();
+        
+    }
+
+    private RoomAndCoord GetRoomType(MoveDir lastMove, MoveDir nextMove)
+    {
+        Quaternion rotation = Quaternion.identity;
+        roomType = RoomType.Start;
+        // Straight piece roomI
+        if ((lastMove == MoveDir.Up && nextMove == MoveDir.Up) || (lastMove == MoveDir.Down && nextMove == MoveDir.Down))
+        {
+            roomType = RoomType.I;
+        }
+        if ((lastMove == MoveDir.Left && nextMove == MoveDir.Left) || (lastMove == MoveDir.Right && nextMove == MoveDir.Right))
+        {
+            roomType = RoomType.I;
+            rotation = Quaternion.Euler(0f, 90f, 0f);
+        }
+        // Turn piece roomL
+        if ((lastMove == MoveDir.Up && nextMove == MoveDir.Right) || (lastMove == MoveDir.Left && nextMove == MoveDir.Down))
+        {
+            roomType = RoomType.L;
+            rotation = Quaternion.Euler(0f, -90f, 0f);
+        }
+        if ((lastMove == MoveDir.Right && nextMove == MoveDir.Down) || (lastMove == MoveDir.Up && nextMove == MoveDir.Left))
+        {
+            roomType = RoomType.L;
+            rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        if ((lastMove == MoveDir.Down && nextMove == MoveDir.Left) || (lastMove == MoveDir.Right && nextMove == MoveDir.Up))
+        {
+            roomType = RoomType.L;
+            rotation = Quaternion.Euler(0f, 90f, 0f);
+        }
+        if ((lastMove == MoveDir.Left && nextMove == MoveDir.Up) || (lastMove == MoveDir.Down && nextMove == MoveDir.Right))
+        {
+            roomType = RoomType.L;
+            rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+
+        return new RoomAndCoord(xPos, zPos, roomType, rotation);
     }
 
     private void Move()
@@ -159,9 +205,9 @@ public class LevelGeneration : MonoBehaviour
                     Move();
                 }
                 else
-                {                   
-                    zPos += 1;                    
+                {                    
                     transform.position += Vector3.forward * centerDistance;
+                    nextMove = MoveDir.Up;
                 }                
                 break;
 
@@ -172,8 +218,8 @@ public class LevelGeneration : MonoBehaviour
                 }
                 else
                 {
-                    xPos += 1;
                     transform.position += Vector3.right * centerDistance;
+                    nextMove = MoveDir.Right;
                 }                
                 break;
 
@@ -184,8 +230,8 @@ public class LevelGeneration : MonoBehaviour
                 }                    
                 else
                 {
-                    zPos -= 1;
                     transform.position += Vector3.back * centerDistance;
+                    nextMove = MoveDir.Down;
                 }
                 break;
 
@@ -196,91 +242,28 @@ public class LevelGeneration : MonoBehaviour
                 }
                 else
                 {
-                    xPos -= 1;
                     transform.position += Vector3.left * centerDistance;
+                    nextMove = MoveDir.Left;
                 }
                 break;
-        }
-    }
-
-    private void SpawnCorners()
-    {
-        transform.position += Vector3.forward * centerDistance / 3;
-        transform.position += Vector3.right * centerDistance / 3;
-        Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.right, Vector3.up));
-
-        transform.position += Vector3.back * 2 * centerDistance / 3;
-        Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.back, Vector3.up));
-
-        transform.position += Vector3.left * 2 * centerDistance / 3;
-        Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.left, Vector3.up));
-
-        transform.position += Vector3.forward * 2 * centerDistance / 3;
-        Instantiate(roomCorner, transform.position, Quaternion.LookRotation(Vector3.forward, Vector3.up));
-
-        transform.position += Vector3.right * centerDistance / 3;
-        transform.position += Vector3.back * centerDistance / 3;
-    }
-
-    private void SpawnWall()
-    {
-        
-
-    }
-
-    private void SpawnDoor(Vector3 moveDir)
-    {
-        transform.position += moveDir * (centerDistance / 3);
-        Instantiate(roomDoor, transform.position, Quaternion.LookRotation(moveDir, Vector3.up));
-        transform.position += moveDir * (centerDistance / 3);
-        Instantiate(roomDoor, transform.position, Quaternion.LookRotation(-moveDir, Vector3.up));
-        transform.position -= moveDir * (2 * centerDistance / 3);
-    }
-
-
-    private void CheckSurround(int PosX, int PosZ)
-    {
-        int tempX = PosX - 1;
-        int tempZ = PosZ - 1;
-
-        //Debug.Log(PosX + " " + PosZ);
-
-        for (int x = 0; x < 3; x++)
-        {
-            for (int z = 0; z < 3; z++)
-            {
-                if (array2D[tempX + x,tempZ + z] == 0) array2D[tempX + x, tempZ + z] = 2;
-                //if (array2D[tempX + x, tempZ + z] % 2 != 0 && array2D[tempX + x, tempZ + z] != 1) array2D[tempX + x, tempZ + z] = 3;
-            }
         }
     }
 }
 
 public class RoomAndCoord
 {
-    public GameObject gameObj;
     public int x;
     public int z;
-
+    public RoomType roomType;
+    public Quaternion rotation;
     
-    public RoomAndCoord(GameObject newGameObj, int newX, int newZ)
+    public RoomAndCoord(int newX, int newZ, RoomType newRoomType, Quaternion newRotation)
     {        
-        gameObj = newGameObj;
         x = newX;
         z = newZ;
+        roomType = newRoomType;
+        rotation = newRotation;
     }
-    /*
-    //This method is required by the IComparable
-    //interface. 
-    public int CompareTo(RoomAndCoord other)
-    {
-        if (other == null)
-        {
-            return 1;
-        }
-
-        //Return the difference in power.
-        return x - other.x;
-    }
-    */
 }
+
+public enum RoomType { Start, End, I, L, T, X }

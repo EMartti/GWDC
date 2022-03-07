@@ -469,13 +469,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rooms:
   - {fileID: 5384782066855338365, guid: bff6a06f69ff7e64988d4dfd9cad9200, type: 3}
-  centerDistance: 20
+  centerDistance: 30
   roomAmount: 60
   levelSize: 16
-  roomStart: {fileID: 5384782066855338365, guid: 8a1bcb452f4d52e4497c72de2a1c27be, type: 3}
-  roomEnd: {fileID: 5384782066855338365, guid: 8a1bcb452f4d52e4497c72de2a1c27be, type: 3}
+  roomStart: {fileID: 1531917770129525120, guid: b1b284629ade18345b4352673369bbe3, type: 3}
+  roomEnd: {fileID: 1531917770129525120, guid: b1b284629ade18345b4352673369bbe3, type: 3}
   roomCorner: {fileID: 1739531883232404774, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
   roomDoor: {fileID: 866644976478422339, guid: fb16ff42a1f54494bae6ca063228a50e, type: 3}
+  roomI: {fileID: 7664730834572342141, guid: 22f5e5c77609a554d9a3009d6b106067, type: 3}
+  roomL: {fileID: 4460982746296003108, guid: d0802a7c4737b4a4eaf80112e64c93ed, type: 3}
+  roomT: {fileID: 0}
+  roomX: {fileID: 0}
   worldGeometry: {fileID: 1420188005}
   player: {fileID: 5652613128129848231}
 --- !u!4 &1420188005
@@ -581,10 +585,6 @@ PrefabInstance:
     - target: {fileID: 8467534692044977184, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: pitch
       value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 8467534692044977184, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
-      propertyPath: offset
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8467534692044977184, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: target

@@ -122,6 +122,7 @@ public class Weapon : MonoBehaviour
         currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce, ForceMode.Impulse);
         currentBullet.GetComponent<Rigidbody>().AddForce(transform.up * upwardForce, ForceMode.Impulse);
         
+        // Add player meta-level damagebonus to projectile
         if (gameObject.tag == "Player")
             currentBullet.GetComponent<CustomBullet>().explosionDamage += PlayerStats.Instance.damageBonus;
 
