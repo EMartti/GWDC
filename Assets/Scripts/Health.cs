@@ -26,6 +26,7 @@ public class Health : MonoBehaviour, IDamageable
     [Header("Parameters")]
     public int maxHealth = 100;
     public int currentHealth;
+    public int defaultHealth = 100; // PlayerProgression avuksi tehty muuttuja - ei vaikuta muihin entityihin
 
     [SerializeField] private AudioInspector audio;
     [SerializeField] private EffectsInspector effect;
