@@ -16,7 +16,6 @@ public class HealthPack : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit)) {            
             transform.position = hit.point;
-            Debug.DrawLine(transform.position, hit.point, Color.cyan);
         }
     }
 }
