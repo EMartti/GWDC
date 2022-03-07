@@ -30,4 +30,18 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float currentXp = 0f;
     [SerializeField] public float xpRequiredToLvlUp = 1000f;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

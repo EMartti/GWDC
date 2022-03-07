@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+
     }
 
     // Start is called before the first frame update
