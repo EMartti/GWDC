@@ -116,7 +116,7 @@ public class LevelGeneration : MonoBehaviour
 
     private void SpawnPath(int index)
     {
-        Quaternion startRot = Quaternion.identity;
+        Quaternion roomRot = Quaternion.identity;
         array2D[xPos, zPos] = 1;
         RoomAndCoord newRoom;
         prevMove = nextMove;        
@@ -125,16 +125,24 @@ public class LevelGeneration : MonoBehaviour
 
         {
             Move();
-            if (nextMove == MoveDir.Up) startRot = Quaternion.Euler(0f, 180f, 0f);
-            if (nextMove == MoveDir.Down) startRot = Quaternion.Euler(0f, 180f, 0f);
-            if (nextMove == MoveDir.Right) startRot = Quaternion.Euler(0f, 270f, 0f);
-            if (nextMove == MoveDir.Left) startRot = Quaternion.Euler(0f, 90f, 0f);
-            newRoom = new RoomAndCoord(xPos, zPos, RoomType.Start, startRot);
+            if (nextMove == MoveDir.Up) roomRot = Quaternion.Euler(0f, 180f, 0f);
+            if (nextMove == MoveDir.Down) roomRot = Quaternion.Euler(0f, 0f, 0f);
+            if (nextMove == MoveDir.Right) roomRot = Quaternion.Euler(0f, 270f, 0f);
+            if (nextMove == MoveDir.Left) roomRot = Quaternion.Euler(0f, 90f, 0f);
+            newRoom = new RoomAndCoord(xPos, zPos, RoomType.Start, roomRot);
             if (nextMove == MoveDir.Up) zPos += 1;
             if (nextMove == MoveDir.Down) zPos -= 1;
             if (nextMove == MoveDir.Right) xPos += 1;
             if (nextMove == MoveDir.Left) xPos -= 1;
 
+        }
+        else if (index == roomAmount - 1)
+        {
+            if (prevMove == MoveDir.Up) roomRot = Quaternion.Euler(0f, 0f, 0f);
+            if (prevMove == MoveDir.Down) roomRot = Quaternion.Euler(0f, 180f, 0f);
+            if (prevMove == MoveDir.Right) roomRot = Quaternion.Euler(0f, 90f, 0f);
+            if (prevMove == MoveDir.Left) roomRot = Quaternion.Euler(0f, 270f, 0f);
+            newRoom = new RoomAndCoord(xPos, zPos, RoomType.End, roomRot);
         }
         else
         {

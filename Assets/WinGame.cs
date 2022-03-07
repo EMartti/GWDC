@@ -12,6 +12,8 @@ public class WinGame : MonoBehaviour
 
     void Start()
     {
+        if (winCanvas == null)
+            winCanvas = GameObject.Find("WinCanvas");
         winCanvas.SetActive(false);
         inputs = PlayerInputs.Instance.playerInputActions;
     }
