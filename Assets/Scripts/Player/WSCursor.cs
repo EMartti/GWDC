@@ -1,27 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WSCursor : MonoBehaviour
 {
     [SerializeField] private GameObject cursorObj;
     [SerializeField] private Camera cam;
-    [SerializeField] private Vector3 cursorPos;
 
+    
+    
 
     private void Start()
     {
-        cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-
-        
-        cursorPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        cursorObj.transform.position = cursorPos;
-        Instantiate(cursorObj, cursorPos, Quaternion.identity);
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    void Update()
+    private void Update()
     {
-        // cursorPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        // cursorObj.transform.position = 
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        
+        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        {
+            cursorObj.transform.position = raycastHit.point;
+        }
     }
 }
