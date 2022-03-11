@@ -30,10 +30,10 @@ public class MouseTargeting : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (plane.Raycast(ray, out distance)) 
         {
-        Vector3 target = ray.GetPoint(distance);
-        Vector3 direction = target - transform.position;
-        float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        transform.rotation=Quaternion.Euler(0, rotation, 0);
+            Vector3 target = ray.GetPoint(distance);
+            Vector3 direction = target - transform.position;
+            float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            transform.rotation=Quaternion.Euler(0, rotation, 0);
         }     
     }    
 }
