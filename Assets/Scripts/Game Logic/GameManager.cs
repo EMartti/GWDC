@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public Objective[] objectives;
 
+    public GameObject inputManagerPrefab;
+    public GameObject audioManager;
+    public GameObject playerStats;
+
+
     private void Awake()
     {
 
