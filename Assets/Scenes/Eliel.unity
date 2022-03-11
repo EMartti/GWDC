@@ -3537,6 +3537,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2739058059502302736, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
   m_PrefabInstance: {fileID: 4943380720686464302}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2188339920409286362 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6243341418018923226, guid: 3dc3604650cf73f478dba194d89f7fc7, type: 3}
+  m_PrefabInstance: {fileID: 4943380720686464302}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188339920409286343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2794279739669819430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3544,6 +3555,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1468001221489281468, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468001221489281468, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3161273089753200083, guid: b4796c77339e12542a2b7e96b3c04bc1, type: 3}
       propertyPath: m_Name
       value: Enemy_Boss
@@ -3674,6 +3693,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7969285611689882718, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 2188339920409286362}
     - target: {fileID: 7969285611971969487, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
       propertyPath: m_Name
       value: GameManager

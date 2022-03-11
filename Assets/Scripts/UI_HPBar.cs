@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class UI_HPBar : MonoBehaviour
 {
     public Slider slider;
-    private Health health;
+    public Health health;
 
     private void Start()
     {
-        health = GameObject.Find("Player").GetComponent<Health>();
+        if(gameObject.tag == "Player")
+            health = GameObject.Find("Player").GetComponent<Health>();
         slider = GetComponent<Slider>();
     }
 
