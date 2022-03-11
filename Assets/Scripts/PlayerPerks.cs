@@ -5,6 +5,7 @@ using System;
 
 public class PlayerPerks
 {
+    public event EventHandler OnPerkPointsChanged;
     public event EventHandler<OnPerkUnlockedEventArgs> OnPerkUnlocked;
     public class OnPerkUnlockedEventArgs : EventArgs
     {
@@ -25,6 +26,8 @@ public class PlayerPerks
 
     private List<PerkType> unlockedPerkTypeList;
 
+    public int perkPoints;
+
     public PlayerPerks()
     {
         unlockedPerkTypeList = new List<PerkType>();
@@ -38,6 +41,18 @@ public class PlayerPerks
             OnPerkUnlocked?.Invoke(this, new OnPerkUnlockedEventArgs { perkType = perkType });
         }
     }
+
+    public void AddPerkPoints()
+    {
+        perkPoints++;
+        OnPerkPointsChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public int GetPerkPoints()
+    {
+        return perkPoints;
+    }
+
 
     public bool isPerkUnlocked(PerkType perkType)
     {
@@ -82,8 +97,15 @@ public class PlayerPerks
     {
         if (CanUnlock(perkType))
         {
-            UnlockPerk(perkType);
-            return true;
+            if (perkPoints > 0)
+            {
+                perkPoints--;
+                OnPerkPointsChanged?.Invoke(this, EventArgs.Empty);
+                UnlockPerk(perkType);
+                return true;
+            }
+            else
+                return false;
         }
         else
         {

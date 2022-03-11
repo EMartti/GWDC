@@ -13,6 +13,7 @@ public class UIPerks : MonoBehaviour
     private PlayerPerks playerPerks;
     private List<PerkButton> perkButtonList;
 
+    [SerializeField] private TMPro.TextMeshProUGUI perkPoints;
     [SerializeField] private Button HP1btn;
     [SerializeField] private Button HP2btn;
     [SerializeField] private Button HP3btn;
@@ -50,12 +51,18 @@ public class UIPerks : MonoBehaviour
         perkButtonList.Add(new PerkButton(HP3btn, playerPerks, PlayerPerks.PerkType.MaxHP3));
 
         playerPerks.OnPerkUnlocked += PlayerPerks_OnPerkUnlocked;
+        playerPerks.OnPerkPointsChanged += PlayerPerks_OnPerkPointsChanged;
         UpdateVisuals();
     }
 
     private void PlayerPerks_OnPerkUnlocked(object sender, PlayerPerks.OnPerkUnlockedEventArgs e)
     {
         UpdateVisuals();
+    }
+
+    private void PlayerPerks_OnPerkPointsChanged(object sender, System.EventArgs e)
+    {
+        UpdatePerkPoints();
     }
 
     public void UnlockHP1()
@@ -73,6 +80,11 @@ public class UIPerks : MonoBehaviour
     {
         playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP3);
 
+    }
+
+    private void UpdatePerkPoints()
+    {
+        perkPoints.SetText(playerPerks.GetPerkPoints().ToString());
     }
 
     private void UpdateVisuals()

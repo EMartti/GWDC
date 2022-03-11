@@ -8,9 +8,9 @@ using TMPro;
 public class Weapon : MonoBehaviour
 {
     public Transform firingPoint;
-    [SerializeField] private GameObject bullet;    
+    [SerializeField] private GameObject projectile;    
 
-    [SerializeField] private int magazineSize, bulletsPerTap;
+    [SerializeField] private int magazineSize, projectilesPerTap;
     [SerializeField] private bool automatic;
 
     [SerializeField] private float shootForce, upwardForce;
@@ -100,7 +100,7 @@ public class Weapon : MonoBehaviour
 
         //Bullets left UI
         if (ammunnitionDisplay != null)
-            ammunnitionDisplay.SetText(bulletsLeft / bulletsPerTap + "/" + magazineSize / bulletsPerTap);
+            ammunnitionDisplay.SetText(bulletsLeft / projectilesPerTap + "/" + magazineSize / projectilesPerTap);
     }
 
     public void Shoot()
@@ -116,7 +116,7 @@ public class Weapon : MonoBehaviour
 
         Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0);
 
-        GameObject currentBullet = Instantiate(bullet, firingPoint.position, Quaternion.identity);
+        GameObject currentBullet = Instantiate(projectile, firingPoint.position, Quaternion.identity);
         currentBullet.transform.up = directionWithSpread.normalized;
 
         currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce, ForceMode.Impulse);
@@ -138,7 +138,7 @@ public class Weapon : MonoBehaviour
             allowInvoke = false;
         }
 
-        if (bulletsShot < bulletsPerTap && bulletsLeft > 0)
+        if (bulletsShot < projectilesPerTap && bulletsLeft > 0)
             Invoke("Shoot", timeBetweenShots);
 
         if(shootSound != null) 

@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerProgression : MonoBehaviour
 {
-    
+    public event EventHandler OnLevelUp;
 
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Health playerHealthScript;
@@ -59,6 +60,9 @@ public class PlayerProgression : MonoBehaviour
         // Damage increase
         playerStats.damageBonus += damageAddedPerLevel;
         meleeScript.parameters.hitDamage = meleeScript.parameters.baseDamage + PlayerStats.Instance.damageBonus;
+
+        // Cast event
+        if (OnLevelUp != null) OnLevelUp.Invoke(this, EventArgs.Empty);
 
         // Debug
         Debug.Log("Player achieved Level " + playerStats.playerLevel + "!");
