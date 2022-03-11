@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 3017182954864125500}
   - component: {fileID: 7727841614992522179}
   - component: {fileID: 4624447638391565931}
+  - component: {fileID: 2188339920409286356}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -341,15 +342,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1364
   currentHealth: 0
+  defaultHealth: 100
   audio:
-    hurtSound: {fileID: 0}
-    healSound: {fileID: 0}
+    hurtSound: {fileID: 8300000, guid: c08b0fb3d0cc3b142a23f6734aef0a89, type: 3}
+    healSound: {fileID: 8300000, guid: 5ed873e90b572d6478f2bb1698bba27c, type: 3}
   effect:
     healEffect: {fileID: 1969967651396293653, guid: 3df31be828c063b46bce3dcf343b1604, type: 3}
     hurtEffect: {fileID: 779801061157678525, guid: 6123eeb4011cb2c488d257db01bbddce, type: 3}
-  characterClass: 0
   isDead: 0
 --- !u!114 &5652613128129848240
 MonoBehaviour:
@@ -376,8 +377,9 @@ MonoBehaviour:
     hitEffect: {fileID: 0}
   parameters:
     timeBetweenAttack: 1
-    hitDamage: 50
+    hitDamage: 100
     hitForce: 100
+    baseDamage: 50
 --- !u!114 &904172666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,8 +407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushLayers:
     serializedVersion: 2
-    m_Bits: 64
-  canPush: 1
+    m_Bits: 823
+  canPush: 0
   strength: 1
 --- !u!114 &7727841614992522179
 MonoBehaviour:
@@ -425,7 +427,6 @@ MonoBehaviour:
   meleeScript: {fileID: 5652613128129848240}
   xpRequiredMultiplier: 1.5
   playerStartLevel: 1
-  xpRequiredToLvlUp: 1000
   maxHealthAddedPerLevel: 0
   damageAddedPerLevel: 10
 --- !u!114 &4624447638391565931
@@ -441,6 +442,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterClass: 0
+--- !u!114 &2188339920409286356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739058059502302736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c267dbea0c14d419c6633e189f84f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4325627410011103524
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,9 +653,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5543000905329711412, guid: c4d43050489f99240b1e0e04e94d04ee, type: 3}
     - target: {fileID: 7837504210791503711, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5543000905329711412, guid: c4d43050489f99240b1e0e04e94d04ee, type: 3}
+    - target: {fileID: 7837504210791503711, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: bb108e7aed0d1b14289356a65b802414, type: 3}
+    - target: {fileID: 7837504210791503711, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
+      propertyPath: magazineSize
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837504210791503711, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
+      propertyPath: timeBetweenShots
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837504210791503711, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
+      propertyPath: projectilesPerTap
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b57426386f2c75429adfb06d22c11af, type: 3}
 --- !u!4 &4431760024357732354 stripped
