@@ -79,7 +79,7 @@ public class Health : MonoBehaviour, IDamageable
                 damage = Mathf.RoundToInt(damage * ClassDmg(attacker));
 
             if (audio.hurtSound != null)
-                audioSource.PlayOneShot(audio.hurtSound);
+                audioSource.PlayOneShot(audio.hurtSound, 0.3F);
             if(effect.hurtEffect != null)
                 Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
             if (kb != null)

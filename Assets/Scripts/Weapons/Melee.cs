@@ -146,7 +146,7 @@ public class Melee : MonoBehaviour {
     private void Hit(Collider enemy) {
         if (visuals.hitEffect != null) Instantiate(visuals.hitEffect, transform.position, Quaternion.identity);
 
-        if (audio.hitSound != null) AudioSource.PlayClipAtPoint(audio.hitSound, transform.position);
+        if (audio.hitSound != null) AudioSource.PlayClipAtPoint(audio.hitSound, transform.position, 2f);
     }
 
     private void OnTriggerEnter(Collider other) {

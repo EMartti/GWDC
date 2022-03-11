@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour {
+
     [SerializeField] private GameObject collector;
     [SerializeField] private float speed;
     [SerializeField] private float pickUpDist;
