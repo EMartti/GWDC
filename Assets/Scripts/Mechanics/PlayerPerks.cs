@@ -21,7 +21,8 @@ public class PlayerPerks
         HPLeech,
         Attack1,
         Move1,
-        Move2
+        Move2,
+        Dash
     }
 
     private List<PerkType> unlockedPerkTypeList;

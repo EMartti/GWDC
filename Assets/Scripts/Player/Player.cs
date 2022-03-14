@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -13,8 +14,22 @@ public class Player : MonoBehaviour
 
     private PlayerProgression playerProgression;
 
+    private bool canUseDash = false;
+
+    private PlayerInputActions playerInputActions;
+
+    private Dash dash;
+
+    public enum Abilities { Dash }
+    private Abilities ability1;
+
     private void Awake()
     {
+        playerInputActions = PlayerInputs.Instance.playerInputActions;
+
+        playerInputActions.Player.Ability1.Enable();
+        playerInputActions.Player.Ability1.started += UseAbility1;
+
         playerPerks = new PlayerPerks();
         playerPerks.OnPerkUnlocked += playerPerks_OnPerkUnlocked;
 
@@ -24,12 +39,36 @@ public class Player : MonoBehaviour
         uiPerks = GameObject.Find("GameManager").GetComponent<UIPerks>();
 
         health = GetComponent<Health>();
+
+        dash = new Dash();
+        ability1 = Abilities.Dash;
     }
 
     private void Start()
     {
         uiPerks.SetPlayerPerks(GetPlayerPerks());
     }
+
+    #region InputSystem
+
+    private void UseAbility1(InputAction.CallbackContext obj)
+    {
+        switch (ability1)
+        {
+            case Abilities.Dash:
+                if (!canUseDash) break;
+                dash.OnDash();
+                Invoke("EndDash", 0.2f);
+                break;
+        }
+    }
+
+    private void OnDisable()
+    {        
+        playerInputActions.Player.Ability1.Disable();    
+    }
+
+    #endregion
 
     public void PlayerProgression_OnLevelUp(object sender, EventArgs e)
     {
@@ -54,6 +93,10 @@ public class Player : MonoBehaviour
                 health.maxHealth += 100;
                 health.currentHealth = health.maxHealth;
                 break;
+
+            case PlayerPerks.PerkType.Dash:
+                canUseDash = true;
+                break;
         }
 
     }
@@ -64,6 +107,10 @@ public class Player : MonoBehaviour
         playerProgression.OnLevelUp -= PlayerProgression_OnLevelUp;
     }
 
+    private void EndDash()
+    {
+        dash.End();
+    }
 
     public PlayerPerks GetPlayerPerks()
     {

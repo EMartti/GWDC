@@ -17,6 +17,7 @@ public class UIPerks : MonoBehaviour
     [SerializeField] private Button HP1btn;
     [SerializeField] private Button HP2btn;
     [SerializeField] private Button HP3btn;
+    [SerializeField] private Button Dashbtn;
 
 
     // Start is called before the first frame update
@@ -49,6 +50,7 @@ public class UIPerks : MonoBehaviour
         perkButtonList.Add(new PerkButton(HP1btn, playerPerks, PlayerPerks.PerkType.MaxHP1));
         perkButtonList.Add(new PerkButton(HP2btn, playerPerks, PlayerPerks.PerkType.MaxHP2));
         perkButtonList.Add(new PerkButton(HP3btn, playerPerks, PlayerPerks.PerkType.MaxHP3));
+        perkButtonList.Add(new PerkButton(Dashbtn, playerPerks, PlayerPerks.PerkType.Dash));
 
         playerPerks.OnPerkUnlocked += PlayerPerks_OnPerkUnlocked;
         playerPerks.OnPerkPointsChanged += PlayerPerks_OnPerkPointsChanged;
@@ -79,7 +81,11 @@ public class UIPerks : MonoBehaviour
     public void UnlockHP3()
     {
         playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP3);
+    }
 
+    public void UnlockDash()
+    {
+        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.Dash);
     }
 
     private void UpdatePerkPoints()

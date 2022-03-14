@@ -42,6 +42,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Ability1",
+                    "type": "Button",
+                    "id": "b86d3bc7-fa21-42ed-ba13-ada0e5da13ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "81b539ff-5f10-484d-a699-c23629f25381",
@@ -479,6 +488,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "OpenPerks",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d022c7b-2106-4d9c-b61f-dfe5f69dbf48",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Ability1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
