@@ -62,6 +62,9 @@ public class PlayerPerks
 
     public bool CanUnlock(PerkType perkType)
     {
+        //if already unlocked
+        if (isPerkUnlocked(perkType))
+            return false;
 
         PerkType perkRequirement = GetPerkRequirement(perkType);
 
