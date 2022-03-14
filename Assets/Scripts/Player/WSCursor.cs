@@ -7,7 +7,7 @@ public class WSCursor : MonoBehaviour
 {
     [SerializeField] private GameObject cursorObj;
     [SerializeField] private Camera cam;
-
+    [SerializeField] private LayerMask IgnoreMe;
     
     
 
@@ -20,10 +20,13 @@ public class WSCursor : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
+        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        if (Physics.Raycast(ray, out hit, 1000f, ~IgnoreMe))
         {
-            cursorObj.transform.position = raycastHit.point;
-        }
+            // Ground check
+            // && hit.collider.tag == "Ground"
+            cursorObj.transform.position = hit.point;
+        }     
     }
 }
