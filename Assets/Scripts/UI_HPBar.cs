@@ -8,9 +8,11 @@ public class UI_HPBar : MonoBehaviour
     public Slider slider;
     public Health health;
 
+    [SerializeField] private bool isPlayer;
+
     private void Start()
     {
-        if(gameObject.tag == "Player")
+        if(isPlayer)
             health = GameObject.Find("Player").GetComponent<Health>();
         slider = GetComponent<Slider>();
     }

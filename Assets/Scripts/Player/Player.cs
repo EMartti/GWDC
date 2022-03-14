@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {        
-        playerInputActions.Player.Ability1.Disable();    
+        playerInputActions.Player.Ability1.Disable();
     }
 
     #endregion

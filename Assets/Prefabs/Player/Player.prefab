@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1638631307
 Transform:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lifeTime: 4
-  damage: 75
+  damage: 200
 --- !u!1 &338498644565794056
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,6 +629,7 @@ MonoBehaviour:
   baseSpeed: 5
   speedMult: 0.5
   footstepSound: {fileID: 0}
+  dashing: 0
 --- !u!114 &6243341418018923226
 MonoBehaviour:
   m_ObjectHideFlags: 0
