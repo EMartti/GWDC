@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     private FollowTarget camera;
 
+    public bool dashing;
+
     void Start()
     {
         playerInputActions = PlayerInputs.Instance.playerInputActions;
@@ -90,7 +92,12 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDirection += Physics.gravity;
-        controller.Move(moveDirection * speed * Time.deltaTime);
+
+        if(dashing)
+            controller.Move(transform.forward * 30 * Time.deltaTime);
+        else
+            controller.Move(moveDirection * speed * Time.deltaTime);
+
 
         animator.SetFloat("Speed", controller.velocity.magnitude);
     }

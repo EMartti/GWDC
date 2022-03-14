@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
             case Abilities.Dash:
                 if (!canUseDash) break;
                 dash.OnDash();
-                Invoke("EndDash", 0.2f);
+                Invoke("EndDash", 0.1f);
                 break;
         }
     }
@@ -115,6 +115,12 @@ public class Player : MonoBehaviour
     public PlayerPerks GetPlayerPerks()
     {
         return playerPerks;
+    }
+
+    private class Ability
+    {
+        private Abilities type;
+        private float cooldown;
     }
 
 }

@@ -14,11 +14,12 @@ public class Dash : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
 
         playerController.baseSpeed *= 5;
-
+        playerController.dashing = true;
     }
 
     public void End()
     {
         playerController.baseSpeed /= 5;
+        playerController.dashing = false;
     }
 }
