@@ -6,15 +6,14 @@ using UnityEngine;
 public class WinGame : MonoBehaviour
 {
     public event EventHandler OnWinGame;
-    [SerializeField] private GameObject winCanvas;
+    [SerializeField] private GameObject gameManager;
 
     private PlayerInputActions inputs;
 
     void Start()
     {        
-        if (winCanvas == null)
-            winCanvas = GameObject.Find("WinCanvas");
-        winCanvas.SetActive(false);
+        gameManager = GameObject.Find("GameManager");
+        gameManager.GetComponent<GameManager>().winCanvas.SetActive(false);
         inputs = PlayerInputs.Instance.playerInputActions;
     }
 
@@ -24,7 +23,7 @@ public class WinGame : MonoBehaviour
         {
             if(OnWinGame != null) OnWinGame.Invoke(this, EventArgs.Empty);
             inputs.Player.Disable();
-            winCanvas.SetActive(true);
+            gameManager.GetComponent<GameManager>().winCanvas.SetActive(true);
         }        
     }
 }

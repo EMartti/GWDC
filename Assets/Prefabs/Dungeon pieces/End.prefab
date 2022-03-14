@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5247271898235764247}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 5447111583372848242}
   - component: {fileID: 5447111583372848243}
   - component: {fileID: 5447111583372848244}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 5447111584470004265}
   - component: {fileID: 5447111584470004266}
   - component: {fileID: 5447111584470004263}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,6 +237,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5247271898235764247}
     m_Modifications:
+    - target: {fileID: 136153282969240435, guid: 057f4a0912f756e438e6de0a70cb3b97, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 136153283451383909, guid: 057f4a0912f756e438e6de0a70cb3b97, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1399475398204392504, guid: 057f4a0912f756e438e6de0a70cb3b97, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -285,6 +293,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs - streched
       objectReference: {fileID: 0}
+    - target: {fileID: 1399475398204392505, guid: 057f4a0912f756e438e6de0a70cb3b97, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 057f4a0912f756e438e6de0a70cb3b97, type: 3}
 --- !u!4 &6409722149947798766 stripped
@@ -302,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 5163472765770327896, guid: ed6e695cee198af4eb267e9f6412d461, type: 3}
       propertyPath: m_Name
       value: EndTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163472765770327896, guid: ed6e695cee198af4eb267e9f6412d461, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5163472765770327898, guid: ed6e695cee198af4eb267e9f6412d461, type: 3}
       propertyPath: m_Size.x

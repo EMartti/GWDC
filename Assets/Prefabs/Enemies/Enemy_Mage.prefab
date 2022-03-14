@@ -108,12 +108,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f762f30f20514884255733bd86f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSound: {fileID: 0}
-  healSound: {fileID: 0}
-  healEffect: {fileID: 0}
-  hurtEffect: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
+  defaultHealth: 100
+  audio:
+    hurtSound: {fileID: 0}
+    healSound: {fileID: 0}
+  effect:
+    healEffect: {fileID: 0}
+    hurtEffect: {fileID: 0}
   isDead: 0
 --- !u!114 &321206067821454290
 MonoBehaviour:
@@ -266,9 +269,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingPoint: {fileID: 3879086019358674246}
-  bullet: {fileID: 5543000905329711412, guid: 68cc4c27333afc14682a931733b356b6, type: 3}
+  projectile: {fileID: 5543000905329711412, guid: 68cc4c27333afc14682a931733b356b6, type: 3}
   magazineSize: 3
-  bulletsPerTap: 3
+  projectilesPerTap: 0
   automatic: 0
   shootForce: 10
   upwardForce: 2
