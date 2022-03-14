@@ -8,6 +8,7 @@ public class WSCursor : MonoBehaviour
     [SerializeField] private GameObject cursorObj;
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask IgnoreMe;
+    private bool cursorMovedOut;
     
     
 
@@ -27,6 +28,6 @@ public class WSCursor : MonoBehaviour
             // Ground check
             // && hit.collider.tag == "Ground"
             cursorObj.transform.position = hit.point;
-        }     
+        }                 
     }
 }
