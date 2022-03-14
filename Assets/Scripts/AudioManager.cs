@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour {
     #endregion
 
     [Header("Status")]
+    public AudioClip sfxAlert;
     public AudioClip sfxHurt;
     public AudioClip sfxHeal;
     public AudioClip sfxDie;

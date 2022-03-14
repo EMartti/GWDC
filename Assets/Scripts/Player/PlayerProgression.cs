@@ -21,10 +21,23 @@ public class PlayerProgression : MonoBehaviour
     [Header("Damage")]
     [SerializeField] private int damageAddedPerLevel = 10;
 
-   
+    [Serializable]
+    public class AudioInspector {
+        public AudioClip giveExpSound;        
+    }
+    
+    private AudioManager aM;
+    AudioSource audioSource;
+    [SerializeField] private AudioInspector audio;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        aM = AudioManager.Instance;
+
+        if (audio.giveExpSound == null) {
+            audio.giveExpSound = aM.sfxPickup;
+        }
         playerStats = PlayerStats.Instance;
         playerHealthScript = GameObject.FindWithTag("Player").GetComponent<Health>();
         meleeScript = GameObject.FindWithTag("Player").GetComponent<Melee>();
@@ -32,6 +45,9 @@ public class PlayerProgression : MonoBehaviour
 
     public void GiveXp(float earnedXp)
     {
+        if (audio.giveExpSound != null)
+            audioSource.PlayOneShot(audio.giveExpSound);
+
         playerStats.currentXp += earnedXp;
 
         // Debug
