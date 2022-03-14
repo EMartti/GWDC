@@ -18,8 +18,9 @@ public class WSCursor : MonoBehaviour
 
     private void Update()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
             cursorObj.transform.position = raycastHit.point;
