@@ -18,7 +18,7 @@ public class WSCursor : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 

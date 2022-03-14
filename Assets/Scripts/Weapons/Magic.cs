@@ -39,6 +39,8 @@ public class Magic : MonoBehaviour {
     [SerializeField] private int damage = 75;
     private GameObject currentMagic;
 
+    private int layerMask;
+
     //public EquipmentSlots equipmentSlot;
 
     private void Awake() {
@@ -46,6 +48,8 @@ public class Magic : MonoBehaviour {
         readyToShoot = true;
 
         audioSource = GetComponent<AudioSource>();
+
+        layerMask = LayerMask.GetMask("Environment");
     }
 
     private void Start() {
@@ -118,9 +122,13 @@ public class Magic : MonoBehaviour {
         Debug.Log("fired magic");
         ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-        if (plane.Raycast(ray, out distance)) {
-            castPoint = ray.GetPoint(distance);
-        } else
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1000f, layerMask)) 
+        {
+            castPoint = hit.point;
+        } 
+        else
             castPoint = transform.position;
 
         Explode();

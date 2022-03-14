@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject audioManager;
     public GameObject playerStats;
 
+    public GameObject winCanvas;
+
 
     private void Awake()
     {

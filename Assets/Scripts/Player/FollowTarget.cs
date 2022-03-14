@@ -19,7 +19,7 @@ public class FollowTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindWithTag("Player");
+        target = GameObject.Find("Player");
     }
 
     // Update is called once per frame

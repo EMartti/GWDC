@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class NavMeshFollowTarget : MonoBehaviour {
-    // Start is called before the first frame update
+
+    [Serializable]
+    public class AudioInspector {
+        public AudioClip alertSound;
+    }
+
+    private AudioManager aM;
+    AudioSource audioSource;
+
+    [SerializeField] private AudioInspector audio;
     [SerializeField] private Transform goal;
     [SerializeField] private float heightOffset = 0.5f;
     public NavMeshAgent agent;
@@ -13,10 +23,18 @@ public class NavMeshFollowTarget : MonoBehaviour {
     public float distanceToTarget;
     public float attackDist;
     public bool canSeeGoal = false;
+    private bool hasSeenGoal = false;
 
     private bool goalDead = false;
 
     void Start() {
+        audioSource = GetComponent<AudioSource>();
+        aM = AudioManager.Instance;
+
+        if (audio.alertSound == null) {
+            audio.alertSound = aM.sfxAlert;
+        }
+
         agent = GetComponent<NavMeshAgent>();
 
         // Ettii pelaajan automaattisesti skenestä - Joona
@@ -25,22 +43,25 @@ public class NavMeshFollowTarget : MonoBehaviour {
         Health.OnDeath += Health_OnDeath;
     }
 
-    private void Update()
-    {
-        if (canSeeGoal == true)
-        {
+    private void Update() {
+        if (canSeeGoal == true) {
             lookAt();
+
+            if (hasSeenGoal == false) { // Play audio when we see target for first time
+                if (audio.alertSound != null) {
+                    audioSource.PlayOneShot(aM.sfxAlert, 0.5f);
+                    hasSeenGoal = true;
+                }
+            }
         }
     }
 
 
-    void lookAt()
-    {
+    void lookAt() {
         transform.LookAt(goal);
     }
 
-    private void Health_OnDeath(Health sender)
-    {
+    private void Health_OnDeath(Health sender) {
         if (sender.gameObject == goal.gameObject) goalDead = true;
     }
 
@@ -53,46 +74,39 @@ public class NavMeshFollowTarget : MonoBehaviour {
         Ray visionRay = new Ray(transform.position + offset, goal.transform.position - transform.position + offset);
         Debug.DrawRay(transform.position + offset, goal.transform.position - transform.position + offset, Color.red);
 
-        if (!goalDead)
-        {
-            if (Physics.Raycast(visionRay, out hit))
-            {
-                if (hit.collider.tag == "Wall")
-                {
+        if (!goalDead) {
+            if (Physics.Raycast(visionRay, out hit)) {
+                if (hit.collider.tag == "Wall") {
                     canSeeGoal = false;
-                }
-                else
-                {
+                } else {
                     canSeeGoal = true;
                 }
             }
-            if (distanceToTarget <= attackDist)
-            {
-                if (agent.isStopped == false)
-                {
+            if (distanceToTarget <= attackDist) {
+                if (agent.isStopped == false) {
                     agent.isStopped = true; //stop the agent
                 }
 
-            }
-            else
-            {
-                if (canSeeGoal == true)
-                {
-                    if (agent.isStopped == true)
-                    {
+            } else {
+                if (canSeeGoal == true) {
+                    if (agent.isStopped == true) {
                         agent.isStopped = false; //start moving again
                     }
 
                     agent.destination = goal.position;
                 }
             }
+        } else {
+            canSeeGoal = false;
+            if (hasSeenGoal == true) {
+                hasSeenGoal = false;
+            }
+            agent.isStopped = true;
         }
-        else { canSeeGoal = false; agent.isStopped = true; }
 
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         Health.OnDeath -= Health_OnDeath;
     }
 }

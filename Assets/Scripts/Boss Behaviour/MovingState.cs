@@ -29,10 +29,6 @@ public class MovingState : CharacterBaseState
     {
         if (!targetHealth.isDead)
         {
-            Vector3 relativePos = target.position - character.transform.position;     
-            Quaternion rotation = Quaternion.Lerp(Quaternion.LookRotation(character.transform.forward), Quaternion.LookRotation(relativePos, Vector3.up), 0.1f);
-            character.transform.rotation = rotation;
-
             agent.destination = target.position;
             float dist = Vector3.Distance(character.transform.position, target.position);
             if (dist < meleeRange)
