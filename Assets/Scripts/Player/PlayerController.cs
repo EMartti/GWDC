@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         Vector3 moveDirection;
 
         float moveX = movement.ReadValue<Vector2>().x;
@@ -100,6 +102,11 @@ public class PlayerController : MonoBehaviour
 
 
         animator.SetFloat("Speed", controller.velocity.magnitude);
+
+        if (transform.position.y <= -10)
+        {
+            transform.position = Vector3.zero;
+        }
     }
     private void OnApplicationFocus(bool hasFocus)
     {
