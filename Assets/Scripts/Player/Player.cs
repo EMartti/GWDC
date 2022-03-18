@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     public enum Abilities { Dash }
     private Abilities ability1;
 
-    private void Awake()
+    private void Start()
     {
         playerInputActions = PlayerInputs.Instance.playerInputActions;
 
@@ -42,10 +42,7 @@ public class Player : MonoBehaviour
 
         dash = new Dash();
         ability1 = Abilities.Dash;
-    }
 
-    private void Start()
-    {
         uiPerks.SetPlayerPerks(GetPlayerPerks());
     }
 
