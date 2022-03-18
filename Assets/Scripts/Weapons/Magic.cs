@@ -41,6 +41,8 @@ public class Magic : MonoBehaviour {
 
     private int layerMask;
 
+    public bool canUse = true;
+
     //public EquipmentSlots equipmentSlot;
 
     private void Awake() {
@@ -64,8 +66,8 @@ public class Magic : MonoBehaviour {
             playerInputActions.Player.Reload.Enable();
             playerInputActions.Player.Reload.started += OnReload;
 
-            playerInputActions.Player.Fire2.Enable();
-            playerInputActions.Player.Fire2.started += OnFire;
+            playerInputActions.Player.Fire.Enable();
+            playerInputActions.Player.Fire.started += OnFire;
         }
 
         playerInputActions.Player.MousePosition.Enable();
@@ -79,17 +81,20 @@ public class Magic : MonoBehaviour {
         shooting = true;
         if (readyToShoot && shooting && !reloading && !automatic) {
             bulletsShot = 0;
-            Shoot();
+            if(canUse)
+                Shoot();
         }
         shooting = false;
     }
 
-    private void OnDisable() {
-        if (gameObject.tag == "Player") {
-            playerInputActions.Player.Fire2.Disable();
-            playerInputActions.Player.Reload.Disable();
-        }
-    }
+    //private void OnDisable()
+    //{
+    //    if (gameObject.tag == "Player")
+    //    {
+    //        playerInputActions.Player.Fire.Disable();
+    //        playerInputActions.Player.Reload.Disable();
+    //    }
+    //}
 
     //Reloading
     private void OnReload(InputAction.CallbackContext obj) {
@@ -112,6 +117,7 @@ public class Magic : MonoBehaviour {
         if (ammunnitionDisplay != null)
             ammunnitionDisplay.SetText(bulletsLeft / projectilesPerTap + "/" + magazineSize / projectilesPerTap);
     }
+
 
     public void Shoot() {
 

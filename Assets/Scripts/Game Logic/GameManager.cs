@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public GameObject winCanvas;
 
 
+    public GameObject sword;
+    public GameObject bow;
+    public GameObject hammer;
+
     private void Awake()
     {
 

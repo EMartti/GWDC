@@ -51,6 +51,9 @@ public class Melee : MonoBehaviour {
     private bool allowInvoke = true;
     private bool isPlayer = false;
 
+
+    public bool canUse = true;
+
     private void Awake() 
     {
         audioSource = GetComponent<AudioSource>();
@@ -101,17 +104,18 @@ public class Melee : MonoBehaviour {
         {            
             if (readyToAttack)
             {
-                Attack();
+                if(canUse)
+                    Attack();
             }
             attacking = false;
         }        
     }
 
-    private void OnDisable() 
-    {
-        if(isPlayer)
-            playerInputActions.Player.Fire.Disable();
-    }
+    //private void OnDisable() 
+    //{
+    //    if(isPlayer)
+    //        playerInputActions.Player.Fire.Disable();
+    //}
     #endregion
 
     public void Attack() {
