@@ -62,7 +62,7 @@ public class Melee : MonoBehaviour {
 
         if (gameObject.tag == "Player") isPlayer = true;
 
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();        
     }
 
     private void Start() {
@@ -94,7 +94,9 @@ public class Melee : MonoBehaviour {
                     break;
                 }
             }
-        }  
+        }
+
+        parameters.baseDamage = parameters.hitDamage;
     }
 
     #region InputSystem

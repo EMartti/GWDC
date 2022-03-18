@@ -12,9 +12,13 @@ public class MouseTargeting : MonoBehaviour
 
     private PlayerInputActions playerInputActions;
 
+    private int layerMask;
+
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
+
+        layerMask = LayerMask.GetMask("Environment");
     }
 
     private void Start()
@@ -22,18 +26,21 @@ public class MouseTargeting : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         plane = new Plane(Vector3.up, Vector3.zero);
 
-        playerInputActions.Player.MousePosition.Enable();
+        playerInputActions.Player.MousePosition.Enable();        
     }
 
     private void Update()
-    {
+    {   
         ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (plane.Raycast(ray, out distance)) 
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1000f, layerMask))
         {
-            Vector3 target = ray.GetPoint(distance);
+            Vector3 target = hit.point;
             Vector3 direction = target - transform.position;
             float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            transform.rotation=Quaternion.Euler(0, rotation, 0);
-        }     
+            transform.rotation = Quaternion.Euler(0, rotation, 0);
+        }
     }    
 }
