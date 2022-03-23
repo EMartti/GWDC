@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1122893082925468621}
   - component: {fileID: 600453614962827966}
   - component: {fileID: 9016596621477818484}
+  - component: {fileID: 7579938775088941681}
   m_Layer: 0
   m_Name: Down_Stairs
   m_TagString: Untagged
@@ -707,6 +708,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &7579938775088941681
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2977570564011763507}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 10, z: 3.2531433}
+  m_Center: {x: -0, y: 0, z: -0.87342834}
 --- !u!1001 &3881576592249324611
 PrefabInstance:
   m_ObjectHideFlags: 0
