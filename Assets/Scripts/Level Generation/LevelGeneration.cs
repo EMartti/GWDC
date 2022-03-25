@@ -17,10 +17,10 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private GameObject roomCorner;
     [SerializeField] private GameObject roomDoor;
 
-    [SerializeField] private GameObject roomI;
-    [SerializeField] private GameObject roomL;
-    [SerializeField] private GameObject roomT;
-    [SerializeField] private GameObject roomX;
+    [SerializeField] private GameObject[] roomI;
+    [SerializeField] private GameObject[] roomL;
+    [SerializeField] private GameObject[] roomT;
+    [SerializeField] private GameObject[] roomX;
 
     [SerializeField] private Transform worldGeometry;
     [SerializeField] private GameObject player;
@@ -108,8 +108,8 @@ public class LevelGeneration : MonoBehaviour
         {
             if (room.roomType == RoomType.Start) newRoom = roomStart;
             if (room.roomType == RoomType.End) newRoom = roomEnd;
-            if (room.roomType == RoomType.I) newRoom = roomI;
-            if (room.roomType == RoomType.L) newRoom = roomL;
+            if (room.roomType == RoomType.I) newRoom = roomI[Random.Range(0, roomI.Length)];
+            if (room.roomType == RoomType.L) newRoom = roomL[Random.Range(0, roomL.Length)];
             Instantiate(newRoom, new Vector3(room.x * centerDistance -xOffset , 0, room.z * centerDistance - zOffset), room.rotation);
         }
     }
