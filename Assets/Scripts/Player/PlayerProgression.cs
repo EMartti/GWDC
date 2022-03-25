@@ -46,7 +46,7 @@ public class PlayerProgression : MonoBehaviour
     public void GiveXp(float earnedXp)
     {
         if (audio.giveExpSound != null)
-            audioSource.PlayOneShot(audio.giveExpSound);
+            audioSource.PlayOneShot(audio.giveExpSound, 2f);
 
         playerStats.currentXp += earnedXp;
 
