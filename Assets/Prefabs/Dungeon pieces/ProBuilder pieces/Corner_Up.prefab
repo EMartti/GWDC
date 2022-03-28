@@ -435,6 +435,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5386083010597631120}
+  - component: {fileID: 6844059654213620513}
+  - component: {fileID: 7763141946262689203}
+  - component: {fileID: 5053088427839660794}
+  - component: {fileID: 3931830362480515677}
   m_Layer: 0
   m_Name: Corner_Up
   m_TagString: Untagged
@@ -464,6 +468,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6844059654213620513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386083010597631121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.7258034, y: 4.697038, z: 0.42991638}
+  m_Center: {x: 11.767183, y: -1.7377455, z: 1.0142288}
+--- !u!65 &7763141946262689203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386083010597631121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.71632, y: 4.6970377, z: 0.36306763}
+  m_Center: {x: 11.783815, y: -1.7377458, z: -1.0108032}
+--- !u!65 &5053088427839660794
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386083010597631121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.34353638, y: 4.730585, z: 6.7724}
+  m_Center: {x: -0.79930496, y: -1.8652925, z: -11.540588}
+--- !u!65 &3931830362480515677
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386083010597631121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.32611847, y: 4.881013, z: 6.737503}
+  m_Center: {x: 1.2039375, y: -1.9405055, z: -11.558037}
 --- !u!1 &7200483194568399020
 GameObject:
   m_ObjectHideFlags: 0
