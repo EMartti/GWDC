@@ -9,6 +9,7 @@ public class UIPerks : MonoBehaviour
     [SerializeField] private GameObject perkCanvas;
 
     private PlayerInputActions playerInputActions;
+    private GameManager gameManager;
 
     private PlayerPerks playerPerks;
     private List<PerkButton> perkButtonList;
@@ -25,6 +26,8 @@ public class UIPerks : MonoBehaviour
     {      
         playerInputActions = PlayerInputs.Instance.playerInputActions;
 
+        gameManager = GameManager.Instance;
+
         playerInputActions.Player.OpenPerks.Enable();
         playerInputActions.Player.OpenPerks.started += OnOpenPerks;
 
@@ -34,6 +37,11 @@ public class UIPerks : MonoBehaviour
     private void OnOpenPerks(InputAction.CallbackContext obj)
     {
         perkCanvas.SetActive(!perkCanvas.activeSelf);
+
+        if(perkCanvas.activeInHierarchy)        
+            playerInputActions.Player.Fire.Disable();
+        else
+            playerInputActions.Player.Fire.Enable();
     }
 
     private void OnDisable()

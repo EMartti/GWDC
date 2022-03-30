@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region Singleton
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType(typeof(GameManager)) as GameManager;
+
+            return instance;
+        }
+        set
+        {
+            instance = value;
+        }
+    }
+    private static GameManager instance;
+    #endregion
+
     public Objective[] objectives;
 
     public GameObject inputManagerPrefab;
@@ -16,6 +34,8 @@ public class GameManager : MonoBehaviour
     public GameObject sword;
     public GameObject bow;
     public GameObject hammer;
+
+    public bool canPlayerAttack = true;
 
     private void Awake()
     {
