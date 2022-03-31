@@ -551,6 +551,8 @@ MonoBehaviour:
     hitDamage: 33
     hitForce: 0
     baseDamage: 50
+  canUse: 1
+  sparkPos: {fileID: 0}
 --- !u!114 &7186113127100062834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +583,7 @@ MonoBehaviour:
   currentHealth: 0
   defaultHealth: 100
   audio:
-    hurtSound: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
+    hurtSound: {fileID: 8300000, guid: 28be67f2babacef4a849a028c2ffe50a, type: 3}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}

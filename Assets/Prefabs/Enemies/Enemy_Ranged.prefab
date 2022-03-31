@@ -256,6 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599df19513ee21c4f99bf7ab44166cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio:
+    alertSound: {fileID: 0}
   goal: {fileID: 0}
   heightOffset: 0.5
   agent: {fileID: 3575980258126457934}
@@ -293,8 +295,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  defaultHealth: 100
   audio:
-    hurtSound: {fileID: 8300000, guid: d018b131db0547142844f8bcf04e6d8e, type: 3}
+    hurtSound: {fileID: 0}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}

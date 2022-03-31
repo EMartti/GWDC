@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599df19513ee21c4f99bf7ab44166cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio:
+    alertSound: {fileID: 0}
   goal: {fileID: 0}
   heightOffset: 0.5
   agent: {fileID: 321206067821454319}
@@ -283,6 +285,7 @@ MonoBehaviour:
   reload: {fileID: 0}
   muzzleFlash: {fileID: 0}
   ammunnitionDisplay: {fileID: 0}
+  canUse: 1
 --- !u!1 &321206067969173254
 GameObject:
   m_ObjectHideFlags: 0
