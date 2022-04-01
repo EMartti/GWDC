@@ -51,7 +51,7 @@ public class PlayerProgression : MonoBehaviour
         playerStats.currentXp += earnedXp;
 
         // Debug
-        Debug.Log("Player earned " + earnedXp.ToString() + "XP");
+        //Debug.Log("Player earned " + earnedXp.ToString() + "XP");
 
         if (playerStats.currentXp >= playerStats.xpRequiredToLvlUp)
         { 

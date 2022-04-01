@@ -125,7 +125,7 @@ public class Magic : MonoBehaviour {
 
         readyToShoot = false;
 
-        Debug.Log("fired magic");
+        //Debug.Log("fired magic");
         ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         RaycastHit hit;

@@ -31,6 +31,8 @@ public class SelectWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
+
         meleeWeapon = GameObject.Find("Player");
         rangeWeapon = GameObject.Find("BowWeapon");
         magicWeapon = GameObject.Find("Lightning");
@@ -38,8 +40,6 @@ public class SelectWeapon : MonoBehaviour
         melee = meleeWeapon.GetComponent<Melee>();
         range = rangeWeapon.GetComponent<Weapon>();
         magic = magicWeapon.GetComponent<Magic>();
-
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         sword = gameManager.sword;
         bow = gameManager.bow;

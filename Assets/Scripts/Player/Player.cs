@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
 
         health = GetComponent<Health>();
 
-        dash = new Dash();
         ability1 = Abilities.Dash;
 
         uiPerks.SetPlayerPerks(GetPlayerPerks());

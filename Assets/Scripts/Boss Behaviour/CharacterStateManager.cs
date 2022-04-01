@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class CharacterStateManager : MonoBehaviour
 {
-    CharacterBaseState currentState;
-    public IdlingState IdleState = new IdlingState();
-    public MovingState MoveState = new MovingState();
+    public CharacterBaseState currentState;
+    public IdlingState idleState = new IdlingState();
+    public MovingState moveState = new MovingState();
     public AttackingState attackState = new AttackingState();
     public DyingState deadState = new DyingState();
 
     public float aggroRange = 10f;
     public float attackInterval = 1f;
-    public float meleeRange = 1f;
+    public float attackRange = 1f;
+    [SerializeField] private bool canTurnWhenAttacking = false;
+    public float turnRateWhenAttacking = 1f;
 
     private void Start()
     {
-        IdleState.aggroRange = aggroRange;
+        idleState.aggroRange = aggroRange;
 
         attackState.attackInterval = attackInterval;
+        attackState.canTurnWhenAttacking = canTurnWhenAttacking;
+        attackState.turnRateWhenAttacking = turnRateWhenAttacking;
 
+        moveState.attackRange = attackRange;
 
-
-        currentState = IdleState;
+        currentState = idleState;
 
         currentState.EnterState(this);
 
@@ -39,6 +43,7 @@ public class CharacterStateManager : MonoBehaviour
     {
         currentState = state;
         state.EnterState(this);
+        //Debug.Log("switched state to: " + state);
     }
 
     public void Health_OnDeath(Health sender)

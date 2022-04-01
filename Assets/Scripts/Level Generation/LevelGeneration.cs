@@ -23,7 +23,6 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private GameObject[] roomX;
 
     [SerializeField] private Transform worldGeometry;
-    [SerializeField] private GameObject player;
 
     private List<RoomAndCoord> roomList;
 

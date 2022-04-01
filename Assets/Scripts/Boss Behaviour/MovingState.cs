@@ -7,7 +7,7 @@ public class MovingState : CharacterBaseState
 {
     public NavMeshAgent agent;
     private Transform target;
-    public float meleeRange = 1.5f;
+    public float attackRange;
     private Health targetHealth;
     private Animator animator;
 
@@ -22,6 +22,7 @@ public class MovingState : CharacterBaseState
         animator = character.gameObject.GetComponent<Animator>();
 
         targetHealth = target.gameObject.GetComponent<Health>();
+
     }
 
 
@@ -31,7 +32,7 @@ public class MovingState : CharacterBaseState
         {
             agent.destination = target.position;
             float dist = Vector3.Distance(character.transform.position, target.position);
-            if (dist < meleeRange)
+            if (dist < attackRange)
             {
                 agent.isStopped = true;
                 character.SwitchState(character.attackState);
@@ -40,7 +41,7 @@ public class MovingState : CharacterBaseState
         else
         {
             agent.isStopped = true;
-            character.SwitchState(character.IdleState);
+            character.SwitchState(character.idleState);
         }
 
         if (animator != null)

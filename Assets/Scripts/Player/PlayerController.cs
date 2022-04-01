@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            transform.LookAt(Vector3.Lerp(transform.forward + transform.position, targetDirection, 0.2f));
+            transform.LookAt(Vector3.Lerp(transform.forward + transform.position, targetDirection, 10f * Time.deltaTime));
         }
 
         if (playerInputActions.Player.Sprint.IsPressed())

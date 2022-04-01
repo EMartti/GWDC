@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI_HPBar : MonoBehaviour
 {
-    public Slider slider;
+    private Slider slider;
     public Health health;
 
     [SerializeField] private bool isPlayer;
