@@ -28,15 +28,15 @@ public class PlayerProgression : MonoBehaviour
     
     private AudioManager aM;
     AudioSource audioSource;
-    [SerializeField] private AudioInspector audio;
+    [SerializeField] private AudioInspector myAudio;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         aM = AudioManager.Instance;
 
-        if (audio.giveExpSound == null) {
-            audio.giveExpSound = aM.sfxPickup;
+        if (myAudio.giveExpSound == null) {
+            myAudio.giveExpSound = aM.sfxPickup;
         }
         playerStats = PlayerStats.Instance;
         playerHealthScript = GameObject.FindWithTag("Player").GetComponent<Health>();
@@ -45,8 +45,8 @@ public class PlayerProgression : MonoBehaviour
 
     public void GiveXp(float earnedXp)
     {
-        if (audio.giveExpSound != null)
-            audioSource.PlayOneShot(audio.giveExpSound, 2f);
+        if (myAudio.giveExpSound != null)
+            audioSource.PlayOneShot(myAudio.giveExpSound, 2f);
 
         playerStats.currentXp += earnedXp;
 

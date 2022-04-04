@@ -42,7 +42,7 @@ public class Melee : MonoBehaviour {
     public MeleeWeapon meleeWeaponCollider;
     AudioSource audioSource;   
 
-    [SerializeField] private AudioInspector audio;
+    [SerializeField] private AudioInspector myAudio;
     [SerializeField] private VisualsInspector visuals;
     [SerializeField] public ParametersInspector parameters;
 
@@ -70,11 +70,11 @@ public class Melee : MonoBehaviour {
     private void Start() {
         aM = AudioManager.Instance;
 
-        if (audio.hitSound == null) {
-            audio.hitSound = aM.sfxMeleeHit;
+        if (myAudio.hitSound == null) {
+            myAudio.hitSound = aM.sfxMeleeHit;
         }
-        if (audio.attackSound == null) {
-            audio.attackSound = aM.sfxMeleeAttack;
+        if (myAudio.attackSound == null) {
+            myAudio.attackSound = aM.sfxMeleeAttack;
         }
 
         if (isPlayer)
@@ -135,8 +135,8 @@ public class Melee : MonoBehaviour {
             allowInvoke = false;
         }
 
-        if (audio.attackSound != null)
-            audioSource.PlayOneShot(audio.attackSound, 0.7F);
+        if (myAudio.attackSound != null)
+            audioSource.PlayOneShot(myAudio.attackSound, 0.7F);
         //AudioFW.PlayRandomPitch("sfx_player_melee_atk");
     }
     public void HitEvent()
@@ -155,7 +155,7 @@ public class Melee : MonoBehaviour {
         if (visuals.hitEffect != null) Instantiate(visuals.hitEffect, sparkPos.transform.position, Quaternion.identity);
 
 
-        if (audio.hitSound != null) AudioSource.PlayClipAtPoint(audio.hitSound, transform.position, 2f);
+        if (myAudio.hitSound != null) AudioSource.PlayClipAtPoint(myAudio.hitSound, transform.position, 2f);
     }
 
     private void OnTriggerEnter(Collider other) {

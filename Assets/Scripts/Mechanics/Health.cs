@@ -28,7 +28,7 @@ public class Health : MonoBehaviour, IDamageable
     public int currentHealth;
     public int defaultHealth = 100; // Älä muuta
 
-    [SerializeField] private AudioInspector audio;
+    [SerializeField] private AudioInspector myAudio;
     [SerializeField] private EffectsInspector effect;
 
 
@@ -63,11 +63,11 @@ public class Health : MonoBehaviour, IDamageable
 
         aM = AudioManager.Instance;
 
-        if (audio.hurtSound == null) {
-            audio.hurtSound = aM.sfxHurt;
+        if (myAudio.hurtSound == null) {
+            myAudio.hurtSound = aM.sfxHurt;
         }
-        if (audio.healSound == null) {
-            audio.healSound = aM.sfxHeal;
+        if (myAudio.healSound == null) {
+            myAudio.healSound = aM.sfxHeal;
         }
     }
 
@@ -78,8 +78,8 @@ public class Health : MonoBehaviour, IDamageable
             if (hasClass)
                 damage = Mathf.RoundToInt(damage * ClassDmg(attacker));
 
-            if (audio.hurtSound != null)
-                audioSource.PlayOneShot(audio.hurtSound, 0.3F);
+            if (myAudio.hurtSound != null)
+                audioSource.PlayOneShot(myAudio.hurtSound, 0.3F);
             if(effect.hurtEffect != null)
                 Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
             if (kb != null)
@@ -112,8 +112,8 @@ public class Health : MonoBehaviour, IDamageable
     }
 
     public void AddHealth(int healValue) {
-        if (audio.healSound != null)
-            audioSource.PlayOneShot(audio.healSound);
+        if (myAudio.healSound != null)
+            audioSource.PlayOneShot(myAudio.healSound);
         if (effect.healEffect != null)
             Instantiate(effect.healEffect, new Vector3 (transform.position.x, 1, transform.position.z), effect.healEffect.transform.rotation, gameObject.transform); //spawn healing particles as child
         currentHealth += healValue;

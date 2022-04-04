@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
-    private GameObject camera;
+    private GameObject mainCamera;
     void Start()
     {
-        camera = GameObject.Find("MainCamera");
+        mainCamera = GameObject.Find("MainCamera");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = camera.transform.rotation;     
+        transform.rotation = mainCamera.transform.rotation;     
     }
 }

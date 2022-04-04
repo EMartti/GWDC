@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInputActions playerInputActions;
 
-    private FollowTarget camera;
+    private FollowTarget mainCamera;
 
     public bool dashing;
 
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         sprint.Enable();
         
 
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FollowTarget>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FollowTarget>();
 
         animator = GetComponent<Animator>();
     }
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = new Vector3(moveX, 0, moveZ);
 
-        moveDirection = Quaternion.Euler(0, camera.yaw, 0) * moveDirection;
+        moveDirection = Quaternion.Euler(0, mainCamera.yaw, 0) * moveDirection;
 
         //Vector3 targetDirection = Vector3.Lerp(moveDirection , moveDirection + transform.position, 0.01f);
 

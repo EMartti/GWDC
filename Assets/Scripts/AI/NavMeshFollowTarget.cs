@@ -15,7 +15,7 @@ public class NavMeshFollowTarget : MonoBehaviour {
     private AudioManager aM;
     AudioSource audioSource;
 
-    [SerializeField] private AudioInspector audio;
+    [SerializeField] private AudioInspector myAudio;
     [SerializeField] private Transform goal;
     [SerializeField] private float heightOffset = 0.5f;
     public NavMeshAgent agent;
@@ -31,8 +31,8 @@ public class NavMeshFollowTarget : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         aM = AudioManager.Instance;
 
-        if (audio.alertSound == null) {
-            audio.alertSound = aM.sfxAlert;
+        if (myAudio.alertSound == null) {
+            myAudio.alertSound = aM.sfxAlert;
         }
 
         agent = GetComponent<NavMeshAgent>();
@@ -48,7 +48,7 @@ public class NavMeshFollowTarget : MonoBehaviour {
             lookAt();
 
             if (hasSeenGoal == false) { // Play audio when we see target for first time
-                if (audio.alertSound != null) {
+                if (myAudio.alertSound != null) {
                     audioSource.PlayOneShot(aM.sfxAlert, 0.5f);
                     hasSeenGoal = true;
                 }
