@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MovingState : CharacterBaseState
+public class AIMovingState : CharacterBaseState
 {
     public NavMeshAgent agent;
     private Transform target;

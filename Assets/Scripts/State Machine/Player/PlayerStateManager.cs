@@ -2,31 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStateManager : MonoBehaviour
+public class PlayerStateManager : MonoBehaviour
 {
-    public CharacterBaseState currentState;
-    public IdlingState idleState = new IdlingState();
-    public MovingState moveState = new MovingState();
-    public AttackingState attackState = new AttackingState();
-    public DyingState deadState = new DyingState();
+    public PlayerBaseState currentState;
+    public PlayerMovingState moveState = new PlayerMovingState();
+    public PlayerAttackingState attackState = new PlayerAttackingState();
+    public PlayerDyingState deadState = new PlayerDyingState();
 
-    public float aggroRange = 10f;
-    public float attackInterval = 1f;
-    public float attackRange = 1f;
     [SerializeField] private bool canTurnWhenAttacking = false;
     public float turnRateWhenAttacking = 1f;
+    public Transform target;
 
     private void Start()
     {
-        idleState.aggroRange = aggroRange;
-
-        attackState.attackInterval = attackInterval;
         attackState.canTurnWhenAttacking = canTurnWhenAttacking;
         attackState.turnRateWhenAttacking = turnRateWhenAttacking;
+        attackState.target = target;
 
-        moveState.attackRange = attackRange;
-
-        currentState = idleState;
+        currentState = moveState;
 
         currentState.EnterState(this);
 
@@ -39,7 +32,7 @@ public class CharacterStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void SwitchState(CharacterBaseState state)
+    public void SwitchState(PlayerBaseState state)
     {
         currentState = state;
         state.EnterState(this);

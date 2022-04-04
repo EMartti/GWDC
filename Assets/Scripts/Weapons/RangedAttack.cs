@@ -17,7 +17,6 @@ public class RangedAttack : MonoBehaviour {
 
     private float timeBetweenAttack;
 
-    private bool readyToAttack;
     private bool attacking;
 
     public bool hasAttacked;
@@ -59,7 +58,6 @@ public class RangedAttack : MonoBehaviour {
 
     private void Attack(object sender, EventArgs e)
     {
-        readyToAttack = false;
         attacking = true;
 
         if (animator != null)
@@ -73,20 +71,16 @@ public class RangedAttack : MonoBehaviour {
 
     public void HitEvent()
     {
-        Instantiate(projectile, projectileStartPos.position, transform.rotation); //shoot arrow
-        ResetAttack();
+        Instantiate(projectile, projectileStartPos.position, transform.rotation);
+    }
+
+    private void ResetAttack()
+    {
+        attacking = false;
     }
 
     private void OnDestroy()
     {
         attackingState.OnAttack -= Attack;
-    }
-
-    private void ResetAttack()
-    {
-        readyToAttack = true;
-        attacking = false;
-        if (animator != null)
-            animator.SetBool(animIDisAttacking, false);
     }
 }

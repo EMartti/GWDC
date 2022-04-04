@@ -1,14 +1,12 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 using TMPro;
 
 [RequireComponent(typeof(AudioSource))]
 public class Weapon : MonoBehaviour
 {
     public Transform firingPoint;
-    [SerializeField] private GameObject projectile;    
+    [SerializeField] private GameObject projectilePrefab;    
 
     [SerializeField] private int magazineSize, projectilesPerTap;
     [SerializeField] private bool automatic;
@@ -25,14 +23,8 @@ public class Weapon : MonoBehaviour
 
     int bulletsShot, bulletsLeft;
     bool shooting, readyToShoot, reloading;
-    private bool allowInvoke = true;
 
     private PlayerInputActions playerInputActions;
-
-
-    public bool canUse = true;
-
-    //public EquipmentSlots equipmentSlot;
 
     private void Awake()
     {        
@@ -45,66 +37,7 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         aM = AudioManager.Instance;
-        shootSound = aM.sfxFireballStart;
-
-        if(gameObject.tag == "Player")
-        {
-            playerInputActions = PlayerInputs.Instance.playerInputActions;
-
-            playerInputActions.Player.Reload.Enable();
-            playerInputActions.Player.Reload.started += OnReload;
-
-            playerInputActions.Player.Fire.Enable();
-            playerInputActions.Player.Fire.started += OnFire;
-        }        
-    }
-
-    #region InputSystem
-    
-    private void OnFire(InputAction.CallbackContext obj)
-    {
-        shooting = true;
-        if (readyToShoot && shooting && !reloading && !automatic)
-        {
-            bulletsShot = 0;
-            if(canUse)
-                Shoot();
-        }
-        shooting = false;
-    }
-
-    //private void OnDisable()
-    //{
-    //    if (gameObject.tag == "Player")
-    //    {
-    //        playerInputActions.Player.Fire.Disable();
-    //        playerInputActions.Player.Reload.Disable();
-    //    }
-    //}
-
-    //Reloading
-    private void OnReload(InputAction.CallbackContext obj)
-    {
-        if (bulletsLeft < magazineSize && !reloading) Reload();
-    }
-    #endregion
-
-    void Update()
-    {
-        shooting = false;
-        if (automatic && playerInputActions.Player.Fire.ReadValue<float>() > 0)
-            shooting = true;
-
-        //Automatic firing
-        if (readyToShoot && shooting && !reloading)
-        {
-            bulletsShot = 0;
-            Shoot();
-        }
-
-        //Bullets left UI
-        if (ammunnitionDisplay != null)
-            ammunnitionDisplay.SetText(bulletsLeft / projectilesPerTap + "/" + magazineSize / projectilesPerTap);
+        shootSound = aM.sfxArrowStart;     
     }
 
     public void Shoot()
@@ -120,7 +53,7 @@ public class Weapon : MonoBehaviour
 
         Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0);
 
-        GameObject currentBullet = Instantiate(projectile, firingPoint.position, Quaternion.identity);
+        GameObject currentBullet = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
         currentBullet.transform.up = directionWithSpread.normalized;
 
         currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce, ForceMode.Impulse);
@@ -136,23 +69,11 @@ public class Weapon : MonoBehaviour
         bulletsLeft--;
         bulletsShot++;
 
-        if (allowInvoke)
-        {
-            Invoke("ResetShot", timeBetweenShooting);
-            allowInvoke = false;
-        }
-
         if (bulletsShot < projectilesPerTap && bulletsLeft > 0)
             Invoke("Shoot", timeBetweenShots);
 
         if(shootSound != null) 
         audioSource.PlayOneShot(shootSound, 0.45F);
-    }
-
-    private void ResetShot()
-    {
-        readyToShoot = true;
-        allowInvoke = true;
     }    
 
     private void Reload()

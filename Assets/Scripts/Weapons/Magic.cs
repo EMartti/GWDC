@@ -32,7 +32,6 @@ public class Magic : MonoBehaviour {
 
     [SerializeField] private float lifeTime = 1f;
 
-    private float distance = 100f;
     private Plane plane;
     Ray ray;
     private Vector3 castPoint;

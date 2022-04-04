@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelectWeapon : MonoBehaviour
 {
-    private GameObject meleeWeapon;
+    private GameObject player;
     private GameObject rangeWeapon;
     private GameObject magicWeapon;
 
@@ -17,11 +17,10 @@ public class SelectWeapon : MonoBehaviour
     [SerializeField] private GameObject hammer;
 
     private Melee melee;
-    private Weapon range;
+    private Range range;
     private Magic magic;
 
     private GameManager gameManager;
-
 
     private enum WeaponType { Melee, Range, Magic }
     [SerializeField] private WeaponType weapon;
@@ -33,12 +32,11 @@ public class SelectWeapon : MonoBehaviour
     {
         gameManager = GameManager.Instance;
 
-        meleeWeapon = GameObject.Find("Player");
-        rangeWeapon = GameObject.Find("BowWeapon");
+        player = GameObject.Find("Player");
         magicWeapon = GameObject.Find("Lightning");
 
-        melee = meleeWeapon.GetComponent<Melee>();
-        range = rangeWeapon.GetComponent<Weapon>();
+        melee = player.GetComponent<Melee>();
+        range = player.GetComponent<Range>();
         magic = magicWeapon.GetComponent<Magic>();
 
         sword = gameManager.sword;

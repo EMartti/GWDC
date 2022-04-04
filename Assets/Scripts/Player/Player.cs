@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+
     private PlayerPerks playerPerks;
 
     private Health health;
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
     private PlayerInputActions playerInputActions;
 
     private Dash dash;
+
+    public Transform WeaponHand;
 
     public enum Abilities { Dash }
     private Abilities ability1;

@@ -18,7 +18,7 @@ public class IdlingState : CharacterBaseState
             float dist = Vector3.Distance(character.transform.position, target.position);
             if (dist < aggroRange)
             {
-                character.SwitchState(character.moveState);
+                character.SwitchState(character.aiMoveState);
             }
         }                   
     }
