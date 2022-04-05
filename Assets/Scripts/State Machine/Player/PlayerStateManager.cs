@@ -10,13 +10,11 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerDyingState deadState = new PlayerDyingState();
 
     [SerializeField] private bool canTurnWhenAttacking = false;
-    public float turnRateWhenAttacking = 1f;
     public Transform target;
 
     private void Start()
     {
         attackState.canTurnWhenAttacking = canTurnWhenAttacking;
-        attackState.turnRateWhenAttacking = turnRateWhenAttacking;
         attackState.target = target;
 
         currentState = moveState;

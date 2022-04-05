@@ -35,7 +35,6 @@ public class MeleeWeapon : MonoBehaviour
         colliders.Remove(sender.gameObject.GetComponent<Collider>());
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (!colliders.Contains(other)) { colliders.Add(other.GetComponent<Collider>()); }

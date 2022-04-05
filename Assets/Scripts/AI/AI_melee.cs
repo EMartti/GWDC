@@ -26,7 +26,7 @@ public class AI_melee : MonoBehaviour
 
         if (timerPassed >= attackInterval)
         {
-            melee.HitEvent();
+            //melee.HitEvent();
             timerPassed = 0f;
         }        
     }

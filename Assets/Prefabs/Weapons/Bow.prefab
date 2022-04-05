@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2139889768038851792}
   - component: {fileID: -2648603505701177791}
   - component: {fileID: 4677966654033333247}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,16 +148,17 @@ MonoBehaviour:
   magazineSize: 100000
   projectilesPerTap: 1
   automatic: 0
-  shootForce: 100
+  shootForce: 30
   upwardForce: 0
   timeBetweenShots: 0
-  spread: 0
+  spread: 14.7
   reloadTime: 0
-  timeBetweenShooting: 0.4
+  timeBetweenShooting: 0
   shootSound: {fileID: 8300000, guid: 96408a9c718b39b49a261b4874aef0b2, type: 3}
   reload: {fileID: 0}
   muzzleFlash: {fileID: 0}
   ammunnitionDisplay: {fileID: 0}
+  parent: {fileID: 0}
 --- !u!1 &3647177020001663980
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ GameObject:
   - component: {fileID: 2047249819635414558}
   - component: {fileID: 7836856305879183871}
   - component: {fileID: 5831099404761030480}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +253,7 @@ GameObject:
   - component: {fileID: 6397696262472350878}
   - component: {fileID: 2850122486794249943}
   - component: {fileID: 8575609395672793314}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Firing Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,6 +398,7 @@ MonoBehaviour:
   reload: {fileID: 0}
   muzzleFlash: {fileID: 0}
   ammunnitionDisplay: {fileID: 0}
+  parent: {fileID: 0}
 --- !u!1 &5851090006386647774
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +410,7 @@ GameObject:
   - component: {fileID: 6519224278334044260}
   - component: {fileID: 7914852481194850241}
   - component: {fileID: 5346831778330706699}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -58,8 +58,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         Vector3 moveDirection;
 
         float moveX = movement.ReadValue<Vector2>().x;
@@ -75,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         //if angle is 180 snap turn
         float angle = Vector3.Angle(transform.forward, moveDirection);
-        if (angle == 180)
+        if (angle > 90)
         {
             transform.LookAt(targetDirection);
         }
@@ -93,7 +91,7 @@ public class PlayerController : MonoBehaviour
             speed = baseSpeed;
         }
 
-        moveDirection += Physics.gravity;
+        moveDirection += Physics.gravity * 0.1f;
 
         if(dashing)
             controller.Move(transform.forward * 30 * Time.deltaTime);

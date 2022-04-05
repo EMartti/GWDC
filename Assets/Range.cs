@@ -22,9 +22,12 @@ public class Range : MonoBehaviour
     private Weapon weapon;
 
     private Player player;
+    [SerializeField] private Transform target;
 
     private PlayerStateManager stateManager;
     private float timeBetweenAttack;
+
+    private Animation attackAnim;
 
     void Start()
     {
@@ -38,9 +41,7 @@ public class Range : MonoBehaviour
         playerInputActions.Player.Fire.Enable();
         playerInputActions.Player.Fire.started += OnRangedAttack;
 
-        currentWeapon = Instantiate(weaponPrefab, player.WeaponHand.position, Quaternion.identity);
-        currentWeapon.transform.SetParent(player.WeaponHand);
-        weapon = currentWeapon.GetComponent<Weapon>();
+        SpawnWeapon();
 
         if (animator != null)
         {
@@ -48,11 +49,27 @@ public class Range : MonoBehaviour
             {
                 if (item.name == "1H-RH@Attack01")
                 {
-                    timeBetweenAttack = item.length;
+                    timeBetweenAttack = item.length / animator.GetFloat("animSpeed");
                     break;
                 }
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        playerInputActions.Player.Fire.started += OnRangedAttack;
+        SpawnWeapon();
+    }
+
+    private void SpawnWeapon()
+    {
+        currentWeapon = Instantiate(weaponPrefab, player.WeaponHand.position, Quaternion.identity);
+        currentWeapon.transform.SetParent(player.WeaponHand);
+
+        weapon = currentWeapon.GetComponent<Weapon>();
+        weapon.parent = gameObject;
+        weapon.target = target;
     }
 
     #region InputSystem
@@ -70,12 +87,12 @@ public class Range : MonoBehaviour
 
             Invoke("ResetAttack", timeBetweenAttack);
         }
-
     }
 
     public void HitEvent()
     {
-        weapon.Shoot();
+        if(enabled)
+            weapon.Shoot();
     }
 
     private void OnDestroy()
@@ -84,6 +101,12 @@ public class Range : MonoBehaviour
     }
 
     #endregion
+
+    private void OnDisable()
+    {
+        playerInputActions.Player.Fire.started -= OnRangedAttack;
+        Destroy(currentWeapon);
+    }
 
     private void ResetAttack()
     {

@@ -7,6 +7,24 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
 
+    #region Singleton
+    public static Player Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType(typeof(Player)) as Player;
+
+            return instance;
+        }
+        set
+        {
+            instance = value;
+        }
+    }
+    private static Player instance;
+    #endregion
+
     private PlayerPerks playerPerks;
 
     private Health health;
@@ -22,6 +40,8 @@ public class Player : MonoBehaviour
     private Dash dash;
 
     public Transform WeaponHand;
+
+    public int damageBonus;
 
     public enum Abilities { Dash }
     private Abilities ability1;

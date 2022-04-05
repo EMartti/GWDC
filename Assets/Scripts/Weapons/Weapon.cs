@@ -6,6 +6,7 @@ using TMPro;
 public class Weapon : MonoBehaviour
 {
     public Transform firingPoint;
+    public Transform target;
     [SerializeField] private GameObject projectilePrefab;    
 
     [SerializeField] private int magazineSize, projectilesPerTap;
@@ -26,6 +27,8 @@ public class Weapon : MonoBehaviour
 
     private PlayerInputActions playerInputActions;
 
+    [HideInInspector] public GameObject parent;
+
     private void Awake()
     {        
         bulletsLeft = magazineSize;
@@ -37,7 +40,7 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         aM = AudioManager.Instance;
-        shootSound = aM.sfxArrowStart;     
+        shootSound = aM.sfxArrowStart;            
     }
 
     public void Shoot()
@@ -46,18 +49,18 @@ public class Weapon : MonoBehaviour
 
         readyToShoot = false;
 
-        Vector3 directionWithoutSpread = transform.forward;
+        Vector3 directionWithoutSpread = (target.position - parent.transform.position).normalized;
 
         float x = UnityEngine.Random.Range(-spread, spread);
         float y = UnityEngine.Random.Range(-spread, spread);
 
-        Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0);
+       // Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0);
 
         GameObject currentBullet = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
-        currentBullet.transform.up = directionWithSpread.normalized;
+        currentBullet.transform.up = directionWithoutSpread.normalized;
 
-        currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce, ForceMode.Impulse);
-        currentBullet.GetComponent<Rigidbody>().AddForce(transform.up * upwardForce, ForceMode.Impulse);
+        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread * shootForce, ForceMode.Impulse);
+        currentBullet.GetComponent<Rigidbody>().AddForce(parent.transform.up * upwardForce, ForceMode.Impulse);
         
         // Add player meta-level damagebonus to projectile
         if (gameObject.tag == "Player")

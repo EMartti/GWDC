@@ -7,9 +7,10 @@ public class PlayerProgression : MonoBehaviour
 {
     public event EventHandler OnLevelUp;
 
+    private Player player;
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Health playerHealthScript;
-    [SerializeField] private Melee meleeScript;
+    [SerializeField] private WeaponMelee meleeScript;
 
     [Header("Level & XP")]
     [SerializeField] private float xpRequiredMultiplier = 1.5f;
@@ -40,7 +41,9 @@ public class PlayerProgression : MonoBehaviour
         }
         playerStats = PlayerStats.Instance;
         playerHealthScript = GameObject.FindWithTag("Player").GetComponent<Health>();
-        meleeScript = GameObject.FindWithTag("Player").GetComponent<Melee>();
+        meleeScript = GameObject.FindWithTag("Player").GetComponent<Melee>().weapon;
+
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     public void GiveXp(float earnedXp)
@@ -75,7 +78,7 @@ public class PlayerProgression : MonoBehaviour
         
         // Damage increase
         playerStats.damageBonus += damageAddedPerLevel;
-        meleeScript.parameters.hitDamage = meleeScript.parameters.baseDamage + PlayerStats.Instance.damageBonus;
+        player.damageBonus = PlayerStats.Instance.damageBonus;
 
         // Cast event
         if (OnLevelUp != null) OnLevelUp.Invoke(this, EventArgs.Empty);
