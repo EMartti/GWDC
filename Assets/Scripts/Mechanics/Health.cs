@@ -104,6 +104,34 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
+    // Joonan TakeDamage funktio UI:n testailua varten
+    public void TakeDamage2(int damage)
+    {
+        if (!isDead && damage > 0)
+        {
+            currentHealth -= damage;
+            if (currentHealth > 0)
+            {
+                if (myAudio.hurtSound != null)
+                    audioSource.PlayOneShot(myAudio.hurtSound, 1F);
+            }
+            else
+            {
+                if (myAudio.dieSound != null)
+                    audioSource.PlayOneShot(myAudio.dieSound, 1F);
+            }
+            if (effect.hurtEffect != null)
+                Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
+
+            if (currentHealth <= 0 && !isDead)
+            {
+                currentHealth = 0;
+                isDead = true;
+                if (OnDeath != null) OnDeath(this);
+            }
+        }
+    }
+
     private float ClassDmg(GameObject attacker)
     {
         float damageMult = 1f;
