@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599df19513ee21c4f99bf7ab44166cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio:
+  myAudio:
     alertSound: {fileID: 0}
   goal: {fileID: 0}
   heightOffset: 0.5
@@ -113,12 +113,12 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   defaultHealth: 100
-  audio:
-    hurtSound: {fileID: 0}
+  myAudio:
+    hurtSound: {fileID: 8300000, guid: 44b98adf25d2e65429633f084dee99ff, type: 3}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}
-    hurtEffect: {fileID: 0}
+    hurtEffect: {fileID: 779801061157678525, guid: cf00a3b2ba280f64db8ccc0488097f81, type: 3}
   isDead: 0
 --- !u!114 &321206067821454290
 MonoBehaviour:
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingPoint: {fileID: 3879086019358674246}
-  projectile: {fileID: 5543000905329711412, guid: 68cc4c27333afc14682a931733b356b6, type: 3}
+  projectilePrefab: {fileID: 0}
   magazineSize: 3
   projectilesPerTap: 0
   automatic: 0
@@ -285,7 +285,6 @@ MonoBehaviour:
   reload: {fileID: 0}
   muzzleFlash: {fileID: 0}
   ammunnitionDisplay: {fileID: 0}
-  canUse: 1
 --- !u!1 &321206067969173254
 GameObject:
   m_ObjectHideFlags: 0

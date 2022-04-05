@@ -400,12 +400,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  audio:
-    hurtSound: {fileID: 0}
+  defaultHealth: 100
+  myAudio:
+    hurtSound: {fileID: 8300000, guid: 44b98adf25d2e65429633f084dee99ff, type: 3}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}
-    hurtEffect: {fileID: 0}
+    hurtEffect: {fileID: 779801061157678525, guid: cf00a3b2ba280f64db8ccc0488097f81, type: 3}
   isDead: 0
 --- !u!114 &2188613057120147258
 MonoBehaviour:
@@ -454,16 +455,19 @@ MonoBehaviour:
     m_Bits: 256
   animator: {fileID: 0}
   meleeWeaponCollider: {fileID: 2188613056640115610}
-  audio:
+  myAudio:
     hitSound: {fileID: 0}
-    attackSound: {fileID: 0}
+    attackSound: {fileID: 8300000, guid: 68c855f10e29a9d43a0b77049f8365d7, type: 3}
   visuals:
     weapon: {fileID: 0}
-    hitEffect: {fileID: 0}
+    hitEffect: {fileID: 779801061157678525, guid: 6123eeb4011cb2c488d257db01bbddce, type: 3}
   parameters:
     timeBetweenAttack: 1
     hitDamage: 25
     hitForce: 0
+    baseDamage: 50
+  canUse: 1
+  sparkPos: {fileID: 0}
 --- !u!114 &2188613057120147249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +591,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroRange: 10
   attackInterval: 1
-  meleeRange: 1
+  attackRange: 1
+  canTurnWhenAttacking: 0
+  turnRateWhenAttacking: 1
+  target: {fileID: 0}
 --- !u!1 &2188613057899561572
 GameObject:
   m_ObjectHideFlags: 0
