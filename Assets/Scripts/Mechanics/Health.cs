@@ -12,6 +12,7 @@ public class Health : MonoBehaviour, IDamageable
     public class AudioInspector
     {
         public AudioClip hurtSound;
+        public AudioClip dieSound;
         public AudioClip healSound;
     }
 
@@ -66,6 +67,9 @@ public class Health : MonoBehaviour, IDamageable
         if (myAudio.hurtSound == null) {
             myAudio.hurtSound = aM.sfxHurt;
         }
+        if (myAudio.dieSound == null) {
+            myAudio.dieSound = aM.sfxDie_E;
+        }
         if (myAudio.healSound == null) {
             myAudio.healSound = aM.sfxHeal;
         }
@@ -77,14 +81,20 @@ public class Health : MonoBehaviour, IDamageable
         {
             if (hasClass)
                 damage = Mathf.RoundToInt(damage * ClassDmg(attacker));
-
-            if (myAudio.hurtSound != null)
-                audioSource.PlayOneShot(myAudio.hurtSound, 0.3F);
-            if(effect.hurtEffect != null)
-                Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
+            
             if (kb != null)
                 kb.AddForce(damage, attacker.transform.position); ;
             currentHealth -= damage;
+            if (currentHealth > 0) {
+                if (myAudio.hurtSound != null)
+                    audioSource.PlayOneShot(myAudio.hurtSound, 1F);
+            } else {
+                if (myAudio.dieSound != null)
+                    audioSource.PlayOneShot(myAudio.dieSound, 1F);
+            }
+            if (effect.hurtEffect != null)
+                Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
+
             if (currentHealth <= 0 && !isDead)
             {
                 currentHealth = 0;

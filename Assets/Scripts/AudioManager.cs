@@ -26,7 +26,8 @@ public class AudioManager : MonoBehaviour {
     public AudioClip sfxAlert;
     public AudioClip sfxHurt;
     public AudioClip sfxHeal;
-    public AudioClip sfxDie;
+    public AudioClip sfxDie_P;
+    public AudioClip sfxDie_E;
     public AudioClip sfxPickup;
     [Header("Combat")]
     public AudioClip sfxMeleeHit;
