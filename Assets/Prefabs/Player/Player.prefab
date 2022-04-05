@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingPoint: {fileID: 3484311705399276146}
-  projectile: {fileID: 5543000905329711412, guid: 0cc2c124456e10947ad6085b6d7bbacd, type: 3}
+  projectilePrefab: {fileID: 0}
   magazineSize: 1
   projectilesPerTap: 1
   automatic: 0
@@ -770,7 +770,6 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: af63539a5e39c99489395bdea2471f60, type: 3}
   muzzleFlash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
   ammunnitionDisplay: {fileID: 0}
-  canUse: 1
 --- !u!1 &1600717845475462854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,8 +1380,8 @@ MonoBehaviour:
   maxHealth: 1000
   currentHealth: 0
   defaultHealth: 100
-  audio:
-    hurtSound: {fileID: 8300000, guid: c08b0fb3d0cc3b142a23f6734aef0a89, type: 3}
+  myAudio:
+    hurtSound: {fileID: 8300000, guid: 623a5635ed2c2dc44bfcc1e1e871e6a2, type: 3}
     healSound: {fileID: 8300000, guid: 5ed873e90b572d6478f2bb1698bba27c, type: 3}
   effect:
     healEffect: {fileID: 1969967651396293653, guid: 3df31be828c063b46bce3dcf343b1604, type: 3}
@@ -1405,9 +1404,9 @@ MonoBehaviour:
     m_Bits: 64
   animator: {fileID: 3017182954901424945}
   meleeWeaponCollider: {fileID: 946368531}
-  audio:
-    hitSound: {fileID: 8300000, guid: c81fee266487b984184170c3495b6406, type: 3}
-    attackSound: {fileID: 8300000, guid: 17a45389aced9254380a98a9827ad452, type: 3}
+  myAudio:
+    hitSound: {fileID: 0}
+    attackSound: {fileID: 0}
   visuals:
     weapon: {fileID: 0}
     hitEffect: {fileID: 1256513188377641462, guid: a4f76ca11e677494e89445b429c3b2e9, type: 3}
@@ -1430,7 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc06d476a982ca545a0d5bdef1e25024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 8300000, guid: 23949d4f65e90c04ba0be60df22988d4, type: 3}
+  deathSound: {fileID: 8300000, guid: a60ed2ea6822fb74eb61156819118ef9, type: 3}
 --- !u!114 &3017182954864125500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1467,7 +1466,7 @@ MonoBehaviour:
   playerStartLevel: 1
   maxHealthAddedPerLevel: 0
   damageAddedPerLevel: 10
-  audio:
+  myAudio:
     giveExpSound: {fileID: 0}
 --- !u!114 &4624447638391565931
 MonoBehaviour:
@@ -1494,6 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c267dbea0c14d419c6633e189f84f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponHand: {fileID: 0}
 --- !u!1 &2806522819980874182
 GameObject:
   m_ObjectHideFlags: 0
