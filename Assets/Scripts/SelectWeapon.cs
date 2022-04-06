@@ -8,9 +8,6 @@ public class SelectWeapon : MonoBehaviour
     private GameObject rangeWeapon;
     private GameObject magicWeapon;
 
-    [SerializeField] private GameObject thisWeaponVis;
-    [SerializeField] private GameObject otherWeapon1Vis;
-    [SerializeField] private GameObject otherWeapon2Vis;
 
     [SerializeField] private GameObject sword;
     [SerializeField] private GameObject bow;
@@ -33,65 +30,35 @@ public class SelectWeapon : MonoBehaviour
         gameManager = GameManager.Instance;
 
         player = GameObject.Find("Player");
-        magicWeapon = GameObject.Find("Lightning");
 
         melee = player.GetComponent<Melee>();
         range = player.GetComponent<Range>();
-        magic = magicWeapon.GetComponent<Magic>();
+        magic = player.GetComponent<Magic>();
 
-        sword = gameManager.sword;
-        bow = gameManager.bow;
-        hammer = gameManager.hammer;
-
-        Invoke("DisableWeapons", 0.01f);
     }
 
-    private void DisableWeapons()
+    public void SwitchWeapon(weaponType weapon)
     {
-        melee.canUse = false;
-        //meleeWeapon.SetActive(false);
-
-        range.canUse = false;
-        rangeWeapon.SetActive(false);
-
-        magic.canUse = false;
-        magicWeapon.SetActive(false);
-
-        sword.SetActive(false);
-        bow.SetActive(false);
-        hammer.SetActive(false);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
+        switch (weapon)
         {
-            switch (weapon)
-            {
-                case WeaponType.Melee:
-                    DisableWeapons();
-                    //meleeWeapon.SetActive(true);
-                    sword.SetActive(true);
-                    melee.canUse = true;
-                    break;
-                case WeaponType.Range:
-                    DisableWeapons();
-                    bow.SetActive(true);
-                    rangeWeapon.SetActive(true);
-                    range.canUse = true;
-                    break;
-                case WeaponType.Magic:
-                    DisableWeapons();
-                    hammer.SetActive(true);
-                    magicWeapon.SetActive(true);
-                    magic.canUse = true;
+            case weaponType.Magic:
+                magic.enabled = true;
+                melee.enabled = false;
+                range.enabled = false;
+                break;
 
-                    break;
-            }
+            case weaponType.Melee:
+                magic.enabled = false;
+                melee.enabled = true;
+                range.enabled = false;
+                break;
 
-            thisWeaponVis.SetActive(false);
-            otherWeapon1Vis.SetActive(true);
-            otherWeapon2Vis.SetActive(true);
+            case weaponType.Range:
+                magic.enabled = false;
+                melee.enabled = false;
+                range.enabled = true;
+                break;
         }
     }
 }
+public enum weaponType { Range, Melee, Magic }

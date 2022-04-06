@@ -1344,10 +1344,18 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5366165, guid: e5fcde014fee41d4a946eb29a135053a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5366166, guid: e5fcde014fee41d4a946eb29a135053a, type: 3}
       propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5366166, guid: e5fcde014fee41d4a946eb29a135053a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e562339389d64349b0e511132b69728, type: 3}
     - target: {fileID: 5366168, guid: e5fcde014fee41d4a946eb29a135053a, type: 3}
       propertyPath: SnapshotA
       value: 
@@ -1364,6 +1372,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3448519440446431884, guid: e5fcde014fee41d4a946eb29a135053a, type: 3}
+      propertyPath: sfxHurt
+      value: 
+      objectReference: {fileID: 8300000, guid: 44b98adf25d2e65429633f084dee99ff, type: 3}
+    - target: {fileID: 3448519440446431884, guid: e5fcde014fee41d4a946eb29a135053a, type: 3}
+      propertyPath: sfxAlert
+      value: 
+      objectReference: {fileID: 8300000, guid: 28be67f2babacef4a849a028c2ffe50a, type: 3}
+    - target: {fileID: 3448519440446431884, guid: e5fcde014fee41d4a946eb29a135053a, type: 3}
+      propertyPath: sfxDie_E
+      value: 
+      objectReference: {fileID: 8300000, guid: 661023e6761dacb4eb54015b5fda26e7, type: 3}
     - target: {fileID: 3448519440446431885, guid: e5fcde014fee41d4a946eb29a135053a, type: 3}
       propertyPath: m_RootOrder
       value: 1

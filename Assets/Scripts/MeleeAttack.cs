@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour {
-    public GameObject weaponPrefab;
+
+    [SerializeField] private GameObject weaponPrefab;
+    private GameObject currentWeapon;
     public float attackInterval;
-    public NavMeshFollowTarget moveScript;
 
     private Animator animator;
     private int animIDisAttacking;
-
-    public Transform projectileStartPos;
 
     private AttackingState attackingState;
 
@@ -26,8 +25,9 @@ public class MeleeAttack : MonoBehaviour {
     private AudioManager aM;
     AudioSource audioSource;
 
-    public WeaponMelee weapon;
+    private WeaponMelee weapon;
 
+    [SerializeField] private Transform weaponHand;
     void Start() 
     {
         aM = AudioManager.Instance;
@@ -38,7 +38,8 @@ public class MeleeAttack : MonoBehaviour {
             attackSound = aM.sfxMeleeAttack;
         }
 
-        moveScript = GetComponent<NavMeshFollowTarget>();
+        SpawnWeapon();
+
         attackingState = GetComponent<CharacterStateManager>().attackState;
         animator = GetComponent<Animator>();
         animIDisAttacking = Animator.StringToHash("isAttacking");
@@ -49,13 +50,21 @@ public class MeleeAttack : MonoBehaviour {
         {
             foreach (var item in animator.runtimeAnimatorController.animationClips)
             {
-                if (item.name == "Attack")
+                if (item.name == "1H-RH@Attack01")
                 {
                     timeBetweenAttack = item.length;
                     break;
                 }
             }
         }
+    }
+
+    private void SpawnWeapon()
+    {
+        currentWeapon = Instantiate(weaponPrefab, weaponHand.position, Quaternion.identity);
+        currentWeapon.transform.SetParent(weaponHand);
+
+        weapon = currentWeapon.GetComponent<WeaponMelee>();
     }
 
     private void Attack(object sender, EventArgs e)
@@ -78,12 +87,13 @@ public class MeleeAttack : MonoBehaviour {
 
     public void AttackEnd()
     {
-        weapon.canDamage = true;
+        weapon.canDamage = false;
     }
 
     private void ResetAttack()
     {
         attacking = false;
+        animator.SetBool(animIDisAttacking, attacking);
     }
 
     private void OnDestroy()

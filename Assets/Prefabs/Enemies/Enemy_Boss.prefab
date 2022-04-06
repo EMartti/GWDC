@@ -422,13 +422,13 @@ GameObject:
   - component: {fileID: 2448470220614654715}
   - component: {fileID: 3672393660626062632}
   - component: {fileID: 3161273089753200088}
-  - component: {fileID: 3161273089753200089}
   - component: {fileID: 7186113127100062834}
   - component: {fileID: 3161273089753200167}
   - component: {fileID: 3161273089753200166}
   - component: {fileID: -6903909757402017645}
   - component: {fileID: 1992766674}
   - component: {fileID: 6008096470172085260}
+  - component: {fileID: 7059466126044453371}
   m_Layer: 6
   m_Name: Enemy_Boss
   m_TagString: Enemy
@@ -522,37 +522,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroRange: 10
   attackInterval: 1
-  meleeRange: 1.53
---- !u!114 &3161273089753200089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3161273089753200083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ddd13a4d7627c459b50d3f809b0c62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 256
-  animator: {fileID: 1992766674}
-  meleeWeaponCollider: {fileID: 3161273089254277489}
-  audio:
-    hitSound: {fileID: 0}
-    attackSound: {fileID: 8300000, guid: 17a45389aced9254380a98a9827ad452, type: 3}
-  visuals:
-    weapon: {fileID: 0}
-    hitEffect: {fileID: 0}
-  parameters:
-    timeBetweenAttack: 2
-    hitDamage: 33
-    hitForce: 0
-    baseDamage: 50
-  canUse: 1
-  sparkPos: {fileID: 0}
+  attackRange: 1
+  canTurnWhenAttacking: 0
+  turnRateWhenAttacking: 1
+  target: {fileID: 0}
 --- !u!114 &7186113127100062834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,8 +555,9 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   defaultHealth: 100
-  audio:
-    hurtSound: {fileID: 8300000, guid: 28be67f2babacef4a849a028c2ffe50a, type: 3}
+  myAudio:
+    hurtSound: {fileID: 0}
+    dieSound: {fileID: 0}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}
@@ -732,6 +706,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterClass: 0
+--- !u!114 &7059466126044453371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3161273089753200083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa0e5daa348c1d4d9af3917055c536f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 3640672546590877060, guid: f9f65b32dfebecf43a9ed0498ff5174a, type: 3}
+  attackInterval: 1
+  hasAttacked: 0
+  attackSound: {fileID: 8300000, guid: 17a45389aced9254380a98a9827ad452, type: 3}
+  weapon: {fileID: 0}
+  weaponHand: {fileID: 4453669784256409491}
 --- !u!1 &3161273090650054799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1025,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}
+--- !u!4 &4453669784256409491 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1948329710155936266, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}
+  m_PrefabInstance: {fileID: 2794279738398563737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4453669784256409503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1948329710155936262, guid: 38283d0f2f9588c4a90e9a27a86fdbdc, type: 3}

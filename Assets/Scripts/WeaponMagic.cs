@@ -57,12 +57,6 @@ public class WeaponMagic : MonoBehaviour
         bulletsLeft--;
         bulletsShot++;
 
-        if (allowInvoke)
-        {
-            Invoke("ResetShot", timeBetweenShooting);
-            allowInvoke = false;
-        }
-
         Invoke("KillParticles", lifeTime);
 
         if (shootSound != null)

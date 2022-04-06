@@ -17,8 +17,9 @@ public class PlayerAttackingState : PlayerBaseState
     {       
         if (canTurnWhenAttacking)
         {
-            character.gameObject.transform.LookAt(new Vector3(target.position.x, 0, target.position.z));
-            //Debug.Log(character.gameObject.name + " is looking at " + target.gameObject.name + " at " + target.position);
+            Vector3 direction = target.position - character.gameObject.transform.position;
+            float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            character.gameObject.transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
     }
 }

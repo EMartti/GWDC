@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Animator))]
@@ -75,7 +74,8 @@ public class PlayerController : MonoBehaviour
         float angle = Vector3.Angle(transform.forward, moveDirection);
         if (angle > 90)
         {
-            transform.LookAt(targetDirection);
+            if(moveDirection.magnitude > 0)
+                transform.LookAt(targetDirection);
         }
         else
         {
