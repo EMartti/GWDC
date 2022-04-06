@@ -6322,7 +6322,7 @@ MonoBehaviour:
   defaultHealth: 100
   myAudio:
     hurtSound: {fileID: 8300000, guid: 3f5e00ac70c0a8546b78d1ebffdac082, type: 3}
-    dieSound: {fileID: 0}
+    dieSound: {fileID: 8300000, guid: ee1bc2c34dd3ee342abd4427dff2dd85, type: 3}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}
@@ -6382,6 +6382,7 @@ MonoBehaviour:
   canTurnWhenAttacking: 1
   turnRateWhenAttacking: 1
   target: {fileID: 0}
+  TargetTag: Player
 --- !u!114 &5420707159204373798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6399,7 +6400,7 @@ MonoBehaviour:
   moveScript: {fileID: 0}
   projectileStartPos: {fileID: 5699975236822196190}
   hasAttacked: 0
-  attackSound: {fileID: 8300000, guid: 96408a9c718b39b49a261b4874aef0b2, type: 3}
+  attackSound: {fileID: 8300000, guid: 3e83be771e2653940af51f9aafb1ab7d, type: 3}
 --- !u!1001 &3807734621512413997
 PrefabInstance:
   m_ObjectHideFlags: 0
