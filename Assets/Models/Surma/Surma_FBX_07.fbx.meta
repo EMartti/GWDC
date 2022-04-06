@@ -8,7 +8,7 @@ ModelImporter:
     second: Surma_Run
   - first:
       74: -998496362607748373
-    second: Attack
+    second: 1H-RH@Attack01
   - first:
       74: -8027120960985450113
     second: Attack
@@ -77,7 +77,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Attack
+      name: 1H-RH@Attack01
       takeName: Take 001
       internalID: 0
       firstFrame: 30
@@ -100,7 +100,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.31755275
+        functionName: AttackStart
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.63801897
+        functionName: AttackEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
