@@ -10,9 +10,7 @@ public class Range : MonoBehaviour
     private GameObject currentWeapon;
 
     private Animator animator;
-
     private int animIDisAttacking;
-
     private bool attacking;
 
     public bool canUse;
@@ -26,8 +24,6 @@ public class Range : MonoBehaviour
 
     private PlayerStateManager stateManager;
     private float timeBetweenAttack;
-
-    private Animation attackAnim;
 
     void Start()
     {

@@ -6,196 +6,102 @@ using TMPro;
 
 [RequireComponent(typeof(AudioSource))]
 public class Magic : MonoBehaviour {
-    [SerializeField] private GameObject magic;
 
-    [SerializeField] private int magazineSize, projectilesPerTap;
-    [SerializeField] private bool automatic;
+    [SerializeField] private GameObject weaponPrefab;
+    private GameObject currentWeapon;
 
-    [SerializeField] private float shootForce, upwardForce;
-    [SerializeField] private float timeBetweenShots, spread, reloadTime, timeBetweenShooting;
-
-    AudioSource audioSource;
-    AudioManager aM;
-    [SerializeField] private AudioClip shootSound;
-    [SerializeField] private AudioClip reload;
-    [SerializeField] private GameObject muzzleFlash;
-    public TextMeshProUGUI ammunnitionDisplay;
-
-    int bulletsShot, bulletsLeft;
-    bool shooting, readyToShoot, reloading;
-    private bool allowInvoke = true;
+    private Animator animator;
+    private int animIDisAttacking;
+    private bool attacking = false;
 
     private PlayerInputActions playerInputActions;
 
-    [SerializeField] private float explosionRange = 1f;
-    public LayerMask whatIsEnemies;
-
-    [SerializeField] private float lifeTime = 1f;
-
-    private Plane plane;
-    Ray ray;
-    private Vector3 castPoint;
-    [SerializeField] private int damage = 75;
-    private GameObject currentMagic;
-
-    private int layerMask;
+    private WeaponMagic weapon;
 
     public bool canUse = true;
 
-    //public EquipmentSlots equipmentSlot;
+    private Player player;
+    [SerializeField] private Transform target;
 
-    private void Awake() {
-        bulletsLeft = magazineSize;
-        readyToShoot = true;
-
-        audioSource = GetComponent<AudioSource>();
-
-        layerMask = LayerMask.GetMask("Environment");
-    }
+    private PlayerStateManager stateManager;
+    private float timeBetweenAttack;
 
     private void Start() {
-        aM = AudioManager.Instance;
-        if (shootSound == null) {
-            shootSound = aM.sfxFireballStart;
-        }
 
-        if (gameObject.tag == "Player") {
-            playerInputActions = PlayerInputs.Instance.playerInputActions;
+        player = Player.Instance;
 
-            playerInputActions.Player.Reload.Enable();
-            playerInputActions.Player.Reload.started += OnReload;
+        player = GetComponent<Player>();
+        playerInputActions = PlayerInputs.Instance.playerInputActions;
+        stateManager = GetComponent<PlayerStateManager>();
 
-            playerInputActions.Player.Fire.Enable();
-            playerInputActions.Player.Fire.started += OnFire;
-        }
+        animator = GetComponent<Animator>();
+        animIDisAttacking = Animator.StringToHash("isAttacking");
 
-        playerInputActions.Player.MousePosition.Enable();
-        plane = new Plane(Vector3.up, Vector3.zero);
-        ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-    }
+        playerInputActions.Player.Fire.Enable();
+        playerInputActions.Player.Fire.started += OnMageAttack;
 
-    #region InputSystem
+        SpawnWeapon();
 
-    private void OnFire(InputAction.CallbackContext obj) {
-        shooting = true;
-        if (readyToShoot && shooting && !reloading && !automatic) {
-            bulletsShot = 0;
-            if(canUse)
-                Shoot();
-        }
-        shooting = false;
-    }
-
-    //private void OnDisable()
-    //{
-    //    if (gameObject.tag == "Player")
-    //    {
-    //        playerInputActions.Player.Fire.Disable();
-    //        playerInputActions.Player.Reload.Disable();
-    //    }
-    //}
-
-    //Reloading
-    private void OnReload(InputAction.CallbackContext obj) {
-        if (bulletsLeft < magazineSize && !reloading) Reload();
-    }
-    #endregion
-
-    void Update() {
-        shooting = false;
-        if (automatic && playerInputActions.Player.Fire.ReadValue<float>() > 0)
-            shooting = true;
-
-        //Automatic firing
-        if (readyToShoot && shooting && !reloading) {
-            bulletsShot = 0;
-            Shoot();
-        }
-
-        //Bullets left UI
-        if (ammunnitionDisplay != null)
-            ammunnitionDisplay.SetText(bulletsLeft / projectilesPerTap + "/" + magazineSize / projectilesPerTap);
-    }
-
-
-    public void Shoot() {
-
-        if (bulletsLeft <= 0) { Reload(); return; }
-
-        readyToShoot = false;
-
-        //Debug.Log("fired magic");
-        ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 1000f, layerMask)) 
+        if (animator != null)
         {
-            castPoint = hit.point;
-        } 
-        else
-            castPoint = transform.position;
-
-        Explode();
-
-        bulletsLeft--;
-        bulletsShot++;
-
-        if (allowInvoke) {
-            Invoke("ResetShot", timeBetweenShooting);
-            allowInvoke = false;
+            foreach (var item in animator.runtimeAnimatorController.animationClips)
+            {
+                if (item.name == "1H-RH@Attack01")
+                {
+                    timeBetweenAttack = item.length / animator.GetFloat("animSpeed");
+                    break;
+                }
+            }
         }
 
-        if (bulletsShot < projectilesPerTap && bulletsLeft > 0)
-            Invoke("Shoot", timeBetweenShots);
-
-        if (shootSound != null)
-            audioSource.PlayOneShot(shootSound, 0.99F);
     }
 
-    private void Explode() {
-        currentMagic = Instantiate(magic, castPoint, Quaternion.Euler(-90, 0, 0));
+    private void OnEnable()
+    {
+        playerInputActions.Player.Fire.started += OnMageAttack;
+        SpawnWeapon();
+    }
 
-        Collider[] enemies = Physics.OverlapSphere(castPoint, explosionRange, whatIsEnemies);
+    private void SpawnWeapon()
+    {
+        currentWeapon = Instantiate(weaponPrefab, player.WeaponHand.position, Quaternion.identity);
+        currentWeapon.transform.SetParent(player.WeaponHand);
 
-        foreach (Collider enemy in enemies) {
-            if (enemy.gameObject.GetComponent<Health>() != null)
-                enemy.gameObject.GetComponent<Health>().TakeDamage(damage, gameObject);
+        weapon = currentWeapon.GetComponent<WeaponMagic>();
+        weapon.parent = gameObject;
+        weapon.target = target;
+    }
+
+    private void OnMageAttack(InputAction.CallbackContext obj)
+    {
+        if (!attacking)
+        {
+            attacking = true;
+
+            stateManager.SwitchState(stateManager.attackState);
+
+            if (animator != null)
+                animator.SetBool(animIDisAttacking, attacking);
+
+            Invoke("ResetAttack", timeBetweenAttack);
         }
-
-
-
-        Invoke("Delay", lifeTime);
     }
 
-    private void ResetShot() {
-        readyToShoot = true;
-        allowInvoke = true;
+    public void HitEvent()
+    {
+        if (enabled)
+            weapon.Attack();
     }
 
-    private void Reload() {
-        reloading = true;
-        if (reload != null)
-            audioSource.PlayOneShot(reload, 0.7F);
-        Invoke("ReloadFinished", reloadTime);
+    private void OnDisable()
+    {
+        playerInputActions.Player.Fire.started -= OnMageAttack;
     }
 
-    private void ReloadFinished() {
-        bulletsLeft = magazineSize;
-        reloading = false;
-    }
-
-    private void Delay() {
-        Destroy(currentMagic);
-    }
-
-    // AI Shoot
-    public void AiFire() {
-        shooting = true;
-        if (readyToShoot && shooting && !reloading && !automatic) {
-            bulletsShot = 0;
-            Shoot();
-        }
-        shooting = false;
+    private void ResetAttack() {
+        attacking = false;
+        stateManager.SwitchState(stateManager.moveState);
+        if (animator != null)
+            animator.SetBool(animIDisAttacking, false);
     }
 }

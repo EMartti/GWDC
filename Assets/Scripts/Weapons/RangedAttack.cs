@@ -58,15 +58,18 @@ public class RangedAttack : MonoBehaviour {
 
     private void Attack(object sender, EventArgs e)
     {
-        attacking = true;
+        if (!attacking)
+        {
+            attacking = true;
 
-        if (animator != null)
-            animator.SetBool(animIDisAttacking, attacking);
+            if (animator != null)
+                animator.SetBool(animIDisAttacking, attacking);
 
-        if (attackSound != null)
-            audioSource.PlayOneShot(attackSound, 0.7F);
+            if (attackSound != null)
+                audioSource.PlayOneShot(attackSound, 0.7F);
 
-        Invoke("ResetAttack", timeBetweenAttack);
+            Invoke("ResetAttack", timeBetweenAttack);
+        }
     }
 
     public void HitEvent()
@@ -77,6 +80,7 @@ public class RangedAttack : MonoBehaviour {
     private void ResetAttack()
     {
         attacking = false;
+        animator.SetBool(animIDisAttacking, attacking);
     }
 
     private void OnDestroy()

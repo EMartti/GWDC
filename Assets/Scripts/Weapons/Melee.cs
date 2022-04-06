@@ -87,11 +87,13 @@ public class Melee : MonoBehaviour
 
     public void AttackStart() 
     {
-        weapon.canDamage = true;
+        if(enabled)
+            weapon.canDamage = true;
     }
     public void AttackEnd()
     {
-        weapon.canDamage = false;
+        if (enabled)
+            weapon.canDamage = false;
     }
 
     private void OnDisable()
