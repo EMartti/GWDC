@@ -24,8 +24,9 @@ public class AttackingState : CharacterBaseState
 
         if (canTurnWhenAttacking)
         {
-            Quaternion rotation = Quaternion.LookRotation(target.position - character.gameObject.transform.position, Vector3.up);
-            character.gameObject.transform.Rotate(0, rotation.eulerAngles.y, 0);
+            Vector3 direction = target.position - character.gameObject.transform.position;
+            float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            character.gameObject.transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
 
         timer += Time.deltaTime;        

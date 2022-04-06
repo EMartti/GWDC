@@ -6322,6 +6322,7 @@ MonoBehaviour:
   defaultHealth: 100
   myAudio:
     hurtSound: {fileID: 8300000, guid: 3f5e00ac70c0a8546b78d1ebffdac082, type: 3}
+    dieSound: {fileID: 0}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}
@@ -6376,7 +6377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 8
-  attackInterval: 2
+  attackInterval: 1
   attackRange: 5
   canTurnWhenAttacking: 1
   turnRateWhenAttacking: 1
@@ -6394,7 +6395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1644675235641529876, guid: aac0f4343f64e7e468a99fc4ed8afc55, type: 3}
-  attackInterval: 2
+  attackInterval: 1
   moveScript: {fileID: 0}
   projectileStartPos: {fileID: 5699975236822196190}
   hasAttacked: 0
