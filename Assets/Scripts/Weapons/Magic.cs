@@ -96,6 +96,7 @@ public class Magic : MonoBehaviour {
     private void OnDisable()
     {
         playerInputActions.Player.Fire.started -= OnMageAttack;
+        Destroy(currentWeapon);
     }
 
     private void ResetAttack() {
