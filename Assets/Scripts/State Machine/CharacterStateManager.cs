@@ -17,6 +17,8 @@ public class CharacterStateManager : MonoBehaviour
     public float turnRateWhenAttacking = 1f;
     public Transform target;
 
+    [SerializeField] private string TargetTag = "Player";
+
     private void Start()
     {
         idleState.aggroRange = aggroRange;
@@ -24,8 +26,11 @@ public class CharacterStateManager : MonoBehaviour
         attackState.attackInterval = attackInterval;
         attackState.canTurnWhenAttacking = canTurnWhenAttacking;
         attackState.turnRateWhenAttacking = turnRateWhenAttacking;
-        attackState.target = target;
 
+        if (target != null)
+            attackState.target = target;
+        else
+            attackState.target = GameObject.FindGameObjectWithTag(TargetTag).transform;
         aiMoveState.attackRange = attackRange;
 
         currentState = idleState;

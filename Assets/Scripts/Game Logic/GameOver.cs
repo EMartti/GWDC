@@ -8,7 +8,7 @@ public class GameOver : MonoBehaviour
 {
     public event EventHandler OnGameOver;
     [SerializeField] private GameObject gameOverCanvas;
-
+    private PlayerInputActions playerInputActions;
     private GameObject player;
     void Start()
     {
@@ -17,6 +17,8 @@ public class GameOver : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         Health.OnDeath += Health_OnDeath;
+
+        playerInputActions = PlayerInputs.Instance.playerInputActions;
     }
 
     private void Health_OnDeath(Health sender)
@@ -28,7 +30,8 @@ public class GameOver : MonoBehaviour
     {
         gameOverCanvas.SetActive(true);
         Debug.Log("GAME OVER!");
-        if(OnGameOver != null) OnGameOver.Invoke(this, EventArgs.Empty);       
+        if(OnGameOver != null) OnGameOver.Invoke(this, EventArgs.Empty);
+        playerInputActions.Player.Disable();
 
     }
 
