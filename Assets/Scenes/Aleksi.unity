@@ -334,7 +334,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &498325906
 PrefabInstance:
@@ -349,7 +349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816977, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: orthographic size
-      value: 1.49
+      value: 3.67
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816979, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_Name
@@ -357,19 +357,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816982, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816982, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.6568546
+      value: 9.765146
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816982, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.8
+      value: 14.440001
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816982, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.146853
+      value: -13.255145
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816982, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_LocalRotation.w
@@ -415,7 +415,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 16c0532f4908c934d83769cbb4f840a4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16c0532f4908c934d83769cbb4f840a4, type: 3}
       propertyPath: m_LocalScale.x
@@ -475,6 +475,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c0532f4908c934d83769cbb4f840a4, type: 3}
+--- !u!1001 &1273117923
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.4093273
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.0136476
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610569626817621580, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418596683013108982, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
+      propertyPath: m_Name
+      value: mage
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a287683d2febaa348b8155e6f7a2f4e7, type: 3}
 --- !u!1001 &1414180300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -484,7 +541,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a2b598fba2f1f234787402ac2525cde2, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2b598fba2f1f234787402ac2525cde2, type: 3}
       propertyPath: m_LocalScale.x
@@ -678,7 +735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7969285611971969489, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7969285611971969489, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2642,12 +2699,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
   playerHealthScript: {fileID: 8563761557361608732}
-  meleeScript: {fileID: 7930354623520213366}
+  meleeScript: {fileID: 0}
   xpRequiredMultiplier: 1.5
   playerStartLevel: 1
   maxHealthAddedPerLevel: 0
   damageAddedPerLevel: 10
-  audio:
+  myAudio:
     giveExpSound: {fileID: 0}
 --- !u!1 &5459807589249006226
 GameObject:
@@ -2917,7 +2974,7 @@ Transform:
   - {fileID: 9148764228696476043}
   - {fileID: 6776730368356219379}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6476365198769163805
 Transform:
@@ -3183,7 +3240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingPoint: {fileID: 1163786030661245108}
-  projectile: {fileID: 0}
+  target: {fileID: 0}
+  projectilePrefab: {fileID: 0}
   magazineSize: 3
   projectilesPerTap: 0
   automatic: 0
@@ -3197,7 +3255,7 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: af63539a5e39c99489395bdea2471f60, type: 3}
   muzzleFlash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
   ammunnitionDisplay: {fileID: 0}
-  canUse: 1
+  parent: {fileID: 0}
 --- !u!4 &7622998101385319719
 Transform:
   m_ObjectHideFlags: 0
@@ -3287,7 +3345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7848507104655495268, guid: 4456207f11f9e194891f0d2b4cc0c5b7, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7848507104655495268, guid: 4456207f11f9e194891f0d2b4cc0c5b7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3454,24 +3512,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ddd13a4d7627c459b50d3f809b0c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 64
-  animator: {fileID: 694528350977024503}
-  meleeWeaponCollider: {fileID: 2340845084356336341}
-  audio:
-    hitSound: {fileID: 0}
-    attackSound: {fileID: 0}
-  visuals:
-    weapon: {fileID: 0}
-    hitEffect: {fileID: 0}
-  parameters:
-    timeBetweenAttack: 1
-    hitDamage: 50
-    hitForce: 100
-    baseDamage: 50
+  weaponPrefab: {fileID: 0}
+  weapon: {fileID: 0}
   canUse: 1
-  sparkPos: {fileID: 0}
 --- !u!4 &7957363115053233866
 Transform:
   m_ObjectHideFlags: 0
@@ -3739,8 +3782,9 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   defaultHealth: 100
-  audio:
+  myAudio:
     hurtSound: {fileID: 0}
+    dieSound: {fileID: 0}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 1969967651396293653, guid: 3df31be828c063b46bce3dcf343b1604, type: 3}
