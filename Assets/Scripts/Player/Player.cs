@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -25,11 +26,13 @@ public class Player : MonoBehaviour
     private static Player instance;
     #endregion
 
-    private PlayerPerks playerPerks;
+    public PlayerPerks playerPerks;
 
     private Health health;
 
     private UIPerks uiPerks;
+
+    private TextMeshProUGUI perkPointText;
 
     private PlayerProgression playerProgression;
 

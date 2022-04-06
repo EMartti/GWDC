@@ -4633,7 +4633,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingPoint: {fileID: 219018829}
-  projectile: {fileID: 819954320}
+  target: {fileID: 0}
+  projectilePrefab: {fileID: 0}
   magazineSize: 1
   projectilesPerTap: 1
   automatic: 0
@@ -4647,7 +4648,7 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: af63539a5e39c99489395bdea2471f60, type: 3}
   muzzleFlash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
   ammunnitionDisplay: {fileID: 0}
-  canUse: 1
+  parent: {fileID: 0}
 --- !u!82 &819954323
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6735,27 +6736,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f05658ec850784498f7bd84111e6d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magic: {fileID: 5856934072545328354, guid: 72b54c913799ade41a81af6a854bc2c4, type: 3}
-  magazineSize: 1
-  projectilesPerTap: 0
-  automatic: 0
-  shootForce: 0
-  upwardForce: 0
-  timeBetweenShots: 0
-  spread: 0
-  reloadTime: 0
-  timeBetweenShooting: 0
-  shootSound: {fileID: 0}
-  reload: {fileID: 0}
-  muzzleFlash: {fileID: 0}
-  ammunnitionDisplay: {fileID: 0}
-  explosionRange: 2.22
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 64
-  lifeTime: 4
-  damage: 200
+  weaponPrefab: {fileID: 0}
   canUse: 1
+  target: {fileID: 0}
 --- !u!82 &1149645999
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7926,15 +7909,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816982, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.6568546
+      value: 9.765145
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816982, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.8
+      value: 14.440001
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816982, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.6568537
+      value: -9.765144
       objectReference: {fileID: 0}
     - target: {fileID: 694138441390816982, guid: f995aab931fb5f248a16aa7075e88f61, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8938,6 +8921,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 732214697654059850, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 732214697654059850, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4667912735684757834, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
       propertyPath: sfxHeal
       value: 
@@ -8998,6 +8989,14 @@ PrefabInstance:
       propertyPath: m_PlayerPrefab
       value: 
       objectReference: {fileID: 1997870281}
+    - target: {fileID: 7579907839847344820, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579907839847344820, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7969285609952209108, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9069,6 +9068,10 @@ PrefabInstance:
     - target: {fileID: 8006375178911369811, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167771297117304347, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
+      propertyPath: m_Name
+      value: PlayerStatusCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46fee8ea1a0bcda46af19a2704a5b1f9, type: 3}
@@ -11934,6 +11937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c267dbea0c14d419c6633e189f84f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponHand: {fileID: 0}
+  damageBonus: 0
 --- !u!114 &1997870283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11961,12 +11966,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 773105397}
   playerHealthScript: {fileID: 1997870288}
-  meleeScript: {fileID: 1997870287}
+  meleeScript: {fileID: 0}
+  uiLevelScript: {fileID: 0}
   xpRequiredMultiplier: 1.5
   playerStartLevel: 1
   maxHealthAddedPerLevel: 0
   damageAddedPerLevel: 10
-  audio:
+  myAudio:
     giveExpSound: {fileID: 0}
 --- !u!114 &1997870285
 MonoBehaviour:
@@ -12010,24 +12016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ddd13a4d7627c459b50d3f809b0c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 64
-  animator: {fileID: 1997870292}
-  meleeWeaponCollider: {fileID: 1923158612}
-  audio:
-    hitSound: {fileID: 8300000, guid: c81fee266487b984184170c3495b6406, type: 3}
-    attackSound: {fileID: 8300000, guid: 17a45389aced9254380a98a9827ad452, type: 3}
-  visuals:
-    weapon: {fileID: 0}
-    hitEffect: {fileID: 1256513188377641462, guid: a4f76ca11e677494e89445b429c3b2e9, type: 3}
-  parameters:
-    timeBetweenAttack: 1
-    hitDamage: 100
-    hitForce: 100
-    baseDamage: 50
+  weaponPrefab: {fileID: 0}
+  weapon: {fileID: 0}
   canUse: 1
-  sparkPos: {fileID: 1923158609}
 --- !u!114 &1997870288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12043,9 +12034,10 @@ MonoBehaviour:
   maxHealth: 1000
   currentHealth: 0
   defaultHealth: 100
-  audio:
-    hurtSound: {fileID: 8300000, guid: c08b0fb3d0cc3b142a23f6734aef0a89, type: 3}
-    healSound: {fileID: 8300000, guid: 5ed873e90b572d6478f2bb1698bba27c, type: 3}
+  myAudio:
+    hurtSound: {fileID: 0}
+    dieSound: {fileID: 0}
+    healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 1969967651396293653, guid: 3df31be828c063b46bce3dcf343b1604, type: 3}
     hurtEffect: {fileID: 779801061157678525, guid: 6123eeb4011cb2c488d257db01bbddce, type: 3}

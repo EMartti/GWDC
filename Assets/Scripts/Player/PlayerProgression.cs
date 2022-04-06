@@ -11,6 +11,7 @@ public class PlayerProgression : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Health playerHealthScript;
     [SerializeField] private WeaponMelee meleeScript;
+    [SerializeField] private UiPlayerlevel uiLevelScript;
 
     [Header("Level & XP")]
     [SerializeField] private float xpRequiredMultiplier = 1.5f;
@@ -86,6 +87,9 @@ public class PlayerProgression : MonoBehaviour
         // Debug
         Debug.Log("Player achieved Level " + playerStats.playerLevel + "!");
 
+        // Vaihda UI:n playerLevel teksti
+        uiLevelScript.levelUpUi(playerStats.playerLevel);
+        
 
         // Jos edellisestä level-upista jäi ylimäärästä xp:tä, joka riittää toiseen leveliin - Level uppaa uudestaan
         if (playerStats.currentXp >= playerStats.xpRequiredToLvlUp)

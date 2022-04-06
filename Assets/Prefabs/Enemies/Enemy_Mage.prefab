@@ -114,7 +114,8 @@ MonoBehaviour:
   currentHealth: 0
   defaultHealth: 100
   myAudio:
-    hurtSound: {fileID: 8300000, guid: 44b98adf25d2e65429633f084dee99ff, type: 3}
+    hurtSound: {fileID: 8300000, guid: 6f21ef7e0912dc14286734ab0f28cc4a, type: 3}
+    dieSound: {fileID: 8300000, guid: 986182260892ecc4aa2b069184996853, type: 3}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}
@@ -271,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingPoint: {fileID: 3879086019358674246}
+  target: {fileID: 0}
   projectilePrefab: {fileID: 0}
   magazineSize: 3
   projectilesPerTap: 0
@@ -281,10 +283,11 @@ MonoBehaviour:
   spread: 0
   reloadTime: 2
   timeBetweenShooting: 1
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: c3a826c9514824142b29a1e3c03bba2c, type: 3}
   reload: {fileID: 0}
   muzzleFlash: {fileID: 0}
   ammunnitionDisplay: {fileID: 0}
+  parent: {fileID: 0}
 --- !u!1 &321206067969173254
 GameObject:
   m_ObjectHideFlags: 0

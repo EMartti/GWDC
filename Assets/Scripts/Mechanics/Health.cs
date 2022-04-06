@@ -85,10 +85,11 @@ public class Health : MonoBehaviour, IDamageable
             if (kb != null)
                 kb.AddForce(damage, attacker.transform.position); ;
             currentHealth -= damage;
-            if (currentHealth > 0) {
+            //if (currentHealth > 0) {
                 if (myAudio.hurtSound != null)
                     audioSource.PlayOneShot(myAudio.hurtSound, 1F);
-            } else {
+            //} 
+            if (currentHealth <= 0) {
                 if (myAudio.dieSound != null)
                     audioSource.PlayOneShot(myAudio.dieSound, 1F);
             }
