@@ -9,7 +9,6 @@ public class UI_XPBar : MonoBehaviour
 
     private void Start()
     {
-        int points = Player.Instance.playerPerks.GetPerkPoints();
         slider = GetComponent<Slider>();
     }
 
@@ -18,6 +17,4 @@ public class UI_XPBar : MonoBehaviour
         slider.maxValue = PlayerStats.Instance.xpRequiredToLvlUp;
         slider.value = PlayerStats.Instance.currentXp;
     }
-
-    //
 }
