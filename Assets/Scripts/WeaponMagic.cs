@@ -22,9 +22,6 @@ public class WeaponMagic : MonoBehaviour
     [SerializeField] private GameObject muzzleFlash;
     public TextMeshProUGUI ammunnitionDisplay;
 
-    int bulletsShot, bulletsLeft;
-    private bool allowInvoke = true;
-
     [SerializeField] private float explosionRange = 1f;
     public LayerMask whatIsEnemies;
 
@@ -54,9 +51,6 @@ public class WeaponMagic : MonoBehaviour
 
     public void Attack()
     {
-        bulletsLeft--;
-        bulletsShot++;
-
         Invoke("KillParticles", lifeTime);
 
         if (shootSound != null)

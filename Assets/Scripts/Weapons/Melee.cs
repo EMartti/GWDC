@@ -75,6 +75,7 @@ public class Melee : MonoBehaviour
             attacking = true;
 
             stateManager.SwitchState(stateManager.attackState);
+            weapon.PlayAttackSound();
 
             if (animator != null)
                 animator.SetBool(animIDisAttacking, attacking);

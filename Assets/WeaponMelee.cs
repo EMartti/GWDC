@@ -47,6 +47,11 @@ public class WeaponMelee : MonoBehaviour
         baseDamage = hitDamage;
     }
 
+    public void PlayAttackSound()
+    {
+        if (hitSound != null) AudioSource.PlayClipAtPoint(attackSound, transform.position, 1f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == enemyTag && canDamage)
@@ -57,10 +62,10 @@ public class WeaponMelee : MonoBehaviour
                 damageable.TakeDamage(hitDamage + player.damageBonus, gameObject);
             }
 
-            if (hitEffect != null) Instantiate(hitEffect, sparkPos.transform.position, Quaternion.identity);
+            if (hitEffect != null) Instantiate(hitEffect, other.gameObject.transform.position, Quaternion.identity);
 
 
-            if (hitSound != null) AudioSource.PlayClipAtPoint(hitSound, transform.position, 2f);
+            if (hitSound != null) AudioSource.PlayClipAtPoint(hitSound, transform.position, 1f);
         }
     }
 }
