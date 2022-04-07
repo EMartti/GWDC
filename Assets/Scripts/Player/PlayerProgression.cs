@@ -88,7 +88,11 @@ public class PlayerProgression : MonoBehaviour
         Debug.Log("Player achieved Level " + playerStats.playerLevel + "!");
 
         // Vaihda UI:n playerLevel teksti
-        uiLevelScript.levelUpUi(playerStats.playerLevel);
+        if (uiLevelScript != null)
+        {
+            uiLevelScript.levelUpUi(playerStats.playerLevel);
+        }
+            
         
 
         // Jos edellisest‰ level-upista j‰i ylim‰‰r‰st‰ xp:t‰, joka riitt‰‰ toiseen leveliin - Level uppaa uudestaan

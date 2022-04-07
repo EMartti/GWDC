@@ -20,6 +20,9 @@ public class UIPerks : MonoBehaviour
     [SerializeField] private Button HP3btn;
     [SerializeField] private Button Dashbtn;
 
+    [SerializeField] private Sprite spriteActive;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,26 +78,26 @@ public class UIPerks : MonoBehaviour
         UpdatePerkPoints();
     }
 
+
+    // Functions for PerkButton OnClick Events -->
     public void UnlockHP1()
     {
         playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP1);
     }
-
     public void UnlockHP2()
     {
         playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP2);
         
     }
-
     public void UnlockHP3()
     {
         playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP3);
     }
-
     public void UnlockDash()
     {
         playerPerks.TryUnlockPerk(PlayerPerks.PerkType.Dash);
     }
+    // Functions for PerkButton OnClick Events <--
 
     private void UpdatePerkPoints()
     {
@@ -106,10 +109,11 @@ public class UIPerks : MonoBehaviour
         foreach (PerkButton perkButton in perkButtonList)
         {
             perkButton.UpdateVisual();
-        }
-        
+        }       
     }
 
+
+    // Perk Button class
     private class PerkButton
     {
         private Button button;
@@ -125,19 +129,24 @@ public class UIPerks : MonoBehaviour
         }
 
 
+        // Perk button visual change after unlock
         public void UpdateVisual()
         {
             Image image = button.image;
+
+            // Perk unlockattu - vaihda väri vihreäksi
             if (playerPerks.isPerkUnlocked(perkType))
             {
                 image.color = Color.green;
             }
             else
             {
+                // Perkin voi unlockata - väri valkoinen
                 if (playerPerks.CanUnlock(perkType))
                 {
                     image.color = Color.white;
                 }
+                // Perkkiä ei voi vielä unlockata - Väri harmaa
                 else
                 {
                     image.color = Color.gray;

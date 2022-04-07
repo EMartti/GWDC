@@ -5,21 +5,19 @@ using UnityEngine.UI;
 
 public class UI_XPBar : MonoBehaviour
 {
-    public Slider slider;
-    private PlayerStats stats;
-
-    private Player player;
+    [SerializeField] private Slider slider;
 
     private void Start()
     {
         int points = Player.Instance.playerPerks.GetPerkPoints();
-        stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
         slider = GetComponent<Slider>();
     }
 
     private void Update()
     {
-        slider.maxValue = stats.xpRequiredToLvlUp;
-        slider.value = stats.currentXp;
+        slider.maxValue = PlayerStats.Instance.xpRequiredToLvlUp;
+        slider.value = PlayerStats.Instance.currentXp;
     }
+
+    //
 }
