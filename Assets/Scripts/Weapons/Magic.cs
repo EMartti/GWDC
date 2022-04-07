@@ -64,7 +64,7 @@ public class Magic : MonoBehaviour {
 
     private void SpawnWeapon()
     {
-        currentWeapon = Instantiate(weaponPrefab, player.WeaponHand.position, Quaternion.identity);
+        currentWeapon = Instantiate(weaponPrefab, player.WeaponHand.position, player.WeaponHand.rotation);
         currentWeapon.transform.SetParent(player.WeaponHand);
 
         weapon = currentWeapon.GetComponent<WeaponMagic>();

@@ -44,7 +44,7 @@ public class Melee : MonoBehaviour
         {
             foreach (var item in animator.runtimeAnimatorController.animationClips)
             {
-                if (item.name == "1H-RH@Attack01")
+                if (item.name == "Attack")
                 {
                     timeBetweenAttack = item.length / animator.GetFloat("animSpeed");
                     break;
@@ -61,7 +61,7 @@ public class Melee : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        currentWeapon = Instantiate(weaponPrefab, player.WeaponHand.position, Quaternion.identity);
+        currentWeapon = Instantiate(weaponPrefab, player.WeaponHand.position, player.WeaponHand.rotation);
         currentWeapon.transform.SetParent(player.WeaponHand);
 
         weapon = currentWeapon.GetComponent<WeaponMelee>();
