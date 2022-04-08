@@ -10,7 +10,6 @@ public class PlayerProgression : MonoBehaviour
     private Player player;
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Health playerHealthScript;
-    [SerializeField] private WeaponMelee meleeScript;
     [SerializeField] private UiPlayerlevel uiLevelScript;
 
     [Header("Level & XP")]
@@ -42,7 +41,6 @@ public class PlayerProgression : MonoBehaviour
         }
         playerStats = PlayerStats.Instance;
         playerHealthScript = GameObject.FindWithTag("Player").GetComponent<Health>();
-        meleeScript = GameObject.FindWithTag("Player").GetComponent<Melee>().weapon;
 
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
