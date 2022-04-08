@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3645410795066974512}
   - component: {fileID: 3645410795066974519}
   - component: {fileID: 3645410795066974518}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BOX_COLLIDER (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3645410795107089812}
   - component: {fileID: 3645410795107089819}
   - component: {fileID: 3645410795107089818}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BOX_COLLIDER (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5195718110354458624}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ledge_MiniStairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,6 +239,18 @@ PrefabInstance:
     - target: {fileID: 116864, guid: 6f0cfe6a4e8631a48b65810691d254b3, type: 3}
       propertyPath: m_Name
       value: stairs_1b (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 116864, guid: 6f0cfe6a4e8631a48b65810691d254b3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 130934, guid: 6f0cfe6a4e8631a48b65810691d254b3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 156576, guid: 6f0cfe6a4e8631a48b65810691d254b3, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 405890, guid: 6f0cfe6a4e8631a48b65810691d254b3, type: 3}
       propertyPath: m_RootOrder
@@ -283,6 +295,14 @@ PrefabInstance:
     - target: {fileID: 405890, guid: 6f0cfe6a4e8631a48b65810691d254b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6724060904653108698, guid: 6f0cfe6a4e8631a48b65810691d254b3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299310366592269373, guid: 6f0cfe6a4e8631a48b65810691d254b3, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0cfe6a4e8631a48b65810691d254b3, type: 3}

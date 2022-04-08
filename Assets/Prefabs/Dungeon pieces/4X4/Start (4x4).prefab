@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1914968096439076779}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2130731501430334601}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Start (4x4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,9 +156,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1506269156414795116, guid: 5880d37e404da844392a0305a0710243, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1506269156414795117, guid: 5880d37e404da844392a0305a0710243, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164771066464758492, guid: 5880d37e404da844392a0305a0710243, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9057722439647486946, guid: 5880d37e404da844392a0305a0710243, type: 3}
       propertyPath: m_RootOrder
@@ -209,6 +217,10 @@ PrefabInstance:
       value: 1_Wall
       objectReference: {fileID: 0}
     - target: {fileID: 9057722439647486949, guid: 5880d37e404da844392a0305a0710243, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9057722439647486949, guid: 5880d37e404da844392a0305a0710243, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -242,6 +254,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2137707119813407614, guid: 04a9f555cb71ade4a9b0ee47be9fa23b, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2839747495475200303, guid: 04a9f555cb71ade4a9b0ee47be9fa23b, type: 3}
       propertyPath: m_Name
       value: Platform_01
@@ -255,6 +271,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4543310469446799235, guid: 04a9f555cb71ade4a9b0ee47be9fa23b, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319726757762481280, guid: 04a9f555cb71ade4a9b0ee47be9fa23b, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}

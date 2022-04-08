@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7085164241371354095}
   - component: {fileID: 1668531907113255205}
   - component: {fileID: 6494254469099389262}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PaltformSkinny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,6 +408,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 438a69d4736a1e34a9809e4ae4028d0d, type: 3}
       propertyPath: m_Name
       value: PlatformSkinny
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 438a69d4736a1e34a9809e4ae4028d0d, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 438a69d4736a1e34a9809e4ae4028d0d, type: 3}

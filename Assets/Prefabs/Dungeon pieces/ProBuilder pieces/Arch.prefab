@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4647057804834791021}
   - component: {fileID: 5439092252689238946}
   - component: {fileID: 8775445088738639245}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 3115846064297991517}
   - component: {fileID: 7434697346201204610}
   - component: {fileID: 7382182649320756755}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1137,6 +1137,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8ee578aa521b9b54e97abe9037cc476b, type: 3}
       propertyPath: m_Name
       value: arch_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ee578aa521b9b54e97abe9037cc476b, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ee578aa521b9b54e97abe9037cc476b, type: 3}

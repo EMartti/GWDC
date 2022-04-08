@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5570555920243863793}
   - component: {fileID: 4048994485185367437}
   - component: {fileID: 7394602397228460354}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: L-Ledge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1781,7 +1781,7 @@ GameObject:
   - component: {fileID: 3107489045165260183}
   - component: {fileID: 1877813910244942836}
   - component: {fileID: 708020130118136000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: sideColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1913,6 +1913,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b0c54aa5b0d215e429d7465752f9eb00, type: 3}
       propertyPath: m_Name
       value: Ledge_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0c54aa5b0d215e429d7465752f9eb00, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c54aa5b0d215e429d7465752f9eb00, type: 3}
