@@ -42,7 +42,7 @@ public class PlayerProgression : MonoBehaviour
         playerStats = PlayerStats.Instance;
         playerHealthScript = GameObject.FindWithTag("Player").GetComponent<Health>();
 
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        player = Player.Instance;
     }
 
     public void GiveXp(float earnedXp)
