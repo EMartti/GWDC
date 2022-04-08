@@ -25,8 +25,6 @@ public class Weapon : MonoBehaviour
     int bulletsShot, bulletsLeft;
     bool shooting, readyToShoot, reloading;
 
-    private PlayerInputActions playerInputActions;
-
     [HideInInspector] public GameObject parent;
 
     private void Awake()

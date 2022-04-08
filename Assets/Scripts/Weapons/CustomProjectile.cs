@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class CustomProjectile : MonoBehaviour
 {
-    public Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
     public GameObject explosion;
     public LayerMask whatIsEnemies;
     private AudioSource audioSource;
@@ -29,7 +29,7 @@ public class CustomProjectile : MonoBehaviour
     private void Start()
     {
         aM = AudioManager.Instance;
-
+        rb = GetComponent<Rigidbody>();
         Setup();
         audioSource = GetComponent<AudioSource>();
     }

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4973863468230220733}
   - component: {fileID: 1556170299631467453}
   - component: {fileID: 1102879719424638821}
-  - component: {fileID: 2487319638958075382}
-  - component: {fileID: 8968970117043262640}
   - component: {fileID: 4942282960517618707}
   - component: {fileID: 7794902726488774426}
+  - component: {fileID: 2759258899319423006}
+  - component: {fileID: 7222859023769045099}
   m_Layer: 10
   m_Name: GooBall
   m_TagString: Arrow
@@ -89,36 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2487319638958075382
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4029702372542996506}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8968970117043262640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4029702372542996506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19c1f7ca28444b344aecb77ec928d28e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 13
-  playerHealthObject: {fileID: 0}
-  playerHealthScript: {fileID: 0}
-  arrowStick: {fileID: 0}
-  arrowStart: {fileID: 0}
 --- !u!54 &4942282960517618707
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -231,6 +201,46 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2759258899319423006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029702372542996506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b0e8965270ade4b91a4e8ff3220254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  explosion: {fileID: 0}
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 256
+  explodeSound: {fileID: 0}
+  bounciness: 0
+  useGravity: 0
+  explosionDamage: 25
+  explosionRange: 0
+  explosionForce: 0
+  maxCollisions: 0
+  maxLifeTime: 5
+  explodeOnTouch: 1
+--- !u!136 &7222859023769045099
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029702372542996506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4074421656406515936
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RangedAttack : MonoBehaviour {
-    public GameObject projectile;
+    public GameObject projectilePrefab;
     public float attackInterval;
-    public NavMeshFollowTarget moveScript;
+    private NavMeshFollowTarget moveScript;
 
     private Animator animator;
     private int animIDisAttacking;
@@ -17,6 +17,8 @@ public class RangedAttack : MonoBehaviour {
 
     private float timeBetweenAttack;
 
+    [SerializeField] private float shootForce;
+
     private bool attacking;
 
     public bool hasAttacked;
@@ -26,10 +28,14 @@ public class RangedAttack : MonoBehaviour {
     private AudioManager aM;
     AudioSource audioSource;
 
+    private Transform target;
+
     void Start() 
     {
         aM = AudioManager.Instance;
         audioSource = GetComponent<AudioSource>();
+
+        target = Player.Instance.transform;
 
         if (attackSound == null)
         {
@@ -74,7 +80,8 @@ public class RangedAttack : MonoBehaviour {
 
     public void HitEvent()
     {
-        Instantiate(projectile, projectileStartPos.position, transform.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, projectileStartPos.position, transform.rotation);
+        projectile.GetComponent<Rigidbody>().AddForce((target.position - transform.position).normalized * shootForce, ForceMode.Impulse);
     }
 
     private void ResetAttack()
