@@ -49,7 +49,7 @@ public class WeaponMelee : MonoBehaviour
 
     public void PlayAttackSound()
     {
-        if (hitSound != null) AudioSource.PlayClipAtPoint(attackSound, transform.position, 1f);
+        if (attackSound != null) AudioSource.PlayClipAtPoint(attackSound, transform.position, 2f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -65,7 +65,7 @@ public class WeaponMelee : MonoBehaviour
             if (hitEffect != null) Instantiate(hitEffect, other.gameObject.transform.position, Quaternion.identity);
 
 
-            if (hitSound != null) AudioSource.PlayClipAtPoint(hitSound, transform.position, 1f);
+            if (hitSound != null) AudioSource.PlayClipAtPoint(hitSound, transform.position, 4f);
         }
     }
 }

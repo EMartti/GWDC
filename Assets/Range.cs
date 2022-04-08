@@ -43,7 +43,7 @@ public class Range : MonoBehaviour
         {
             foreach (var item in animator.runtimeAnimatorController.animationClips)
             {
-                if (item.name == "1H-RH@Attack01")
+                if (item.name == "Attack")
                 {
                     timeBetweenAttack = item.length / animator.GetFloat("animSpeed");
                     break;
