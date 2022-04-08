@@ -29,7 +29,6 @@ public class CustomProjectile : MonoBehaviour
     private void Start()
     {
         aM = AudioManager.Instance;
-        explodeSound = aM.sfxFireballExplode;
 
         Setup();
         audioSource = GetComponent<AudioSource>();

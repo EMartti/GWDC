@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1542723781922524848}
   - component: {fileID: 4362894577791697774}
   - component: {fileID: 7845764876722034673}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PerkPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collector: {fileID: 0}
   speed: 68
-  pickUpDist: 2
+  pickUpDist: 4
   isExpOrb: 0
   xpToGive: 100
 --- !u!96 &7845764876722034673
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 7177596555966390887}
   - component: {fileID: 9097597178439157989}
   - component: {fileID: 9097826515435724342}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PerkParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

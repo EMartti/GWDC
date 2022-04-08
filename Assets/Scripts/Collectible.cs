@@ -16,7 +16,7 @@ public class Collectible : MonoBehaviour {
 
     void Start() {
         rb = GetComponent<Rigidbody>();
-        collector = GameObject.FindGameObjectWithTag("Player");
+        collector = Player.Instance.gameObject;
     }
 
     void Update() {

@@ -29,7 +29,6 @@ public class CustomBullet : MonoBehaviour
     private void Start()
     {
         aM = AudioManager.Instance;
-        explodeSound = aM.sfxFireballExplode;
 
         Setup();
         audioSource = GetComponent<AudioSource>();
@@ -90,6 +89,8 @@ public class CustomBullet : MonoBehaviour
             damageable.TakeDamage(explosionDamage, gameObject);
             Explode();
         }
+
+        rb.constraints = RigidbodyConstraints.FreezeAll;
         /*
         collisions++;
 

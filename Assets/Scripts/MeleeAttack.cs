@@ -90,6 +90,11 @@ public class MeleeAttack : MonoBehaviour {
         weapon.canDamage = false;
     }
 
+    public void HitEvent()
+    {
+
+    }
+
     private void ResetAttack()
     {
         attacking = false;

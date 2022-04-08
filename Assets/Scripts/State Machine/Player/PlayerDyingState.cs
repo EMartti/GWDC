@@ -9,15 +9,18 @@ public class PlayerDyingState : PlayerBaseState
     private int animIDisDead;
     public NavMeshAgent agent;
 
+    private PlayerInputActions inputActions;
+
     public override void EnterState(PlayerStateManager character)
     {
         animator = character.gameObject.GetComponent<Animator>();
+        inputActions = PlayerInputs.Instance.playerInputActions;
+
         animIDisDead = Animator.StringToHash("isDead");
         if (animator != null)
             animator.SetBool(animIDisDead, true);
 
-        agent = character.GetComponent<NavMeshAgent>();
-        agent.isStopped = true;
+        inputActions.Player.Disable();
     }
 
     public override void UpdateState(PlayerStateManager character)
