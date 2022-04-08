@@ -24,7 +24,7 @@ public class Magic : MonoBehaviour {
     [SerializeField] private Transform target;
 
     private PlayerStateManager stateManager;
-    private float timeBetweenAttack;
+    private float timeBetweenAttack = 1;
 
     private void Start() {
 

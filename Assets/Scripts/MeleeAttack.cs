@@ -14,7 +14,7 @@ public class MeleeAttack : MonoBehaviour {
 
     private AttackingState attackingState;
 
-    private float timeBetweenAttack;
+    private float timeBetweenAttack = 1f;
 
     private bool attacking;
 

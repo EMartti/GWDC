@@ -23,7 +23,7 @@ public class Range : MonoBehaviour
     [SerializeField] private Transform target;
 
     private PlayerStateManager stateManager;
-    private float timeBetweenAttack;
+    private float timeBetweenAttack = 1f;
 
     void Start()
     {

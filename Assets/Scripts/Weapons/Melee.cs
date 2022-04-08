@@ -22,7 +22,7 @@ public class Melee : MonoBehaviour
 
     private Player player;
 
-    private float timeBetweenAttack;
+    private float timeBetweenAttack = 1f;
 
     private PlayerStateManager stateManager;
 

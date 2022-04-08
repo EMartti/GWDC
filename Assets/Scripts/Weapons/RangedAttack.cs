@@ -15,7 +15,7 @@ public class RangedAttack : MonoBehaviour {
 
     private AttackingState attackingState;
 
-    private float timeBetweenAttack;
+    private float timeBetweenAttack = 1f;
 
     [SerializeField] private float shootForce;
 
