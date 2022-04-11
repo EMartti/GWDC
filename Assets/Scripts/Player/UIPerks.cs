@@ -21,8 +21,28 @@ public class UIPerks : MonoBehaviour
     [SerializeField] private Button Dashbtn;
 
     [SerializeField] private Sprite spriteActive;
+    [SerializeField] private Sprite spriteHighlight;
+    [SerializeField] private Sprite spriteLocked;
 
 
+
+    #region Singleton
+    public static UIPerks Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType(typeof(UIPerks)) as UIPerks;
+
+            return instance;
+        }
+        set
+        {
+            instance = value;
+        }
+    }
+    private static UIPerks instance;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -137,19 +157,22 @@ public class UIPerks : MonoBehaviour
             // Perk unlockattu - vaihda väri vihreäksi
             if (playerPerks.isPerkUnlocked(perkType))
             {
-                image.color = Color.green;
+                image.sprite = UIPerks.Instance.spriteActive;
+                
+                // Disable sprite changes after unlocking perk
+                button.interactable = false;
             }
             else
             {
                 // Perkin voi unlockata - väri valkoinen
                 if (playerPerks.CanUnlock(perkType))
                 {
-                    image.color = Color.white;
+                    image.sprite = UIPerks.Instance.spriteHighlight;
                 }
                 // Perkkiä ei voi vielä unlockata - Väri harmaa
                 else
                 {
-                    image.color = Color.gray;
+                    image.sprite = UIPerks.Instance.spriteLocked;
                 }
             }
         }
