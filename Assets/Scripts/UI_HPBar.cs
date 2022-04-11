@@ -12,8 +12,8 @@ public class UI_HPBar : MonoBehaviour
 
     private void Start()
     {
-        if(isPlayer)
-            health = GameObject.Find("Player").GetComponent<Health>();
+        if (isPlayer)
+            health = Player.Instance.GetComponent<Health>();
         slider = GetComponent<Slider>();
     }
 

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class UIPerks : MonoBehaviour
 {
     [SerializeField] private GameObject perkCanvas;
+    [SerializeField] private GameObject pauseCanvas;
+
 
     private PlayerInputActions playerInputActions;
     private GameManager gameManager;
@@ -53,8 +55,11 @@ public class UIPerks : MonoBehaviour
 
         playerInputActions.Player.OpenPerks.Enable();
         playerInputActions.Player.OpenPerks.started += OnOpenPerks;
+        playerInputActions.Player.PauseGame.Enable();
+        playerInputActions.Player.PauseGame.started += OnPauseGame;
 
         perkCanvas.SetActive(false);
+        pauseCanvas.SetActive(false);
     }
 
     private void OnOpenPerks(InputAction.CallbackContext obj)
@@ -62,6 +67,16 @@ public class UIPerks : MonoBehaviour
         perkCanvas.SetActive(!perkCanvas.activeSelf);
 
         if(perkCanvas.activeInHierarchy)        
+            playerInputActions.Player.Fire.Disable();
+        else
+            playerInputActions.Player.Fire.Enable();
+    }
+
+    private void OnPauseGame(InputAction.CallbackContext obj)
+    {
+        pauseCanvas.SetActive(!pauseCanvas.activeSelf);
+
+        if (pauseCanvas.activeInHierarchy)
             playerInputActions.Player.Fire.Disable();
         else
             playerInputActions.Player.Fire.Enable();
