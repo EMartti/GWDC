@@ -8,7 +8,7 @@ public class Collectible : MonoBehaviour {
     [SerializeField] private float speed;
     [SerializeField] private float pickUpDist;
     [SerializeField] private bool isExpOrb;
-    [SerializeField] private float xpToGive = 100f;
+    [SerializeField] private float pointsToGive = 100f;
 
     private bool closeEnoughToPickup = false;
     private float distToCollector;
@@ -38,7 +38,9 @@ public class Collectible : MonoBehaviour {
 
     void PickUp() {
         if (isExpOrb == true) {
-            collector.GetComponent<PlayerProgression>().GiveXp(xpToGive);
+            collector.GetComponent<PlayerProgression>().GiveXp(pointsToGive);
+        } else {
+            collector.GetComponent<PlayerProgression>().GivePP(pointsToGive);
         }
         Destroy(gameObject);
     }
