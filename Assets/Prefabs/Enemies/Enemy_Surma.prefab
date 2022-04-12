@@ -131,6 +131,7 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   defaultHealth: 100
+  effectHeight: 1
   myAudio:
     hurtSound: {fileID: 8300000, guid: 44b98adf25d2e65429633f084dee99ff, type: 3}
     dieSound: {fileID: 8300000, guid: 661023e6761dacb4eb54015b5fda26e7, type: 3}
@@ -575,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111416519909730403, guid: bad36f5e21382494d8162596a2aeb5e5, type: 3}
       propertyPath: m_VersionIndex
-      value: 2694
+      value: 2700
       objectReference: {fileID: 0}
     - target: {fileID: 1111416519909730404, guid: bad36f5e21382494d8162596a2aeb5e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -618,10 +619,6 @@ PrefabInstance:
       value: 36.716003
       objectReference: {fileID: 0}
     - target: {fileID: 1111416519909730406, guid: bad36f5e21382494d8162596a2aeb5e5, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111416519909730407, guid: bad36f5e21382494d8162596a2aeb5e5, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
@@ -675,11 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111416520540966648, guid: bad36f5e21382494d8162596a2aeb5e5, type: 3}
       propertyPath: m_VersionIndex
-      value: 2191
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111416520540966652, guid: bad36f5e21382494d8162596a2aeb5e5, type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 2197
       objectReference: {fileID: 0}
     - target: {fileID: 1111416520540966653, guid: bad36f5e21382494d8162596a2aeb5e5, type: 3}
       propertyPath: m_LocalPosition.x
