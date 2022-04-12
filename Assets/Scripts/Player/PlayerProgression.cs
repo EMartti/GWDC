@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerProgression : MonoBehaviour {
-    public event EventHandler OnLevelUp;
+    public event EventHandler OnXpLevelUp;
+    public event EventHandler OnPpLevelUp;
 
     private Player player;
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Health playerHealthScript;
-    [SerializeField] private UiPlayerlevel uiLevelScript;
 
-    [Header("Level & XP")]
+    [Header("Level & XP % Pp")]
     [SerializeField] private float xpRequiredMultiplier = 1.5f;
     [SerializeField] private int playerStartLevel;
-
+ 
     [Header("Health Settings")]
     [SerializeField] private int maxHealthAddedPerLevel;
 
@@ -48,26 +48,32 @@ public class PlayerProgression : MonoBehaviour {
         player = Player.Instance;
     }
 
+    // Give Xp to player
     public void GiveXp(float earnedXp) {
         if (myAudio.giveExpSound != null)
             audioSource.PlayOneShot(myAudio.giveExpSound, 2f);
 
         playerStats.currentXp += earnedXp;
 
-        // Debug
-        //Debug.Log("Player earned " + earnedXp.ToString() + "XP");
-
         if (playerStats.currentXp >= playerStats.xpRequiredToLvlUp) {
-            LevelUp();
+            MetaLevelUp();
         }
     }
 
+    // Give PerkPoints to player
     public void GivePP(float earnedPp) {
         if (myAudio.givePPSound != null)
             audioSource.PlayOneShot(myAudio.givePPSound, 2f);
+
+        playerStats.currentPp += earnedPp;
+
+        if (playerStats.currentPp >= playerStats.ppRequiredToLvlUp)
+        {
+            PerkLevelUp();
+        }
     }
 
-    public void LevelUp() {
+    public void MetaLevelUp() {
         // Remove level xp from currentXp
         playerStats.currentXp -= playerStats.xpRequiredToLvlUp;
 
@@ -85,21 +91,28 @@ public class PlayerProgression : MonoBehaviour {
         player.damageBonus = PlayerStats.Instance.damageBonus;
 
         // Cast event
-        if (OnLevelUp != null) OnLevelUp.Invoke(this, EventArgs.Empty);
+        if (OnXpLevelUp != null) OnXpLevelUp.Invoke(this, EventArgs.Empty);
 
         // Debug
         Debug.Log("Player achieved Level " + playerStats.playerLevel + "!");
 
-        // Vaihda UI:n playerLevel teksti
-        if (uiLevelScript != null) {
-            uiLevelScript.levelUpUi(playerStats.playerLevel);
-        }
-
-
-
+        // Vaihda UI:n playerLevel teksti  
+        GameManager.Instance.GetComponentInChildren<UIPerks>().UpdateMetaLevelText();
+        
         // Jos edellisestä level-upista jäi ylimäärästä xp:tä, joka riittää toiseen leveliin - Level uppaa uudestaan
         if (playerStats.currentXp >= playerStats.xpRequiredToLvlUp) {
-            LevelUp();
+            MetaLevelUp();
         }
+    }
+
+    public void PerkLevelUp()
+    {
+        playerStats.currentPp = 0f;
+
+        //Cast event
+        if (OnPpLevelUp != null) OnPpLevelUp.Invoke(this, EventArgs.Empty);
+
+        // Debug
+        Debug.Log("Player unlocked a perk point!");
     }
 }

@@ -631,13 +631,83 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebugButtons_Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5801457261325287735, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_text
+      value: 'GivePP
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 5801457261594809281, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1201766711}
+    - target: {fileID: 5801457261801145504, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.29124242
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801457261801145504, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801457261801145504, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_Color.r
+      value: 0.33619434
+      objectReference: {fileID: 0}
     - target: {fileID: 5801457261801145505, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1201766708}
+    - target: {fileID: 5801457261801145505, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GivePP
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021799550602900961, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021799550602900961, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.93257016
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021799550602900961, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_Color.r
+      value: 0.29622638
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770510997551807578, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770510997551807578, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770510997551807578, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1201766708}
+    - target: {fileID: 6770510997551807578, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770510997551807578, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GiveXp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770510997551807578, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerProgression, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770510997551807578, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770510997551807578, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482841418431065913, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}
+      propertyPath: m_text
+      value: GiveXP
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74efbe827a3499347bf77ba71fea9dd8, type: 3}

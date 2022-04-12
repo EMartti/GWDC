@@ -60,9 +60,9 @@ public class Player : MonoBehaviour
         playerPerks.OnPerkUnlocked += playerPerks_OnPerkUnlocked;
 
         playerProgression = GetComponent<PlayerProgression>();
-        playerProgression.OnLevelUp += PlayerProgression_OnLevelUp;
+        playerProgression.OnPpLevelUp += PlayerProgression_OnPpLevelUp;
 
-        uiPerks = GameObject.Find("GameManager").GetComponent<UIPerks>();
+        uiPerks = GameManager.Instance.GetComponent<UIPerks>();
 
         health = GetComponent<Health>();
 
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    public void PlayerProgression_OnLevelUp(object sender, EventArgs e)
+    public void PlayerProgression_OnPpLevelUp(object sender, EventArgs e)
     {
         playerPerks.AddPerkPoints();
     }
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         playerPerks.OnPerkUnlocked -= playerPerks_OnPerkUnlocked;
-        playerProgression.OnLevelUp -= PlayerProgression_OnLevelUp;
+        playerProgression.OnXpLevelUp -= PlayerProgression_OnPpLevelUp;
     }
 
     private void EndDash()

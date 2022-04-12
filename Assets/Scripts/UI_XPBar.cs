@@ -14,7 +14,7 @@ public class UI_XPBar : MonoBehaviour
 
     private void Update()
     {
-        slider.maxValue = PlayerStats.Instance.xpRequiredToLvlUp;
-        slider.value = PlayerStats.Instance.currentXp;
+        slider.maxValue = PlayerStats.Instance.ppRequiredToLvlUp;
+        slider.value = PlayerStats.Instance.currentPp;
     }
 }

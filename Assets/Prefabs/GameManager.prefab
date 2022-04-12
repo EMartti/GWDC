@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2126608759}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perkCanvas: {fileID: 2641036102366088352}
   pauseCanvas: {fileID: 126844241519280711}
+  levelText: {fileID: 2297183717913854121}
   perkPoints: {fileID: 259173906722056537}
   HP1btn: {fileID: 368363153985651532}
   HP2btn: {fileID: 368363154054264939}
@@ -278,7 +279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7011554362456051224, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7300468778762272031, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_RootOrder
@@ -704,6 +705,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2297183717913854121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1150378715538487466, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+  m_PrefabInstance: {fileID: 1159618850766354435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2641036102366088352 stripped

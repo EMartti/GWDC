@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIPerks : MonoBehaviour
 {
     [SerializeField] private GameObject perkCanvas;
     [SerializeField] private GameObject pauseCanvas;
+    [SerializeField] private TextMeshProUGUI levelText;
 
 
     private PlayerInputActions playerInputActions;
@@ -50,7 +52,6 @@ public class UIPerks : MonoBehaviour
     void Start()
     {      
         playerInputActions = PlayerInputs.Instance.playerInputActions;
-
         gameManager = GameManager.Instance;
 
         playerInputActions.Player.OpenPerks.Enable();
@@ -139,6 +140,12 @@ public class UIPerks : MonoBehaviour
         playerPerks.TryUnlockPerk(PlayerPerks.PerkType.Dash);
     }
     // Functions for PerkButton OnClick Events <--
+
+    // Update player Meta-level display
+    public void UpdateMetaLevelText()
+    {
+        levelText.text = PlayerStats.Instance.playerLevel.ToString();
+    }
 
     private void UpdatePerkPoints()
     {
