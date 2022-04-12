@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3707579844194792015}
+  - component: {fileID: 850931307321227454}
   - component: {fileID: 3707579844194792010}
   - component: {fileID: 3707579844194792011}
   - component: {fileID: 3707579844194792008}
@@ -36,6 +37,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &850931307321227454
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707579844194792374}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9e532b24c729c7149a00d7b349bc008d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 9e532b24c729c7149a00d7b349bc008d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!65 &3707579844194792010
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64,12 +81,14 @@ MonoBehaviour:
   maxHealth: 1
   currentHealth: 0
   defaultHealth: 100
-  audio:
-    hurtSound: {fileID: 0}
+  effectHeight: -2
+  myAudio:
+    hurtSound: {fileID: 8300000, guid: 31ae2a6867ecb7945b68ec1c054182d8, type: 3}
+    dieSound: {fileID: 8300000, guid: 31ae2a6867ecb7945b68ec1c054182d8, type: 3}
     healSound: {fileID: 0}
   effect:
     healEffect: {fileID: 0}
-    hurtEffect: {fileID: 0}
+    hurtEffect: {fileID: 5772479974788314028, guid: 46781f9dec076df4691a3a472335818a, type: 3}
   isDead: 0
 --- !u!114 &3707579844194792008
 MonoBehaviour:
@@ -83,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667568a1ac76b1b4b9e01ff7dba585ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathExplosion: {fileID: 1470759979578371256, guid: 891cf9358cb99e842a184c02e5350775, type: 3}
-  deathDelay: 0
+  deathExplosion: {fileID: 1470759979578371256, guid: 032e562089161af409a3329132906657, type: 3}
+  deathDelay: 0.5
 --- !u!82 &3707579844194792009
 AudioSource:
   m_ObjectHideFlags: 0

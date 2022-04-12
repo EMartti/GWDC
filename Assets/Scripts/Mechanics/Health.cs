@@ -18,7 +18,7 @@ public class Health : MonoBehaviour, IDamageable
 
     [Serializable]
     public class EffectsInspector
-    {
+    {        
         public GameObject healEffect;
         public GameObject hurtEffect;
     }
@@ -28,6 +28,8 @@ public class Health : MonoBehaviour, IDamageable
     public int maxHealth = 100;
     public int currentHealth;
     public int defaultHealth = 100; // Älä muuta
+
+    public float effectHeight = 1;
 
     [SerializeField] private AudioInspector myAudio;
     [SerializeField] private EffectsInspector effect;
@@ -94,7 +96,7 @@ public class Health : MonoBehaviour, IDamageable
                     audioSource.PlayOneShot(myAudio.dieSound, 1F);
             }
             if (effect.hurtEffect != null)
-                Instantiate(effect.hurtEffect, new Vector3(transform.position.x, 1, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
+                Instantiate(effect.hurtEffect, new Vector3(transform.position.x, effectHeight, transform.position.z), effect.hurtEffect.transform.rotation, gameObject.transform);
 
             if (currentHealth <= 0 && !isDead)
             {

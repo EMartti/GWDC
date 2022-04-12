@@ -8,17 +8,17 @@ public class LootSpawn : MonoBehaviour {
 
     [SerializeField] private GameObject perkPoint;
     [SerializeField] private GameObject expOrb;
-    [SerializeField] private bool willDropHP = false;
+    private bool willDropHP = false;
 
     [Range(0.0f, 1.0f)] //inspector slider for the float below
     [SerializeField] private float healthPackDropChance = 0.5f;
     [Range(0, 20)] //inspector slider for the float below
-    [SerializeField] private int goldAmtToDrop = 10;
+    [SerializeField] private int perkAmtToDrop = 10;
     [Range(0, 10)] //inspector slider for the float below
     [SerializeField] private int expAmtToDrop = 5;
 
     void Start() {
-        for (int i = 0; i < goldAmtToDrop; i++) {
+        for (int i = 0; i < perkAmtToDrop; i++) {
             Instantiate(perkPoint, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Random.rotation, gameObject.transform);
         }
 
