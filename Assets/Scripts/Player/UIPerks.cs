@@ -74,12 +74,18 @@ public class UIPerks : MonoBehaviour
 
     private void OnPauseGame(InputAction.CallbackContext obj)
     {
-        pauseCanvas.SetActive(!pauseCanvas.activeSelf);
-
+        pauseCanvas.SetActive(!pauseCanvas.activeSelf);      
         if (pauseCanvas.activeInHierarchy)
+        {
             playerInputActions.Player.Fire.Disable();
+            Time.timeScale = 0;
+        }
         else
+        {
             playerInputActions.Player.Fire.Enable();
+            Time.timeScale = 1;
+        }
+            
     }
 
     private void OnDisable()
