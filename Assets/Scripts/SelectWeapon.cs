@@ -18,6 +18,7 @@ public class SelectWeapon : MonoBehaviour
     private Magic magic;
 
     private GameManager gameManager;
+    private UIPerks uiPerks;
 
     private enum WeaponType { Melee, Range, Magic }
     [SerializeField] private WeaponType weapon;
@@ -28,6 +29,7 @@ public class SelectWeapon : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
+        uiPerks = UIPerks.Instance;
 
         player = GameObject.Find("Player");
 
@@ -45,18 +47,21 @@ public class SelectWeapon : MonoBehaviour
                 magic.enabled = true;
                 melee.enabled = false;
                 range.enabled = false;
+                uiPerks.UpdateWeaponSprite(weapon);
                 break;
 
             case weaponType.Melee:
                 magic.enabled = false;
                 melee.enabled = true;
                 range.enabled = false;
+                uiPerks.UpdateWeaponSprite(weapon);
                 break;
 
             case weaponType.Range:
                 magic.enabled = false;
                 melee.enabled = false;
                 range.enabled = true;
+                uiPerks.UpdateWeaponSprite(weapon);
                 break;
         }
     }

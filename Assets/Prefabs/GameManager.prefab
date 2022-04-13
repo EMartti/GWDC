@@ -94,6 +94,9 @@ MonoBehaviour:
   spriteActive: {fileID: 21300000, guid: 3fe03f408f90ff54e8d85cc105658aba, type: 3}
   spriteHighlight: {fileID: 21300000, guid: e7e677940312fc54197ce4e50413ff90, type: 3}
   spriteLocked: {fileID: 21300000, guid: d2fde37ea89b4e7459c3c233dec9c655, type: 3}
+  spriteMelee: {fileID: 2590167635421158455}
+  spriteRange: {fileID: 3975353542462908523}
+  spriteMagic: {fileID: 8696641703175738078}
 --- !u!1001 &1159618850766354435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,6 +159,22 @@ PrefabInstance:
     - target: {fileID: 1516441375183801554, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIPerks, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827277393781182568, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_Name
+      value: weaponRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827277393781182568, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739628775495410740, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_Name
+      value: weaponMelee
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739628775495410740, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3796837283226993563, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_AnchorMax.y
@@ -330,6 +349,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7373346785164455973, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541109067459406557, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_Name
+      value: weaponMagic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541109067459406557, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -718,9 +745,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2590167635421158455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3739628775495410740, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+  m_PrefabInstance: {fileID: 1159618850766354435}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2641036102366088352 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3796837284461229219, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+  m_PrefabInstance: {fileID: 1159618850766354435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3975353542462908523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2827277393781182568, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
   m_PrefabInstance: {fileID: 1159618850766354435}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6182560566801025323 stripped
@@ -736,6 +773,11 @@ Transform:
 --- !u!1 &8522122103736535078 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7373346785164455973, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+  m_PrefabInstance: {fileID: 1159618850766354435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8696641703175738078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7541109067459406557, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
   m_PrefabInstance: {fileID: 1159618850766354435}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7969285610760674442

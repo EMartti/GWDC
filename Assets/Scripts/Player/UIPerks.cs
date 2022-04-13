@@ -28,6 +28,10 @@ public class UIPerks : MonoBehaviour
     [SerializeField] private Sprite spriteHighlight;
     [SerializeField] private Sprite spriteLocked;
 
+    [SerializeField] private GameObject spriteMelee;
+    [SerializeField] private GameObject spriteRange;
+    [SerializeField] private GameObject spriteMagic;
+
 
 
     #region Singleton
@@ -61,6 +65,10 @@ public class UIPerks : MonoBehaviour
 
         perkCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
+
+        spriteMelee.SetActive(false);
+        spriteMagic.SetActive(false);
+        spriteRange.SetActive(false);
     }
 
     private void OnOpenPerks(InputAction.CallbackContext obj)
@@ -145,6 +153,30 @@ public class UIPerks : MonoBehaviour
     public void UpdateMetaLevelText()
     {
         levelText.text = PlayerStats.Instance.playerLevel.ToString();
+    }
+
+    public void UpdateWeaponSprite(weaponType weapon)
+    {
+        switch (weapon)
+        {
+            case weaponType.Melee:
+                spriteMelee.SetActive(true);
+                spriteMagic.SetActive(false);
+                spriteRange.SetActive(false);
+                break;
+
+            case weaponType.Magic:
+                spriteMelee.SetActive(false);
+                spriteMagic.SetActive(true);
+                spriteRange.SetActive(false);
+                break;
+
+            default:
+                spriteMelee.SetActive(false);
+                spriteMagic.SetActive(false);
+                spriteRange.SetActive(true);
+                break;
+        }
     }
 
     private void UpdatePerkPoints()
