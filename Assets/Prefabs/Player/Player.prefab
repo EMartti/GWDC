@@ -989,6 +989,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   defaultHealth: 100
+  effectHeight: 1
   myAudio:
     hurtSound: {fileID: 8300000, guid: 623a5635ed2c2dc44bfcc1e1e871e6a2, type: 3}
     dieSound: {fileID: 8300000, guid: a60ed2ea6822fb74eb61156819118ef9, type: 3}
@@ -1041,13 +1042,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
   playerHealthScript: {fileID: 6243341418018923226}
-  meleeScript: {fileID: 0}
   xpRequiredMultiplier: 1.5
   playerStartLevel: 1
   maxHealthAddedPerLevel: 0
   damageAddedPerLevel: 10
   myAudio:
     giveExpSound: {fileID: 0}
+    givePPSound: {fileID: 0}
 --- !u!114 &4624447638391565931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1669,7 +1670,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.8962264, g: 0.81765217, b: 0.70514417, a: 1}
+  m_Color: {r: 0.7058824, g: 0.8980392, b: 0.8655783, a: 1}
   m_Intensity: 13.57
   m_Range: 11.3
   m_SpotAngle: 139.59187
