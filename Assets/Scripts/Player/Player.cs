@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
 
     private PlayerInputActions playerInputActions;
 
+    private PlayerController playerController;
+ 
     private Dash dash;
 
     public Transform WeaponHand;
@@ -51,10 +53,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        playerController = GetComponent<PlayerController>();
         playerInputActions = PlayerInputs.Instance.playerInputActions;
 
         playerInputActions.Player.Ability1.Enable();
-        playerInputActions.Player.Ability1.started += UseAbility1;
+        playerInputActions.Player.Ability1.started += OnSpacebar;
 
         playerPerks = new PlayerPerks();
         playerPerks.OnPerkUnlocked += playerPerks_OnPerkUnlocked;
@@ -73,13 +76,14 @@ public class Player : MonoBehaviour
 
     #region InputSystem
 
-    private void UseAbility1(InputAction.CallbackContext obj)
+    private void OnSpacebar(InputAction.CallbackContext obj)
     {
         switch (ability1)
         {
             case Abilities.Dash:
                 if (!canUseDash) break;
-                dash.OnDash();
+                OnDash();
+                Debug.Log("Dash");
                 Invoke("EndDash", 0.1f);
                 break;
         }
@@ -129,10 +133,6 @@ public class Player : MonoBehaviour
         playerProgression.OnXpLevelUp -= PlayerProgression_OnPpLevelUp;
     }
 
-    private void EndDash()
-    {
-        dash.End();
-    }
 
     public PlayerPerks GetPlayerPerks()
     {
@@ -143,6 +143,18 @@ public class Player : MonoBehaviour
     {
         private Abilities type;
         private float cooldown;
+    }
+
+    public void OnDash()
+    {    
+        playerController.baseSpeed *= 5;
+        playerController.dashing = true;
+    }
+
+    private void EndDash()
+    {
+        playerController.baseSpeed /= 5;
+        playerController.dashing = false;
     }
 
 }

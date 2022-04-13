@@ -10,14 +10,14 @@ public class Dash : MonoBehaviour
 
     public void OnDash()
     {
-        player = GameObject.Find("Player");
+        player = Player.Instance.gameObject;
         playerController = player.GetComponent<PlayerController>();
 
         playerController.baseSpeed *= 5;
         playerController.dashing = true;
     }
 
-    public void End()
+    public void EndDash()
     {
         playerController.baseSpeed /= 5;
         playerController.dashing = false;
