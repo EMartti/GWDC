@@ -69,6 +69,8 @@ public class UIPerks : MonoBehaviour
         spriteMelee.SetActive(false);
         spriteMagic.SetActive(false);
         spriteRange.SetActive(false);
+
+
     }
 
     private void OnOpenPerks(InputAction.CallbackContext obj)

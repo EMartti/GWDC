@@ -20,8 +20,9 @@ public class SelectWeapon : MonoBehaviour
     private GameManager gameManager;
     private UIPerks uiPerks;
 
-    private enum WeaponType { Melee, Range, Magic }
+    public enum WeaponType { Melee, Range, Magic }
     [SerializeField] private WeaponType weapon;
+    [SerializeField] private WeaponType currentWeapon;
 
 
 
@@ -47,6 +48,8 @@ public class SelectWeapon : MonoBehaviour
                 magic.enabled = true;
                 melee.enabled = false;
                 range.enabled = false;
+
+                currentWeapon = WeaponType.Magic;
                 uiPerks.UpdateWeaponSprite(weapon);
                 break;
 
@@ -54,6 +57,8 @@ public class SelectWeapon : MonoBehaviour
                 magic.enabled = false;
                 melee.enabled = true;
                 range.enabled = false;
+
+                currentWeapon = WeaponType.Melee;
                 uiPerks.UpdateWeaponSprite(weapon);
                 break;
 
@@ -61,9 +66,16 @@ public class SelectWeapon : MonoBehaviour
                 magic.enabled = false;
                 melee.enabled = false;
                 range.enabled = true;
+
+                currentWeapon = WeaponType.Range;
                 uiPerks.UpdateWeaponSprite(weapon);
                 break;
         }
+    }
+
+    public WeaponType GetWeaponType()
+    {
+        return currentWeapon;
     }
 }
 public enum weaponType { Range, Melee, Magic }

@@ -11,7 +11,7 @@ public class PlayerProgression : MonoBehaviour {
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Health playerHealthScript;
 
-    [Header("Level & XP % Pp")]
+    [Header("Level & XP & Pp")]
     [SerializeField] private float xpRequiredMultiplier = 1.5f;
     [SerializeField] private int playerStartLevel;
  
