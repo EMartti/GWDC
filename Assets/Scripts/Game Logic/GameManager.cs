@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public GameObject sword;
     public GameObject bow;
     public GameObject hammer;
+    public enum weaponType { Range, Melee, Magic }
 
     public bool canPlayerAttack = true;
 

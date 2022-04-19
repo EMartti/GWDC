@@ -14,6 +14,7 @@ public class UIPerks : MonoBehaviour
 
     private PlayerInputActions playerInputActions;
     private GameManager gameManager;
+    private weaponType currentWeapon;
 
     private PlayerPerks playerPerks;
     private List<PerkButton> perkButtonList;
@@ -31,7 +32,10 @@ public class UIPerks : MonoBehaviour
     [SerializeField] private GameObject spriteMelee;
     [SerializeField] private GameObject spriteRange;
     [SerializeField] private GameObject spriteMagic;
-
+    [SerializeField] private Melee meleeObject;
+    [SerializeField] private Range rangeObject;
+    [SerializeField] private Magic magicObject;
+    [SerializeField] private GameObject player;
 
 
     #region Singleton
@@ -57,6 +61,8 @@ public class UIPerks : MonoBehaviour
     {      
         playerInputActions = PlayerInputs.Instance.playerInputActions;
         gameManager = GameManager.Instance;
+        player = GameObject.Find("Player");
+        
 
         playerInputActions.Player.OpenPerks.Enable();
         playerInputActions.Player.OpenPerks.started += OnOpenPerks;
@@ -70,7 +76,12 @@ public class UIPerks : MonoBehaviour
         spriteMagic.SetActive(false);
         spriteRange.SetActive(false);
 
+        meleeObject = player.GetComponent<Melee>();
+        rangeObject = player.GetComponent<Range>();
+        magicObject = player.GetComponent<Magic>();
 
+        SetCurrentWeapon();
+        UpdateWeaponSprite(currentWeapon);
     }
 
     private void OnOpenPerks(InputAction.CallbackContext obj)
@@ -155,6 +166,28 @@ public class UIPerks : MonoBehaviour
     public void UpdateMetaLevelText()
     {
         levelText.text = PlayerStats.Instance.playerLevel.ToString();
+    }
+
+    // Detectaa ja settaa pelaajan aseen ase-GameObjektien avulla
+    public void SetCurrentWeapon()
+    {
+        if (player.GetComponent<Melee>())
+        {
+            currentWeapon = weaponType.Melee;
+        }
+        if (player.GetComponent<Range>())
+        {
+            currentWeapon = weaponType.Range;
+        }
+        if (player.GetComponent<Magic>())
+        {
+            currentWeapon = weaponType.Magic;
+        }
+        else
+        {
+            currentWeapon = weaponType.Magic;
+            Debug.LogError("None of the weapon-GameObjects are active");
+        }
     }
 
     public void UpdateWeaponSprite(weaponType weapon)
