@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
     private PlayerInputActions playerInputActions;
 
     private PlayerController playerController;
+
+    [SerializeField] private CharacterController characterController;
  
     private Dash dash;
 
@@ -99,6 +101,20 @@ public class Player : MonoBehaviour
     public void PlayerProgression_OnPpLevelUp(object sender, EventArgs e)
     {
         playerPerks.AddPerkPoints();
+    }
+
+    // Check if player is grounded
+    // Used when executing Dash or other abilities
+    private void Update()
+    {
+        if (characterController.isGrounded)
+        {
+            canUseDash = true;
+        }
+        else
+        {
+            canUseDash = false;
+        }
     }
 
     private void playerPerks_OnPerkUnlocked(object sender, PlayerPerks.OnPerkUnlockedEventArgs e)
