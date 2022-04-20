@@ -47,27 +47,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rooms:
   - {fileID: 5384782066855338365, guid: bff6a06f69ff7e64988d4dfd9cad9200, type: 3}
-  centerDistance: 30
+  centerDistance: 40
   roomAmount: 5
   levelSize: 16
-  roomStart: {fileID: 1531917770129525120, guid: 20678804491b6634db82315ad0219404, type: 3}
-  roomEnd: {fileID: 1531917770129525120, guid: f67ef52b61eb34c4cb7fee07afdf3ed0, type: 3}
+  roomStart: {fileID: 1431642687172974489, guid: bb7656fdef206e94fb833afccb02c5fb, type: 3}
+  roomEnd: {fileID: 3219773756660400703, guid: 221ee192156c2fe4ba9077d19efa8cd8, type: 3}
   roomCorner: {fileID: 1739531883232404774, guid: 7f01204f5a9a8ed42b58ab43a11bf9c9, type: 3}
   roomDoor: {fileID: 866644976478422339, guid: fb16ff42a1f54494bae6ca063228a50e, type: 3}
   roomI:
-  - {fileID: 7664730834572342141, guid: 22f5e5c77609a554d9a3009d6b106067, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 133931604026146570, guid: 0fa2b04c05cfcb141abf11a67f4ef77f, type: 3}
   roomL:
-  - {fileID: 4460982746296003108, guid: d0802a7c4737b4a4eaf80112e64c93ed, type: 3}
-  - {fileID: 4460982746296003108, guid: d0802a7c4737b4a4eaf80112e64c93ed, type: 3}
-  - {fileID: 4460982746296003108, guid: d0802a7c4737b4a4eaf80112e64c93ed, type: 3}
+  - {fileID: 4175833581427079432, guid: daa5fe08cb5d3b8498a65af8e6012fac, type: 3}
   roomT:
   - {fileID: 3767101138261356675, guid: 311da3c409395d3469208a2ac128c39b, type: 3}
   roomX:
   - {fileID: 8967283548105520850, guid: a36b6e545d1e4404dbf43da9f4edede8, type: 3}
   worldGeometry: {fileID: 6325247430677128240}
-  player: {fileID: 0}
 --- !u!114 &6325247430677128242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,15 +81,15 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
+    m_Bits: 4096
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
