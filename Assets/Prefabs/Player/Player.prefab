@@ -974,7 +974,6 @@ MonoBehaviour:
   speedMult: 0.5
   footstepSound: {fileID: 0}
   dashing: 0
-  playerGrounded: 0
 --- !u!114 &6243341418018923226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,6 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c267dbea0c14d419c6633e189f84f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 4060215170647618586}
   WeaponHand: {fileID: 1775114715}
   damageBonus: 0
 --- !u!114 &1165802636975721267

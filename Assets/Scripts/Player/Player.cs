@@ -58,6 +58,11 @@ public class Player : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         playerInputActions = PlayerInputs.Instance.playerInputActions;
 
+        if (characterController == null)
+        {
+            characterController = GetComponent<CharacterController>();
+        }
+
         playerInputActions.Player.Ability1.Enable();
         playerInputActions.Player.Ability1.started += OnSpacebar;
 
