@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     private bool canUseDash = false;
 
+    private bool canUseDash2 = false;
+
     private PlayerInputActions playerInputActions;
 
     private PlayerController playerController;
@@ -88,7 +90,7 @@ public class Player : MonoBehaviour
         switch (ability1)
         {
             case Abilities.Dash:
-                if (!canUseDash) break;
+                if (!canUseDash || !canUseDash2) break;
                 OnDash();
                 Debug.Log("Dash");
                 Invoke("EndDash", 0.1f);
@@ -114,11 +116,11 @@ public class Player : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            canUseDash = true;
+            canUseDash2 = true;
         }
         else
         {
-            canUseDash = false;
+            canUseDash2 = false;
         }
     }
 
