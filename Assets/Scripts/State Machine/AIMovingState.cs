@@ -14,7 +14,7 @@ public class AIMovingState : CharacterBaseState
     public override void EnterState(CharacterStateManager character)
     {
         //play roar sound or something like that, player is seen here
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = Player.Instance.gameObject.transform;
 
         agent = character.GetComponent<NavMeshAgent>();
         agent.isStopped = false;
@@ -22,7 +22,6 @@ public class AIMovingState : CharacterBaseState
         animator = character.gameObject.GetComponent<Animator>();
 
         targetHealth = target.gameObject.GetComponent<Health>();
-
     }
 
 

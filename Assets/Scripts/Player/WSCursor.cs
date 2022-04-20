@@ -9,6 +9,7 @@ public class WSCursor : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask IgnoreMe;
     [SerializeField] private LayerMask IgnoreMe2;
+    [SerializeField] private LayerMask IgnoreMe3;
     private LayerMask planeMask;
     private bool cursorMovedOut;
 
@@ -38,7 +39,7 @@ public class WSCursor : MonoBehaviour
         }
 
 
-        if (Physics.Raycast(ray, out hit, 1000f, ~IgnoreMe & ~IgnoreMe2))
+        if (Physics.Raycast(ray, out hit, 1000f, ~IgnoreMe & ~IgnoreMe2 & ~IgnoreMe3))
         {
             // Ground check
             // && hit.collider.tag == "Ground"

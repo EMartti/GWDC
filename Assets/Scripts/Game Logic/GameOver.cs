@@ -14,7 +14,7 @@ public class GameOver : MonoBehaviour
     {
         gameOverCanvas.SetActive(false);
 
-        player = GameObject.FindWithTag("Player");
+        player = Player.Instance.gameObject;
 
         Health.OnDeath += Health_OnDeath;
 

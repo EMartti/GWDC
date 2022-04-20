@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 
     public bool canPlayerAttack = true;
 
+    public bool isGameWon = false;
+
     private void Awake()
     {
 

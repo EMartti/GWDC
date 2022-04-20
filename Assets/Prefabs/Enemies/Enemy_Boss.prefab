@@ -526,6 +526,7 @@ MonoBehaviour:
   canTurnWhenAttacking: 0
   turnRateWhenAttacking: 1
   target: {fileID: 0}
+  TargetTag: Player
 --- !u!114 &7186113127100062834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +556,7 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   defaultHealth: 100
+  effectHeight: 1
   myAudio:
     hurtSound: {fileID: 0}
     dieSound: {fileID: 0}
@@ -722,7 +724,6 @@ MonoBehaviour:
   attackInterval: 1
   hasAttacked: 0
   attackSound: {fileID: 8300000, guid: 17a45389aced9254380a98a9827ad452, type: 3}
-  weapon: {fileID: 0}
   weaponHand: {fileID: 4453669784256409491}
 --- !u!1 &3161273090650054799
 GameObject:
