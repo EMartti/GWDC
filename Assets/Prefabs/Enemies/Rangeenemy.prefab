@@ -6162,7 +6162,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 2
   m_Drag: 1
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -6179,9 +6179,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.54
-  m_Height: 2.56
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.82, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &5420707159204373789
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6320,6 +6320,7 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   defaultHealth: 100
+  effectHeight: 1
   myAudio:
     hurtSound: {fileID: 8300000, guid: 3f5e00ac70c0a8546b78d1ebffdac082, type: 3}
     dieSound: {fileID: 8300000, guid: ee1bc2c34dd3ee342abd4427dff2dd85, type: 3}
@@ -6362,7 +6363,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5420707159204373793
 MonoBehaviour:
@@ -6397,7 +6398,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4029702372542996506, guid: 80fabd0946aceae4c9e6d63c5ab89df7, type: 3}
   attackInterval: 1
-  moveScript: {fileID: 0}
   projectileStartPos: {fileID: 5699975236822196190}
   shootForce: 20
   hasAttacked: 0
