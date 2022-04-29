@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &237674347790510113
+--- !u!1 &2669475004036387684
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 578628044256113307}
-  - component: {fileID: 4587031354540686654}
-  - component: {fileID: 1750950274163870196}
+  - component: {fileID: 3332718648076782046}
+  - component: {fileID: 1868970097224238715}
+  - component: {fileID: 4470699144388817585}
   m_Layer: 0
   m_Name: kynttila1
   m_TagString: Untagged
@@ -18,36 +18,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &578628044256113307
+--- !u!4 &3332718648076782046
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237674347790510113}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 11.604717, y: -1.8442721, z: -10.338948}
+  m_GameObject: {fileID: 2669475004036387684}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5899423241266458317}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4587031354540686654
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &1868970097224238715
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237674347790510113}
+  m_GameObject: {fileID: 2669475004036387684}
   m_Mesh: {fileID: -2256152104845151439, guid: 4980d64d79347ab4eb3a7fe0b8e78af2, type: 3}
---- !u!23 &1750950274163870196
+--- !u!23 &4470699144388817585
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237674347790510113}
+  m_GameObject: {fileID: 2669475004036387684}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,3 +84,77 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1718820637584946656
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3332718648076782046}
+    m_Modifications:
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.000868799
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0008687986
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.00086879876
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00189
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779685066129891015, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+      propertyPath: m_Name
+      value: "Kynttil\xE4_Liekki"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+--- !u!4 &5899423241266458317 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5045311883087878957, guid: 09611800751f54a4fb46b88eff777615, type: 3}
+  m_PrefabInstance: {fileID: 1718820637584946656}
+  m_PrefabAsset: {fileID: 0}
