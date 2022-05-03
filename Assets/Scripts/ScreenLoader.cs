@@ -13,4 +13,3 @@ public class ScreenLoader : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad.ToString());
     }
 }
-
