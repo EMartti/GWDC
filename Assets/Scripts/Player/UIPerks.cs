@@ -32,9 +32,6 @@ public class UIPerks : MonoBehaviour
     [SerializeField] private GameObject spriteMelee;
     [SerializeField] private GameObject spriteRange;
     [SerializeField] private GameObject spriteMagic;
-    [SerializeField] private Melee meleeObject;
-    [SerializeField] private Range rangeObject;
-    [SerializeField] private Magic magicObject;
     [SerializeField] private GameObject player;
 
 
@@ -75,10 +72,6 @@ public class UIPerks : MonoBehaviour
         spriteMelee.SetActive(false);
         spriteMagic.SetActive(false);
         spriteRange.SetActive(false);
-
-        meleeObject = player.GetComponent<Melee>();
-        rangeObject = player.GetComponent<Range>();
-        magicObject = player.GetComponent<Magic>();
 
         SetCurrentWeapon();
         UpdateWeaponSprite(currentWeapon);
@@ -185,8 +178,7 @@ public class UIPerks : MonoBehaviour
         }
         else
         {
-            currentWeapon = weaponType.Magic;
-            Debug.LogError("None of the weapon-GameObjects are active");
+            currentWeapon = weaponType.None;
         }
     }
 
@@ -206,10 +198,16 @@ public class UIPerks : MonoBehaviour
                 spriteRange.SetActive(false);
                 break;
 
-            default:
+            case weaponType.Range:
                 spriteMelee.SetActive(false);
                 spriteMagic.SetActive(false);
                 spriteRange.SetActive(true);
+                break;
+
+            default:
+                spriteMelee.SetActive(false);
+                spriteMagic.SetActive(false);
+                spriteRange.SetActive(false);
                 break;
         }
     }

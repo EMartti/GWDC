@@ -78,4 +78,4 @@ public class SelectWeapon : MonoBehaviour
         return currentWeapon;
     }
 }
-public enum weaponType { Range, Melee, Magic }
+public enum weaponType { Range, Melee, Magic, None }

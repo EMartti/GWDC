@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ScreenLoader : MonoBehaviour
 {
-    public enum Scene { StartMenu, VerticalSlice };
+    public enum Scene { StartMenu_2, VerticalSlice_2 };
     [SerializeField] private Scene sceneToLoad;
 
     public void ButtonLoadScene()
