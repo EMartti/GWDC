@@ -58,6 +58,7 @@ MonoBehaviour:
   bow: {fileID: 0}
   hammer: {fileID: 0}
   canPlayerAttack: 1
+  isGameWon: 0
 --- !u!114 &2974594128823826003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +98,7 @@ MonoBehaviour:
   spriteMelee: {fileID: 2590167635421158455}
   spriteRange: {fileID: 3975353542462908523}
   spriteMagic: {fileID: 8696641703175738078}
+  player: {fileID: 0}
 --- !u!1001 &1159618850766354435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,6 +106,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7969285611971969489}
     m_Modifications:
+    - target: {fileID: 1285055422105516612, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1404889552921397602, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -287,6 +293,38 @@ PrefabInstance:
     - target: {fileID: 4776060370131980681, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_Name
       value: PlayerStatus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935532799757053269, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935532799757053269, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935532799757053269, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 64.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935532799757053269, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -234.11255
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935532800865362901, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935532800865362901, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935532800865362901, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 64.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935532800865362901, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -341.8875
       objectReference: {fileID: 0}
     - target: {fileID: 5560775547289232681, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_Name
