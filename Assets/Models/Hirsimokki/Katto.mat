@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Katto
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+  m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -21,11 +21,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: aff0dc0008f675e40a7d03c3d17bfe26, type: 3}
-        m_Scale: {x: 7, y: 7}
-        m_Offset: {x: -0.33, y: 0}
+        m_Texture: {fileID: 2800000, guid: bb94a7e7ab3988d44a2b206f076c286d, type: 3}
+        m_Scale: {x: -2.6, y: 4.16}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 0592691ab51d3974d9bb681ae459d0ee, type: 3}
+        m_Texture: {fileID: 2800000, guid: f9396d666f3accd4f9fbce04b9a69675, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -45,11 +45,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: aff0dc0008f675e40a7d03c3d17bfe26, type: 3}
-        m_Scale: {x: 7, y: 7}
-        m_Offset: {x: -0.33, y: 0}
+        m_Texture: {fileID: 2800000, guid: bb94a7e7ab3988d44a2b206f076c286d, type: 3}
+        m_Scale: {x: -2.6, y: 4.16}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: d118d0dd1c819994ca93ed7a23363086, type: 3}
+        m_Texture: {fileID: 2800000, guid: 726180237fae9b84da4ae354c4f084d3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: d317f998f581bef4593685890ae4ce2c, type: 3}
+        m_Texture: {fileID: 2800000, guid: de2934e2737a1144080d0cb8695e6b1a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -80,7 +80,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
-    - _BumpScale: 0.5
+    - _BumpScale: 2
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -94,10 +94,10 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.005
+    - _Parallax: 0.0193
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.118
+    - _Smoothness: 0.25
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -105,8 +105,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.8301887, g: 0.72556114, b: 0.56703454, a: 1}
-    - _Color: {r: 0.8301887, g: 0.72556114, b: 0.56703454, a: 1}
+    - _BaseColor: {r: 0.5943396, g: 0.57156354, b: 0.4962175, a: 1}
+    - _Color: {r: 0.5943396, g: 0.57156354, b: 0.49621743, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
