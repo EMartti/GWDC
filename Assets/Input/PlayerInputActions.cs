@@ -125,6 +125,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""5cdac183-c89a-4d98-bda4-a1e77abd2944"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -510,6 +519,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f2fe3b3-4b1f-4bfe-bb9c-28e63692e6c5"",
+                    ""path"": ""<Keyboard>/f5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1108,6 +1128,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
         m_Player_OpenPerks = m_Player.FindAction("OpenPerks", throwIfNotFound: true);
         m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
+        m_Player_DebugMenu = m_Player.FindAction("DebugMenu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1190,6 +1211,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MousePosition;
     private readonly InputAction m_Player_OpenPerks;
     private readonly InputAction m_Player_PauseGame;
+    private readonly InputAction m_Player_DebugMenu;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1205,6 +1227,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputAction @OpenPerks => m_Wrapper.m_Player_OpenPerks;
         public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
+        public InputAction @DebugMenu => m_Wrapper.m_Player_DebugMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1247,6 +1270,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @PauseGame.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
                 @PauseGame.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
                 @PauseGame.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
+                @DebugMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugMenu;
+                @DebugMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugMenu;
+                @DebugMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1284,6 +1310,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
+                @DebugMenu.started += instance.OnDebugMenu;
+                @DebugMenu.performed += instance.OnDebugMenu;
+                @DebugMenu.canceled += instance.OnDebugMenu;
             }
         }
     }
@@ -1451,6 +1480,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnOpenPerks(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
+        void OnDebugMenu(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

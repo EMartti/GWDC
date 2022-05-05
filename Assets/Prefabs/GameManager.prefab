@@ -86,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perkCanvas: {fileID: 2641036102366088352}
   pauseCanvas: {fileID: 126844241519280711}
+  debugCanvas: {fileID: 7043366568654651704}
   levelText: {fileID: 2297183717913854121}
   perkPoints: {fileID: 259173906722056537}
   HP1btn: {fileID: 368363153985651532}
@@ -106,6 +107,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7969285611971969489}
     m_Modifications:
+    - target: {fileID: 350961879551459345, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_Name
+      value: Button_DebugPP
+      objectReference: {fileID: 0}
     - target: {fileID: 1285055422105516612, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -405,6 +410,10 @@ PrefabInstance:
     - target: {fileID: 8099527103121760412, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190037405856938299, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8633090369991215973, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_UiScaleMode
@@ -801,6 +810,11 @@ GameObject:
 --- !u!1 &6182560566801025323 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5033640267245498664, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+  m_PrefabInstance: {fileID: 1159618850766354435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7043366568654651704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8190037405856938299, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
   m_PrefabInstance: {fileID: 1159618850766354435}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8450919625263285532 stripped

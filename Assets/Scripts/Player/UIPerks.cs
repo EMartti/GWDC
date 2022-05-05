@@ -9,6 +9,7 @@ public class UIPerks : MonoBehaviour
 {
     [SerializeField] private GameObject perkCanvas;
     [SerializeField] private GameObject pauseCanvas;
+    [SerializeField] private GameObject debugCanvas;
     [SerializeField] private TextMeshProUGUI levelText;
 
 
@@ -59,12 +60,15 @@ public class UIPerks : MonoBehaviour
         playerInputActions = PlayerInputs.Instance.playerInputActions;
         gameManager = GameManager.Instance;
         player = GameObject.Find("Player");
-        
 
+        //--------------------Input----------------------------------------
         playerInputActions.Player.OpenPerks.Enable();
         playerInputActions.Player.OpenPerks.started += OnOpenPerks;
         playerInputActions.Player.PauseGame.Enable();
         playerInputActions.Player.PauseGame.started += OnPauseGame;
+        playerInputActions.Player.DebugMenu.Enable();
+        playerInputActions.Player.DebugMenu.started += OnOpenDebugMenu;
+        //--------------------Input----------------------------------------
 
         perkCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
@@ -75,6 +79,19 @@ public class UIPerks : MonoBehaviour
 
         SetCurrentWeapon();
         UpdateWeaponSprite(currentWeapon);
+    }
+
+    private void OnOpenDebugMenu(InputAction.CallbackContext obj)
+    {
+        switch(debugCanvas.activeInHierarchy)
+        {
+            case false:
+                debugCanvas.SetActive(true);
+                break;
+            default:
+                debugCanvas.SetActive(false);
+                break;
+        }
     }
 
     private void OnOpenPerks(InputAction.CallbackContext obj)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6021799550602900961}
   - component: {fileID: 6770510997551807578}
   m_Layer: 5
-  m_Name: Button_DebugXp
+  m_Name: Button_DebugPP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 5801457260663257424}
   - component: {fileID: 5801457260663257425}
   - component: {fileID: 5801457260663257438}
+  - component: {fileID: 1808642561967192315}
   m_Layer: 5
   m_Name: DebugButtons_Canvas
   m_TagString: Untagged
@@ -360,6 +361,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1808642561967192315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801457260663257439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50f816ebdfc5774e8927a4cea2e9e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageButton: {fileID: 5801457261594809281}
+  ppButton: {fileID: 6770510997551807578}
+  xpButton: {fileID: 5801457261801145505}
+  player: {fileID: 0}
+  playerProgression: {fileID: 0}
+  playerHealth: {fileID: 0}
+  damageToGive: 10
+  ppToGive: 1000
+  xpToGive: 5000
 --- !u!1 &5801457260748800279
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,19 +777,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5801457261594809280}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: TakeDamage2
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5801457261801145519
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +791,7 @@ GameObject:
   - component: {fileID: 5801457261801145504}
   - component: {fileID: 5801457261801145505}
   m_Layer: 5
-  m_Name: Button_DebugPerkPoint
+  m_Name: Button_DebugXP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,16 +899,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5801457261801145504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerProgression, Assembly-CSharp
-        m_MethodName: GiveXp
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 500
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

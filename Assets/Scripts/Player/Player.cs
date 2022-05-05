@@ -52,6 +52,11 @@ public class Player : MonoBehaviour
 
     public int damageBonus;
 
+    // -------------- Ability cooldown --------------
+    [SerializeField] private float dashCooldown = 3f;
+
+    [SerializeField] private bool isAbilityOnCooldown = false; 
+
     public enum Abilities { Dash }
     private Abilities ability1;
 
@@ -83,6 +88,24 @@ public class Player : MonoBehaviour
         uiPerks.SetPlayerPerks(GetPlayerPerks());
     }
 
+    private void Update()
+    {
+        // Check if player is grounded
+        if (characterController.isGrounded)
+        {
+            canUseDash2 = true;
+        }
+        else
+        {
+            canUseDash2 = false;
+        }
+    }
+    private void OnDestroy()
+    {
+        playerPerks.OnPerkUnlocked -= playerPerks_OnPerkUnlocked;
+        playerProgression.OnXpLevelUp -= PlayerProgression_OnPpLevelUp;
+    }
+
     #region InputSystem
 
     private void OnSpacebar(InputAction.CallbackContext obj)
@@ -90,9 +113,10 @@ public class Player : MonoBehaviour
         switch (ability1)
         {
             case Abilities.Dash:
-                if (!canUseDash || !canUseDash2) break;
+                if (!canUseDash || !canUseDash2 || isAbilityOnCooldown) break;
                 OnDash();
                 Debug.Log("Dash");
+                StartCoroutine(AbilityCooldown(dashCooldown));
                 Invoke("EndDash", 0.1f);
                 break;
         }
@@ -105,23 +129,10 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region Perks
     public void PlayerProgression_OnPpLevelUp(object sender, EventArgs e)
     {
         playerPerks.AddPerkPoints();
-    }
-
-    // Check if player is grounded
-    // Used when executing Dash or other abilities
-    private void Update()
-    {
-        if (characterController.isGrounded)
-        {
-            canUseDash2 = true;
-        }
-        else
-        {
-            canUseDash2 = false;
-        }
     }
 
     private void playerPerks_OnPerkUnlocked(object sender, PlayerPerks.OnPerkUnlockedEventArgs e)
@@ -150,17 +161,15 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OnDestroy()
-    {
-        playerPerks.OnPerkUnlocked -= playerPerks_OnPerkUnlocked;
-        playerProgression.OnXpLevelUp -= PlayerProgression_OnPpLevelUp;
-    }
-
-
     public PlayerPerks GetPlayerPerks()
     {
         return playerPerks;
     }
+
+    #endregion
+
+    #region Abilities
+
 
     private class Ability
     {
@@ -168,16 +177,29 @@ public class Player : MonoBehaviour
         private float cooldown;
     }
 
+    // Ability cooldown timer
+    private IEnumerator AbilityCooldown(float cooldownLength)
+    {
+        Debug.Log("Coroutine begun");
+        isAbilityOnCooldown = true;
+        yield return new WaitForSeconds(cooldownLength);
+        isAbilityOnCooldown = false;
+    }
+
+
+    // Enable dash effects
     public void OnDash()
     {    
         playerController.baseSpeed *= 5;
         playerController.dashing = true;
     }
 
+    // Disable dash effects
     private void EndDash()
     {
         playerController.baseSpeed /= 5;
         playerController.dashing = false;
     }
+    #endregion
 
 }

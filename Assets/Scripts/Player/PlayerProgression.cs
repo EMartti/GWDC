@@ -16,7 +16,7 @@ public class PlayerProgression : MonoBehaviour {
     [SerializeField] private int playerStartLevel;
  
     [Header("Health Settings")]
-    [SerializeField] private int maxHealthAddedPerLevel;
+    [SerializeField] private int maxHealthAddedPerLevel = 10;
 
     [Header("Damage")]
     [SerializeField] private int damageAddedPerLevel = 10;
@@ -56,7 +56,7 @@ public class PlayerProgression : MonoBehaviour {
         playerStats.currentXp += earnedXp;
 
         if (playerStats.currentXp >= playerStats.xpRequiredToLvlUp) {
-            MetaLevelUp();
+            OnXPLevelUp();
         }
     }
 
@@ -73,7 +73,7 @@ public class PlayerProgression : MonoBehaviour {
         }
     }
 
-    public void MetaLevelUp() {
+    public void OnXPLevelUp() {
         // Remove level xp from currentXp
         playerStats.currentXp -= playerStats.xpRequiredToLvlUp;
 
@@ -81,7 +81,7 @@ public class PlayerProgression : MonoBehaviour {
         playerStats.playerLevel += 1;
         playerStats.xpRequiredToLvlUp *= xpRequiredMultiplier;
 
-        // Health increase
+        // Health increases
         playerStats.healthBonus += maxHealthAddedPerLevel;
         playerHealthScript.maxHealth = playerHealthScript.defaultHealth + playerStats.healthBonus;
         playerHealthScript.currentHealth = playerHealthScript.maxHealth;
@@ -101,7 +101,7 @@ public class PlayerProgression : MonoBehaviour {
         
         // Jos edellisestä level-upista jäi ylimäärästä xp:tä, joka riittää toiseen leveliin - Level uppaa uudestaan
         if (playerStats.currentXp >= playerStats.xpRequiredToLvlUp) {
-            MetaLevelUp();
+            OnXPLevelUp();
         }
     }
 
