@@ -93,9 +93,6 @@ public class PlayerProgression : MonoBehaviour {
         // Cast event
         if (OnXpLevelUp != null) OnXpLevelUp.Invoke(this, EventArgs.Empty);
 
-        // Debug
-        Debug.Log("Player achieved Level " + playerStats.playerLevel + "!");
-
         // Vaihda UI:n playerLevel teksti  
         GameManager.Instance.GetComponentInChildren<UIPerks>().UpdateMetaLevelText();
         
@@ -111,8 +108,5 @@ public class PlayerProgression : MonoBehaviour {
 
         //Cast event
         if (OnPpLevelUp != null) OnPpLevelUp.Invoke(this, EventArgs.Empty);
-
-        // Debug
-        Debug.Log("Player unlocked a perk point!");
     }
 }

@@ -115,7 +115,6 @@ public class Player : MonoBehaviour
             case Abilities.Dash:
                 if (!canUseDash || !canUseDash2 || isAbilityOnCooldown) break;
                 OnDash();
-                Debug.Log("Dash");
                 StartCoroutine(AbilityCooldown(dashCooldown));
                 Invoke("EndDash", 0.1f);
                 break;
@@ -180,7 +179,6 @@ public class Player : MonoBehaviour
     // Ability cooldown timer
     private IEnumerator AbilityCooldown(float cooldownLength)
     {
-        Debug.Log("Coroutine begun");
         isAbilityOnCooldown = true;
         yield return new WaitForSeconds(cooldownLength);
         isAbilityOnCooldown = false;

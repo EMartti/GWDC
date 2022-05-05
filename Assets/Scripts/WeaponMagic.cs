@@ -65,8 +65,6 @@ public class WeaponMagic : MonoBehaviour
             if (enemy.gameObject.GetComponent<Health>() != null)
                 enemy.gameObject.GetComponent<Health>().TakeDamage(damage, gameObject);
         }
-
-        Debug.Log("Fired magic");
     }
 
     private void KillParticles()
