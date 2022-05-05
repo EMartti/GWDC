@@ -22,7 +22,9 @@ public class PlayerPerks
         Attack1,
         Move1,
         Move2,
-        Dash
+        Dash,
+        // Dash Double Range/Length
+        DashDr
     }
 
     private List<PerkType> unlockedPerkTypeList;
@@ -93,6 +95,8 @@ public class PlayerPerks
             case PerkType.MaxHP2: return PerkType.MaxHP1;
 
             case PerkType.MaxHP3: return PerkType.MaxHP2;
+
+            case PerkType.DashDr: return PerkType.Dash;
         }
         return PerkType.None;
     }

@@ -170,6 +170,7 @@ public class UIPerks : MonoBehaviour
     {
         playerPerks.TryUnlockPerk(PlayerPerks.PerkType.Dash);
     }
+
     // Functions for PerkButton OnClick Events <--
 
     // Update player Meta-level display
