@@ -32,7 +32,7 @@ public class SelectWeapon : MonoBehaviour
         gameManager = GameManager.Instance;
         uiPerks = UIPerks.Instance;
 
-        player = GameObject.Find("Player");
+        player = Player.Instance.gameObject;
 
         melee = player.GetComponent<Melee>();
         range = player.GetComponent<Range>();

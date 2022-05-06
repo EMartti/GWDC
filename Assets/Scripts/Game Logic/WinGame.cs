@@ -44,5 +44,6 @@ public class WinGame : MonoBehaviour
         Debug.Log("GAME WON!");
         gameManager.winCanvas.SetActive(true);
         gameManager.isGameWon = true;
+        Time.timeScale = 0;
     }
 }

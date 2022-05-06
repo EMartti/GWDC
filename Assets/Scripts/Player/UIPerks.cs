@@ -65,7 +65,7 @@ public class UIPerks : MonoBehaviour
     {      
         playerInputActions = PlayerInputs.Instance.playerInputActions;
         gameManager = GameManager.Instance;
-        player = GameObject.Find("Player");
+        player = Player.Instance.gameObject;
 
         //--------------------Input----------------------------------------
         playerInputActions.Player.OpenPerks.Enable();

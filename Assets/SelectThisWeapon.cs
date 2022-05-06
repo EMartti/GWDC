@@ -9,7 +9,7 @@ public class SelectThisWeapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             selectWeapon.SwitchWeapon(thisWeapon);
         }
