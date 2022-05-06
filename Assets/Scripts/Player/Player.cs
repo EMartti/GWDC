@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
     // -------------- Ability cooldown --------------
     [SerializeField] private float dashCooldown = 3f;
 
+    [SerializeField] private float dashLength = 0.1f;
+
     [SerializeField] private bool isAbilityOnCooldown = false; 
 
     public enum Abilities { Dash }
@@ -116,7 +118,7 @@ public class Player : MonoBehaviour
                 if (!canUseDash || !canUseDash2 || isAbilityOnCooldown) break;
                 OnDash();
                 StartCoroutine(AbilityCooldown(dashCooldown));
-                Invoke("EndDash", 0.1f);
+                Invoke("EndDash", dashLength);
                 break;
         }
     }
@@ -155,6 +157,14 @@ public class Player : MonoBehaviour
 
             case PlayerPerks.PerkType.Dash:
                 canUseDash = true;
+                break;
+
+            case PlayerPerks.PerkType.DashDr:
+                dashLength *= 2f;
+                break;
+
+            case PlayerPerks.PerkType.DashRedCool:
+                dashCooldown /= 2f;
                 break;
         }
 

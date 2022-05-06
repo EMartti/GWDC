@@ -23,8 +23,8 @@ public class PlayerPerks
         Move1,
         Move2,
         Dash,
-        // Dash Double Range/Length
-        DashDr
+        DashDr,
+        DashRedCool
     }
 
     private List<PerkType> unlockedPerkTypeList;
@@ -62,12 +62,14 @@ public class PlayerPerks
         return unlockedPerkTypeList.Contains(perkType);
     }
 
-
     public bool CanUnlock(PerkType perkType)
     {
         //if already unlocked
         if (isPerkUnlocked(perkType))
+        {
             return false;
+        }
+            
 
         PerkType perkRequirement = GetPerkRequirement(perkType);
 
@@ -97,7 +99,10 @@ public class PlayerPerks
             case PerkType.MaxHP3: return PerkType.MaxHP2;
 
             case PerkType.DashDr: return PerkType.Dash;
+
+            case PerkType.DashRedCool: return PerkType.Dash;
         }
+
         return PerkType.None;
     }
 

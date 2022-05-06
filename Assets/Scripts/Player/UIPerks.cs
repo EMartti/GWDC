@@ -7,6 +7,7 @@ using TMPro;
 
 public class UIPerks : MonoBehaviour
 {
+    [Header("UI Elements & Menus")]
     [SerializeField] private GameObject perkCanvas;
     [SerializeField] private GameObject pauseCanvas;
     [SerializeField] private GameObject debugCanvas;
@@ -21,11 +22,16 @@ public class UIPerks : MonoBehaviour
     private List<PerkButton> perkButtonList;
 
     [SerializeField] private TMPro.TextMeshProUGUI perkPoints;
-    [SerializeField] private Button HP1btn;
-    [SerializeField] private Button HP2btn;
-    [SerializeField] private Button HP3btn;
-    [SerializeField] private Button Dashbtn;
 
+    [Header("Perk Buttons")]
+    [SerializeField] private Button HP1Btn;
+    [SerializeField] private Button HP2Btn;
+    [SerializeField] private Button HP3Btn;
+    [SerializeField] private Button DashBtn;
+    [SerializeField] private Button DashDrBtn;
+    [SerializeField] private Button DashRedCool;
+
+    [Header("Button Sprites")]
     [SerializeField] private Sprite spriteActive;
     [SerializeField] private Sprite spriteHighlight;
     [SerializeField] private Sprite spriteLocked;
@@ -54,7 +60,7 @@ public class UIPerks : MonoBehaviour
     private static UIPerks instance;
     #endregion
 
-    // Start is called before the first frame update
+
     void Start()
     {      
         playerInputActions = PlayerInputs.Instance.playerInputActions;
@@ -81,6 +87,12 @@ public class UIPerks : MonoBehaviour
         UpdateWeaponSprite(currentWeapon);
     }
 
+    private void OnDisable()
+    {        
+        playerInputActions.Player.OpenPerks.Disable();
+    }
+
+    #region UIMenus
     private void OnOpenDebugMenu(InputAction.CallbackContext obj)
     {
         switch(debugCanvas.activeInHierarchy)
@@ -119,59 +131,6 @@ public class UIPerks : MonoBehaviour
         }
             
     }
-
-    private void OnDisable()
-    {        
-        playerInputActions.Player.OpenPerks.Disable();
-    }
-
-
-    public void SetPlayerPerks(PlayerPerks playerPerks)
-    {
-        this.playerPerks = playerPerks;
-
-        perkButtonList = new List<PerkButton>();
-        perkButtonList.Add(new PerkButton(HP1btn, playerPerks, PlayerPerks.PerkType.MaxHP1));
-        perkButtonList.Add(new PerkButton(HP2btn, playerPerks, PlayerPerks.PerkType.MaxHP2));
-        perkButtonList.Add(new PerkButton(HP3btn, playerPerks, PlayerPerks.PerkType.MaxHP3));
-        perkButtonList.Add(new PerkButton(Dashbtn, playerPerks, PlayerPerks.PerkType.Dash));
-
-        playerPerks.OnPerkUnlocked += PlayerPerks_OnPerkUnlocked;
-        playerPerks.OnPerkPointsChanged += PlayerPerks_OnPerkPointsChanged;
-        UpdateVisuals();
-    }
-
-    private void PlayerPerks_OnPerkUnlocked(object sender, PlayerPerks.OnPerkUnlockedEventArgs e)
-    {
-        UpdateVisuals();
-    }
-
-    private void PlayerPerks_OnPerkPointsChanged(object sender, System.EventArgs e)
-    {
-        UpdatePerkPoints();
-    }
-
-
-    // Functions for PerkButton OnClick Events -->
-    public void UnlockHP1()
-    {
-        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP1);
-    }
-    public void UnlockHP2()
-    {
-        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP2);
-        
-    }
-    public void UnlockHP3()
-    {
-        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP3);
-    }
-    public void UnlockDash()
-    {
-        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.Dash);
-    }
-
-    // Functions for PerkButton OnClick Events <--
 
     // Update player Meta-level display
     public void UpdateMetaLevelText()
@@ -228,6 +187,62 @@ public class UIPerks : MonoBehaviour
                 spriteRange.SetActive(false);
                 break;
         }
+    }
+    #endregion
+
+    #region UIPerks
+    public void SetPlayerPerks(PlayerPerks playerPerks)
+    {
+        this.playerPerks = playerPerks;
+
+        perkButtonList = new List<PerkButton>();
+        perkButtonList.Add(new PerkButton(HP1Btn, playerPerks, PlayerPerks.PerkType.MaxHP1));
+        perkButtonList.Add(new PerkButton(HP2Btn, playerPerks, PlayerPerks.PerkType.MaxHP2));
+        perkButtonList.Add(new PerkButton(HP3Btn, playerPerks, PlayerPerks.PerkType.MaxHP3));
+        perkButtonList.Add(new PerkButton(DashBtn, playerPerks, PlayerPerks.PerkType.Dash));
+        perkButtonList.Add(new PerkButton(DashDrBtn, playerPerks, PlayerPerks.PerkType.DashDr));
+        perkButtonList.Add(new PerkButton(DashRedCool, playerPerks, PlayerPerks.PerkType.DashRedCool));
+
+        playerPerks.OnPerkUnlocked += PlayerPerks_OnPerkUnlocked;
+        playerPerks.OnPerkPointsChanged += PlayerPerks_OnPerkPointsChanged;
+        UpdateVisuals();
+    }
+
+    private void PlayerPerks_OnPerkUnlocked(object sender, PlayerPerks.OnPerkUnlockedEventArgs e)
+    {
+        UpdateVisuals();
+    }
+
+    private void PlayerPerks_OnPerkPointsChanged(object sender, System.EventArgs e)
+    {
+        UpdatePerkPoints();
+    }
+
+
+    // Functions for PerkButton OnClick Events -->
+    public void UnlockHP1()
+    {
+        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP1);
+    }
+    public void UnlockHP2()
+    {
+        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP2);
+    }
+    public void UnlockHP3()
+    {
+        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.MaxHP3);
+    }
+    public void UnlockDash()
+    {
+        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.Dash);
+    }
+    public void UnlockDashDr()
+    {
+        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.DashDr);
+    }
+    public void UnlockDashRedCool()
+    {
+        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.DashRedCool);
     }
 
     private void UpdatePerkPoints()
@@ -288,5 +303,7 @@ public class UIPerks : MonoBehaviour
             }
         }
     }
+
+    #endregion
 
 }
