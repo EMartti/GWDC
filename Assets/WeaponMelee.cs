@@ -27,6 +27,8 @@ public class WeaponMelee : MonoBehaviour
 
     private Player player;
 
+    [SerializeField] private bool useCustomCollider;
+
     private void Start()
     {
         player = Player.Instance;
@@ -45,6 +47,9 @@ public class WeaponMelee : MonoBehaviour
         }
 
         baseDamage = hitDamage;
+
+
+
     }
 
     public void PlayAttackSound()
@@ -54,9 +59,10 @@ public class WeaponMelee : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == enemyTag && canDamage)
+        if(other.CompareTag(enemyTag) && canDamage)
         {
             IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+
             if (damageable != null)
             {
                 damageable.TakeDamage(hitDamage + player.damageBonus, gameObject);

@@ -668,7 +668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5903406983383180122
 Transform:
   m_ObjectHideFlags: 0
@@ -709,6 +709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c18fdabbaecae4287974307e1e7045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactDamage: 50
+  impactEffect: {fileID: 0}
+  impactSound: {fileID: 0}
 --- !u!1 &2463752645134678447
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,9 +28,14 @@ public class CharacterStateManager : MonoBehaviour
         attackState.turnRateWhenAttacking = turnRateWhenAttacking;
 
         if (target != null)
+        {
             attackState.target = target;
+        }
         else
+        {
             attackState.target = GameObject.FindGameObjectWithTag(TargetTag).transform;
+        }
+        
         aiMoveState.attackRange = attackRange;
 
         currentState = idleState;
@@ -44,6 +49,7 @@ public class CharacterStateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
+        Debug.Log("Current state is" + currentState);
     }
 
     public void SwitchState(CharacterBaseState state)

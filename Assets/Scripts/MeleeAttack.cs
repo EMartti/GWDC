@@ -27,6 +27,8 @@ public class MeleeAttack : MonoBehaviour {
 
     private WeaponMelee weapon;
 
+    [SerializeField] private GameObject attackCollider;
+
     [SerializeField] private Transform weaponHand;
     void Start() 
     {

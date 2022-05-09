@@ -4,7 +4,7 @@ using System;
 public class AttackingState : CharacterBaseState
 {
     public Transform target;
-    public float attackInterval = 1;
+    public float attackInterval = 1f;
     private float timer;
     public bool canTurnWhenAttacking;
     public float turnRateWhenAttacking = 1f;

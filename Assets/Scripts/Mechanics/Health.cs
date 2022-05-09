@@ -79,6 +79,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage, GameObject attacker)
     {
+        Debug.Log("Received damage from: " + attacker.name);
         if (!isDead && damage > 0)
         {
             if (hasClass)
