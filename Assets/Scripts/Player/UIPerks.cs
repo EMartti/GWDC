@@ -29,7 +29,8 @@ public class UIPerks : MonoBehaviour
     [SerializeField] private Button HP3Btn;
     [SerializeField] private Button DashBtn;
     [SerializeField] private Button DashDrBtn;
-    [SerializeField] private Button DashRedCool;
+    [SerializeField] private Button DashRedCoolBtn;
+    [SerializeField] private Button AssaultDashBtn;
 
     [Header("Button Sprites")]
     [SerializeField] private Sprite spriteActive;
@@ -201,7 +202,8 @@ public class UIPerks : MonoBehaviour
         perkButtonList.Add(new PerkButton(HP3Btn, playerPerks, PlayerPerks.PerkType.MaxHP3));
         perkButtonList.Add(new PerkButton(DashBtn, playerPerks, PlayerPerks.PerkType.Dash));
         perkButtonList.Add(new PerkButton(DashDrBtn, playerPerks, PlayerPerks.PerkType.DashDr));
-        perkButtonList.Add(new PerkButton(DashRedCool, playerPerks, PlayerPerks.PerkType.DashRedCool));
+        perkButtonList.Add(new PerkButton(DashRedCoolBtn, playerPerks, PlayerPerks.PerkType.DashRedCool));
+        perkButtonList.Add(new PerkButton(AssaultDashBtn, playerPerks, PlayerPerks.PerkType.AssaultDash));
 
         playerPerks.OnPerkUnlocked += PlayerPerks_OnPerkUnlocked;
         playerPerks.OnPerkPointsChanged += PlayerPerks_OnPerkPointsChanged;
@@ -243,6 +245,10 @@ public class UIPerks : MonoBehaviour
     public void UnlockDashRedCool()
     {
         playerPerks.TryUnlockPerk(PlayerPerks.PerkType.DashRedCool);
+    }
+    public void UnlockAssaultDash()
+    {
+        playerPerks.TryUnlockPerk(PlayerPerks.PerkType.AssaultDash);
     }
 
     private void UpdatePerkPoints()

@@ -94,7 +94,8 @@ MonoBehaviour:
   HP3Btn: {fileID: 368363153359074513}
   DashBtn: {fileID: 368363153044396906}
   DashDrBtn: {fileID: 3752578576226324852}
-  DashRedCool: {fileID: 2884382733790196011}
+  DashRedCoolBtn: {fileID: 2884382733790196011}
+  AssaultDashBtn: {fileID: 368363154542447673}
   spriteActive: {fileID: 21300000, guid: 3fe03f408f90ff54e8d85cc105658aba, type: 3}
   spriteHighlight: {fileID: 21300000, guid: e7e677940312fc54197ce4e50413ff90, type: 3}
   spriteLocked: {fileID: 21300000, guid: d2fde37ea89b4e7459c3c233dec9c655, type: 3}
@@ -112,6 +113,18 @@ PrefabInstance:
     - target: {fileID: 350961879551459345, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_Name
       value: Button_DebugPP
+      objectReference: {fileID: 0}
+    - target: {fileID: 721952800682016365, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_text
+      value: "Assault \nDash"
+      objectReference: {fileID: 0}
+    - target: {fileID: 721952800682016365, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 721952800682016365, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1285055422105516612, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_IsActive
@@ -134,6 +147,18 @@ PrefabInstance:
       value: UnlockHP2
       objectReference: {fileID: 0}
     - target: {fileID: 1516441373991583848, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIPerks, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516441374136611898, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2126608759}
+    - target: {fileID: 1516441374136611898, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnlockAssaultDash
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516441374136611898, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIPerks, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -172,6 +197,10 @@ PrefabInstance:
     - target: {fileID: 1516441375183801554, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIPerks, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283323986904315842, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+      propertyPath: m_Name
+      value: Button_AssaultDash
       objectReference: {fileID: 0}
     - target: {fileID: 2595231609891350903, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -851,6 +880,17 @@ MonoBehaviour:
 --- !u!114 &368363154054264939 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1516441373991583848, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
+  m_PrefabInstance: {fileID: 1159618850766354435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &368363154542447673 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1516441374136611898, guid: ca8d0857fdb814b4dba484b4c3f40948, type: 3}
   m_PrefabInstance: {fileID: 1159618850766354435}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

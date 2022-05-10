@@ -5,7 +5,7 @@ using UnityEngine;
 public class DashImpact : MonoBehaviour
 {
 
-    [SerializeField] private int impactDamage = 50;
+    [SerializeField] private int impactDamage = 30;
     [SerializeField] private GameObject impactEffect;
     [SerializeField] private AudioClip impactSound;
 

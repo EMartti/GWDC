@@ -57,13 +57,19 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float dashLength = 0.1f;
 
-    [SerializeField] private bool isAbilityOnCooldown = false; 
+    [SerializeField] private bool isAbilityOnCooldown = false;
+
+    [SerializeField] private GameObject dashCollider;
+
+    [SerializeField] private bool canUseAssaultDash = false;
 
     public enum Abilities { Dash }
     private Abilities ability1;
 
     private void Start()
     {
+        dashCollider.SetActive(false);
+
         playerController = GetComponent<PlayerController>();
         playerInputActions = PlayerInputs.Instance.playerInputActions;
 
@@ -166,6 +172,10 @@ public class Player : MonoBehaviour
             case PlayerPerks.PerkType.DashRedCool:
                 dashCooldown /= 2f;
                 break;
+
+            case PlayerPerks.PerkType.AssaultDash:
+                canUseAssaultDash = true;
+                break;
         }
 
     }
@@ -198,8 +208,13 @@ public class Player : MonoBehaviour
     // Enable dash effects
     public void OnDash()
     {    
-        playerController.baseSpeed *= 5;
         playerController.dashing = true;
+        playerController.baseSpeed *= 5;
+        
+        if(canUseAssaultDash)
+        {
+            dashCollider.SetActive(true);
+        }
     }
 
     // Disable dash effects
@@ -207,6 +222,11 @@ public class Player : MonoBehaviour
     {
         playerController.baseSpeed /= 5;
         playerController.dashing = false;
+        
+        if (canUseAssaultDash)
+        {
+            dashCollider.SetActive(false);
+        }
     }
     #endregion
 

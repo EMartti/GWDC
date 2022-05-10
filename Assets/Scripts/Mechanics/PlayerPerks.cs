@@ -24,7 +24,8 @@ public class PlayerPerks
         Move2,
         Dash,
         DashDr,
-        DashRedCool
+        DashRedCool,
+        AssaultDash
     }
 
     private List<PerkType> unlockedPerkTypeList;
@@ -101,6 +102,8 @@ public class PlayerPerks
             case PerkType.DashDr: return PerkType.Dash;
 
             case PerkType.DashRedCool: return PerkType.Dash;
+
+            case PerkType.AssaultDash: return PerkType.Dash;
         }
 
         return PerkType.None;
