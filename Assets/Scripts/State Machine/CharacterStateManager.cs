@@ -49,14 +49,13 @@ public class CharacterStateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
-        Debug.Log("Current state is" + currentState);
     }
 
     public void SwitchState(CharacterBaseState state)
     {
         currentState = state;
         state.EnterState(this);
-        //Debug.Log("switched state to: " + state);
+        Debug.Log(gameObject.name + "switched state to: " + state);
     }
 
     public void Health_OnDeath(Health sender)

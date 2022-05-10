@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2136337412558240560}
   - component: {fileID: 7995194192323708847}
   - component: {fileID: 6660236848680563288}
+  - component: {fileID: 2051644050902322274}
   m_Layer: 6
   m_Name: Enemy_Surma
   m_TagString: Enemy
@@ -313,8 +314,25 @@ MonoBehaviour:
   attackInterval: 1
   hasAttacked: 0
   attackSound: {fileID: 8300000, guid: 68c855f10e29a9d43a0b77049f8365d7, type: 3}
-  attackCollider: {fileID: 0}
   weaponHand: {fileID: 8670807962301193586}
+--- !u!114 &2051644050902322274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606289773702913648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65bdfda6c24eb15409ea8559907f725e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackLocation: {fileID: 1920567125881138057}
+  sphereRadius: 1.5
+  layersToAttack:
+    serializedVersion: 2
+    m_Bits: 256
+  tagsToAttack: Player
 --- !u!1 &1920567125881138057
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920567125881138057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.022, y: 0.711, z: 1.33}
+  m_LocalPosition: {x: 0.017, y: 0.711, z: 1.041}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
