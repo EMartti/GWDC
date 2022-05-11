@@ -9,7 +9,7 @@ public class SphereAttack : MonoBehaviour
     [SerializeField] private float sphereRadius = 1.5f;
     [SerializeField] private LayerMask layersToAttack;
     [SerializeField] private string tagsToAttack;
-    [SerializeField] private int attackDamage;
+    [SerializeField] private int attackDamage = 30;
     
     
     [SerializeField] private Player player;
