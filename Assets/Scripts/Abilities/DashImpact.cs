@@ -21,7 +21,7 @@ public class DashImpact : MonoBehaviour
                 damageable.TakeDamage(impactDamage, gameObject);
             }
 
-            if (impactEffect != null) Instantiate(impactEffect, other.gameObject.transform.position, Quaternion.identity);
+            //if (impactEffect != null) Instantiate(impactEffect, other.gameObject.transform.position, Quaternion.identity);
 
 
             if (impactSound != null) AudioSource.PlayClipAtPoint(impactSound, transform.position, 4f);
